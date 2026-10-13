@@ -331,7 +331,7 @@ export function hallInterior(ctx, t, o = {}) {
   for (const cx of [380, 1540]) { const night = o.night || mode === 'east'; ctx.fillStyle = night ? '#2A3448' : '#F0DDA8'; ctx.fillRect(cx - 170, 180, 340, 360); // lattice windows
     ctx.strokeStyle = '#2A1E14'; ctx.lineWidth = 8; for (let k = 0; k <= 6; k++) { ctx.beginPath(); ctx.moveTo(cx - 170 + k * 340 / 6, 180); ctx.lineTo(cx - 170 + k * 340 / 6, 540); ctx.stroke(); } for (let k = 0; k <= 6; k++) { ctx.beginPath(); ctx.moveTo(cx - 170, 180 + k * 60); ctx.lineTo(cx + 170, 180 + k * 60); ctx.stroke(); }
     if (!night) { ctx.save(); ctx.globalAlpha = 0.12 + 0.02 * Math.sin(t * 0.7); ctx.fillStyle = '#F6E2A8'; ctx.beginPath(); ctx.moveTo(cx - 170, 540); ctx.lineTo(cx + 170, 540); ctx.lineTo(cx + 420, 1080); ctx.lineTo(cx + 40, 1080); ctx.fill(); ctx.restore(); } }
-  const col = mixColor(mode === 'qing' ? '#5A3A1C' : '#6A1E16', '#1A0C08', dark);
+  const col = mixColor(mode === 'qing' ? '#5A3A1C' : mode === 'home' ? '#3E2E20' : '#6A1E16', '#1A0C08', dark);
   for (const cx of [120, 700, 1220, 1800]) { ctx.fillStyle = col; ctx.fillRect(cx - 34, 0, 68, 820); ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fillRect(cx + 10, 0, 24, 820); } // lacquered columns
   ctx.fillStyle = mixColor('#3A2A1C', '#100A06', dark); ctx.fillRect(-W, 0, W * 3, 70); ctx.fillRect(-W, 70, W * 3, 18);
   ground(ctx, 820, mixColor('#4A3A2A', '#120E0A', dark), mixColor('#2A2018', '#0A0806', dark));

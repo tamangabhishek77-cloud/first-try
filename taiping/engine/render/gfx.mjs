@@ -176,7 +176,7 @@ export function listPanel(ctx, t, items, times, at, out, o = {}) {
 export function counter(ctx, t, v0, v1, at, dur, x, y, o = {}) {
   const a = life(t, at, o.out ?? 1e9, 0.3, 0.4); if (a <= 0) return;
   const v = Math.round(lerp(v0, v1, easeIO((t - at) / dur)));
-  const s = v.toLocaleString('en-GB');
+  const s = o.plain ? String(v) : v.toLocaleString('en-GB');
   ctx.save(); ctx.globalAlpha *= a; text(ctx, s, x, y, `600 ${o.size ?? 120}px Bodoni`, o.color ?? '#F6EFE0', o.align ?? 'center', 1, (o.mode ?? 'light') === 'light' ? 'rgba(0,0,0,0.6)' : null);
   if (o.label) spaced(ctx, o.label.toUpperCase(), x, y + (o.size ?? 120) * 0.42, '500 26px Oswald', o.labelColor ?? '#E6D9BE', 5, o.align ?? 'center');
   ctx.restore();

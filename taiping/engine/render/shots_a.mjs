@@ -1,92 +1,85 @@
-// Shots: cold open, chapters 1–3. Every beat is keyed to a word or fragment of the narration (T.f / T.w).
+// Shots: cold open, chapters 1–4 (Taiping episode). Every beat is keyed to a word or fragment of the narration (T.f / T.w).
 import { W, H, P, T, clamp, lerp, easeIO, easeOut, easeIn, backOut, ramp, life, rng, mixColor, rgba, noise1, parchment, withCam, push } from './core.mjs';
 import * as A from './art.mjs';
 import * as G from './gfx.mjs';
 import * as PL from './plates.mjs';
 const { CH } = A; const f = T.f, e = T.e, w = T.w;
 const TAU = Math.PI * 2;
-export const RICHARD_HORSE = { color: '#E8E2D4', cloth: P.gold };
-export const TYLER_HORSE = { color: '#3A3026', cloth: null };
-const dim = (c, a) => { c.save(); c.fillStyle = `rgba(16,12,8,${a})`; c.fillRect(0, 0, W, H); c.restore(); };
+const dim = (c, a) => { if (a <= 0) return; c.save(); c.fillStyle = `rgba(16,12,8,${a})`; c.fillRect(0, 0, W, H); c.restore(); };
 const panel = (c, x, y, w_, h_, a = 0.86) => { c.save(); c.globalAlpha *= a; c.fillStyle = '#ECE1C8'; c.shadowColor = 'rgba(0,0,0,0.3)'; c.shadowBlur = 30; c.fillRect(x - w_ / 2, y - h_ / 2, w_, h_); c.restore(); };
 const hash = k => { const r = rng(k * 2654435761 >>> 0); r(); return r(); };
-export { dim, panel, hash };
+const tint = (c, col, a) => { if (a <= 0) return; c.save(); c.globalCompositeOperation = 'multiply'; c.globalAlpha = a; c.fillStyle = col; c.fillRect(0, 0, W, H); c.restore(); };
+const cam = (c, lt, S, s0, s1, x0, y0, x1, y1, fn) => withCam(c, push(lt, S.dur, s0, s1, x0 ?? W / 2, y0 ?? H / 2, x1 ?? x0 ?? W / 2, y1 ?? y0 ?? H / 2), fn);
+const fade = (c, a, fn) => { if (a <= 0) return; c.save(); c.globalAlpha *= a; fn(); c.restore(); };
+// a generic Qing official (not a named character) for "pass, and you could become an official"
+const OFFICIAL = { ...CH.scholar, robe: P.gold, edge: '#8A6B27', lapel: '#8A6B27', square: '#E2C47A', skullcap: null, mhat: '#1E1A15' };
+// the planted object's motif (three notes in audio/mix.py) is cued with sfx 'motif'
+export { dim, panel, hash, tint, cam, fade, OFFICIAL };
 
-// shared: the poll-tax people grid (identical in S08, S19, S22)
-export const GRID = { cols: 16, rows: 6, x: 300, y: 470, dx: 88, dy: 98, h: 72 };
+// the views used by the map shots
+export const V = { cn: G.CN_VIEW, south: { lon: 111.6, lat: 23.6, span: 6.5 }, north: { lon: 116.5, lat: 34.5, span: 20 }, lower: { lon: 118.6, lat: 31.2, span: 8 }, gx: { lon: 110.4, lat: 23.6, span: 4.2 } };
+export const tok = (c, view, place, col, a = 1, label = null, r = 26) => { const p = Array.isArray(place) ? place : G.PLACES[place]; const [x, y] = G.proj(view, p[0], p[1]); G.token(c, x, y, r, col, a, label); return [x, y]; };
 
 export const SHOTS_A = [
 // ================================================================ COLD OPEN
-{ id: 'S01', at: 0, desc: 'Smithfield, afternoon: the boy king rides in. Date-line, medallion "aged 14".',
-  sfx: [[0, 'wind', 0.6, 9.5], [0.3, 'hooves', 0.7, 6.8], [0.8, 'tick', 0.6], [w('f002', 'fourteen') - 0.1, 'whoosh', 0.7]],
+{ id: 'S01', at: 0, desc: 'Nanjing at dusk, June 1864: the walls, the palace roofs, the Hunan Army siege lines. Date-line.',
+  sfx: [[0, 'wind', 0.7, 5], [0.4, 'drum', 0.4, 4], [0.9, 'tick', 0.6], [w('f001', 'Nanjing'), 'whoosh', 0.5]],
   draw(c, t, lt, S) {
-    const cam = push(lt, S.dur, 1.0, 1.07, W / 2, H / 2, W * 0.46, H * 0.53);
-    withCam(c, cam, () => {
-      PL.smithfield(c, t);
-      A.crowd(c, { x0: 1250, x1: 2000, y: 780, n: 70, hMin: 34, hMax: 56, depth: 26, seed: 3, t, red: 0.15 });
-      const u = easeOut(clamp(lt / 7.2)), moving = lt < 7.2;
-      A.rider(c, lerp(-260, 640, u), 1010, 230, CH.richard, { face: 1, ...RICHARD_HORSE, walk: moving ? lt * 5.5 : null, t });
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.42, H * 0.5, () => {
+      PL.nanjing(c, t, { dusk: 0.85, siege: 1 });
+      A.crowd(c, { x0: -100, x1: 2020, y: 1000, n: 60, hMin: 60, hMax: 110, depth: 60, seed: 3, t, color: P.blue, far: '#5A6A7A', hat: 'cone', tools: true, face: -1 });
     });
-    G.dateLine(c, t, { at: 0.6, out: 5.2, event: 'Smithfield, outside London', day: '15 June', year: 1381, from: 1376, mode: 'ink', y: 150 });
-    G.medallion(c, t, 'richard', 1640, 300, 110, w('f002', 'fourteen') - 0.1, S.end + 0.3, { role: 'aged 14' });
+    G.dateLine(c, t, { at: 0.5, out: 4.4, event: 'Nanjing, besieged', day: 'June', year: 1864, from: 1859, mode: 'light', y: 150 });
   } },
-{ id: 'S02', at: 'f003', desc: 'Reverse: thousands of armed men; the crowd turns red and raises its weapons. Slam THOUSANDS.',
-  sfx: [[f('f003') - 0.15, 'crowd', 0.8, 3.4], [w('f003', 'thousands'), 'impact', 0.9], [w('f003', 'armed'), 'whoosh', 0.5]],
+{ id: 'S02', at: 'f002', dark: true, desc: 'The Heavenly King\'s throne hall in shadow: Hong on the throne, the medallion "believed he was the younger brother of Jesus". The light dies on "dying".',
+  sfx: [[f('f002'), 'whoosh', 0.4], [w('f002', 'Jesus') - 0.2, 'bell', 0.5], [w('f003', 'dying'), 'thud', 0.5]],
   draw(c, t, lt, S) {
-    const cam = push(lt, S.dur, 1.04, 1.12, W * 0.48, H * 0.55, W * 0.54, H * 0.55);
-    withCam(c, cam, () => {
-      PL.smithfield(c, t);
-      A.crowd(c, { x0: -160, x1: 2080, y: 770, n: 150, hMin: 70, hMax: 200, depth: 280, seed: 7, t, red: ramp(t, f('f003'), 2.4, easeIO), raise: ramp(t, w('f003', 'armed'), 0.8), agit: 1.4 });
+    const dk = lerp(0.35, 0.8, ramp(t, w('f003', 'dying') - 0.3, 1.5, easeIO));
+    cam(c, lt, S, 1.05, 1.16, W / 2, H * 0.52, W / 2, H * 0.5, () => {
+      PL.hallInterior(c, t, { mode: 'throne', dark: dk });
+      A.figure(c, 960, 760, 330, CH.hong, { face: 1, seated: true, armF: 20, elbF: 30, lean: lerp(0, -8, ramp(t, f('f003'), 2)) });
     });
-    G.slam(c, t, [{ t: 'THOUSANDS' }, { t: 'of armed men', small: true }], w('f003', 'thousands'), S.end + 0.2, { y: H * 0.28, size: 170 });
+    G.medallion(c, t, 'hong', 1560, 330, 120, w('f002', 'man') - 0.1, S.end + 0.3, { role: 'believed he was the younger brother of Jesus' });
   } },
-{ id: 'S03', at: 'f004', trans: 'whip', desc: 'London from the south bank: the march across the bridge, the Savoy burning, the archbishop (medallion) beheaded.',
-  sfx: [[f('f004'), 'drum', 0.7, 3.4], [w('f005', 'burned') - 0.1, 'fire', 0.8, 5], [w('f005', 'burned'), 'impact', 0.9], [w('f006', 'head') - 0.05, 'impact', 1.0], [w('f006', 'head'), 'thud', 0.7], [f('f006'), 'whoosh', 0.5]],
+{ id: 'S03', at: 'f004', trans: 'ink', dark: true, desc: 'Night inside the walls: a grey, thin crowd. STARVING. Li Xiucheng\'s medallion ("one of his own generals"). WILD PLANTS / MANNA.',
+  sfx: [[f('f004'), 'night', 0.7, 8], [w('f004', 'starving'), 'impact', 0.7], [w('f005', 'generals'), 'whoosh', 0.5], [w('f006', 'wild'), 'impact', 0.6], [w('f006', 'manna'), 'bell', 0.5]],
   draw(c, t, lt, S) {
-    const cam = push(lt, S.dur, 1.0, 1.06, W / 2, H / 2, W * 0.5, H * 0.48);
-    withCam(c, cam, () => {
-      PL.london(c, t, { savoyFire: ramp(t, w('f005', 'burned'), 1.0) });
-      const k = easeIO(clamp((t - f('f004')) / 4.0));
-      c.save(); c.beginPath(); c.rect(-200, 0, 2400, 742); c.clip();
-      A.crowd(c, { x0: 1500 - k * 1050, x1: 2300 - k * 1050, y: 741, n: 46, hMin: 34, hMax: 46, depth: 3, seed: 11, t, red: 1, face: -1, agit: 0.6, tools: true });
-      c.restore();
+    cam(c, lt, S, 1.0, 1.1, W / 2, H * 0.55, W * 0.55, H * 0.6, () => {
+      PL.nanjing(c, t, { night: 0.85, dusk: 0.2 });
+      A.crowd(c, { x0: -100, x1: 2020, y: 1000, n: 70, hMin: 90, hMax: 170, depth: 90, seed: 31, t, color: '#3A3632', far: '#2A2622', tools: false, agit: 0.2 });
+      const g = ramp(t, w('f006', 'wild') - 0.4, 1.2); if (g > 0) { c.save(); c.strokeStyle = '#3E4A2A'; c.lineWidth = 4; const r = rng(7); for (let i = 0; i < 90; i++) { const x = r() * W, h = (30 + r() * 60) * g; c.beginPath(); c.moveTo(x, 1080); c.quadraticCurveTo(x + 10, 1080 - h * 0.6, x + (r() - 0.5) * 30, 1080 - h); c.stroke(); } c.restore(); }
     });
-    G.tally(c, t, f('f004') + 0.2, w('f005', 'burned') + 0.2, 1, 17, { x: W * 0.6, y: 110 });
-    G.slam(c, t, [{ t: 'BURNED', red: true }], w('f005', 'burned'), f('f006') + 0.4, { x: 520, y: 330, size: 150 });
-    const hd = w('f006', 'head');
-    G.medallion(c, t, 'sudbury', 1450, 330, 130, f('f006') + 0.1, S.end + 0.3, { grey: ramp(t, hd, 0.3), slash: ramp(t, hd, 0.25) });
-    G.slam(c, t, [{ t: 'BEHEADED', red: true }], hd, S.end + 0.2, { x: 760, y: 340, size: 130 });
+    G.slam(c, t, [{ t: 'STARVING' }], w('f004', 'starving'), f('f005') + 0.1, { y: H * 0.3, size: 150 });
+    G.medallion(c, t, 'li', 1600, 300, 100, w('f005', 'generals') - 0.2, w('f006', 'wild'), { role: 'the Loyal King' });
+    G.slam(c, t, [{ t: 'WILD PLANTS' }], w('f006', 'wild'), w('f006', 'manna') - 0.1, { y: H * 0.3, size: 130 });
+    G.slam(c, t, [{ t: 'call it', small: true }, { t: 'MANNA', gold: true }], w('f006', 'manna') - 0.05, S.end + 0.2, { y: H * 0.32, size: 150 });
   } },
-{ id: 'S04', at: 'f007', desc: 'Smithfield again: Tyler (medallion greys: "dead"); the king rides towards the raised bows.',
-  sfx: [[f('f007'), 'whoosh', 0.6], [w('f007', 'dead'), 'thud', 0.9], [f('f008') + 0.2, 'hooves', 0.6, 3], [w('f008', 'bows') - 0.4, 'bowdraw', 0.9]],
+{ id: 'S04', at: 'f007', trans: 'whip', desc: 'The map of China: red spreads from the south to the lower Yangtze ("torn the country apart"); the map dims and the toll rolls: 20–30 MILLION.',
+  sfx: [[f('f007'), 'whoosh', 0.6], [w('f007', 'torn'), 'fire', 0.5, 3], [w('f008', 'killed'), 'impact', 0.9], [w('f008', 'twenty'), 'tick', 0.6], [w('f008', 'thirty'), 'tick', 0.6]],
   draw(c, t, lt, S) {
-    const cam = push(lt, S.dur, 1.02, 1.1, W * 0.5, H * 0.55, W * 0.56, H * 0.56);
-    const dead = w('f007', 'dead'), rb = f('f008');
-    withCam(c, cam, () => {
-      PL.smithfield(c, t);
-      A.crowd(c, { x0: 1150, x1: 2100, y: 800, n: 80, hMin: 90, hMax: 170, depth: 170, seed: 5, t, red: 1, raise: ramp(t, w('f008', 'bows') - 0.5, 0.6), allBows: true, face: -1 });
-      const ta = 1 - ramp(t, dead + 0.2, 1.4, easeIO); if (ta > 0) { c.save(); c.globalAlpha = ta; A.rider(c, 1060, 1000, 200, CH.tyler, { face: -1, ...TYLER_HORSE, t }); c.restore(); }
-      const u = easeIO(clamp((t - rb) / 3.2));
-      A.rider(c, lerp(240, 760, u), 1010, 230, CH.richard, { face: 1, ...RICHARD_HORSE, walk: u > 0 && u < 1 ? (t - rb) * 6 : null, t });
+    cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W * 0.52, H * 0.48, () => {
+      PL.chinaMap(c, t, { tp: ramp(t, w('f007', 'torn') - 0.6, 2.2, easeIO), labels: ['Canton', 'Nanjing', 'Beijing'], hi: 'Nanjing' });
+      G.route(c, V.cn, ['Jintian', 'Yongan', 'Guilin', 'Changsha', 'Wuchang', 'Anqing', 'Nanjing'], ramp(t, f('f007'), 2.6, easeIO), { w: 7 });
     });
-    G.medallion(c, t, 'tyler', 1000, 300, 115, f('f007') + 0.15, f('f008') + 0.6, { grey: ramp(t, dead, 0.3), slash: ramp(t, dead, 0.25) });
+    dim(c, 0.6 * ramp(t, w('f008', 'killed') - 0.3, 0.6));
+    G.slam(c, t, [{ t: '20 – 30' }, { t: 'MILLION', red: true }, { t: 'dead, by most estimates', small: true }], w('f008', 'killed') - 0.05, S.end + 0.2, { y: H * 0.46, size: 170 });
   } },
-{ id: 'S05', at: 'f009', trans: 'black', dark: true, desc: 'Title card: THE PEASANTS\' REVOLT 1381 over a rising crowd and a storm wall; ROSE UP / ALMOST WON / FELL APART.',
-  sfx: [[f('f009') - 0.3, 'thunder', 0.6], [w('f009', 'Peasants'), 'impact', 1.0], [w('f010', 'rose'), 'whoosh', 0.6], [w('f010', 'almost'), 'whoosh', 0.6], [w('f011', 'fell'), 'thunder', 0.9], [w('f011', 'fell'), 'impact', 0.6]],
+{ id: 'S05', at: 'f009', trans: 'black', dark: true, desc: 'Title card: THE TAIPING REBELLION 1851–1864 over a rising red crowd; "a failed exam student" / "a kingdom of heaven" / "why it ended in fire" as a fire wall rises.',
+  sfx: [[f('f009') - 0.3, 'thunder', 0.6], [w('f009', 'Taiping'), 'gong', 1.0], [w('f010', 'failed'), 'whoosh', 0.6], [w('f010', 'kingdom'), 'whoosh', 0.6], [w('f011', 'fire'), 'fire', 0.9, 2.5], [w('f011', 'fire'), 'impact', 0.6]],
   draw(c, t, lt, S) {
-    const rose = w('f010', 'rose'), almost = w('f010', 'almost'), fell = w('f011', 'fell');
-    withCam(c, push(lt, S.dur, 1.0, 1.06, W / 2, H * 0.55, W / 2, H * 0.5), () => {
+    const failed = w('f010', 'failed'), kingdom = w('f010', 'kingdom'), fire = w('f011', 'fire');
+    cam(c, lt, S, 1.0, 1.06, W / 2, H * 0.55, W / 2, H * 0.5, () => {
       A.sky(c, 'storm', t); A.clouds(c, t, 31, 260, 'rgba(30,26,24,0.35)', 6, 14, 1.4);
-      A.hills(c, 860, 90, 61, '#2E2822');
-      const yy = lerp(1210, 905, easeOut(clamp((t - rose + 0.6) / 1.4)));
-      A.crowd(c, { x0: -100, x1: 2020, y: yy, n: 120, hMin: 80, hMax: 150, depth: 90, seed: 13, t, color: '#1E1A16', far: '#2C2622', red: ramp(t, almost, 1.0), raise: ramp(t, almost, 0.8), agit: 1.2 });
-      A.stormWall(c, t, lerp(0.05, 0.25, clamp(lt / 7)) + 0.85 * easeIO(clamp((t - fell) / 2.2)), 9, '#141210');
+      A.karst(c, 860, 61, '#2E2822', 8, 160, 320);
+      const yy = lerp(1210, 905, easeOut(clamp((t - failed + 0.6) / 1.4)));
+      A.crowd(c, { x0: -100, x1: 2020, y: yy, n: 120, hMin: 80, hMax: 150, depth: 90, seed: 13, t, color: '#1E1A16', far: '#2C2622', red: ramp(t, kingdom, 1.0), raise: ramp(t, kingdom, 0.8), hair: true, agit: 1.2 });
+      const fw = ramp(t, fire - 0.2, 1.6, easeIO); if (fw > 0) { c.save(); c.globalAlpha = fw; A.sky(c, 'fire', t); c.restore(); for (let i = 0; i < 6; i++) A.flames(c, 160 + i * 320, 1080, 420, 420 * fw, t, 40 + i, 9); }
     });
     const out = S.end - 0.2;
-    G.slam(c, t, [{ t: 'THE PEASANTS\'' }, { t: 'REVOLT', red: true }], w('f009', 'Peasants'), out, { y: H * 0.36, size: 160 });
-    G.text(c, '1381', W / 2, H * 0.36 + 200, '500 64px Oswald', P.gold2, 'center', life(t, w('f009', 'Peasants') + 0.4, out, 0.4, 0.3), 'rgba(0,0,0,0.6)');
+    G.slam(c, t, [{ t: 'THE TAIPING' }, { t: 'REBELLION', red: true }], w('f009', 'Taiping'), out, { y: H * 0.36, size: 160 });
+    G.text(c, '1851 – 1864', W / 2, H * 0.36 + 200, '500 64px Oswald', P.gold2, 'center', life(t, w('f009', 'Taiping') + 0.4, out, 0.4, 0.3), 'rgba(0,0,0,0.6)');
     const sub = (s, a0, a1) => G.text(c, s, W / 2, H * 0.36 + 290, 'italic 400 56px BodoniItalic', '#EDE3CF', 'center', life(t, a0, a1, 0.2, 0.2), 'rgba(0,0,0,0.6)');
-    sub('how they rose up', rose - 0.05, almost - 0.05); sub('why they almost won', almost - 0.05, fell - 0.05); sub('how it fell apart', fell - 0.05, out);
+    sub('a failed exam student', failed - 0.05, kingdom - 0.05); sub('a kingdom of heaven', kingdom - 0.05, fire - 0.3); sub('and why it ended in fire', fire - 0.3, out);
   } },
 { id: 'S06', at: e('f011') + 0.1, trans: 'cut', dark: true, desc: 'Brand sting: a fuse burns across the black and lights THE MAJOR REVOLUTION.',
   sfx: [[e('f011') + 0.25, 'match', 0.9], [e('f011') + 0.45, 'fuse', 0.8, 1.7], [e('f011') + 2.15, 'boom', 1.0]],
@@ -95,9 +88,7 @@ export const SHOTS_A = [
     const x0 = 330, x1 = 1590, u = easeIO(clamp((lt - 0.35) / 1.7)), xb = lerp(x0, x1, u);
     const fadeOut = 1 - clamp((lt - (S.dur - 0.5)) / 0.5);
     c.save(); c.globalAlpha = fadeOut;
-    // cord
     c.strokeStyle = '#6E5A3A'; c.lineWidth = 4; c.beginPath(); c.moveTo(xb, 640); c.lineTo(x1, 640); c.stroke();
-    // letters revealed behind the spark
     c.save(); c.beginPath(); c.rect(0, 0, xb, H); c.clip();
     G.text(c, 'THE MAJOR', W / 2, 470, '500 54px Oswald', '#D9CBA9', 'center', 1);
     G.text(c, 'REVOLUTION', W / 2, 610, '900 150px Bodoni', '#F2E8D2', 'center', 1, 'rgba(240,120,40,0.35)');
@@ -109,279 +100,375 @@ export const SHOTS_A = [
     c.restore();
   } },
 
-// ================================================================ CH 1  A world short of hands
-{ id: 'S07', at: 'f012', trans: 'black', desc: 'The village plate, day: peasants in the strip fields. Script "England", the 1370s.',
-  sfx: [[f('f012') - 0.2, 'village', 0.6, 3.6], [f('f012') + 0.5, 'tick', 0.5]],
+// ================================================================ CH 1  The list
+{ id: 'S07', at: 'f012', trans: 'black', desc: 'The Canton examination compound: script "Canton"; candidates stream in. THOUSANDS.',
+  sfx: [[f('f012') - 0.2, 'murmur', 0.6, 8], [f('f012') + 0.5, 'tick', 0.5], [w('f013', 'thousands'), 'impact', 0.6], [w('f013', 'exams'), 'gong', 0.5]],
   draw(c, t, lt, S) {
-    withCam(c, push(lt, S.dur, 1.0, 1.06, W / 2, H / 2, W * 0.52, H * 0.52), () => {
-      PL.village(c, t);
-      [[520, 'spade', CH.peasant, 1], [820, 'scythe', CH.peasant, -1], [1180, 'distaff', CH.woman, 1], [1460, 'spade', CH.peasant, -1]].forEach(([x, p, sp, fc], i) =>
-        A.figure(c, x, 980 + (i % 2) * 30, 230, sp, { face: fc, prop: p, armF: 30 + Math.sin(t * 2 + i) * 15, elbF: 20, t }));
+    cam(c, lt, S, 1.0, 1.07, W / 2, H / 2, W * 0.45, H * 0.52, () => {
+      PL.examHall(c, t, {});
+      const k = (t - f('f012')) * 40; for (let i = 0; i < 14; i++) { const x = ((i * 137 + k) % 1500) - 100, d = (i % 3) / 2; A.figure(c, x, 900 + d * 120, 150 + d * 90, CH.scholar, { face: 1, walk: t * 5 + i, t }); }
     });
-    G.scriptName(c, t, 'England', w('f012', 'England') - 0.2, S.end + 0.3, { y: H * 0.34, size: 190, mode: 'ink', role: 'the 1370s' });
+    G.scriptName(c, t, 'Canton', f('f012') - 0.1, w('f013', 'thousands') - 0.1, { y: H * 0.32, size: 190, mode: 'ink', role: 'southern China · 1837' });
+    G.slam(c, t, [{ t: 'THOUSANDS' }, { t: 'of candidates', small: true }], w('f013', 'thousands'), S.end + 0.2, { x: 620, y: H * 0.34, size: 140, mode: 'ink' });
   } },
-{ id: 'S08', at: 'f013', trans: 'ink', desc: 'The Black Death: the people grid; a third, then half, grey out. Bell tolls.',
-  sfx: [[w('f013', 'Black'), 'bell', 0.8], [w('f014', 'third'), 'bell', 0.7], [w('f014', 'half'), 'bell', 0.8], [w('f013', 'Black') + 0.3, 'tick', 0.4]],
+{ id: 'S08', at: 'f014', trans: 'whip', desc: 'Split card: PASS – an official appears, "rich · respected · safe"; FAIL – a candidate walks home with nothing.',
+  sfx: [[w('f014', 'Pass'), 'whoosh', 0.5], [w('f014', 'rich'), 'coin', 0.6], [w('f014', 'respected'), 'tick', 0.5], [w('f014', 'safe'), 'tick', 0.5], [w('f015', 'Fail'), 'thud', 0.7], [w('f015', 'nothing'), 'impact', 0.5]],
   draw(c, t, lt, S) {
     parchment(c, t);
-    const third = w('f014', 'third'), half = w('f014', 'half');
-    const frac = lerp(0, 1 / 3, ramp(t, third - 0.2, 0.7)) + lerp(0, 1 / 6, ramp(t, half - 0.2, 0.7));
-    PL.peopleGrid(c, t, { ...GRID, state: k => hash(k) < frac ? { color: '#B9AA88', a: 0.55 } : { color: P.ink2 } });
-    G.scriptName(c, t, 'The Black Death', w('f013', 'Black') - 0.1, third - 0.25, { y: 260, size: 150, mode: 'ink', role: '1348 – 1349' });
-    G.slam(c, t, [{ t: 'A THIRD' }], third, half - 0.05, { y: 250, size: 150, mode: 'ink' });
-    G.slam(c, t, [{ t: 'TO A HALF', red: true }], half, S.end + 0.3, { y: 250, size: 150, mode: 'ink' });
+    c.fillStyle = 'rgba(42,36,29,0.85)'; c.fillRect(W / 2 - 3, 120, 6, 840);
+    G.text(c, 'PASS', W * 0.25, 210, '900 110px Bodoni', P.ink, 'center', ramp(t, w('f014', 'Pass') - 0.1, 0.3));
+    fade(c, ramp(t, w('f014', 'official') - 0.3, 0.5), () => A.figure(c, W * 0.25 - 120, 900, 420, OFFICIAL, { face: 1, armF: 30, elbF: 40 }));
+    ['rich', 'respected', 'safe'].forEach((s, i) => G.text(c, s, W * 0.25 + 150, 520 + i * 90, 'italic 400 60px BodoniItalic', P.ink, 'center', ramp(t, w('f014', s) - 0.1, 0.3)));
+    G.text(c, 'FAIL', W * 0.75, 210, '900 110px Bodoni', P.red, 'center', ramp(t, w('f015', 'Fail') - 0.1, 0.3));
+    const u = ramp(t, w('f015', 'Fail'), 2.4, easeIO); fade(c, ramp(t, w('f015', 'Fail') - 0.2, 0.3), () => A.figure(c, lerp(W * 0.7, W * 0.92, u), 900, 360, CH.scholar, { face: 1, walk: u > 0 && u < 1 ? t * 5 : null, armF: 4, elbF: 4 }));
+    G.text(c, 'nothing', W * 0.75, 1000, 'italic 400 60px BodoniItalic', P.red, 'center', ramp(t, w('f015', 'nothing') - 0.1, 0.3));
   } },
-{ id: 'S09', at: 'f015', trans: 'fade', desc: 'The same village, emptied: a shortage of people; the fields overgrow, the harvest rots.',
-  sfx: [[f('f015'), 'wind', 0.7, 7.5], [w('f015', 'shortage'), 'impact', 0.6]],
+{ id: 'S09', at: 'f016', trans: 'ink', desc: 'Hong\'s Hakka village: Hong walks to the road with his books. Medallion "aged 23". Two FAILED stamps.',
+  sfx: [[f('f016') - 0.1, 'village', 0.6, 6.5], [w('f016', 'Hong'), 'whoosh', 0.5], [w('f017', 'failed'), 'stamp', 0.8], [w('f017', 'twice'), 'stamp', 0.8]],
   draw(c, t, lt, S) {
-    withCam(c, push(lt, S.dur, 1.02, 1.1, W / 2, H * 0.55, W * 0.5, H * 0.6), () => {
-      PL.village(c, t, { overgrown: ramp(t, w('f016', 'unploughed') - 0.3, 1.6, easeIO), sheaves: true, rot: ramp(t, w('f016', 'Harvests') - 0.2, 1.4, easeIO) });
-      A.figure(c, 1300, 990, 220, CH.peasant, { face: -1, prop: 'spade', armF: 20, elbF: 15, t });
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.46, H * 0.55, () => {
+      PL.hakkaVillage(c, t, { dusk: 0.15 });
+      const u = ramp(t, f('f016'), 5, easeIO); A.figure(c, lerp(560, 860, u), 980, 300, CH.hongStudent, { face: 1, walk: u < 1 ? t * 4.5 : null, prop: 'tract', armF: 55, elbF: 50 });
+      A.figure(c, 1200, 960, 230, CH.villager, { face: -1, prop: 'spade', armF: 30 + Math.sin(t * 2) * 15, elbF: 20 });
+      A.figure(c, 1380, 970, 220, CH.hakkaWoman, { face: -1 });
     });
-    G.slam(c, t, [{ t: 'A SHORTAGE' }, { t: 'of people', small: true }], w('f015', 'shortage'), f('f016') + 0.1, { y: H * 0.3, size: 140, mode: 'ink' });
-    G.slam(c, t, [{ t: 'UNPLOUGHED' }], w('f016', 'unploughed'), w('f016', 'Harvests'), { y: H * 0.26, size: 110, mode: 'ink' });
-    G.slam(c, t, [{ t: 'ROTTED', red: true }], w('f016', 'rotted'), S.end + 0.2, { y: H * 0.26, size: 120, mode: 'ink' });
+    G.medallion(c, t, 'hongStudent', 1600, 300, 110, w('f016', 'Hong') - 0.1, S.end + 0.3, { role: 'aged 23 · a Hakka' });
+    G.stamp(c, t, 'FAILED', w('f017', 'failed'), S.end + 0.2, { x: 520, y: 300, size: 100, rot: -0.12 });
+    G.stamp(c, t, 'FAILED', w('f017', 'twice'), S.end + 0.2, { x: 620, y: 420, size: 100, rot: 0.08 });
   } },
-{ id: 'S10', at: 'f017', desc: 'Labourer and lord: coins stack up as the labourer names his price; wages rise; he walks off for better pay.',
-  sfx: [[w('f017', 'price'), 'coin', 0.8], [w('f018', 'Wages'), 'coin', 0.7], [w('f018', 'Wages') + 0.3, 'coin', 0.7], [w('f018', 'rose'), 'coin', 0.8], [w('f018', 'left'), 'whoosh', 0.5]],
+{ id: 'S10', at: 'f018', trans: 'cut', desc: 'THE PLANT: the pass list is pasted on the screen wall; a red line scans the columns; the empty dashed slot – "Hong Xiuquan · not on the list"; the red REMEMBER tag pins on "Remember".',
+  sfx: [[w('f018', 'posted'), 'paper', 0.8], [f('f018'), 'murmur', 0.5, 4], [f('f019'), 'tick', 0.4], [w('f019', 'not'), 'impact', 0.6], [w('f020', 'Remember') - 0.05, 'motif', 1.0], [w('f020', 'Remember'), 'stamp', 0.6]],
   draw(c, t, lt, S) {
-    const leave = w('f018', 'left');
-    withCam(c, push(lt, S.dur, 1.45, 1.5, 960, 760, 980, 760), () => {
-      PL.village(c, t);
-      A.figure(c, 640, 1000, 360, CH.lord, { face: 1, armF: 30, elbF: 30 });
-      const u = easeIn(clamp((t - leave) / 3)); const lx = lerp(1220, 1900, u);
-      A.figure(c, lx, 1000, 330, CH.peasant, { face: u > 0 ? 1 : -1, armF: u > 0 ? 10 : 45, elbF: 30, prop: u > 0 ? 'staff' : null, walk: u > 0 ? (t - leave) * 7 : null, t });
+    const L = PL.EXAM_LIST;
+    cam(c, lt, S, 1.0, 1.32, W / 2, H / 2, L.x - 80, L.y + 20, () => {
+      PL.examHall(c, t, { list: { reveal: ramp(t, w('f018', 'posted') - 0.4, 1.0, easeIO), scan: clamp((t - f('f019') + 0.2) / 1.6), gap: ramp(t, w('f019', 'not') - 0.1, 0.4), tag: ramp(t, w('f020', 'Remember') - 0.1, 0.3), caption: 'Pass list · Canton · 1837' } });
+      for (let i = 0; i < 5; i++) A.figure(c, 520 + i * 120, 1000, 230 + (i % 2) * 20, CH.scholar, { face: 1, armF: i === 2 ? 70 : 10, elbF: 30 });
+      A.figure(c, 1040, 1040, 300, CH.hongStudent, { face: 1, armF: 8, elbF: 6 });
     });
-    const n = (t > w('f017', 'price') ? 1 : 0) + (t > w('f018', 'Wages') ? 1 : 0) + (t > w('f018', 'Wages') + 0.3 ? 1 : 0) + (t > w('f018', 'rose') ? 1 : 0);
-    for (let i = 0; i < n; i++) G.groat(c, 960, 640 - i * 34, 56 * 0.9);
-    G.slam(c, t, [{ t: 'NAME HIS PRICE' }], w('f017', 'price') - 0.1, f('f018'), { y: 200, size: 110, mode: 'ink' });
-    G.slam(c, t, [{ t: 'WAGES' }, { t: 'ROSE', red: true }], w('f018', 'Wages'), leave + 0.4, { y: 230, size: 110, mode: 'ink' });
-    G.slam(c, t, [{ t: 'for better pay elsewhere', small: true }], leave + 0.2, S.end + 0.2, { x: 1450, y: 260, size: 150, mode: 'ink' });
   } },
-{ id: 'S11', at: 'f019', desc: 'The lord, close and tinted red: PANIC.',
-  sfx: [[w('f019', 'panicked'), 'impact', 1.0], [f('f019'), 'sting', 0.6]],
+{ id: 'S11', at: 'f021', trans: 'black', dark: true, desc: 'Night at home: Hong collapses, lies raving by a candle; his family stand over him.',
+  sfx: [[w('f021', 'collapsed'), 'thud', 0.8], [f('f021') + 1, 'night', 0.5, 6], [w('f022', 'dying'), 'bell', 0.4]],
   draw(c, t, lt, S) {
-    const sh = Math.max(0, 1 - (t - w('f019', 'panicked')) / 0.6), jx = Math.sin(t * 90) * 8 * sh, jy = Math.cos(t * 70) * 6 * sh;
-    withCam(c, { x: 640 + jx, y: 780 + jy, s: 2.3 + lt * 0.03 }, () => { PL.village(c, t); A.figure(c, 640, 1000, 360, CH.lord, { face: 1, armF: 60, elbF: 80, armB: -40, elbB: 70 }); });
-    c.save(); c.globalCompositeOperation = 'multiply'; c.fillStyle = 'rgba(163,32,28,0.45)'; c.fillRect(0, 0, W, H); c.restore();
-    G.slam(c, t, [{ t: 'PANIC', red: false }], w('f019', 'panicked') - 0.05, S.end + 0.1, { x: 470, y: H * 0.42, size: 220 });
-  } },
-{ id: 'S12', at: 'f020', trans: 'whip', desc: 'The Statute of Labourers (1351): sealed, wages frozen, asking for more a crime; prison or the branding iron.',
-  sfx: [[f('f020') + 0.1, 'paper', 0.7], [w('f020', 'Statute') + 0.8, 'seal', 1.0], [w('f021', 'freezing'), 'impact', 0.7], [w('f022', 'crime'), 'stamp', 1.0], [w('f022', 'prison'), 'gate', 0.6], [w('f022', 'branding'), 'sizzle', 0.8]],
-  draw(c, t, lt, S) {
-    parchment(c, t, '#8A6A40', 0.25);
-    withCam(c, push(lt, S.dur, 1.0, 1.05, W / 2, H / 2, W * 0.48, H * 0.5), () => {
-      G.documentSheet(c, t, 640, 560, 620, 800, { title: 'Statute of Labourers', titleSize: 44, seal: true, sealAt: ramp(t, w('f020', 'Statute') + 0.6, 0.25), seed: 9, highlight: t > w('f022', 'crime') - 0.2 ? 3 : null, rot: -0.02 });
+    cam(c, lt, S, 1.05, 1.15, W / 2, H * 0.55, W * 0.52, H * 0.6, () => {
+      PL.hallInterior(c, t, { mode: 'home', night: true, dark: 0.55 });
+      c.fillStyle = '#3A2A1C'; c.fillRect(560, 800, 760, 70); c.fillStyle = '#5A4A38'; c.fillRect(560, 780, 760, 26);
+      c.save(); c.translate(1260, 790); c.rotate(-Math.PI / 2 + Math.sin(t * 7) * 0.012 * (t < w('f022', 'family') ? 1 : 0)); A.figure(c, 0, 0, 340, CH.hongStudent, { face: -1, armF: 40 + Math.sin(t * 5) * 30, elbF: 30 }); c.restore();
+      PL.candle(c, 520, 800, t, 3);
+      fade(c, ramp(t, f('f022') - 0.4, 0.6), () => { A.figure(c, 1460, 1000, 330, PL.shade(CH.villager, '#1E1812'), { face: -1, armF: 30, elbF: 40 }); A.figure(c, 1640, 1000, 300, PL.shade(CH.hakkaWoman, '#1E1812'), { face: -1 }); });
     });
-    G.dateLine(c, t, { at: f('f020') + 0.2, out: f('f021') + 1.5, event: 'Statute of Labourers', day: '', year: 1351, from: 1348, mode: 'ink', x: W * 0.57 });
-    G.slam(c, t, [{ t: 'WAGES' }, { t: 'FROZEN', red: true }], w('f021', 'freezing'), f('f022') + 0.1, { x: 1400, y: 450, size: 120, mode: 'ink' });
-    G.stamp(c, t, 'A CRIME', w('f022', 'crime'), S.end + 0.2, { x: 640, y: 560, size: 120 });
-    const pa = life(t, w('f022', 'prison') - 0.1, S.end + 0.3, 0.25, 0.3), ba = life(t, w('f022', 'branding') - 0.1, S.end + 0.3, 0.25, 0.3);
-    if (pa > 0) { c.save(); c.globalAlpha = pa; panel(c, 1300, 500, 300, 360, 0.9); PL.bars(c, 1300, 640, 220, 260, 0); G.text(c, 'PRISON', 1300, 330, '600 34px Oswald', P.ink2, 'center'); c.restore(); }
-    if (ba > 0) { c.save(); c.globalAlpha = ba; panel(c, 1660, 500, 300, 360, 0.9); c.save(); c.translate(1660, 560); c.rotate(-0.4); A.flames(c, 0, -100, 60, 60, t, 4, 4); c.restore(); c.save(); c.translate(1660, 600); c.rotate(-0.4); c.strokeStyle = P.ink2; c.lineWidth = 12; c.beginPath(); c.moveTo(0, 60); c.lineTo(0, -120); c.stroke(); c.fillStyle = P.fire2; c.fillRect(-24, -168, 48, 48); c.restore(); G.text(c, 'BRANDING', 1660, 330, '600 34px Oswald', P.ink2, 'center'); c.restore(); }
+    G.slam(c, t, [{ t: 'for weeks', small: true }, { t: 'HE RAVED' }], w('f021', 'raved') - 0.05, f('f022') + 0.2, { y: H * 0.25, size: 120 });
   } },
-{ id: 'S13', at: 'f023', trans: 'fade', desc: 'A villein, chained to the manor; a week strip shows the lord\'s unpaid days.',
-  sfx: [[w('f023', 'villeins'), 'whoosh', 0.5], [w('f024', 'bound'), 'chain', 1.0], [w('f025', 'unpaid'), 'tick', 0.6], [w('f025', 'work'), 'tick', 0.6]],
+{ id: 'S12', at: 'f023', trans: 'fade', desc: 'The vision: Hong rises into a palace in a gold sky; the old man with the golden beard (backlit silhouette) hands him a sword.',
+  sfx: [[f('f023'), 'chant', 0.5, 7], [w('f023', 'palace'), 'bell', 0.6], [w('f024', 'golden'), 'whoosh', 0.5], [w('f024', 'sword'), 'clang', 0.6]],
   draw(c, t, lt, S) {
-    const bound = w('f024', 'bound');
-    withCam(c, push(lt, S.dur, 1.12, 1.18, 1250, 700, 1290, 705), () => {
-      PL.village(c, t);
-      const fx = 1060, fy = 1000; A.figure(c, fx, fy, 300, CH.peasant, { face: 1, armF: 6, elbF: 8, prop: 'spade', t });
-      const u = ramp(t, bound - 0.2, 1.0, easeIO); if (u > 0) drawChain(c, fx + 24, fy - 18, 1560, 650, u);
+    const sw = w('f024', 'sword');
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.55, W / 2, H * 0.5, () => {
+      PL.dream(c, t, {});
+      const g = ramp(t, w('f024', 'old') - 0.3, 1.0); fade(c, g, () => PL.visionFigure(c, t, 'visionGod', 760, 880, 420, { face: 1, prop: t > sw ? null : 'sword', armF: lerp(10, 75, ramp(t, w('f024', 'handed'), 0.8)), elbF: -10 }));
+      const rise = lerp(1300, 980, ramp(t, f('f023'), 2.5, easeOut));
+      A.figure(c, 1120, rise, 300, CH.hongStudent, { face: -1, armF: t > sw ? 80 : 20, elbF: 20, prop: t > sw ? 'sword' : null });
     });
-    G.scriptName(c, t, 'villein', w('f023', 'villeins') - 0.15, f('f025') + 0.2, { x: W * 0.3, y: 230, size: 170, mode: 'ink', role: 'a serf, bound to the land' });
-    weekStrip(c, t, f('f025') - 0.1, S.end + 0.3, [w('f025', 'unpaid'), w('f025', 'work')]);
   } },
-{ id: 'S14', at: 'f026', desc: 'The manor roll unrolls: unfreedom written down. A red tag: REMEMBER (planted object).',
-  sfx: [[f('f026') + 0.1, 'paper', 0.9], [w('f026', 'written'), 'quill', 0.6, 2], [w('f028', 'Remember'), 'stamp', 0.8]],
-  draw(c, t, lt, S) { manorRollPlate(c, t, lt, S, { unroll: ramp(t, f('f026') + 0.15, 2.6, easeIO), tag: t > w('f028', 'Remember') - 0.05 ? 'REMEMBER' : null });
-    G.scriptName(c, t, 'the manor rolls', w('f027', 'manor') - 0.2, f('f028') + 0.3, { x: W * 0.24, y: 560, size: 120, mode: 'ink', role: 'records of the lord\'s court' });
-    G.slam(c, t, [{ t: 'They will matter later.', small: true }], w('f028', 'They'), S.end + 0.3, { x: W * 0.24, y: 560, size: 150, mode: 'ink' });
+{ id: 'S13', at: 'f025', trans: 'cut', desc: 'Demons crowd the cloud floor; the elder brother (silhouette) joins; together they hunt the demons down. Never a face.',
+  sfx: [[w('f025', 'demons'), 'impact', 0.6], [w('f025', 'demons'), 'sting', 0.5], [w('f026', 'younger'), 'whoosh', 0.5], [w('f027', 'hunt'), 'slash', 0.7], [w('f027', 'down'), 'slash', 0.6]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.04, 1.12, W / 2, H * 0.6, W * 0.5, H * 0.62, () => {
+      PL.dream(c, t, { demons: ramp(t, w('f025', 'demons') - 0.4, 0.6), slain: ramp(t, w('f027', 'hunt'), 1.6) });
+      PL.visionFigure(c, t, 'visionGod', 520, 860, 380, { face: 1 });
+      fade(c, ramp(t, w('f026', 'younger') - 0.2, 0.8), () => PL.visionFigure(c, t, 'visionBro', 1420, 880, 350, { face: -1, armF: lerp(10, 110, ramp(t, w('f027', 'hunt'), 0.4)), elbF: 0 }));
+      A.figure(c, 960, 960, 320, CH.hongStudent, { face: 1, prop: 'sword', armF: lerp(60, 140, ramp(t, w('f027', 'hunt'), 0.3)) - 80 * ramp(t, w('f027', 'down'), 0.3), elbF: 0 });
+    });
+    G.slam(c, t, [{ t: 'DEMONS', red: true }], w('f025', 'demons'), f('f026') + 0.3, { y: H * 0.22, size: 140 });
+    G.text(c, 'as Hong later told it', W / 2, 1030, 'italic 400 34px BodoniItalic', P.ink2, 'center', life(t, f('f025') + 0.5, S.end, 0.4, 0.3));
+  } },
+{ id: 'S14', at: 'f028', trans: 'fade', desc: 'Back in the village: Hong, recovered, walks with his books. SIX YEARS. The dream meant nothing.',
+  sfx: [[f('f028'), 'village', 0.5, 4.5], [w('f028', 'six'), 'tick', 0.6], [w('f028', 'nothing'), 'whoosh', 0.3]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.08, 1.0, W * 0.5, H * 0.55, W / 2, H / 2, () => {
+      PL.hakkaVillage(c, t, { dusk: 0.45 });
+      A.figure(c, lerp(900, 1150, ramp(t, f('f028'), 4)), 980, 300, CH.hongStudent, { face: 1, walk: t * 4.5, prop: 'tract', armF: 55, elbF: 50 });
+    });
+    G.slam(c, t, [{ t: 'SIX YEARS' }, { t: 'the dream meant nothing', small: true }], w('f028', 'six'), S.end + 0.2, { y: H * 0.3, size: 140 });
   } },
 
-// ================================================================ CH 2  The boy king's empty purse
-{ id: 'S15', at: 'f029', trans: 'ink', desc: 'Europe map: the war with France; English lands shrink from the 1360 extent to 1377.',
-  sfx: [[f('f029'), 'drum', 0.5, 2], [w('f030', 'fighting'), 'clang', 0.6], [w('f031', 'losing'), 'whoosh', 0.6], [f('f030') + 0.3, 'tick', 0.5]],
+// ================================================================ CH 2  God's younger son
+{ id: 'S15', at: 'f029', trans: 'black', desc: 'The same exam wall (callback): the list again; FAILED · 1843 stamps across the empty slot.',
+  sfx: [[f('f029'), 'murmur', 0.4, 3.5], [w('f029', 'fourth') - 0.05, 'stamp', 0.9]],
   draw(c, t, lt, S) {
-    const k = easeIO(clamp((t - w('f030', 'fighting') + 0.4) / 2.4));
-    const view = { lon: lerp(-1.5, 0.6, k), lat: lerp(52.2, 47.9, k), span: lerp(13, 17, k) };
-    G.drawMap(c, 'eu', view, { rivers: ['Thames', 'Seine', 'Loire', 'Garonne', 'Dordogne'] });
-    const lose = ramp(t, w('f031', 'losing') - 0.2, 1.6, easeIO);
-    for (const poly of EN1360) G.fillRegion(c, 'eu', view, poly, P.gold, 0.55 * (1 - lose));
-    for (const poly of EN1377) G.fillRegion(c, 'eu', view, poly, P.gold, 0.75);
-    G.fillRegion(c, 'eu', view, ENGLAND, P.gold, 0.35);
-    G.mapLabel(c, view, [52.6, -1.6], 1, { name: 'ENGLAND', dot: false, size: 46 });
-    G.mapLabel(c, view, [47.2, 2.4], ramp(t, w('f030', 'France') - 0.2, 0.5), { name: 'FRANCE', dot: false, size: 46 });
-    if (t > w('f030', 'fighting') - 0.1) { const [x, y] = G.proj(view, 50.2, 0.2); swords(c, x, y, 60, ramp(t, w('f030', 'fighting') - 0.1, 0.3)); }
-    G.dateLine(c, t, { at: f('f030') + 0.1, out: S.end + 0.3, event: 'The Hundred Years\' War', day: '', year: 1377, from: 1337, rollDur: 2.2, mode: 'ink' });
-    G.slam(c, t, [{ t: 'LOSING', red: true }], w('f031', 'losing'), S.end + 0.2, { x: 1450, y: 300, size: 120, mode: 'ink' });
+    const L = PL.EXAM_LIST;
+    cam(c, lt, S, 1.2, 1.28, L.x - 100, L.y, L.x - 120, L.y + 10, () => PL.examHall(c, t, { list: { reveal: 1, gap: 1, gapLabel: false, tag: 1, caption: 'Pass list · Canton · 1843' } }));
+    G.stamp(c, t, 'FAILED · 1843', w('f029', 'fourth') - 0.05, S.end + 0.2, { x: 760, y: 560, size: 110, rot: -0.1 });
+    G.dateLine(c, t, { at: f('f029') + 0.1, out: S.end, event: 'The fourth failure', year: 1843, from: 1837, mode: 'ink', y: 150, x: 200 });
   } },
-{ id: 'S16', at: 'f032', trans: 'fade', dark: true, desc: 'Throne room: Edward III fades; the ten-year-old Richard on the throne, crown too big.',
-  sfx: [[w('f032', 'died') - 0.1, 'bell', 0.9], [w('f033', 'Richard'), 'whoosh', 0.6], [w('f033', 'ten'), 'tick', 0.4]],
+{ id: 'S16', at: 'f030', trans: 'ink', desc: 'The tracts: a booklet opens on parchment, columns of brush text; Liang Fa\'s medallion.',
+  sfx: [[w('f030', 'opened'), 'paper', 0.8], [w('f031', 'Christian'), 'paper', 0.5], [w('f031', 'Liang'), 'whoosh', 0.4]],
   draw(c, t, lt, S) {
-    const died = w('f032', 'died'), rich = w('f033', 'Richard');
-    withCam(c, push(lt, S.dur, 1.0, 1.08, W / 2, H * 0.55, W / 2, H * 0.5), () => {
-      throneRoom(c, t);
-      const ea = 1 - ramp(t, died, 1.0); if (ea > 0) { c.save(); c.globalAlpha = ea; A.figure(c, 960, 905, 380, CH.edward, { seated: true, face: 1, armF: 40, elbF: 50 }); c.restore(); }
-      const ra = ramp(t, rich - 0.3, 0.7); if (ra > 0) { c.save(); c.globalAlpha = ra; boyKing(c, 960, 905, 330, t); c.restore(); }
+    parchment(c, t);
+    cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W * 0.48, H * 0.5, () => {
+      const op = ramp(t, w('f030', 'opened') - 0.2, 1.0, easeIO);
+      G.passList(c, t, 760, 560, lerp(120, 760, op), 640, { reveal: op, cols: 10, rows: 10, seed: 77, caption: 'Good Words to Exhort the Age · 1832' });
+      fade(c, ramp(t, w('f031', 'Christian') - 0.2, 0.5), () => { c.save(); c.translate(760, 280); c.fillStyle = P.red; c.fillRect(-8, -40, 16, 80); c.fillRect(-30, -18, 60, 14); c.restore(); });
     });
-    G.dateLine(c, t, { at: f('f032') + 0.2, out: died + 1.4, event: 'Edward III dies', day: '', year: 1377, from: 1372, mode: 'light' });
-    G.medallion(c, t, 'edward', 1730, 280, 100, f('f032') + 0.5, rich - 0.2, { grey: ramp(t, died, 0.5), light: true });
-    G.medallion(c, t, 'richard', 1730, 280, 100, rich - 0.1, S.end + 0.3, { role: 'aged just ten', light: true });
+    G.medallion(c, t, 'liangFa', 1500, 460, 140, w('f031', 'Liang') - 0.2, S.end + 0.3, {});
   } },
-{ id: 'S17', at: 'f034', desc: 'The council of nobles; John of Gaunt steps forward (medallion): RICHEST / MOST RESENTED.',
-  sfx: [[f('f034'), 'murmur', 0.6, 5], [w('f035', 'Gaunt'), 'whoosh', 0.6], [w('f036', 'richest'), 'impact', 0.7], [w('f036', 'resented'), 'impact', 0.9]],
-  draw(c, t, lt, S) { councilPlate(c, t, lt, S, w('f035', 'Gaunt'));
-    G.medallion(c, t, 'gaunt', 1660, 280, 110, w('f035', 'Gaunt') - 0.1, S.end + 0.3, { light: true });
-    G.slam(c, t, [{ t: 'A COUNCIL', }, { t: 'of nobles', small: true }], w('f034', 'council') - 0.1, f('f035') + 0.2, { y: 240, size: 110 });
-    G.slam(c, t, [{ t: 'THE RICHEST' }], w('f036', 'richest') - 0.05, w('f036', 'resented') - 0.05, { y: 240, size: 110 });
-    G.slam(c, t, [{ t: 'MOST RESENTED', red: true }], w('f036', 'resented') - 0.05, S.end + 0.2, { y: 240, size: 110 });
-  } },
-{ id: 'S18', at: 'f037', dark: true, desc: 'The treasury chest opens on nothing; a moth. BROKE.',
-  sfx: [[f('f038') - 0.1, 'creak', 0.8], [w('f038', 'broke'), 'thud', 1.0]],
+{ id: 'S17', at: 'f032', trans: 'fade', desc: 'The dream returns (callback plate) as Hong reads: the old man is labelled "God the Father".',
+  sfx: [[f('f032'), 'chant', 0.4, 8], [w('f032', 'believed'), 'tick', 0.5], [w('f033', 'God'), 'bell', 0.7]],
   draw(c, t, lt, S) {
-    const op = ramp(t, f('f038') - 0.15, 0.4, easeOut);
-    withCam(c, push(lt, S.dur, 1.0, 1.25, W / 2, 700, W / 2, 760), () => {
-      PL.interior(c, t, { dark: 0.6, arches: 2 });
-      PL.chest(c, 960, 900, 170, op, t);
-      if (op > 0.5) { const mt = t - f('f038'); const mx = 960 + Math.sin(mt * 5) * 60 + mt * 120, my = 760 - mt * 160; c.fillStyle = '#C9B48A'; for (const s of [-1, 1]) { c.beginPath(); c.ellipse(mx + s * 12, my, 14, 8 + 5 * Math.sin(mt * 30), s * 0.5, 0, TAU); c.fill(); } }
+    cam(c, lt, S, 1.0, 1.07, W / 2, H * 0.55, W * 0.44, H * 0.55, () => {
+      PL.dream(c, t, {});
+      PL.visionFigure(c, t, 'visionGod', 700, 900, 440, { face: 1 });
+      A.figure(c, 1180, 980, 300, CH.hongStudent, { face: -1, prop: 'tract', armF: 60, elbF: 50 });
     });
-    G.slam(c, t, [{ t: 'a problem that never goes away', small: true }], w('f037', 'problem'), f('f038') - 0.1, { y: 260, size: 150 });
-    G.slam(c, t, [{ t: 'BROKE', red: true }], w('f038', 'broke') - 0.05, S.end + 0.2, { y: 300, size: 200 });
+    G.slam(c, t, [{ t: 'or believed he did', small: true }], w('f032', 'believed') - 0.1, f('f033') + 0.1, { y: H * 0.2, size: 120, mode: 'ink' });
+    G.scriptName(c, t, 'God the Father', w('f033', 'God') - 0.1, S.end + 0.3, { x: 720, y: H * 0.24, size: 130, mode: 'ink', role: 'in Hong\'s reading' });
+  } },
+{ id: 'S18', at: 'f034', trans: 'cut', desc: 'The elder brother labelled "Jesus Christ"; Hong between them: THE SECOND SON OF GOD, sent to slay demons.',
+  sfx: [[w('f034', 'Jesus'), 'bell', 0.6], [w('f035', 'second'), 'impact', 0.9], [w('f035', 'demons'), 'slash', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.1, W / 2, H * 0.55, W / 2, H * 0.5, () => {
+      PL.dream(c, t, { demons: ramp(t, w('f035', 'demons') - 0.3, 0.4) });
+      PL.visionFigure(c, t, 'visionGod', 460, 880, 420, { face: 1 });
+      PL.visionFigure(c, t, 'visionBro', 1460, 880, 380, { face: -1 });
+      A.figure(c, 960, 980, lerp(300, 340, ramp(t, w('f035', 'second'), 0.6)), CH.hongStudent, { face: 1, prop: 'sword', armF: lerp(10, 150, ramp(t, w('f035', 'demons') - 0.2, 0.4)), elbF: 0 });
+    });
+    G.scriptName(c, t, 'Jesus Christ', w('f034', 'Jesus') - 0.1, w('f035', 'second') - 0.2, { x: 1440, y: H * 0.24, size: 120, mode: 'ink', role: 'the elder brother' });
+    G.slam(c, t, [{ t: 'THE SECOND' }, { t: 'SON OF GOD', red: true }, { t: 'sent to slay demons', small: true }], w('f035', 'second') - 0.05, S.end + 0.2, { y: H * 0.3, size: 120 });
+  } },
+{ id: 'S19', at: 'f036', trans: 'whip', desc: 'The Qing Dragon Throne in shadow; DEMONS stamps over the emperor; "the Manchus · the Qing dynasty since 1644".',
+  sfx: [[w('f036', 'demons'), 'sting', 0.6], [w('f036', 'Manchus'), 'stamp', 0.9], [w('f037', 'foreign'), 'gong', 0.4]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.1, W / 2, H * 0.5, W / 2, H * 0.48, () => {
+      PL.hallInterior(c, t, { mode: 'qing', dark: lerp(0.1, 0.5, ramp(t, w('f036', 'demons'), 1.2)) });
+      A.figure(c, 960, 760, 300, PL.shade(CH.emperor, '#2A1E12'), { face: 1, seated: true });
+    });
+    G.stamp(c, t, 'DEMONS', w('f036', 'Manchus'), S.end + 0.2, { x: W / 2, y: 330, size: 150, rot: -0.1 });
+    G.scriptName(c, t, 'the Manchus', w('f037', 'foreign') - 0.2, S.end + 0.3, { y: H * 0.86, size: 110, role: 'the Qing dynasty · since 1644' });
+  } },
+{ id: 'S20', at: 'f038', trans: 'cut', desc: 'The village school: Hong takes the Confucian tablet off the altar and throws it out. DISMISSED.',
+  sfx: [[w('f038', 'threw'), 'whoosh', 0.7], [w('f038', 'school') - 0.1, 'smash', 0.7], [w('f039', 'lost'), 'stamp', 0.8]],
+  draw(c, t, lt, S) {
+    const th = ramp(t, w('f038', 'threw') - 0.1, 0.9, easeIn);
+    const tablet = (x, y, r) => { c.save(); c.translate(x, y); c.rotate(r); c.fillStyle = '#3A2414'; c.fillRect(-45, -75, 90, 150); c.fillStyle = P.gold; c.fillRect(-33, -61, 66, 122); c.restore(); };
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.55, W * 0.55, H * 0.55, () => {
+      PL.hallInterior(c, t, { mode: 'school', tablet: th > 0 ? 0 : 1 });
+      if (th > 0 && th < 1) tablet(lerp(960, 1700, th), lerp(595, 980, th) - Math.sin(th * Math.PI) * 220, th * 5);
+      if (th >= 1) tablet(1700, 1000, 1.4);
+      A.figure(c, 1240, 980, 360, CH.hongStudent, { face: -1, armF: lerp(60, 160, ramp(t, w('f038', 'threw') - 0.3, 0.3)), elbF: 10 });
+    });
+    G.dateLine(c, t, { at: f('f038') + 0.2, out: w('f039', 'lost'), event: 'By most accounts', year: 1843, from: 1840, mode: 'light', y: 150 });
+    G.stamp(c, t, 'DISMISSED', w('f039', 'lost'), S.end + 0.2, { x: 620, y: 300, size: 120 });
+  } },
+{ id: 'S21', at: 'f040', trans: 'ink', desc: 'Canton, 1847: Hong studies with the American Baptist Issachar Roberts (medallion) – a book between them.',
+  sfx: [[f('f040'), 'paper', 0.5], [w('f040', 'American'), 'whoosh', 0.5], [w('f041', 'Issachar'), 'tick', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.55, W * 0.5, H * 0.52, () => {
+      PL.hallInterior(c, t, { mode: 'home' });
+      PL.table(c, 960, 960, 520, 120, '#4A3420');
+      A.figure(c, 760, 1000, 360, CH.hongStudent, { face: 1, armF: 60, elbF: 50 });
+      fade(c, ramp(t, w('f040', 'American') - 0.3, 0.6), () => A.figure(c, 1180, 1000, 380, CH.roberts, { face: -1, prop: 'book', armF: 60, elbF: 50 }));
+    });
+    G.dateLine(c, t, { at: f('f040') + 0.1, out: w('f041', 'Issachar'), event: 'Canton', year: 1847, from: 1843, mode: 'light', y: 150 });
+    G.medallion(c, t, 'roberts', 1640, 330, 110, w('f041', 'Issachar') - 0.2, S.end + 0.3, {});
+  } },
+{ id: 'S22', at: 'f042', trans: 'cut', desc: 'They fall out: Hong walks away – UNBAPTISED; then the map, a red route from Hua county west into Guangxi on "mission".',
+  sfx: [[w('f042', 'fell'), 'thud', 0.6], [w('f042', 'unbaptised'), 'stamp', 0.7], [w('f043', 'mission'), 'whoosh', 0.7], [w('f043', 'mission'), 'drum', 0.5, 2.5]],
+  draw(c, t, lt, S) {
+    const m = f('f043');
+    if (t < m) {
+      cam(c, lt, S, 1.0, 1.06, W / 2, H * 0.55, W * 0.45, H * 0.55, () => {
+        PL.hallInterior(c, t, { mode: 'home' }); PL.table(c, 960, 960, 520, 120, '#4A3420');
+        A.figure(c, 1180, 1000, 380, CH.roberts, { face: -1, prop: 'book', armF: 30, elbF: 30 });
+        const u = ramp(t, w('f042', 'fell'), 2.4, easeIO); A.figure(c, lerp(760, 220, u), 1000, 360, CH.hongStudent, { face: -1, walk: u > 0 && u < 1 ? t * 5 : null });
+      });
+      G.stamp(c, t, 'UNBAPTISED', w('f042', 'unbaptised') - 0.05, m + 0.1, { x: W / 2, y: 300, size: 120 });
+    } else {
+      cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W * 0.48, H * 0.5, () => {
+        PL.chinaMap(c, t, { view: V.south, labels: ['Canton', 'Hua county', 'Thistle Mountain'], hi: 'Thistle Mountain', cartouche: 'Guangdong · Guangxi' });
+        G.route(c, V.south, ['Hua county', 'Thistle Mountain'], ramp(t, m, 2.2, easeIO), { w: 8 });
+        for (const [nm, la, lo] of [['GUANGXI', 24.3, 109.6], ['GUANGDONG', 24.2, 113.3]]) { const [x, y] = G.proj(V.south, la, lo); G.text(c, nm, x, y, '600 46px Cinzel', 'rgba(42,36,29,0.45)', 'center'); }
+      });
+      G.slam(c, t, [{ t: 'a mission', small: true }], w('f043', 'mission') - 0.1, S.end + 0.2, { y: H * 0.18, size: 140, mode: 'ink' });
+    }
   } },
 
-// ================================================================ CH 3  Three groats a head
-{ id: 'S19', at: 'f039', trans: 'ink', desc: 'The people grid returns: not property but people; a coin for every head. A POLL TAX.',
-  sfx: [[w('f040', 'property'), 'stamp', 0.6], [w('f040', 'Every'), 'coins', 0.9, 1.4], [w('f040', 'poll'), 'impact', 0.9]],
+// ================================================================ CH 3  Thistle Mountain
+{ id: 'S23', at: 'f044', trans: 'black', desc: 'Guangxi: the tower-karst hills, mist, charcoal kilns. Script "Guangxi". Feng Yunshan walks in; his medallion.',
+  sfx: [[f('f044'), 'wind', 0.6, 8], [w('f044', 'Guangxi'), 'whoosh', 0.5], [w('f045', 'Feng'), 'tick', 0.5]],
   draw(c, t, lt, S) {
-    parchment(c, t);
-    const ev = w('f040', 'Every');
-    PL.peopleGrid(c, t, { ...GRID, state: (k, n) => { const ct = ev + (k / n) * 1.3; return { color: t > w('f040', 'people') ? mixColor(P.ink2, P.red, 0.25) : P.ink2, coin: ramp(t, ct, 0.2) }; } });
-    G.slam(c, t, [{ t: 'a new kind of tax', small: true }], w('f039', 'new') - 0.1, f('f040') + 0.2, { y: 240, size: 170, mode: 'ink' });
-    const pa = life(t, w('f040', 'property') - 0.2, w('f040', 'people') + 0.3, 0.2, 0.3);
-    if (pa > 0) { c.save(); c.globalAlpha = pa; panel(c, 960, 250, 420, 300, 0.95); A.cottage(c, 960, 340, 150); c.strokeStyle = P.red; c.lineWidth = 14; c.lineCap = 'round'; const u = ramp(t, w('f040', 'property'), 0.3);
-      c.beginPath(); c.moveTo(860, 150); c.lineTo(lerp(860, 1060, u), lerp(150, 350, u)); c.stroke(); c.restore(); }
-    G.slam(c, t, [{ t: 'EVERY PERSON' }], ev - 0.05, w('f040', 'poll') - 0.1, { y: 250, size: 120, mode: 'ink' });
-    G.slam(c, t, [{ t: 'A POLL TAX', red: true }, { t: '“poll”: an old word for head', small: true }], w('f040', 'poll') - 0.05, S.end + 0.2, { y: 250, size: 130, mode: 'ink' });
-  } },
-{ id: 'S20', at: 'f041', trans: 'cut', desc: 'Three columns: 1377 one groat (over 14); 1379 scaled by rank; 1380 three groats (over 15), rich or poor.',
-  sfx: [[w('f041', 'groat'), 'coin', 0.9], [f('f043') + 0.5, 'coins', 0.7, 1], [w('f045', 'three'), 'coin', 0.9], [w('f045', 'three') + 0.25, 'coin', 0.9], [w('f045', 'three') + 0.5, 'coin', 0.9], [w('f045', 'rich'), 'whoosh', 0.5]],
-  draw(c, t, lt, S) {
-    parchment(c, t);
-    const cx = lerp(820, 1100, easeIO(clamp((t - f('f044')) / 2)));
-    G.text(c, 'THREE POLL TAXES IN FOUR YEARS', W / 2, 120, '600 34px Oswald', P.ink2, 'center', life(t, f('f041'), w('f045', 'rich') - 0.3, 0.4, 0.3));
-    withCam(c, { x: cx, y: 640, s: 1.2 }, () => {
-      c.strokeStyle = P.ink3; c.lineWidth = 3; c.beginPath(); c.moveTo(150, 820); c.lineTo(1800, 820); c.stroke();
-      const col = (x, year, at) => { const a = ramp(t, at, 0.4); if (a <= 0) return a; G.text(c, year, x, 900, '600 64px Oswald', P.ink2, 'center', a); return a; };
-      // 1377
-      if (col(420, '1377', f('f041') - 0.1) > 0) { if (t > w('f041', 'groat')) G.groat(c, 420, 760, 58); G.text(c, '4d · one groat', 420, 640, 'italic 400 40px BodoniItalic', P.ink, 'center', ramp(t, w('f041', 'groat'), 0.3));
-        G.text(c, 'everyone over 14', 420, 970, '500 30px Oswald', P.red, 'center', ramp(t, w('f042', 'fourteen') - 0.2, 0.3)); }
-      // 1379
-      if (col(960, '1379', f('f043') - 0.1) > 0) { const tiers = [['labourer', 1], ['craftsman', 2], ['knight', 5], ['duke', 9]];
-        tiers.forEach(([lab, n], i) => { const a = ramp(t, f('f043') + 0.5 + i * 0.25, 0.25); if (a <= 0) return; c.save(); c.globalAlpha = a; const x = 810 + i * 100;
-          c.fillStyle = mixColor(P.sepia, P.gold, i / 3); c.fillRect(x - 28, 820 - n * 40, 56, n * 40); G.text(c, lab, x, 808 - n * 40, 'italic 400 24px BodoniItalic', P.ink2, 'center'); c.restore(); });
-        G.text(c, 'scaled by rank', 960, 970, '500 30px Oswald', P.red, 'center', ramp(t, w('f043', 'scaled') - 0.1, 0.3)); }
-      // 1380
-      if (col(1500, '1380', w('f044', 'eighty') - 0.2) > 0) { const th = w('f045', 'three'); for (let i = 0; i < 3; i++) if (t > th + i * 0.25) { const d = easeOut(clamp((t - th - i * 0.25) / 0.25)); G.groat(c, 1500, lerp(300, 760 - i * 52, d), 58); }
-        G.text(c, '12d · three groats', 1500, 560, 'italic 400 40px BodoniItalic', P.ink, 'center', ramp(t, w('f045', 'twelve') - 0.1, 0.3));
-        G.text(c, 'every man and woman over 15', 1500, 970, '500 30px Oswald', P.red, 'center', ramp(t, w('f045', 'fifteen') - 0.2, 0.3)); }
+    cam(c, lt, S, 1.0, 1.1, W / 2, H / 2, W * 0.5, H * 0.56, () => {
+      PL.guangxi(c, t, { dusk: 0.2 });
+      const u = ramp(t, f('f045'), 3.4, easeIO); fade(c, ramp(t, f('f045') - 0.3, 0.4), () => A.figure(c, lerp(1500, 1100, u), 1000, 300, CH.feng, { face: -1, walk: u < 1 ? t * 4.5 : null, prop: 'book', armF: 55, elbF: 55 }));
     });
-    const ra = life(t, w('f045', 'rich') - 0.1, S.end + 0.3, 0.3, 0.3);
-    if (ra > 0) { c.save(); c.globalAlpha = ra; panel(c, 960, 210, 760, 300, 0.95);
-      A.figure(c, 760, 340, 230, CH.lord, { face: 1, armF: 20 }); A.figure(c, 1160, 340, 220, CH.peasant, { face: -1, armF: 20 });
-      for (const x of [880, 1040]) for (let i = 0; i < 3; i++) G.groat(c, x, 300 - i * 30, 26);
-      G.text(c, 'rich', 760, 100, 'italic 400 36px BodoniItalic', P.ink, 'center', ramp(t, w('f045', 'rich'), 0.2)); G.text(c, 'or poor', 1160, 100, 'italic 400 36px BodoniItalic', P.ink, 'center', ramp(t, w('f045', 'poor'), 0.2)); c.restore(); }
+    G.scriptName(c, t, 'Guangxi', w('f044', 'Guangxi') - 0.4, f('f045') + 0.3, { y: H * 0.3, size: 190, mode: 'ink', role: 'south-western China' });
+    G.medallion(c, t, 'feng', 1640, 300, 110, w('f045', 'Feng') - 0.2, S.end + 0.3, { role: 'one of Hong\'s first converts' });
   } },
-{ id: 'S21', at: 'f046', desc: 'A family of three adults at their cottage: three groats appear over each head.',
-  sfx: [[w('f047', 'every'), 'coins', 0.8], [w('f047', 'adult'), 'coins', 0.8], [w('f047', 'house'), 'coins', 0.8]],
+{ id: 'S24', at: 'f046', trans: 'cut', desc: 'Feng preaches by Thistle Mountain; the small congregation turns red one by one: "the God Worshipping Society".',
+  sfx: [[f('f046'), 'murmur', 0.5, 5], [w('f046', 'Thistle'), 'tick', 0.5], [w('f046', 'God'), 'chant', 0.5, 4]],
   draw(c, t, lt, S) {
-    const ev = w('f047', 'every'), cam = push(lt, S.dur, 1.6, 1.68, 520, 760, 540, 760);
-    const fam = [[360, CH.peasant, 1], [500, CH.woman, 1], [640, { ...CH.peasant, tunic: '#6E5A43', hood: '#4A3E32' }, -1]];
-    withCam(c, cam, () => { PL.village(c, t); fam.forEach(([x, sp, fc]) => A.figure(c, x, 990, 250, sp, { face: fc, armF: 8 })); });
-    fam.forEach(([x], i) => { const at = ev + i * 0.45, sx = W / 2 + cam.s * (x - cam.x), sy = H / 2 + cam.s * (990 - 250 * 1.02 - cam.y) - 50;
-      for (let j = 0; j < 3; j++) { const a = ramp(t, at + j * 0.08, 0.2, backOut); if (a <= 0) continue; c.save(); c.translate(sx + (j - 1) * 50, sy); c.scale(a, a); G.groat(c, 0, 0, 23); c.restore(); } });
-    G.slam(c, t, [{ t: 'SEVERAL DAYS\' WAGES' }], w('f046', 'several') - 0.1, S.end + 0.2, { y: 170, size: 96, mode: 'ink' });
-    G.text(c, 'for every adult in the house', W / 2, 250, 'italic 400 44px BodoniItalic', P.ink, 'center', life(t, ev - 0.2, S.end + 0.2, 0.3, 0.3));
+    cam(c, lt, S, 1.04, 1.12, W / 2, H * 0.55, W * 0.56, H * 0.58, () => {
+      PL.guangxi(c, t, { dusk: 0.3, village: true });
+      A.figure(c, 640, 990, 320, CH.feng, { face: 1, prop: 'book', armF: lerp(50, 120, (Math.sin(t * 1.5) + 1) / 2), elbF: 40 });
+      A.crowd(c, { x0: 820, x1: 1820, y: 990, n: 30, hMin: 140, hMax: 220, depth: 40, seed: 46, t, red: ramp(t, w('f046', 'God') - 0.6, 3), face: -1, tools: false, agit: 0.4 });
+    });
+    G.scriptName(c, t, 'Thistle Mountain', w('f046', 'Thistle') - 0.2, w('f046', 'God') - 0.1, { y: H * 0.26, size: 140, mode: 'ink' });
+    G.slam(c, t, [{ t: 'the', small: true }, { t: 'GOD WORSHIPPING' }, { t: 'SOCIETY', red: true }], w('f046', 'God') - 0.05, S.end + 0.2, { y: H * 0.3, size: 110, mode: 'ink' });
   } },
-{ id: 'S22', at: 'f048', trans: 'fade', desc: 'The grid again: people vanish from the records; counter 1,355,201 → 896,481. NEARLY HALF A MILLION.',
-  sfx: [[w('f049', 'disappeared'), 'whoosh', 0.9], [w('f050', 'fell'), 'tick', 0.5, 2.6], [w('f052', 'Nearly'), 'impact', 0.9]],
+{ id: 'S25', at: 'f047', trans: 'whip', desc: 'Who joined: charcoal burners, a farmer, a Hakka woman step forward. POOR · HAKKA, outsiders in their province.',
+  sfx: [[f('f047'), 'whoosh', 0.4], [w('f047', 'poor'), 'tick', 0.5], [w('f047', 'Hakka'), 'impact', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.06, W / 2, H * 0.6, W / 2, H * 0.6, () => {
+      PL.guangxi(c, t, { dusk: 0.35, kilns: true });
+      [['burner', 'axe'], ['villager', 'spade'], ['burner', null], ['hakkaWoman', null], ['villager', 'spear']].forEach(([k, p], i) => fade(c, ramp(t, f('f047') + i * 0.5, 0.4), () => A.figure(c, 380 + i * 290, 1010, 300, CH[k], { face: i < 2 ? 1 : -1, prop: p, armF: 20, elbF: 20 })));
+    });
+    G.slam(c, t, [{ t: 'POOR' }], w('f047', 'poor'), w('f047', 'Hakka') - 0.1, { y: H * 0.22, size: 140 });
+    G.slam(c, t, [{ t: 'HAKKA', red: true }, { t: 'outsiders in their province', small: true }], w('f047', 'Hakka'), S.end + 0.2, { y: H * 0.24, size: 140 });
+  } },
+{ id: 'S26', at: 'f048', trans: 'cut', desc: 'The map darkens ("coming apart"); British warships off Canton; date-line First Opium War 1842.',
+  sfx: [[f('f048'), 'thunder', 0.5], [w('f049', 'Britain'), 'boom', 0.7], [w('f049', 'Opium'), 'boom', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.55, H * 0.62, () => {
+      PL.chinaMap(c, t, { labels: ['Canton', 'Hong Kong', 'Nanjing'] });
+      const sh = ramp(t, w('f049', 'Britain') - 0.4, 0.8); if (sh > 0) { const [x, y] = G.proj(V.cn, 22.0, 114.6); fade(c, sh, () => { A.warship(c, x + 70, y + 40, 22, t); A.warship(c, x + 210, y + 10, 18, t + 1); A.warship(c, x + 330, y - 40, 16, t + 2); }); }
+    });
+    tint(c, '#5A4A3A', 0.5 * ramp(t, f('f048'), 1.2));
+    G.dateLine(c, t, { at: w('f049', 'Britain') - 0.2, out: S.end, event: 'The First Opium War', day: 'ends', year: 1842, from: 1839, mode: 'ink', y: 160 });
+  } },
+{ id: 'S27', at: 'f050', trans: 'cut', desc: 'Opium crates flow in, silver flows out; BANDITS · PIRATES · HUNGER.',
+  sfx: [[w('f050', 'Opium'), 'whoosh', 0.6], [w('f050', 'Silver'), 'coins', 0.7], [w('f051', 'Bandits'), 'impact', 0.5], [w('f051', 'pirates'), 'impact', 0.5], [w('f051', 'hunger'), 'impact', 0.6]],
   draw(c, t, lt, S) {
     parchment(c, t);
-    const roll0 = w('f050', 'fell'), roll1 = e('f051');
-    const gone = 0.04 * ramp(t, f('f048') + 1, 2.5) + 0.3 * easeIO(clamp((t - roll0) / (roll1 - roll0)));
-    PL.peopleGrid(c, t, { ...GRID, y: 520, state: k => { const h = hash(k + 7); return { color: P.ink2, a: clamp(1 - (gone - h) * 40) }; } });
-    const v = t < roll0 ? 1355201 : Math.round(lerp(1355201, 896481, easeIO(clamp((t - roll0) / (roll1 - roll0)))));
-    const ca = life(t, f('f048') + 0.3, S.end + 0.3, 0.4, 0.3);
-    G.text(c, v.toLocaleString('en-GB'), W / 2, 250, '600 130px Bodoni', P.ink, 'center', ca);
-    G.text(c, t < roll0 + 1 ? 'TAXPAYERS ON THE ROLLS · 1377' : 'TAXPAYERS ON THE ROLLS · 1381', W / 2, 310, '500 30px Oswald', P.red, 'center', ca);
-    const sa = life(t, w('f049', 'disappeared') - 0.1, roll0 - 0.1, 0.12, 0.3); if (sa > 0) { c.save(); c.globalAlpha = sa; panel(c, W / 2, 640, 1100, 230, 0.9); c.restore(); }
-    G.slam(c, t, [{ t: 'IT DISAPPEARED' }], w('f049', 'disappeared') - 0.05, roll0 - 0.1, { y: 650, size: 130, mode: 'ink' });
-    const na = life(t, w('f052', 'Nearly') - 0.1, S.end + 0.3, 0.12, 0.3); if (na > 0) { c.save(); c.globalAlpha = na; panel(c, W / 2, 660, 1300, 330, 0.92); c.restore(); }
-    G.slam(c, t, [{ t: 'NEARLY HALF', red: true }, { t: 'A MILLION', red: true }, { t: 'vanished from the records', small: true }], w('f052', 'Nearly') - 0.05, S.end + 0.2, { y: 670, size: 110, mode: 'ink' });
+    const u1 = ramp(t, w('f050', 'Opium') - 0.2, 1.4, easeIO), u2 = ramp(t, w('f050', 'Silver') - 0.2, 1.4, easeIO);
+    G.text(c, 'opium in', 320, 300, 'italic 400 64px BodoniItalic', P.ink, 'center', u1);
+    for (let i = 0; i < 6; i++) { const x = lerp(-200, 900, clamp(u1 * 1.4 - i * 0.07)) - i * 90; c.fillStyle = '#5A3E26'; c.fillRect(x, 360, 70, 52); c.strokeStyle = '#2A1E14'; c.lineWidth = 3; c.strokeRect(x, 360, 70, 52); }
+    G.text(c, 'silver out', 1600, 520, 'italic 400 64px BodoniItalic', P.ink, 'center', u2);
+    for (let i = 0; i < 8; i++) { const x = lerp(1100, 2200, clamp(u2 * 1.3 - i * 0.05)) + i * 60; c.fillStyle = '#C9C6BC'; c.beginPath(); c.ellipse(x, 590, 34, 16, 0, 0, TAU); c.fill(); c.fillStyle = '#9C9A92'; c.beginPath(); c.ellipse(x, 584, 16, 9, 0, 0, TAU); c.fill(); }
+    [['BANDITS', 'Bandits'], ['PIRATES', 'pirates'], ['HUNGER', 'hunger']].forEach(([s, wd], i) => G.slam(c, t, [{ t: s, red: i === 2 }], w('f051', wd) - 0.05, S.end + 0.2, { x: 420 + i * 540, y: 860, size: 110, mode: 'ink' }));
   } },
-{ id: 'S23', at: 'f053', desc: 'Map of the south-east: the government was not fooled; commissioners (blue) fan out into Essex and Kent, March 1381.',
-  sfx: [[w('f053', 'not'), 'impact', 0.6], [w('f054', 'sent'), 'whoosh', 0.7], [f('f054') + 0.2, 'tick', 0.5]],
+{ id: 'S28', at: 'f052', trans: 'whip', desc: 'The Thistle Mountain camp: the God Worshippers raise spears; coins drop into a common treasury chest.',
+  sfx: [[w('f052', 'armed'), 'clang', 0.6], [f('f052'), 'camp', 0.6, 6], [w('f053', 'pooled'), 'coins', 0.8], [w('f053', 'treasury'), 'thud', 0.6]],
   draw(c, t, lt, S) {
-    const view = { lon: 0.45, lat: 51.5, span: 3.0 };
-    G.drawMap(c, 'se', view, { rivers: ['Thames'] });
-    for (const p of ['London']) G.mapLabel(c, view, p, 1, { t, size: 40, color: P.ink, box: true });
-    const sent = w('f054', 'sent'), dests = ['Brentwood', 'Chelmsford', 'Colchester', 'Gravesend', 'Rochester', 'Maidstone', 'Canterbury', 'St Albans'];
-    dests.forEach((d, i) => { const u = ramp(t, sent + i * 0.12, 1.8, easeIO); if (u <= 0) return; const end = G.route(c, view, ['London', d], u, { color: P.blue, w: 5, dash: [14, 10], arrow: false });
-      G.token(c, end[0], end[1], 20, P.blue, 1); G.mapLabel(c, view, d, ramp(t, sent + 1.4 + i * 0.12, 0.4), { size: 28, dot: false, dx: 24, dy: 8 }); });
-    G.token(c, ...G.proj(view, ...G.PLACES.London), 26, P.blue, ramp(t, f('f053'), 0.3));
-    G.slam(c, t, [{ t: 'NOT FOOLED' }], w('f053', 'not') - 0.1, f('f054') + 0.4, { x: 1400, y: 240, size: 110, mode: 'ink' });
-    G.dateLine(c, t, { at: f('f054') + 0.1, out: S.end + 0.3, event: 'Commissioners sent out', day: 'March', year: 1381, from: 1377, mode: 'ink' });
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.6, W * 0.52, H * 0.62, () => {
+      PL.guangxi(c, t, { dusk: 0.45, camp: 1 });
+      A.crowd(c, { x0: -100, x1: 1300, y: 1000, n: 50, hMin: 140, hMax: 230, depth: 60, seed: 52, t, red: 1, raise: ramp(t, w('f052', 'armed') - 0.3, 0.6), agit: 1 });
+      PL.chest(c, 1560, 1010, 110, ramp(t, f('f053') - 0.3, 0.5), t);
+      for (let i = 0; i < 10; i++) { const tt = t - w('f053', 'pooled') - i * 0.12; if (tt > 0 && tt < 0.8) G.groat(c, 1560 + (i % 3 - 1) * 30, lerp(700, 900, tt / 0.8), 16); }
+    });
+    G.scriptName(c, t, 'a common treasury', w('f053', 'common') - 0.3, S.end + 0.3, { x: 1560, y: H * 0.3, size: 110, mode: 'ink' });
+  } },
+{ id: 'S29', at: 'f054', trans: 'cut', desc: 'Map of Guangxi: tokens gather at Jintian; date-line late 1850.',
+  sfx: [[f('f054'), 'tick', 0.5], [w('f054', 'thousands'), 'drum', 0.6, 3], [w('f054', 'Jintian'), 'impact', 0.6]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.1, W / 2, H / 2, W * 0.46, H * 0.48, () => {
+      PL.chinaMap(c, t, { view: V.gx, labels: ['Jintian', 'Thistle Mountain'], hi: 'Jintian', cartouche: 'Guangxi · 1850' });
+      const [jx, jy] = G.proj(V.gx, ...G.PLACES.Jintian);
+      for (let i = 0; i < 18; i++) { const r = rng(i + 3), a = r() * TAU, d = 300 + r() * 300, u = ramp(t, f('f054') + i * 0.15, 1.6, easeIO); G.token(c, lerp(jx + Math.cos(a) * d, jx + Math.cos(a) * 30 * r(), u), lerp(jy + Math.sin(a) * d * 0.7, jy + Math.sin(a) * 30 * r(), u), 16, P.red, 1); }
+    });
+    G.dateLine(c, t, { at: f('f054') + 0.2, out: S.end, event: 'Jintian', day: 'late', year: 1850, from: 1846, mode: 'ink', y: 160 });
+  } },
+{ id: 'S30', at: 'f055', trans: 'cut', desc: 'Qing soldiers (blue, conical hats) march in from the right; the red God Worshippers surge; the blue line breaks. BEATEN.',
+  sfx: [[f('f055'), 'march', 0.6, 2.5], [w('f055', 'beaten') - 0.7, 'roar', 0.8], [w('f055', 'beaten'), 'impact', 0.9]],
+  draw(c, t, lt, S) {
+    const hit = w('f055', 'beaten') - 0.6, k = ramp(t, hit, 1.2, easeIO), inn = ramp(t, f('f055'), 1.5, easeOut);
+    cam(c, lt, S, 1.04, 1.12, W / 2, H * 0.6, W * 0.55, H * 0.62, () => {
+      PL.guangxi(c, t, { dusk: 0.5 });
+      A.crowd(c, { x0: 1150 + (1 - inn) * 500 + k * 500, x1: 2100 + (1 - inn) * 500 + k * 600, y: 990, n: 45, hMin: 130, hMax: 210, depth: 60, seed: 55, t, color: P.blue, far: '#5A6A7A', hat: 'cone', face: k > 0.2 ? 1 : -1, agit: 1 + k });
+      A.crowd(c, { x0: -200 + k * 400, x1: 1000 + k * 500, y: 1000, n: 55, hMin: 140, hMax: 220, depth: 60, seed: 56, t, red: 1, raise: ramp(t, hit - 0.4, 0.4), face: 1, agit: 1.4 });
+    });
+    G.slam(c, t, [{ t: 'BEATEN', red: true }], w('f055', 'beaten'), S.end + 0.2, { y: H * 0.26, size: 170 });
+  } },
+
+// ================================================================ CH 4  The Heavenly Kingdom
+{ id: 'S31', at: 'f056', trans: 'black', desc: 'Jintian at dawn: red banners rise over the camp; date-line 11 January 1851; the Heavenly Calendar appears, tile one.',
+  sfx: [[f('f056'), 'camp', 0.6, 7], [w('f056', 'eleventh'), 'tick', 0.5], [w('f057', 'declared'), 'gong', 0.8], [w('f057', 'declared'), 'cheer', 0.6]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.6, W * 0.5, H * 0.55, () => {
+      PL.guangxi(c, t, { dusk: lerp(0.7, 0.2, ramp(t, f('f056'), 6)), camp: 1, village: true });
+      A.crowd(c, { x0: -100, x1: 2020, y: 1010, n: 80, hMin: 120, hMax: 200, depth: 70, seed: 57, t, red: 1, hair: true, raise: ramp(t, w('f057', 'declared'), 0.8), agit: 1.2 });
+    });
+    G.dateLine(c, t, { at: f('f056') + 0.1, out: w('f057', 'declared') + 0.6, event: 'Jintian, Hong\'s birthday', day: '11 January', year: 1851, from: 1846, mode: 'light', y: 150 });
+    G.calendar(c, t, w('f057', 'declared') - 0.2, S.end + 0.3, 0, 1, { y: 120, light: true });
+  } },
+{ id: 'S32', at: 'f058', trans: 'cut', desc: 'TAIPING TIANGUO: the Heavenly King\'s seal thumps; "the Heavenly Kingdom of Great Peace"; the student medallion turns into the Heavenly King.',
+  sfx: [[w('f058', 'Taiping'), 'seal', 1.0], [w('f058', 'Heavenly'), 'gong', 0.6], [w('f059', 'Heavenly') - 0.1, 'whoosh', 0.6], [w('f059', 'King'), 'bell', 0.6]],
+  draw(c, t, lt, S) {
+    parchment(c, t); tint(c, P.red, 0.08);
+    const sa = ramp(t, w('f058', 'Taiping') - 0.05, 0.25); if (sa > 0) { c.save(); c.translate(500, 470); const ss = 1 + (1 - sa) * 1.4; c.scale(ss, ss); c.globalAlpha *= sa; G.heavenlySeal(c, 0, 0, 170); c.restore(); }
+    G.slam(c, t, [{ t: 'TAIPING' }, { t: 'TIANGUO', red: true }], w('f058', 'Taiping'), S.end + 0.2, { x: 1250, y: 380, size: 140, mode: 'ink' });
+    G.text(c, 'the Heavenly Kingdom of Great Peace', 1250, 600, 'italic 400 50px BodoniItalic', P.ink, 'center', ramp(t, w('f058', 'Heavenly') - 0.1, 0.4));
+    const sw = ramp(t, w('f059', 'Heavenly') - 0.2, 0.5);
+    fade(c, 1 - sw, () => G.medallion(c, t, 'hongStudent', 1250, 820, 110, f('f058'), S.end + 0.3, { noPlaque: true }));
+    fade(c, sw, () => G.medallion(c, t, 'hong', 1250, 820, 110, f('f058'), S.end + 0.3, {}));
+  } },
+{ id: 'S33', at: 'f060', trans: 'whip', desc: 'A villager with the Manchu braid becomes a long-haired Taiping soldier (braid falls, red head-wrap); "the long-haired rebels".',
+  sfx: [[w('f060', 'cut'), 'snap', 0.8], [w('f060', 'grew'), 'whoosh', 0.4], [w('f061', 'long'), 'impact', 0.6]],
+  draw(c, t, lt, S) {
+    const cut = ramp(t, w('f060', 'cut'), 0.5);
+    cam(c, lt, S, 1.1, 1.18, W * 0.4, H * 0.55, W * 0.42, H * 0.52, () => {
+      PL.guangxi(c, t, { dusk: 0.3, camp: 1 });
+      fade(c, 1 - cut, () => A.figure(c, 760, 1020, 520, CH.villager, { face: 1, armF: 40, elbF: 60 }));
+      fade(c, cut, () => A.figure(c, 760, 1020, 520, CH.tpSoldier, { face: 1, prop: 'spear', armF: 20, elbF: 20 }));
+      if (cut > 0 && cut < 1) { c.strokeStyle = '#1A1612'; c.lineWidth = 10; c.beginPath(); c.moveTo(700, lerp(660, 1000, cut)); c.lineTo(690, lerp(800, 1020, cut)); c.stroke(); }
+      A.crowd(c, { x0: 1000, x1: 2000, y: 1000, n: 30, hMin: 160, hMax: 240, depth: 40, seed: 60, t, red: ramp(t, w('f060', 'grew'), 1), hair: true, face: -1, tools: true });
+    });
+    G.slam(c, t, [{ t: 'the', small: true }, { t: 'LONG-HAIRED' }, { t: 'REBELS', red: true }], w('f061', 'long') - 0.05, S.end + 0.2, { x: 1400, y: H * 0.28, size: 110 });
+  } },
+{ id: 'S34', at: 'f062', trans: 'cut', desc: 'The five kings: medallions land one by one on "East", "West", "South", "North" and "Wing" beneath Hong.',
+  sfx: [[w('f062', 'East'), 'impact', 0.5], [w('f062', 'West'), 'impact', 0.5], [w('f062', 'South'), 'impact', 0.5], [w('f062', 'North'), 'impact', 0.5], [w('f063', 'Wing'), 'impact', 0.6]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    G.medallion(c, t, 'hong', W / 2, 330, 120, f('f062') - 0.1, S.end + 0.3, { role: 'the Heavenly King' });
+    const K = [['yang', 'East', 'f062'], ['xiao', 'West', 'f062'], ['feng', 'South', 'f062'], ['wei', 'North', 'f062'], ['shi', 'Wing', 'f063']];
+    c.save(); c.strokeStyle = 'rgba(42,36,29,0.4)'; c.lineWidth = 3; K.forEach(([k, wd, fid], i) => { const a = ramp(t, w(fid, wd), 0.4); if (a <= 0) return; c.globalAlpha = a; c.beginPath(); c.moveTo(W / 2, 470); c.lineTo(260 + i * 350, 630); c.stroke(); }); c.restore();
+    K.forEach(([k, wd, fid], i) => G.medallion(c, t, k, 260 + i * 350, 740, 95, w(fid, wd) - 0.1, S.end + 0.3, {}));
+  } },
+{ id: 'S35', at: 'f064', trans: 'ink', desc: 'Yang Xiuqing by a charcoal kiln, crowned East King (medallion); then "its own calendar" – the Heavenly Calendar fills the frame, 1851 stamped.',
+  sfx: [[w('f064', 'East'), 'whoosh', 0.5], [w('f064', 'charcoal'), 'fire', 0.4, 3], [w('f065', 'calendar') - 0.2, 'seal', 0.8]],
+  draw(c, t, lt, S) {
+    const cal = f('f065');
+    if (t < cal - 0.1) {
+      cam(c, lt, S, 1.0, 1.1, W / 2, H * 0.55, W * 0.45, H * 0.55, () => {
+        PL.guangxi(c, t, { dusk: 0.5 });
+        A.kiln(c, 1100, 1000, 220, t, 64);
+        A.figure(c, 720, 1020, 460, CH.yang, { face: 1, armF: 30, elbF: 40 });
+      });
+      G.medallion(c, t, 'yang', 1580, 300, 120, w('f064', 'East') - 0.1, cal, { role: 'the East King' });
+      G.text(c, 'a former charcoal burner', 1580, 540, 'italic 400 40px BodoniItalic', '#F2E8D2', 'center', ramp(t, w('f064', 'charcoal') - 0.1, 0.4), 'rgba(0,0,0,0.6)');
+    } else {
+      parchment(c, t);
+      G.calendar(c, t, cal - 0.1, S.end + 0.3, 1, 1.4, { x: 140, y: 470, size: 96, caption: 'Their own calendar' });
+    }
+  } },
+{ id: 'S36', at: 'f066', trans: 'whip', desc: 'The march north on the map: Jintian → Yongan → Guilin → Changsha; 1852 – Feng and Xiao\'s medallions grey with red slashes.',
+  sfx: [[f('f066'), 'drum', 0.7, 6], [w('f067', 'fell'), 'thud', 0.8], [w('f067', 'fell') + 0.3, 'thud', 0.6]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.46, H * 0.55, () => {
+      PL.chinaMap(c, t, { labels: ['Jintian', 'Guilin', 'Changsha', 'Wuchang'], hi: 'Changsha' });
+      G.route(c, V.cn, ['Jintian', 'Yongan', 'Guilin', 'Changsha'], ramp(t, f('f066'), 4, easeIO), { w: 8 });
+    });
+    const fell = w('f067', 'fell');
+    G.medallion(c, t, 'feng', 1380, 760, 95, w('f067', 'two') - 0.1, S.end + 0.3, { grey: ramp(t, fell, 0.3), slash: ramp(t, fell, 0.25), role: 'killed 1852' });
+    G.medallion(c, t, 'xiao', 1680, 760, 95, w('f067', 'two') - 0.1, S.end + 0.3, { grey: ramp(t, fell + 0.3, 0.3), slash: ramp(t, fell + 0.3, 0.25), role: 'killed 1852' });
+    G.calendar(c, t, f('f067') - 0.2, S.end + 0.3, 1, 2, { x: 140, y: 110 });
+  } },
+{ id: 'S37', at: 'f068', trans: 'cut', desc: 'The army swells: a red column fills the frame and keeps growing.',
+  sfx: [[f('f068'), 'march', 0.8, 4], [w('f068', 'swelling'), 'roar', 0.6]],
+  draw(c, t, lt, S) {
+    const g = ramp(t, f('f068'), 3.6);
+    cam(c, lt, S, 1.0, 1.1, W / 2, H * 0.6, W * 0.55, H * 0.62, () => {
+      PL.guangxi(c, t, { dusk: 0.15, kilns: false });
+      A.crowd(c, { x0: -200, x1: 2100, y: 1000, n: Math.round(lerp(40, 130, g)), hMin: 90, hMax: 210, depth: 90, seed: 68, t, red: 1, hair: true, face: 1, agit: 1.2, raise: 0.3 });
+    });
+  } },
+{ id: 'S38', at: 'f069', trans: 'cut', desc: 'The Yangtze: Wuchang on the far bank; the fleet sails in; the city burns. Date-line January 1853.',
+  sfx: [[f('f069'), 'water', 0.6, 5], [w('f069', 'Wuchang'), 'boom', 0.7], [w('f069', 'took'), 'roar', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.5, H * 0.52, () => PL.yangtze(c, t, { fleet: 10, fleetX: (t - f('f069')) * 60, fire: ramp(t, w('f069', 'Wuchang') - 0.2, 1.4) * 0.8, dusk: 0.3 }));
+    G.dateLine(c, t, { at: f('f069') + 0.1, out: S.end, event: 'Wuchang, on the Yangtze', day: 'January', year: 1853, from: 1849, mode: 'light', y: 150 });
+  } },
+{ id: 'S39', at: 'f070', trans: 'cut', desc: 'The river fills with junks under red flags; 500,000 on the move, by some estimates.',
+  sfx: [[f('f070'), 'oars', 0.6, 4], [w('f070', 'half'), 'impact', 0.7]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.05, 1.0, W / 2, H * 0.6, W / 2, H * 0.5, () => PL.yangtze(c, t, { fleet: 34, fleetX: (t - f('f070')) * 70, city: false, dusk: 0.4 }));
+    G.counter(c, t, 0, 500000, w('f070', 'half') - 0.2, 1.2, W / 2, H * 0.3, { size: 140, label: 'on the move · by some estimates' });
   } },
 ];
-
-// ---------------------------------------------------------------- shared pieces used by later chapters too
-export function drawChain(c, x0, y0, x1, y1, u, broken = 0) {
-  const n = 26; c.save(); c.strokeStyle = '#3A3430'; c.lineWidth = 6;
-  for (let i = 0; i < n * u; i++) { const k = i / n, x = lerp(x0, x1, k), y = lerp(y0, y1, k) + Math.sin(k * Math.PI) * 60; if (broken > 0 && Math.abs(k - 0.5) < 0.04) continue;
-    const off = broken > 0 ? (k < 0.5 ? -1 : 1) * broken * 40 * Math.abs(k - 0.5) : 0; c.save(); c.translate(x + off, y + Math.abs(off) * 0.8); c.rotate(Math.atan2(y1 - y0, x1 - x0) + (i % 2 ? Math.PI / 2 : 0) * 0.0); c.beginPath(); c.ellipse(0, 0, 14, i % 2 ? 4 : 8, 0, 0, TAU); c.stroke(); c.restore(); }
-  c.restore();
-}
-export function weekStrip(c, t, at, out, marks) {
-  const a = life(t, at, out, 0.35, 0.3); if (a <= 0) return; c.save(); c.globalAlpha *= a;
-  const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'], x0 = 520, y = 150, bw = 120;
-  panel(c, 960, 200, 980, 210, 0.92);
-  days.forEach((d, i) => { const x = x0 + i * (bw + 20); const m = i < 2 ? ramp(t, marks[i] ?? 1e9, 0.3) : 0;
-    c.fillStyle = mixColor('#E2D6BC', P.red, m * 0.85); c.fillRect(x, y, bw, 80); c.strokeStyle = P.ink3; c.lineWidth = 2; c.strokeRect(x, y, bw, 80);
-    G.text(c, d, x + bw / 2, y + 52, '600 28px Oswald', m > 0.5 ? '#F6EFE0' : P.ink2, 'center'); });
-  G.text(c, 'the lord\'s days: unpaid', x0 + bw, y + 130, 'italic 400 34px BodoniItalic', P.red, 'center', ramp(t, marks[0] ?? 1e9, 0.4));
-  c.restore();
-}
-export function manorRollPlate(c, t, lt, S, o) {
-  parchment(c, t, '#6E5030', 0.35);
-  withCam(c, push(lt, S.dur, 1.0, 1.08, W * 0.55, H * 0.5, W * 0.6, H * 0.48), () => {
-    G.manorRoll(c, t, 1150, 110, 440, 860, o.unroll, { highlight: o.tag ? 5 : null, tag: o.tag, burn: o.burn });
-  });
-}
-const EN1360 = [ // English lands in France after Brétigny (approximate)
-  [[47.1, -2.2], [47.05, 0.0], [46.6, 1.2], [45.9, 2.3], [44.9, 2.6], [44.1, 2.6], [43.6, 1.4], [43.2, 0.2], [43.0, -1.0], [43.3, -1.9], [44.6, -1.6], [45.6, -1.6], [46.3, -1.9]],
-  [[51.05, 1.6], [51.0, 2.1], [50.75, 2.05], [50.72, 1.55]], [[50.35, 1.45], [50.3, 2.05], [50.0, 1.95], [50.02, 1.35]]];
-const EN1377 = [ // Calais, the Bordeaux–Bayonne strip, Brest, Cherbourg
-  [[51.05, 1.7], [51.0, 2.05], [50.85, 1.98], [50.86, 1.66]],
-  [[45.15, -1.6], [45.0, -0.3], [44.55, -0.15], [43.9, -0.6], [43.4, -1.15], [43.3, -1.9], [44.6, -1.6]],
-  [[48.5, -4.9], [48.5, -4.3], [48.25, -4.35], [48.3, -4.8]], [[49.75, -1.85], [49.72, -1.45], [49.55, -1.5], [49.6, -1.9]]];
-const ENGLAND = [[55.8, -3.2], [55.8, -1.6], [54.5, -0.5], [53.6, 0.2], [52.9, 1.8], [51.9, 1.8], [51.1, 1.6], [50.7, 0.3], [50.5, -3.0], [49.9, -5.9], [50.6, -5.8], [51.4, -3.2], [51.6, -2.6], [52.5, -3.1], [53.3, -3.2], [54.4, -3.6], [55.0, -3.2]];
-function swords(c, x, y, s, a) { c.save(); c.globalAlpha *= a; c.translate(x, y); for (const r of [-0.7, 0.7]) { c.save(); c.rotate(r); c.fillStyle = '#4A4036'; c.fillRect(-4, -s, 8, s * 1.6); c.fillRect(-s * 0.3, s * 0.3, s * 0.6, 8); c.fillStyle = P.gold; c.fillRect(-5, s * 0.36, 10, s * 0.3); c.restore(); } c.restore(); }
-export function throneRoom(c, t) { PL.interior(c, t, { dark: 0.35, banners: true, arches: 2, bannerX: [W * 0.5 - 300, W * 0.5 + 300] }); PL.throne(c, 960, 905, 172); PL.candle(c, 600, 900, t, 1); PL.candle(c, 1320, 900, t, 2); }
-export function boyKing(c, x, y, h, t) {
-  A.figure(c, x, y, h, { ...CH.richard, crown: false }, { seated: true, face: 1, armF: 35, elbF: 40 });
-  const hx = x + 0.006 * h, hy = y - 0.865 * h, hr = 0.066 * h, tilt = 0.12 + Math.sin(t * 1.3) * 0.03; // crown one size too big, slipping
-  c.save(); c.translate(hx, hy - hr * 0.55); c.rotate(tilt); const cw = hr * 1.5; c.fillStyle = P.gold2; c.beginPath(); c.moveTo(-cw, hr * 0.3); c.lineTo(-cw, -hr * 0.4);
-  for (let i = 0; i < 5; i++) { const px = -cw + (i + 0.5) * (2 * cw / 5); c.lineTo(px, -hr * (i % 2 ? 0.6 : 1.1)); c.lineTo(-cw + (i + 1) * (2 * cw / 5), -hr * 0.4); } c.lineTo(cw, hr * 0.3); c.closePath(); c.fill();
-  c.fillStyle = P.red; c.beginPath(); c.arc(0, -hr * 0.05, hr * 0.16, 0, TAU); c.fill(); c.restore();
-}
-export function councilPlate(c, t, lt, S, gauntAt) {
-  withCam(c, push(lt, S.dur, 1.0, 1.06, W / 2, H * 0.55, W / 2, H * 0.55), () => {
-    PL.interior(c, t, { dark: 0.55, arches: 2 });
-    const g = ramp(t, gauntAt - 0.3, 0.8);
-    const nobles = [[560, CH.lord, 1], [760, { ...CH.lord, robe: '#4A3A28', cap: '#4A3A28' }, 1], [1160, { ...CH.lord, robe: '#2E3A44', cap: '#2E3A44' }, -1], [1360, { ...CH.lord, robe: '#3E2A2A', cap: '#3E2A2A' }, -1]];
-    nobles.forEach(([x, sp, fc]) => { A.figure(c, x, 890, 330, PL.shade(sp, '#241E18'), { face: fc, armF: 10 }); c.save(); c.globalAlpha = 1 - 0.8 * g; A.figure(c, x, 890, 330, sp, { face: fc, armF: 10 }); c.restore(); });
-    A.figure(c, 960, 890 - 20 * g, 350, CH.gaunt, { face: 1, armF: 20 + 25 * g, elbF: 30 });
-    PL.table(c, 960, 990, 1200, 120, '#5A1E1A');
-    PL.candle(c, 700, 856, t, 3); PL.candle(c, 1220, 856, t, 4);
-  });
-}

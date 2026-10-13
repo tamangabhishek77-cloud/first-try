@@ -1,436 +1,416 @@
-// Shots: chapters 8–11 (Mile End → the tax that came back) and the end card.
-import { W, H, P, T, clamp, lerp, easeIO, easeOut, easeIn, backOut, ramp, life, rng, mixColor, rgba, noise1, parchment, withCam, push } from './core.mjs';
+// Shots: chapters 9–12 (Taiping episode).
+import { W, H, P, T, clamp, lerp, easeIO, easeOut, easeIn, backOut, ramp, life, rng, mixColor, rgba, parchment, withCam, push } from './core.mjs';
 import * as A from './art.mjs';
 import * as G from './gfx.mjs';
 import * as PL from './plates.mjs';
-import { dim, panel, hash, drawChain, manorRollPlate, throneRoom, boyKing, councilPlate, RICHARD_HORSE, TYLER_HORSE } from './shots_a.mjs';
-import { ESSEX, KENT } from './shots_b.mjs';
+import { dim, panel, tint, cam, fade, V, tok, hash } from './shots_a.mjs';
+import { wallFlags } from './shots_b.mjs';
 const { CH } = A; const f = T.f, e = T.e, w = T.w;
 const TAU = Math.PI * 2;
-const WALWORTH_HORSE = { color: '#5A4A3A', cloth: P.blue };
-const black = (c, t, t0, d) => { if (t >= t0 && t < t0 + d) { c.fillStyle = '#0B0908'; c.fillRect(0, 0, W, H); return true; } return false; };
-
-// Smithfield with the royal party (left) and the rebel host (right): used by S58–S66
-function smithfieldStage(c, t, o = {}) {
-  PL.smithfield(c, t, { tint: o.tint, tintA: o.tintA });
-  A.crowd(c, { x0: 1180, x1: 2100, y: 800, n: 90, hMin: 100, hMax: 180, depth: 170, seed: 5, t, red: 1, face: o.crowdFace ?? -1, raise: o.raise ?? 0.2, allBows: o.bows ?? false, agit: o.agit ?? 0.7, color: o.crowdCol, far: o.crowdFar });
-  if (o.walworth !== false) A.rider(c, o.wx ?? 200, 1000, 225, o.shadow ? PL.shade(CH.walworth) : CH.walworth, { face: 1, ...WALWORTH_HORSE, ...(o.shadow ? { color: '#1A1612', cloth: '#1A1612' } : {}), walk: o.wwalk, prop: o.wprop, armF: o.warmF, elbF: o.welbF, t });
-  if (o.richard !== false) A.rider(c, o.rx ?? 430, 1010, 230, o.shadow ? PL.shade(CH.richard) : CH.richard, { face: o.rface ?? 1, ...RICHARD_HORSE, ...(o.shadow ? { color: '#1A1612', cloth: '#1A1612' } : {}), walk: o.rwalk, t });
-  if (o.squire !== false) A.figure(c, o.sqx ?? 620, 1030, 300, o.shadow ? PL.shade(CH.squire) : CH.squire, { face: 1, prop: 'sword', armF: o.sqArm ?? 20, elbF: 20, walk: o.sqwalk, t });
-  if (o.tyler !== false) { const ty = o.ty ?? {}; c.save(); c.globalAlpha *= ty.alpha ?? 1;
-    A.rider(c, ty.x ?? 820, 1000, 190, o.shadow ? PL.shade(CH.tyler) : CH.tyler, { face: ty.face ?? -1, ...TYLER_HORSE, ...(o.shadow ? { color: '#1A1612' } : {}), walk: ty.walk, prop: ty.prop ?? 'dagger', armF: ty.armF ?? 40, elbF: ty.elbF ?? 30, lean: ty.lean, t }); c.restore(); }
-}
+const blueFlagsOnCity = (c, t, a) => fade(c, a, () => { for (let i = 0; i < 6; i++) { const x = 480 + i * 190; c.strokeStyle = P.ink2; c.lineWidth = 4; c.beginPath(); c.moveTo(x, 552); c.lineTo(x, 480); c.stroke(); const wv = Math.sin(t * 3 + i) * 5; c.fillStyle = P.blue; c.beginPath(); c.moveTo(x, 480); c.lineTo(x + 50, 486 + wv); c.lineTo(x + 48, 512 + wv); c.lineTo(x, 508); c.fill(); } });
+const weeds = (c, g, seed = 7) => { if (g <= 0) return; c.save(); c.strokeStyle = '#3E4A2A'; c.lineWidth = 4; const r = rng(seed); for (let i = 0; i < 90; i++) { const x = r() * W, h = (30 + r() * 60) * g; c.beginPath(); c.moveTo(x, 1080); c.quadraticCurveTo(x + 10, 1080 - h * 0.6, x + (r() - 0.5) * 30, 1080 - h); c.stroke(); } c.restore(); };
 
 export const SHOTS_C = [
-// ================================================================ CH 8  Mile End and the Tower
-{ id: 'S48', at: 'f104', trans: 'ink', desc: 'The London schematic: the king\'s gold token rides from the Tower to Mile End, 14 June.',
-  sfx: [[f('f104') + 0.3, 'hooves', 0.6, 4], [f('f104') + 0.2, 'tick', 0.5]],
+// ================================================================ CH 9  The West chooses
+{ id: 'S81', at: 'f132', trans: 'black', desc: 'Map of the north: blue British and French tokens land near Tianjin and push towards Beijing.',
+  sfx: [[f('f132'), 'drum', 0.6, 4], [w('f132', 'war'), 'boom', 0.7]],
   draw(c, t, lt, S) {
-    PL.londonMap(c, t, { aldgate: 1, savoyBurnt: 1 });
-    for (let i = 0; i < 10; i++) G.token(c, PL.LM.MileEnd[0] - 60 + (i % 5) * 30, PL.LM.MileEnd[1] + 40 + Math.floor(i / 5) * 30, 15, P.red, ramp(t, f('f104') + i * 0.05, 0.3));
-    const p = PL.lmPath(['Tower', [1450, 560], 'MileEnd'], ramp(t, f('f104') + 0.5, 4.2, easeIO)); PL.screenRoute(c, ['Tower', [1450, 560], 'MileEnd'], ramp(t, f('f104') + 0.5, 4.2, easeIO), { color: P.gold, w: 6 });
-    G.token(c, p[0], p[1], 24, P.gold, 1);
-    if (t > w('f104', 'Mile') - 0.2) { c.save(); c.strokeStyle = P.red; c.lineWidth = 5; c.beginPath(); c.arc(PL.LM.MileEnd[0], PL.LM.MileEnd[1] + 30, 110 + Math.sin(t * 5) * 4, 0, TAU); c.stroke(); c.restore(); }
-    G.dateLine(c, t, { at: f('f104') + 0.15, out: S.end + 0.3, event: 'Mile End', day: '14 June', year: 1381, from: 1377, mode: 'ink' });
-    G.tally(c, t, f('f104') + 0.3, S.end + 0.3, 15, 16, { x: 1240, y: 1010 });
-  } },
-{ id: 'S49', at: 'f105', desc: 'Mile End: the king before the men of Essex. The demands appear one by one; the king says YES (stamp).',
-  sfx: [[w('f106', 'end'), 'tick', 0.6], [w('f106', 'Free'), 'tick', 0.6], [w('f106', 'Cheap'), 'tick', 0.6], [w('f106', 'pardon'), 'tick', 0.6], [w('f107', 'yes'), 'stamp', 1.0], [w('f107', 'yes') + 0.15, 'cheer', 0.9]],
-  draw(c, t, lt, S) {
-    const yes = w('f107', 'yes');
-    withCam(c, push(lt, S.dur, 1.0, 1.05, W / 2, H / 2, W * 0.5, H * 0.52), () => {
-      PL.field(c, t, { seed: 91, h1: 640, h2: 720, back: cc => { A.cityGate(cc, 330, 730, 34, '#7A6A52', 1); A.whiteTower(cc, 120, 730, 22, '#7A6A52'); }, gy: 790 });
-      A.crowd(c, { x0: 1050, x1: 2100, y: 800, n: 90, hMin: 110, hMax: 190, depth: 170, seed: 93, t, red: 1, face: -1, raise: 0.2 + 0.7 * ramp(t, yes, 0.4), agit: t > yes ? 2 : 0.7 });
-      A.rider(c, 200, 1000, 225, CH.walworth, { face: 1, ...WALWORTH_HORSE, t });
-      A.rider(c, 460, 1010, 230, CH.richard, { face: 1, ...RICHARD_HORSE, t, armF: t > yes - 0.3 ? 90 : 40, elbF: 10 });
+    cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W * 0.52, H * 0.5, () => {
+      PL.chinaMap(c, t, { view: { lon: 117.2, lat: 39.4, span: 6.5 }, labels: ['Beijing', 'Tianjin', 'Nanjing'], hi: 'Beijing', cartouche: 'The Second Opium War · 1860' });
+      G.route(c, { lon: 117.2, lat: 39.4, span: 6.5 }, [[38.9, 118.4], 'Tianjin', 'Beijing'], ramp(t, f('f132') + 0.3, 2.6, easeIO), { w: 8, color: P.blue });
+      for (let i = 0; i < 4; i++) { const [x, y] = G.proj({ lon: 117.2, lat: 39.4, span: 6.5 }, 38.7 + i * 0.12, 118.7 + i * 0.3); A.warship(c, x, y, 18, t + i); }
     });
-    G.listPanel(c, t, ['An end to serfdom', 'Free labour', 'Cheap land', 'A pardon for all'], [w('f106', 'end') - 0.15, w('f106', 'Free') - 0.1, w('f106', 'Cheap') - 0.1, w('f106', 'pardon') - 0.15], w('f105', 'everything') - 0.3, S.end + 0.3, { title: 'The demands · Mile End', x: 1010, y: 70, w: 800, lh: 84 });
-    G.stamp(c, t, 'YES', yes - 0.05, S.end + 0.3, { x: 1500, y: 290, size: 170, rot: -0.16 });
+    G.slam(c, t, [{ t: 'Britain and France', small: true }, { t: 'AT WAR WITH THE QING', red: true }], w('f132', 'war') - 0.1, S.end + 0.2, { y: H * 0.82, size: 80, mode: 'ink' });
   } },
-{ id: 'S50', at: 'f108', desc: 'A scriptorium: clerks copy charters of freedom; charters multiply across the frame. "For a moment…"',
-  sfx: [[f('f108'), 'quill', 0.7, 6], [w('f108', 'charters'), 'paper', 0.6], [f('f109'), 'seal', 0.5], [f('f109') + 0.6, 'seal', 0.5], [f('f109') + 1.2, 'seal', 0.5], [w('f110', 'won'), 'impact', 0.8]],
+{ id: 'S82', at: 'f133', trans: 'cut', dark: true, desc: 'The Summer Palace: pavilions on the lake catch fire on "burned"; smoke over Beijing. Date-line October 1860.',
+  sfx: [[w('f133', 'looted'), 'smash', 0.6], [w('f133', 'burned'), 'fire', 0.9, 4.5], [w('f133', 'burned'), 'boom', 0.6]],
   draw(c, t, lt, S) {
-    withCam(c, push(lt, S.dur, 1.0, 1.06, W / 2, H * 0.55, W / 2, H * 0.56), () => {
-      PL.interior(c, t, { dark: 0.35, arches: 2 });
-      for (const x of [560, 1360]) { A.figure(c, x, 985, 330, CH.clerk, { seated: true, face: 1, armF: 70 + Math.sin(t * 9 + x) * 6, elbF: 60 }); PL.table(c, x + 40, 990, 420, 120, '#4A3420'); G.documentSheet(c, t, x + 60, 852, 180, 50, { seed: x, lines: 1, rot: 0.04 }); PL.candle(c, x - 120, 856, t, x); }
-    });
-    const c0 = w('f108', 'charters') - 0.1, c1 = e('f109');
-    for (let i = 0; i < 10; i++) { const at = lerp(c0, c1, i / 9), a = ramp(t, at, 0.25, backOut); if (a <= 0) continue; const col = i % 5, row = Math.floor(i / 5);
-      c.save(); c.globalAlpha = Math.min(1, a); c.translate(260 + col * 350, 250 + row * 300); c.scale(a, a); G.documentSheet(c, t, 0, 0, 200, 250, { title: 'Carta', titleSize: 30, seal: true, seed: 3 + i, lines: 4, rot: (hash(i) - 0.5) * 0.2 }); c.restore(); }
-    const wa = life(t, w('f110', 'moment') - 0.2, S.end + 0.3, 0.12, 0.3); if (wa > 0) { c.save(); c.globalAlpha = wa; panel(c, W / 2, 560, 1300, 280, 0.92); c.restore(); }
-    G.slam(c, t, [{ t: 'for a moment', small: true }, { t: 'THE REVOLT HAD WON', red: true }], w('f110', 'moment') - 0.1, S.end + 0.2, { y: 560, size: 100, mode: 'ink' });
+    cam(c, lt, S, 1.0, 1.1, W / 2, H * 0.5, W / 2, H * 0.45, () => PL.summerPalace(c, t, { fire: ramp(t, w('f133', 'burned') - 0.3, 1.8, easeIO) }));
+    G.dateLine(c, t, { at: f('f133') + 0.1, out: S.end, event: 'The Summer Palace, Beijing', day: 'October', year: 1860, from: 1856, mode: 'light', y: 150 });
   } },
-{ id: 'S51', at: 'f111', trans: 'whip', desc: 'The map again: with the king away at Mile End, the Tower\'s gates stand open; about 400 rebels walk in.',
-  sfx: [[w('f112', 'open'), 'gate', 0.8], [f('f113'), 'march', 0.7, 2.5], [w('f113', 'four'), 'tick', 0.6]],
-  draw(c, t, lt, S) {
-    const k = easeIO(clamp((t - f('f112') + 0.4) / 2.0));
-    withCam(c, { x: lerp(1500, 1300, k), y: lerp(520, 620, k), s: lerp(1.3, 1.7, k) }, () => {
-      PL.londonMap(c, t, { aldgate: 1, savoyBurnt: 1, labels: { MileEnd: 1, Tower: 1 } });
-      G.token(c, PL.LM.MileEnd[0], PL.LM.MileEnd[1] + 40, 24, P.gold, 1);
-      for (let i = 0; i < 10; i++) G.token(c, PL.LM.MileEnd[0] - 60 + (i % 5) * 30, PL.LM.MileEnd[1] + 80 + Math.floor(i / 5) * 30, 13, P.red, 1);
-      if (t > w('f112', 'open') - 0.3) { c.save(); c.strokeStyle = P.red; c.lineWidth = 4; c.setLineDash([10, 8]); c.beginPath(); c.arc(PL.LM.Tower[0], PL.LM.Tower[1] - 18, 60 + Math.sin(t * 5) * 3, 0, TAU); c.stroke(); c.restore(); }
-      const u = ramp(t, f('f113') - 0.1, 2.4, easeIO);
-      for (let i = 0; i < 12; i++) { const ui = clamp(u * 1.4 - i * 0.04); if (ui <= 0) continue; const p = PL.lmPath([[1320, 520], [1340, 600], [1300, 640]], ui); G.token(c, p[0] + ((i % 4) - 1.5) * 16, p[1] + Math.floor(i / 4) * 14, 9, P.red, 1); }
-    });
-    const pa = life(t, w('f111', 'while') - 0.2, S.end + 0.3, 0.12, 0.3); if (pa > 0) { c.save(); c.globalAlpha = pa; panel(c, W / 2, 175, 1150, 230, 0.92); c.restore(); }
-    G.slam(c, t, [{ t: 'BEHIND HIM' }], w('f111', 'while') - 0.1, w('f112', 'open') - 0.2, { y: 170, size: 100, mode: 'ink' });
-    G.slam(c, t, [{ t: 'THE GATES STOOD OPEN', red: true }], w('f112', 'open') - 0.1, f('f113'), { y: 170, size: 96, mode: 'ink' });
-    G.slam(c, t, [{ t: 'ABOUT 400' }, { t: 'walked straight in', small: true }], w('f113', 'four') - 0.15, S.end + 0.2, { y: 190, size: 110, mode: 'ink' });
-  } },
-{ id: 'S52', at: 'f114', trans: 'ink', dark: true, desc: 'The chapel of the White Tower: Simon Sudbury and Robert Hales (medallions with their offices).',
-  sfx: [[f('f114') - 0.2, 'chant', 0.6, 9.5], [w('f114', 'Simon'), 'whoosh', 0.5], [w('f116', 'Robert'), 'whoosh', 0.5]],
-  draw(c, t, lt, S) {
-    withCam(c, push(lt, S.dur, 1.0, 1.1, W / 2, H * 0.55, W / 2, H * 0.55), () => {
-      PL.interior(c, t, { dark: 0.5, arches: 1 });
-      c.fillStyle = '#E8E0CC'; c.fillRect(800, 840, 320, 90); c.fillStyle = '#3A2A1C'; c.fillRect(810, 930, 300, 60); c.fillStyle = P.gold; c.fillRect(952, 700, 16, 140); c.fillRect(915, 740, 90, 14);
-      PL.candle(c, 840, 840, t, 5); PL.candle(c, 1080, 840, t, 6);
-      A.figure(c, 690, 1010, 330, CH.sudbury, { face: 1, armF: 80, elbF: 90, armB: 60, elbB: 90 });
-      A.figure(c, 1260, 1000, 340, CH.hales, { face: -1, armF: 15 });
-    });
-    G.text(c, 'the chapel of the White Tower', W / 2, 120, 'italic 400 46px BodoniItalic', '#F0E6D0', 'center', life(t, f('f114') + 0.2, w('f114', 'Simon'), 0.4, 0.3), 'rgba(0,0,0,0.6)');
-    G.medallion(c, t, 'sudbury', 360, 300, 120, w('f114', 'Simon') - 0.15, S.end + 0.3, { light: true, role: 'Archbishop of Canterbury · Chancellor' });
-    G.medallion(c, t, 'hales', 1560, 300, 120, w('f116', 'Robert') - 0.15, S.end + 0.3, { light: true, role: 'Treasurer of England' });
-  } },
-{ id: 'S53', at: 'f117', desc: 'The two medallions with the groats between them: the men who ran THE POLL TAX.',
-  sfx: [[f('f117'), 'coins', 0.7], [w('f117', 'poll'), 'impact', 0.8]],
+{ id: 'S83', at: 'f134', trans: 'cut', desc: 'A treaty on parchment takes two seals – "on their own terms".',
+  sfx: [[w('f134', 'peace'), 'seal', 0.8], [w('f134', 'terms'), 'seal', 0.7]],
   draw(c, t, lt, S) {
     parchment(c, t);
-    G.medallion(c, t, 'sudbury', 640, 420, 150, f('f117') - 0.3, S.end + 0.3);
-    G.medallion(c, t, 'hales', 1280, 420, 150, f('f117') - 0.3, S.end + 0.3);
-    for (let i = 0; i < 3; i++) { const a = ramp(t, f('f117') + i * 0.12, 0.2, backOut); if (a > 0) { c.save(); c.translate(960, 330 + i * 80); c.scale(a, a); G.groat(c, 0, 0, 34); c.restore(); } }
-    G.slam(c, t, [{ t: 'who had run', small: true }, { t: 'THE POLL TAX', red: true }], w('f117', 'run') - 0.2, S.end + 0.2, { y: 860, size: 120, mode: 'ink' });
-  } },
-{ id: 'S54', at: 'f118', dark: true, desc: 'Tower Hill under a storm sky: the medallions grey (cut to black on "beheaded"). Poles carried through the streets.',
-  sfx: [[w('f118', 'Tower'), 'crowd', 0.7, 2], [w('f118', 'beheaded'), 'thud', 1.0], [f('f119'), 'drum', 0.7, 3]],
-  draw(c, t, lt, S) {
-    const bh = w('f118', 'beheaded');
-    if (black(c, t, bh, 0.5)) return;
-    withCam(c, push(lt, S.dur, 1.0, 1.06, W / 2, H / 2, W * 0.52, H * 0.5), () => {
-      A.sky(c, 'storm', t); A.clouds(c, t, 101, 220, 'rgba(30,26,24,0.35)', 6, 10, 1.3);
-      A.whiteTower(c, 1450, 720, 60, '#2E2A26'); A.hills(c, 800, 70, 103, '#241F1A');
-      const k = ramp(t, f('f119'), 4, easeIO);
-      A.crowd(c, { x0: -100 + k * 300, x1: 1300 + k * 300, y: 820, n: 80, hMin: 120, hMax: 200, depth: 160, seed: 105, t, red: 0.6, color: '#1A1612', far: '#2A2420', raise: 0.9, face: 1, agit: 1.2 });
+    cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W / 2, H * 0.5, () => {
+      G.documentSheet(c, t, W / 2, 560, 640, 780, { title: 'Convention of Peking', titleSize: 34, written: 1, seed: 31, seal: true, sealText: 'Q', sealAt: ramp(t, w('f134', 'peace'), 0.3) });
+      fade(c, ramp(t, w('f134', 'terms') - 0.05, 0.25), () => { c.save(); c.translate(W / 2 - 180, 860); c.fillStyle = P.blue; c.beginPath(); for (let i = 0; i < 14; i++) { const a = i / 14 * TAU, rr = 42 + (i % 2 ? 4 : -2); c.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } c.closePath(); c.fill(); c.restore(); });
     });
-    G.medallion(c, t, 'sudbury', 680, 250, 100, f('f118') - 0.2, S.end + 0.3, { light: true, grey: t > bh ? 1 : 0, slash: t > bh ? 1 : 0, noPlaque: true });
-    G.medallion(c, t, 'hales', 1240, 250, 100, f('f118') - 0.2, S.end + 0.3, { light: true, grey: t > bh ? 1 : 0, slash: t > bh ? 1 : 0, noPlaque: true });
-    G.scriptName(c, t, 'Tower Hill', f('f118') + 0.4, bh, { x: W / 2, y: 520, size: 140 });
-    G.text(c, 'paraded through the streets', W / 2, 470, 'italic 400 46px BodoniItalic', '#F0E6D0', 'center', life(t, f('f119') + 0.2, S.end + 0.3, 0.4, 0.3), 'rgba(0,0,0,0.6)');
+    G.text(c, '1860', W / 2 + 420, 300, '600 64px Bodoni', P.ink2, 'center', ramp(t, f('f134'), 0.4));
   } },
-{ id: 'S55', at: 'f120', desc: 'London Bridge at dusk (callback): small dark shapes above the gatehouse.',
-  sfx: [[f('f120'), 'wind', 0.7, 3.2], [w('f120', 'spikes'), 'thud', 0.5]],
-  draw(c, t, lt, S) {
-    withCam(c, push(lt, S.dur, 1.3, 1.6, 1000, 640, 1010, 600), () => PL.london(c, t, { sky: 'dusk', night: 0.25, spikes: ramp(t, w('f120', 'spikes') - 0.3, 0.8) }));
-    G.text(c, 'above London Bridge', W / 2, 150, 'italic 400 50px BodoniItalic', '#F3EAD6', 'center', life(t, w('f120', 'above') - 0.2, S.end + 0.2, 0.3, 0.2), 'rgba(0,0,0,0.7)');
-  } },
-{ id: 'S56', at: 'f121', trans: 'fade', dark: true, desc: 'Night streets: torches; Flemish residents hunted; a storm wall swallows the frame: something much darker.',
-  sfx: [[f('f121') - 0.2, 'night', 0.7, 13], [w('f122', 'Flemish'), 'crowd', 0.8, 4], [f('f123'), 'thunder', 0.7], [w('f123', 'darker'), 'impact', 0.7]],
-  draw(c, t, lt, S) {
-    const fl = w('f122', 'Flemish');
-    withCam(c, push(lt, S.dur, 1.0, 1.08, W / 2, H * 0.55, W * 0.5, H * 0.55), () => {
-      PL.streetNight(c, t, { fire: 0.4 + 0.2 * Math.sin(t) });
-      const k = (t - fl) / 4.5;
-      if (k > 0) [0, 1, 2].forEach(i => { const x = lerp(1300 + i * 120, -300 + i * 120, easeIn(clamp(k - i * 0.05))); A.figure(c, x, 980 + i * 10, 240, CH.fleming, { face: -1, walk: t * 10 + i, armF: 40, armB: -40 }); });
-      const kc = clamp((t - f('f121')) / 9);
-      A.crowd(c, { x0: lerp(2100, 900, kc), x1: lerp(2900, 1900, kc), y: 900, n: 30, hMin: 200, hMax: 280, depth: 90, seed: 107, t, red: 0.3, color: '#0F0C0A', far: '#1C1814', face: -1, tools: true, raise: 0.7, agit: 1.5 });
-      for (let i = 0; i < 7; i++) { const tx = lerp(2000, 1000, kc) + i * 130 + Math.sin(t + i) * 10, ty = 640 + (i % 3) * 30; c.strokeStyle = '#1A1410'; c.lineWidth = 8; c.beginPath(); c.moveTo(tx, ty + 120); c.lineTo(tx, ty); c.stroke(); A.flames(c, tx, ty, 40, 70, t, 200 + i, 4); }
-      A.stormWall(c, t, 0.08 + 0.95 * easeIO(clamp((t - f('f123') - 0.3) / 3)), 109, '#0B0908');
-    });
-    G.text(c, 'Flemish immigrants', 420, 200, 'italic 400 52px BodoniItalic', '#F0E6D0', 'center', life(t, fl - 0.1, f('f123') + 0.5, 0.3, 0.3), 'rgba(0,0,0,0.7)');
-    G.slam(c, t, [{ t: 'SOMETHING' }, { t: 'MUCH DARKER', red: true }], w('f123', 'darker') - 0.1, S.end + 0.2, { y: H * 0.45, size: 120 });
-  } },
-
-// ================================================================ CH 9  Smithfield
-{ id: 'S57', at: 'f124', trans: 'black', desc: 'The schematic: the king summons the rebels to Smithfield, just outside the walls. 15 June, tally day 17.',
-  sfx: [[f('f124') + 0.3, 'hooves', 0.6, 4], [w('f124', 'Smithfield'), 'tick', 0.6], [w('f124', 'walls'), 'whoosh', 0.5]],
-  draw(c, t, lt, S) {
-    PL.londonMap(c, t, { aldgate: 1, savoyBurnt: 1, labels: { Smithfield: 1, Barts: 0.9 } });
-    for (let i = 0; i < 14; i++) G.token(c, PL.LM.Smithfield[0] - 80 + (i % 7) * 26, PL.LM.Smithfield[1] + 30 + Math.floor(i / 7) * 26, 13, P.red, ramp(t, w('f124', 'rebels') + i * 0.04, 0.3));
-    const u = ramp(t, f('f124') + 0.3, 4.5, easeIO); PL.screenRoute(c, [[0, 610], [300, 560], [520, 420], [600, 380]], u, { color: P.gold, w: 6 }); const p = PL.lmPath([[0, 610], [300, 560], [520, 420], [600, 380]], u); G.token(c, p[0], p[1], 24, P.gold, 1);
-    if (t > w('f124', 'walls') - 0.2) { const a = Math.sin(clamp((t - w('f124', 'walls') + 0.2) / 1.2) * Math.PI); c.save(); c.globalAlpha = a; c.strokeStyle = P.red; c.lineWidth = 14; c.beginPath(); [[700, 702], [690, 560], [760, 430], [900, 382]].forEach(([x, y], i) => i ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke(); c.restore(); }
-    G.text(c, 'from Westminster', 120, 560, 'italic 400 28px FellItalic', P.ink3, 'left', ramp(t, f('f124') + 0.4, 0.4));
-    G.dateLine(c, t, { at: f('f124') + 0.15, out: S.end + 0.3, event: 'Smithfield', day: '15 June', year: 1381, from: 1377, mode: 'ink' });
-    G.tally(c, t, f('f124') + 0.3, S.end + 0.3, 16, 17, { x: 1240, y: 1010 });
-  } },
-{ id: 'S58', at: 'f125', trans: 'ink', desc: 'Smithfield (the cold-open plate, identical): Tyler rides out on a small horse, dagger in hand, takes the king\'s hand: "brother".',
-  sfx: [[f('f125') + 0.2, 'hooves', 0.7, 4], [w('f125', 'dagger'), 'whoosh', 0.4], [w('f126', 'brother'), 'impact', 0.5]],
-  draw(c, t, lt, S) {
-    const u = easeIO(clamp((t - f('f125') - 0.2) / 4.2));
-    withCam(c, push(lt, S.dur, 1.0, 1.1, W / 2, H * 0.55, W * 0.4, H * 0.6), () =>
-      smithfieldStage(c, t, { ty: { x: lerp(1200, 760, u), walk: u > 0 && u < 1 ? t * 5.5 : null, armF: t > f('f126') ? 75 : 40, elbF: t > f('f126') ? 0 : 30 } }));
-    G.text(c, 'a small horse, a dagger in his hand', 1350, 180, 'italic 400 44px BodoniItalic', P.ink, 'center', life(t, w('f125', 'small') - 0.2, f('f126'), 0.3, 0.3));
-    G.slam(c, t, [{ t: '“brother”', small: true }], w('f126', 'brother') - 0.1, S.end + 0.2, { x: 760, y: 330, size: 220, mode: 'ink' });
-  } },
-{ id: 'S59', at: 'f127', desc: 'Tyler\'s demands at Smithfield (list); the king answers he will grant whatever he fairly can (medallion).',
-  sfx: [[w('f128', 'No'), 'tick', 0.6], [w('f128', 'Church'), 'tick', 0.6], [w('f129', 'bishop'), 'tick', 0.6], [w('f130', 'grant'), 'whoosh', 0.5]],
-  draw(c, t, lt, S) {
-    withCam(c, { x: W / 2, y: H * 0.55, s: 1.05 }, () => smithfieldStage(c, t, { ty: { x: 760, armF: 30 } }));
-    dim(c, 0.45);
-    G.listPanel(c, t, ['No lord but the king', 'Church wealth to the people', 'One bishop for all England'], [w('f128', 'No') - 0.15, w('f128', 'Church') - 0.15, w('f129', 'bishop') - 0.2], f('f127') - 0.2, S.end + 0.3, { title: 'Tyler\'s demands · Smithfield', x: 110, y: 140, w: 880, lh: 92 });
-    G.medallion(c, t, 'richard', 1460, 400, 150, f('f130') - 0.2, S.end + 0.3, { light: true });
-    G.text(c, 'whatever he fairly could', 1460, 730, 'italic 400 48px BodoniItalic', '#F6EFE0', 'center', life(t, w('f130', 'grant') - 0.2, S.end + 0.3, 0.3, 0.3), 'rgba(0,0,0,0.6)');
-  } },
-{ id: 'S60', at: 'f131', desc: 'Close on Tyler: water, rinsed in front of the king; then ale.',
-  sfx: [[w('f131', 'water'), 'water', 0.5, 1.5], [w('f132', 'ale'), 'whoosh', 0.4]],
-  draw(c, t, lt, S) {
-    const ale = w('f132', 'ale');
-    withCam(c, { x: 680, y: 760, s: 1.75 + 0.05 * lt / S.dur }, () => smithfieldStage(c, t, { walworth: false, squire: false, ty: { x: 820, prop: t > ale - 0.2 ? 'cup' : t > w('f131', 'water') - 0.2 ? 'jug' : null, armF: t > w('f131', 'water') - 0.2 ? 100 : 30, elbF: t > w('f131', 'water') - 0.2 ? 50 : 30 } }));
-    G.text(c, 'water', 1180, 250, 'italic 400 60px BodoniItalic', P.ink, 'center', life(t, w('f131', 'water') - 0.15, ale - 0.2, 0.25, 0.25));
-    G.text(c, '… then ale', 1180, 250, 'italic 400 60px BodoniItalic', P.red, 'center', life(t, ale - 0.15, S.end + 0.2, 0.25, 0.25));
-  } },
-{ id: 'S61', at: 'f133', desc: 'Someone in the royal party: THIEF! Tyler goes for him with his dagger.',
-  sfx: [[w('f133', 'thief'), 'impact', 1.0], [w('f134', 'went'), 'whoosh', 0.9], [w('f134', 'went') + 0.1, 'crowd', 0.7, 2]],
-  draw(c, t, lt, S) {
-    const go = w('f134', 'went'), u = easeOut(clamp((t - go + 0.1) / 0.6));
-    withCam(c, push(lt, S.dur, 1.25, 1.3, 720, 720, 700, 720), () => smithfieldStage(c, t, { sqArm: t > w('f133', 'thief') - 0.3 ? 100 : 20, ty: { x: lerp(820, 720, u), lean: -14 * u, armF: lerp(40, 105, u), elbF: lerp(30, -10, u) }, agit: t > go ? 1.8 : 0.8 }));
-    G.slam(c, t, [{ t: 'THIEF!', red: true }], w('f133', 'thief') - 0.05, go - 0.1, { x: 1180, y: 300, size: 200 });
-  } },
-{ id: 'S62', at: 'f135', desc: 'Mayor William Walworth (medallion) moves to arrest him; the stab glances off the mayor\'s armour (inset).',
-  sfx: [[w('f135', 'Walworth'), 'whoosh', 0.6], [w('f135', 'arrest'), 'hooves', 0.6, 1.5], [w('f136', 'stabbed'), 'clang', 1.0], [w('f136', 'armour'), 'tick', 0.5]],
-  draw(c, t, lt, S) {
-    const ar = w('f135', 'arrest'), st = w('f136', 'stabbed'), wu = easeIO(clamp((t - ar + 0.2) / 1.6));
-    withCam(c, push(lt, S.dur, 1.2, 1.28, 640, 720, 640, 720), () => {
-      smithfieldStage(c, t, { wx: lerp(200, 560, wu), wwalk: wu > 0 && wu < 1 ? t * 6 : null, rx: 330, sqx: 260, ty: { x: 760, armF: t > st - 0.2 ? 100 : 40, elbF: t > st - 0.2 ? -10 : 30, lean: t > st - 0.2 && t < st + 0.5 ? -12 : 0 } });
-      if (t > st && t < st + 0.5) { const r = rng(Math.floor(t * 25)); c.strokeStyle = '#FFE8B0'; c.lineWidth = 4; for (let i = 0; i < 12; i++) { const a = r() * TAU, d = 20 + r() * 60; c.beginPath(); c.moveTo(640, 760); c.lineTo(640 + Math.cos(a) * d, 760 + Math.sin(a) * d); c.stroke(); } }
-    });
-    G.medallion(c, t, 'walworth', 1650, 300, 115, w('f135', 'Walworth') - 0.15, S.end + 0.3);
-    const ma = life(t, w('f136', 'armour') - 0.25, S.end + 0.3, 0.3, 0.3);
-    if (ma > 0) { c.save(); c.globalAlpha = ma; c.translate(1450, 760); c.fillStyle = '#3A3A3C'; c.beginPath(); c.arc(0, 0, 150, 0, TAU); c.fill(); c.save(); c.beginPath(); c.arc(0, 0, 146, 0, TAU); c.clip();
-      c.strokeStyle = '#B8BCC0'; c.lineWidth = 3; for (let y = -160; y < 160; y += 18) for (let x = -160 + ((y / 18) % 2 ? 9 : 0); x < 160; x += 18) { c.beginPath(); c.arc(x, y, 8, 0, TAU); c.stroke(); } c.restore();
-      c.strokeStyle = P.gold; c.lineWidth = 8; c.beginPath(); c.arc(0, 0, 150, 0, TAU); c.stroke(); c.restore();
-      G.text(c, 'armour under his robes', 1450, 960, 'italic 400 40px BodoniItalic', P.ink, 'center', ma); }
-  } },
-{ id: 'S63', at: 'f137', trans: 'flash', dark: true, desc: 'Crimson-tinted silhouettes: Walworth strikes; a royal squire runs Tyler through. Cut to black.',
-  sfx: [[w('f137', 'struck'), 'slash', 1.0], [w('f138', 'squire'), 'whoosh', 0.7], [w('f138', 'through') - 0.05, 'thud', 1.0], [w('f138', 'through'), 'impact', 0.8]],
-  draw(c, t, lt, S) {
-    const th = w('f138', 'through');
-    if (black(c, t, th, 0.55)) return;
-    const sq = easeOut(clamp((t - w('f138', 'squire') + 0.2) / 0.8));
-    withCam(c, push(lt, S.dur, 1.35, 1.45, 700, 720, 700, 720), () => smithfieldStage(c, t, { shadow: true, tint: '#6A1A12', tintA: 0.7, crowdCol: '#2A0E0A', crowdFar: '#3A1410', wx: 560, warmF: t > w('f137', 'struck') - 0.1 ? 120 : 40, welbF: -20, wprop: 'sword', rx: 300, sqx: lerp(260, 700, sq), sqArm: 80, sqwalk: sq > 0 && sq < 1 ? t * 9 : null, ty: { x: 780, armF: 60, lean: t > w('f137', 'struck') ? 10 : 0 } }));
-    c.save(); c.globalCompositeOperation = 'multiply'; c.fillStyle = 'rgba(163,32,28,0.55)'; c.fillRect(0, 0, W, H); c.restore();
-    if (t > w('f137', 'struck') && t < w('f137', 'struck') + 0.25) { c.fillStyle = 'rgba(255,240,220,0.5)'; c.fillRect(0, 0, W, H); c.strokeStyle = '#F6EFE0'; c.lineWidth = 10; c.beginPath(); c.moveTo(600, 300); c.lineTo(1100, 700); c.stroke(); }
-  } },
-{ id: 'S64', at: 'f139', desc: 'Tyler turns his horse towards his men, and falls. Across the field, the bows come up. Hold through the silence.',
-  sfx: [[f('f139'), 'hooves', 0.5, 2], [w('f139', 'fell'), 'thud', 0.9], [w('f140', 'drew') - 0.2, 'bowdraw', 1.0], [w('f140', 'drew'), 'crowd', 0.6, 3]],
-  draw(c, t, lt, S) {
-    const fell = w('f139', 'fell'), u = easeIO(clamp((t - f('f139')) / 2.2)), fa = ramp(t, fell - 0.1, 0.8);
-    withCam(c, push(lt, S.dur, 1.05, 1.18, W * 0.52, H * 0.58, W * 0.62, H * 0.56), () => {
-      smithfieldStage(c, t, { tint: '#3A2A20', tintA: 0.25, tyler: false, raise: ramp(t, w('f140', 'drew') - 0.4, 0.8), bows: true, agit: 0.3 });
-      const x = lerp(800, 1000, u);
-      A.horse(c, x, 1000, 190, { face: 1, ...TYLER_HORSE, walk: u < 1 ? t * 5 : null });
-      const fy = lerp(907, 1012, easeIn(fa)), fx = x - 4 + fa * 40;
-      if (fa < 1) A.figure(c, fx, fy, 180, CH.tyler, { face: 1, seated: fa < 0.25, lean: 85 * easeIn(fa), armF: 60, elbF: 30 });
-      else A.figure(c, fx, 1012, 180, PL.shade(CH.tyler, '#2A1E16'), { face: 1, lean: 85, armF: 60, elbF: 30 });
-    });
-    G.slam(c, t, [{ t: 'and fell', small: true }], fell - 0.05, f('f140') + 0.2, { x: 700, y: 300, size: 180, mode: 'ink' });
-    G.slam(c, t, [{ t: 'THE BOWS', red: true }], w('f140', 'drew') - 0.1, S.end - 0.6, { x: 700, y: 300, size: 120, mode: 'ink' });
-  } },
-{ id: 'S65', at: 'f141', desc: 'The fourteen-year-old king (medallion callback) rides out towards the bows, alone.',
-  sfx: [[f('f141') + 0.2, 'hooves', 0.7, 6], [w('f141', 'extraordinary'), 'whoosh', 0.5], [w('f142', 'alone'), 'impact', 0.9]],
-  draw(c, t, lt, S) {
-    const u = easeIO(clamp((t - f('f142') + 0.8) / 4.5));
-    withCam(c, push(lt, S.dur, 1.0, 1.06, W / 2, H * 0.55, W * 0.55, H * 0.55), () => {
-      PL.smithfield(c, t);
-      A.crowd(c, { x0: 1250, x1: 2100, y: 800, n: 90, hMin: 100, hMax: 180, depth: 170, seed: 5, t, red: 1, face: -1, raise: 1, allBows: true, agit: 0.3 });
-      A.rider(c, lerp(260, 900, u), 1010, 230, CH.richard, { face: 1, ...RICHARD_HORSE, walk: u > 0 && u < 1 ? t * 5.5 : null, t });
-    });
-    G.medallion(c, t, 'richard', 330, 280, 110, f('f141') - 0.1, S.end + 0.3, { role: 'aged 14' });
-    G.slam(c, t, [{ t: 'ALONE', red: true }], w('f142', 'alone') - 0.05, S.end + 0.2, { x: 1000, y: 330, size: 190, mode: 'ink' });
-  } },
-{ id: 'S66', at: 'f143', desc: 'The king before the host: he will be their captain (as one chronicler reports). The bows come down, and they follow.',
-  sfx: [[w('f143', 'captain'), 'impact', 0.6], [f('f144'), 'crowd', 0.6, 2.5], [f('f144') + 0.3, 'whoosh', 0.4]],
-  draw(c, t, lt, S) {
-    const did = f('f144');
-    withCam(c, push(lt, S.dur, 1.15, 1.22, 1150, 720, 1150, 720), () => {
-      PL.smithfield(c, t);
-      A.crowd(c, { x0: 1250, x1: 2100, y: 800, n: 90, hMin: 100, hMax: 180, depth: 170, seed: 5, t, red: 1, face: t > did + 0.6 ? 1 : -1, raise: 1 - ramp(t, did - 0.1, 0.9), allBows: true, agit: 0.3 });
-      A.rider(c, 900, 1010, 230, CH.richard, { face: t > did + 0.5 ? -1 : 1, ...RICHARD_HORSE, armF: t < did ? 110 : 40, elbF: 0, t });
-    });
-    G.text(c, 'according to one chronicler', 700, 200, 'italic 400 40px BodoniItalic', P.ink3, 'center', life(t, f('f143') + 0.1, did, 0.3, 0.3));
-    G.slam(c, t, [{ t: 'THEIR CAPTAIN' }], w('f143', 'captain') - 0.1, did, { x: 700, y: 300, size: 110, mode: 'ink' });
-    G.slam(c, t, [{ t: 'AND THEY DID', red: true }], did - 0.05, S.end + 0.2, { x: 700, y: 300, size: 110, mode: 'ink' });
-  } },
-{ id: 'S67', at: 'f145', trans: 'cut', desc: 'The schematic: the host follows the king north to Clerkenwell; the mayor\'s soldiers (blue) close a ring.',
-  sfx: [[f('f145'), 'march', 0.6, 3], [w('f146', 'closing'), 'drum', 0.7, 2.5]],
-  draw(c, t, lt, S) {
-    withCam(c, { x: 760, y: 420, s: 1.35 }, () => {
-      PL.londonMap(c, t, { aldgate: 1, savoyBurnt: 1, labels: { Smithfield: 1, Clerkenwell: 1 } });
-      const u = ramp(t, f('f145') + 0.1, 2.6, easeIO);
-      const kp = PL.lmPath(['Smithfield', 'Clerkenwell'], u); G.token(c, kp[0] + 30, kp[1] - 30, 20, P.gold, 1);
-      for (let i = 0; i < 14; i++) { const p = PL.lmPath(['Smithfield', 'Clerkenwell'], clamp(u - 0.05)); G.token(c, p[0] - 80 + (i % 7) * 26, p[1] + 20 + Math.floor(i / 7) * 26, 12, P.red, 1); }
-      const cl = ramp(t, w('f146', 'closing') - 0.4, 2.2, easeIO);
-      if (cl > 0) for (let i = 0; i < 16; i++) { const a = i / 16 * TAU, R = lerp(380, 150, cl); G.token(c, PL.LM.Clerkenwell[0] + Math.cos(a) * R, PL.LM.Clerkenwell[1] + 30 + Math.sin(a) * R * 0.7, 13, P.blue, clamp(cl * 3)); }
-    });
-    G.slam(c, t, [{ t: 'CLOSING IN', red: true }], w('f146', 'closing') - 0.1, S.end + 0.2, { x: 1500, y: 860, size: 100, mode: 'ink' });
-  } },
-{ id: 'S68', at: 'f147', trans: 'ink', dark: true, desc: 'St Bartholomew\'s at dusk; Tyler\'s medallion greys. The tally stick snaps: OVER.',
-  sfx: [[f('f147'), 'wind', 0.6, 9], [w('f148', 'beheaded'), 'thud', 0.9], [w('f149', 'over') - 0.05, 'snap', 1.0], [w('f149', 'over'), 'boom', 0.6]],
-  draw(c, t, lt, S) {
-    const bh = w('f148', 'beheaded'), ov = w('f149', 'over');
-    withCam(c, push(lt, S.dur, 1.0, 1.08, W / 2, H * 0.55, W / 2, H * 0.55), () => {
-      A.sky(c, 'dusk', t); A.clouds(c, t, 111, 200, 'rgba(120,70,40,0.18)', 5, 5); A.hills(c, 760, 30, 113, '#6A4A30');
-      A.priory(c, 960, 880, 180, '#2E241C', true); PL.ground(c, 880, '#5A4630', '#2E2418');
-    });
-    G.scriptName(c, t, 'St Bartholomew\'s', w('f147', 'Saint') - 0.2, bh - 0.3, { x: W / 2, y: 260, size: 140, role: 'the hospital at Smithfield' });
-    G.medallion(c, t, 'tyler', 400, 300, 120, w('f148', 'Walworth') - 0.3, ov - 0.2, { light: true, grey: ramp(t, bh, 0.3), slash: ramp(t, bh, 0.25) });
-    G.medallion(c, t, 'walworth', 1520, 300, 120, w('f148', 'Walworth') - 0.15, ov - 0.2, { light: true });
-    const ta = life(t, f('f149') - 0.3, S.end + 0.3, 0.3, 0.3);
-    if (ta > 0) { const br = ramp(t, ov - 0.05, 0.5, easeOut);
-      for (const side of [-1, 1]) { c.save(); c.beginPath(); c.rect(side < 0 ? 0 : W / 2, 0, W / 2, H); c.clip(); c.translate(W / 2 + side * br * 60, 470 + br * 40); c.rotate(side * br * 0.16); c.translate(-W / 2, -470); G.tally(c, t, f('f149') - 0.6, S.end + 0.3, 17, 17, { x: 560, y: 470, w: 800, light: true }); c.restore(); } }
-    G.slam(c, t, [{ t: 'OVER', red: true }], ov - 0.05, S.end + 0.2, { y: 270, size: 180 });
-  } },
-
-// ================================================================ CH 10  Parchment and rope
-{ id: 'S69', at: 'f150', trans: 'black', desc: 'A Mile End charter of freedom: cancelled in red. 2 July 1381.',
-  sfx: [[f('f150') + 0.1, 'paper', 0.7], [w('f151', 'revoked') - 0.1, 'quill', 0.9, 1.2], [w('f151', 'revoked') + 0.6, 'impact', 0.6]],
-  draw(c, t, lt, S) {
-    parchment(c, t, '#6E5030', 0.3);
-    withCam(c, push(lt, S.dur, 1.0, 1.08, W / 2, H / 2, W * 0.5, H * 0.48), () => G.documentSheet(c, t, 760, 520, 560, 740, { title: 'Charter of Freedom', titleSize: 46, seal: true, seed: 3, cross: ramp(t, w('f151', 'revoked') - 0.1, 1.0) }));
-    G.slam(c, t, [{ t: 'the king\'s promises', small: true }], f('f150') + 0.2, f('f151') + 0.2, { x: 1500, y: 400, size: 130, mode: 'ink' });
-    G.slam(c, t, [{ t: 'REVOKED', red: true }], w('f151', 'revoked') + 0.2, S.end + 0.2, { x: 1560, y: 400, size: 110, mode: 'ink' });
-    G.dateLine(c, t, { at: f('f151') + 0.1, out: S.end + 0.3, event: 'Every charter revoked', day: '2 July', year: 1381, from: 1377, mode: 'ink', x: 1260 });
-  } },
-{ id: 'S70', at: 'f152', dark: true, desc: 'The throne room again: the king\'s message, as one chronicler reports it: "Serfs you were, and serfs you will remain."',
-  sfx: [[f('f153') - 0.2, 'whoosh', 0.5], [w('f153', 'remain'), 'thud', 0.6]],
-  draw(c, t, lt, S) {
-    withCam(c, push(lt, S.dur, 1.05, 1.15, W / 2, H * 0.55, W / 2, H * 0.52), () => { throneRoom(c, t); boyKing(c, 960, 905, 330, t); });
-    dim(c, 0.2 + 0.4 * ramp(t, f('f153') - 0.4, 0.5));
-    G.text(c, 'as one chronicler reports it', W / 2, 150, 'italic 400 42px BodoniItalic', '#F0E6D0', 'center', life(t, f('f152') + 0.3, f('f153'), 0.4, 0.3), 'rgba(0,0,0,0.6)');
-    G.quote(c, t, ['Serfs you were,', 'and serfs you will remain.'], f('f153') - 0.15, S.end + 0.3, { size: 84, y: H * 0.45, by: 'Richard II to the men of Essex · as reported', stagger: w('f153', 'and') - f('f153') - 0.1 });
-  } },
-{ id: 'S71', at: 'f154', trans: 'ink', desc: 'Map: royal judges fan out into the rebel counties; John Ball taken at Coventry, executed at St Albans, 15 July.',
-  sfx: [[f('f154') + 0.2, 'whoosh', 0.6], [w('f155', 'Coventry'), 'tick', 0.6], [w('f155', 'Albans'), 'tick', 0.6], [w('f155', 'executed'), 'thud', 0.8]],
-  draw(c, t, lt, S) {
-    const view = { lon: -0.1, lat: 51.92, span: 3.9 };
-    G.drawMap(c, 'se', view, { rivers: ['Thames'] });
-    G.mapLabel(c, view, 'London', 1, { size: 32, box: true, dx: -150 });
-    const dests = ['Chelmsford', 'Brentwood', 'Maidstone', 'Rochester', 'St Albans', 'Colchester'];
-    dests.forEach((d, i) => { const u = ramp(t, f('f154') + 0.3 + i * 0.15, 1.6, easeIO); if (u <= 0) return; const end = G.route(c, view, ['London', d], u, { color: P.blue, w: 4, dash: [12, 9], arrow: false }); G.token(c, end[0], end[1], 16, P.blue, 1); });
-    G.mapLabel(c, view, 'Coventry', ramp(t, w('f155', 'Coventry') - 0.2, 0.3), { size: 36, box: true, ring: true, t, dx: 30 });
-    const ru = ramp(t, w('f155', 'Coventry') + 0.2, 1.8, easeIO); if (ru > 0) G.route(c, view, ['Coventry', 'St Albans'], ru, { color: P.ink2, w: 5 });
-    G.mapLabel(c, view, 'St Albans', ramp(t, w('f155', 'Albans') - 0.2, 0.3), { size: 36, box: true, ring: true, t, dx: 30, dy: -6 });
-    const ex = w('f155', 'executed');
-    G.medallion(c, t, 'ball', 1650, 300, 115, w('f155', 'John') - 0.15, S.end + 0.3, { grey: ramp(t, ex, 0.3), slash: ramp(t, ex, 0.25) });
-    G.dateLine(c, t, { at: w('f155', 'fifteenth') - 0.3, out: S.end + 0.3, event: 'John Ball executed, St Albans', day: '15 July', year: 1381, from: 1377, mode: 'ink', x: 1000, y: 150 });
-    G.slam(c, t, [{ t: 'ROYAL JUDGES' }], f('f154') + 0.1, f('f155'), { x: 1450, y: 760, size: 90, mode: 'ink' });
-  } },
-{ id: 'S72', at: 'f156', dark: true, desc: 'Tally marks fill the dark: at least 1,500 killed or executed by November.',
-  sfx: [[f('f156') + 0.2, 'tick', 0.5, 4], [e('f156') - 0.3, 'thud', 0.7]],
-  draw(c, t, lt, S) {
-    c.fillStyle = '#16120E'; c.fillRect(0, 0, W, H);
-    const n = Math.round(1500 * easeIO(clamp((t - f('f156') - 0.2) / (S.dur - 1.0))));
-    c.strokeStyle = 'rgba(214,200,170,0.65)'; c.lineWidth = 3; c.beginPath();
-    for (let i = 0; i < n; i++) { const col = i % 60, row = Math.floor(i / 60), x = 230 + col * 25 + (col % 5 === 4 ? 0 : 0), y = 380 + row * 25; if (col % 5 === 4) { c.moveTo(x - 102, y + 4); c.lineTo(x + 2, y - 18); } else { c.moveTo(x, y); c.lineTo(x + 1, y - 18); } }
-    c.stroke();
-    G.counter(c, t, 0, 1500, f('f156') + 0.2, S.dur - 1.0, W / 2, 250, { size: 140, label: 'killed or executed by November · at least' });
-  } },
-{ id: 'S73', at: 'f157', trans: 'fade', desc: 'The payoff: the manor roll that made men serfs beside the charter cancelled. BEGAN / ENDED.',
-  sfx: [[w('f157', 'began'), 'paper', 0.6], [w('f158', 'ended'), 'paper', 0.6], [w('f158', 'cancelled'), 'impact', 0.6]],
-  draw(c, t, lt, S) {
-    parchment(c, t, '#6E5030', 0.3);
-    G.manorRoll(c, t, 600, 110, 380, 760, 1, { highlight: 5 });
-    G.documentSheet(c, t, 1330, 500, 500, 660, { title: 'Charter of Freedom', titleSize: 40, seal: true, seed: 3, cross: 1 });
-    G.slam(c, t, [{ t: 'IT BEGAN' }, { t: 'with parchment', small: true }], w('f157', 'began') - 0.1, S.end + 0.3, { x: 600, y: 960, size: 80, mode: 'ink' });
-    G.slam(c, t, [{ t: 'IT ENDED', red: true }, { t: 'with parchment', small: true }], w('f158', 'ended') - 0.1, S.end + 0.3, { x: 1330, y: 960, size: 80, mode: 'ink' });
-    const la = life(t, w('f157', 'manor') - 0.2, S.end + 0.3, 0.3, 0.3); G.text(c, 'the manor rolls', 600, 70, 'italic 400 40px BodoniItalic', P.ink, 'center', la);
-    G.text(c, 'a king\'s charter, cancelled', 1330, 120, 'italic 400 40px BodoniItalic', P.ink, 'center', life(t, w('f158', 'charter') - 0.2, S.end + 0.3, 0.3, 0.3));
-  } },
-{ id: 'S74', at: 'f159', dark: true, desc: 'The council again, frightened; a card: the flat poll tax, DROPPED.',
-  sfx: [[w('f159', 'frightened'), 'sting', 0.6], [w('f160', 'dropped'), 'stamp', 1.0]],
-  draw(c, t, lt, S) {
-    const jit = 1.5 + Math.sin(t * 40) * 1.5;
-    c.save(); c.translate(Math.sin(t * 37) * jit * 0.5, 0); councilPlate(c, t, lt, S, 1e9); c.restore();
-    G.slam(c, t, [{ t: 'FRIGHTENED' }], w('f159', 'frightened') - 0.1, f('f160') - 0.1, { y: 240, size: 120 });
-    const ca = life(t, f('f160') - 0.2, S.end + 0.3, 0.3, 0.3);
-    if (ca > 0) { c.save(); c.globalAlpha = ca; c.translate(0, (1 - easeOut(clamp((t - f('f160') + 0.2) / 0.4))) * 120); panel(c, W / 2, 420, 760, 420, 0.97);
-      for (let i = 0; i < 3; i++) G.groat(c, 820 + i * 140, 380, 56); G.text(c, 'the flat poll tax', W / 2, 540, 'italic 400 44px BodoniItalic', P.ink, 'center'); c.restore(); }
-    G.stamp(c, t, 'DROPPED', w('f160', 'dropped') - 0.05, S.end + 0.3, { x: W / 2, y: 420, size: 130 });
-  } },
-{ id: 'S75', at: 'f161', trans: 'fade', desc: 'The village (callback to the villein plate): a century passes (1400→1500); the chain fades; rent paid in coin; the labourer works his own strip.',
-  sfx: [[f('f161') + 0.2, 'tick', 0.6, 3], [w('f161', 'withered'), 'chain', 0.6], [w('f162', 'money'), 'coin', 0.9], [f('f163'), 'village', 0.6, 3]],
-  draw(c, t, lt, S) {
-    const wi = w('f161', 'withered'), mo = w('f162', 'money'), wk = f('f163');
-    withCam(c, push(lt, S.dur, 1.12, 1.18, 1250, 700, 1290, 705), () => {
-      PL.village(c, t, { dusk: 0.15 });
-      A.figure(c, 1500, 1000, 300, CH.lord, { face: -1, armF: t > mo ? 50 : 15, elbF: 40 });
-      const wu = clamp((t - wk) / 4); const fx = lerp(1060, 900, wu);
-      A.figure(c, fx, 1000, 300, CH.peasant, { face: wu > 0 ? -1 : 1, armF: wu > 0 ? 40 + Math.sin(t * 6) * 20 : 30, elbF: 30, prop: 'spade', walk: wu > 0 && wu < 1 ? t * 5 : null, t });
-      const ca = 1 - ramp(t, wi - 0.2, 1.4); if (ca > 0) { c.save(); c.globalAlpha = ca; drawChain(c, 1084, 982, 1560, 650, 1, ramp(t, wi, 0.6)); c.restore(); }
-      const gu = (t - mo + 0.1) / 0.9; if (gu > 0 && gu < 1) { G.groat(c, lerp(1110, 1450, gu), 760 - Math.sin(gu * Math.PI) * 120, 22); } else if (gu >= 1) G.groat(c, 1452, 760, 22);
-    });
-    G.dateLine(c, t, { at: f('f161') + 0.2, out: S.end + 0.3, event: 'Serfdom withers away', day: 'c.', year: 1500, from: 1400, rollDur: 3.5, mode: 'ink', y: 150 });
-    G.text(c, 'rent, paid in money', 1450, 270, 'italic 400 46px BodoniItalic', P.ink, 'center', life(t, mo - 0.3, S.end + 0.3, 0.3, 0.3));
-  } },
-
-// ================================================================ CH 11  The tax that came back
-{ id: 'S76', at: 'f164', trans: 'black', desc: 'The odometer rolls 1381 → 1990; a modern form: COMMUNITY CHARGE, stamped POLL TAX.',
-  sfx: [[f('f164') + 0.2, 'tick', 0.7, 3], [w('f164', 'flat'), 'paper', 0.7], [w('f166', 'poll'), 'stamp', 1.0]],
+{ id: 'S84', at: 'f135', trans: 'whip', desc: 'The emperor\'s medallion between two foreign medallions: KEEP THE QING ALIVE – "paid its debts · honoured its treaties".',
+  sfx: [[w('f135', 'keep'), 'impact', 0.7], [w('f136', 'debts'), 'coins', 0.6], [w('f136', 'treaties'), 'seal', 0.6]],
   draw(c, t, lt, S) {
     parchment(c, t);
-    const fl = w('f164', 'flat');
-    G.dateLine(c, t, { at: f('f164') + 0.1, out: S.end + 0.3, event: 'Six hundred and nine years later', day: '', year: 1990, from: 1381, rollDur: 3.0, mode: 'ink', x: 220, y: 470 });
-    const ca = ramp(t, fl - 0.3, 0.7, easeOut);
-    if (ca > 0) modernCard(c, t, lerp(2200, 1360, ca), 560, t > w('f165', 'Community') - 0.2);
-    G.stamp(c, t, 'POLL TAX', w('f166', 'poll') - 0.05, S.end + 0.3, { x: 1360, y: 330, size: 110, rot: -0.1 });
+    G.medallion(c, t, 'emperor', W / 2, 360, 140, f('f135') - 0.1, S.end + 0.3, {});
+    G.medallion(c, t, 'foreignSoldier', W / 2 - 420, 400, 95, f('f135') + 0.3, S.end + 0.3, { name: 'Britain', role: '' });
+    G.medallion(c, t, 'foreignSoldier', W / 2 + 420, 400, 95, f('f135') + 0.5, S.end + 0.3, { name: 'France', role: '' });
+    G.slam(c, t, [{ t: 'KEEP THE QING ALIVE', red: true }], w('f135', 'keep') - 0.05, f('f136'), { y: 760, size: 100, mode: 'ink' });
+    G.listPanel(c, t, ['it paid its debts', 'it honoured its treaties'], [w('f136', 'debts') - 0.3, w('f136', 'treaties') - 0.3], f('f136') - 0.2, S.end + 0.3, { x: W / 2 - 380, y: 660, w: 760, size: 50 });
   } },
-{ id: 'S77', at: 'f167', dark: true, desc: 'Trafalgar Square, 31 March 1990: a march with placards ends in a riot (silhouettes, smoke, fire).',
-  sfx: [[f('f167'), 'crowd', 0.7, 4], [w('f168', 'riot') - 0.2, 'riot', 1.0, 5], [w('f168', 'Trafalgar'), 'impact', 0.5]],
+{ id: 'S85', at: 'f137', trans: 'cut', desc: 'A drill ground: a foreign officer drills a line of Qing soldiers with modern rifles; the rifles snap to the shoulder.',
+  sfx: [[f('f137'), 'march', 0.7, 4], [w('f137', 'rifles'), 'volley', 0.6]],
   draw(c, t, lt, S) {
-    const ri = w('f168', 'riot');
-    withCam(c, push(lt, S.dur, 1.0, 1.08, W / 2, H * 0.55, W / 2, H * 0.55), () => {
-      PL.trafalgar(c, t, { riot: ramp(t, ri - 0.3, 1.2) });
-      const r = rng(121);
-      for (let i = 0; i < 16; i++) { const x = 60 + i * 120 + (r() - 0.5) * 40 + Math.sin(t * 2 + i) * 6, y = 740 + r() * 40; c.strokeStyle = '#121214'; c.lineWidth = 5; c.beginPath(); c.moveTo(x, y + 140); c.lineTo(x, y); c.stroke();
-        c.fillStyle = '#E8E4DA'; c.fillRect(x - 50, y - 60, 100, 64); G.text(c, 'NO POLL', x, y - 34, '700 20px Oswald', P.red, 'center'); G.text(c, 'TAX', x, y - 10, '700 20px Oswald', P.red, 'center'); }
-      A.crowd(c, { x0: -100, x1: 2020, y: 900, n: 120, hMin: 160, hMax: 260, depth: 160, seed: 123, t, tools: false, color: '#0E0E10', far: '#1E1E22', agit: t > ri ? 2.2 : 0.8, march: 0 });
+    const k = Math.floor((t - f('f137')) * 1.2) % 2;
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.6, W * 0.55, H * 0.6, () => {
+      PL.field(c, t, { seed: 33, c1: '#A8946E', c2: '#8E7A56', g0: '#8E7A52', g1: '#5E4A32' });
+      for (let i = 0; i < 8; i++) A.figure(c, 640 + i * 150, 1000, 300, CH.qingSoldier, { face: -1, prop: 'rifle', armF: k ? 160 : 30, elbF: k ? -150 : 10, propAng: k ? -10 : 0 });
+      A.figure(c, 320, 1000, 340, CH.foreignSoldier, { face: 1, prop: 'cane', armF: 60 + 30 * Math.sin(t * 3), elbF: 30 });
     });
-    if (t > ri) { const fl = Math.max(0, Math.sin(t * 7)) * 0.12; c.fillStyle = `rgba(255,120,60,${fl})`; c.fillRect(0, 0, W, H); }
-    G.dateLine(c, t, { at: f('f167') + 0.1, out: S.end + 0.3, event: 'London', day: '31 March', year: 1990, from: 1986, mode: 'light', y: 150 });
-    G.scriptName(c, t, 'Trafalgar Square', w('f168', 'Trafalgar') - 0.2, S.end + 0.3, { x: W / 2, y: 470, size: 130 });
+    G.slam(c, t, [{ t: 'MODERN RIFLES' }], w('f137', 'modern') - 0.05, S.end + 0.2, { y: H * 0.22, size: 120 });
   } },
-{ id: 'S78', at: 'f169', desc: 'The form again: the prime minister resigns within months; the tax is ABOLISHED (replaced in 1993).',
-  sfx: [[w('f169', 'gone'), 'whoosh', 0.6], [w('f170', 'tax'), 'stamp', 1.0]],
+{ id: 'S86', at: 'f138', trans: 'cut', desc: 'Frederick Townsend Ward (slouch hat) before his Ever Victorious Army; his medallion greys on "killed" (1862). Calendar 1862.',
+  sfx: [[w('f138', 'American'), 'whoosh', 0.5], [w('f138', 'Ever'), 'march', 0.6, 3], [w('f139', 'killed'), 'thud', 0.9]],
+  draw(c, t, lt, S) {
+    const kd = w('f139', 'killed');
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.6, W * 0.45, H * 0.6, () => {
+      PL.field(c, t, { seed: 34, c1: '#A8946E', c2: '#8E7A56', g0: '#8E7A52', g1: '#5E4A32', dusk: 0.3 });
+      for (let i = 0; i < 8; i++) A.figure(c, 900 + i * 130, 1000 - (i % 2) * 20, 260, CH.qingSoldier, { face: -1, prop: 'rifle' });
+      fade(c, 1 - ramp(t, kd + 0.2, 1.0), () => A.figure(c, 560, 1010, 380, CH.ward, { face: 1, prop: 'sword', armF: 40, elbF: 20 }));
+    });
+    G.scriptName(c, t, 'the Ever Victorious Army', w('f138', 'Ever') - 0.3, kd - 0.2, { y: H * 0.24, size: 120 });
+    G.medallion(c, t, 'ward', 1600, 320, 110, w('f138', 'Frederick') - 0.2, S.end + 0.3, { grey: ramp(t, kd, 0.3), slash: ramp(t, kd, 0.25), role: 'killed 1862' });
+    G.calendar(c, t, f('f139') - 0.2, S.end + 0.3, 11, 12, { x: 140, y: 930, crack: 1, light: true });
+  } },
+{ id: 'S87', at: 'f140', trans: 'cut', desc: 'Charles Gordon, cane in hand, takes command (medallion).',
+  sfx: [[w('f140', 'Charles'), 'whoosh', 0.5], [w('f140', 'over'), 'impact', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.06, 1.0, W * 0.45, H * 0.55, W / 2, H * 0.55, () => {
+      PL.field(c, t, { seed: 34, c1: '#A8946E', c2: '#8E7A56', g0: '#8E7A52', g1: '#5E4A32', dusk: 0.3 });
+      for (let i = 0; i < 8; i++) A.figure(c, 900 + i * 130, 1000 - (i % 2) * 20, 260, CH.qingSoldier, { face: -1, prop: 'rifle' });
+      A.figure(c, 560, 1010, 380, CH.gordon, { face: 1, prop: 'cane', armF: 25, elbF: 10 });
+    });
+    G.medallion(c, t, 'gordon', 1600, 320, 110, w('f140', 'Charles') - 0.2, S.end + 0.3, { role: 'British officer · 1863' });
+  } },
+{ id: 'S88', at: 'f141', trans: 'whip', desc: 'Up the Yangtze: Hunan Army boats under blue flags; Anqing on the far bank; blue flags rise on its walls. Date-line 5 September 1861.',
+  sfx: [[f('f141'), 'oars', 0.6, 4], [w('f142', 'Anqing'), 'boom', 0.8], [w('f142', 'took'), 'roar', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.5, H * 0.5, () => {
+      PL.yangtze(c, t, { dusk: 0.35, fire: ramp(t, w('f142', 'took') - 0.3, 1.0) * 0.4 });
+      blueFlagsOnCity(c, t, ramp(t, w('f142', 'Anqing'), 0.8));
+      for (let i = 0; i < 7; i++) { const x = ((i * 300 + (t - f('f141')) * 90) % 2300) - 200; A.junk(c, x, 760 + (i % 3) * 80, 30 + (i % 3) * 10, t, '#2A2E34', '#5A6A7A', P.blue); }
+    });
+    G.dateLine(c, t, { at: f('f142') + 0.1, out: S.end, event: 'Anqing', day: '5 September', year: 1861, from: 1857, mode: 'light', y: 150 });
+    G.calendar(c, t, f('f142') + 0.3, S.end + 0.3, 10, 11, { x: 1060, y: 930, crack: 1, light: true });
+  } },
+{ id: 'S89', at: 'f143', trans: 'cut', desc: 'Map: the river road from Anqing down to Nanjing lights up blue.',
+  sfx: [[f('f143'), 'whoosh', 0.5], [w('f143', 'Nanjing'), 'impact', 0.6]],
+  draw(c, t, lt, S) {
+    const v = { lon: 117.9, lat: 31.1, span: 5.5 };
+    cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W * 0.55, H * 0.45, () => {
+      PL.chinaMap(c, t, { view: v, labels: ['Anqing', 'Nanjing'], hi: 'Nanjing', cartouche: 'The river road · 1861' });
+      G.route(c, v, ['Anqing', [30.75, 117.6], [31.3, 118.3], [31.7, 118.5], 'Nanjing'], ramp(t, f('f143'), 2.6, easeIO), { w: 12, color: P.blue });
+      tok(c, v, 'Anqing', P.blue, 1, null, 30);
+    });
+  } },
+{ id: 'S90', at: 'f144', trans: 'cut', dark: true, desc: 'Anqing in crimson after the siege: smoke, grey silhouettes. "By most accounts" – no gore.',
+  sfx: [[f('f144'), 'fire', 0.5, 4], [w('f144', 'massacred'), 'thud', 0.8]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.06, W / 2, H * 0.55, W / 2, H * 0.6, () => {
+      PL.yangtze(c, t, { fire: 0.7, dusk: 0.5, night: 0.4 }); blueFlagsOnCity(c, t, 1);
+      PL.ground(c, 960, '#4A3A2A', '#2A2018');
+      A.crowd(c, { x0: -100, x1: 2020, y: 1050, n: 60, hMin: 110, hMax: 190, depth: 30, seed: 144, t, color: mixColor('#5E5242', '#2A2622', ramp(t, w('f144', 'defenders'), 2)), far: '#2A2622', tools: false, agit: 0.1 });
+    });
+    tint(c, '#7A1C14', 0.45);
+    G.text(c, 'by most accounts, after a long siege', W / 2, 260, 'italic 400 48px BodoniItalic', '#F2E8D2', 'center', ramp(t, f('f144'), 0.4), 'rgba(0,0,0,0.6)');
+    G.slam(c, t, [{ t: 'MASSACRED', red: true }], w('f144', 'massacred') - 0.05, S.end + 0.2, { y: H * 0.42, size: 140 });
+  } },
+{ id: 'S91', at: 'f145', trans: 'cut', desc: 'Map: a blue arrow runs down the river from Anqing to Nanjing; Zeng Guoquan\'s medallion. Spring 1862.',
+  sfx: [[f('f145'), 'drum', 0.6, 3], [w('f146', 'Zeng'), 'whoosh', 0.5]],
+  draw(c, t, lt, S) {
+    const v = { lon: 117.9, lat: 31.1, span: 5.5 };
+    cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W * 0.6, H * 0.42, () => {
+      PL.chinaMap(c, t, { view: v, labels: ['Anqing', 'Nanjing'], hi: 'Nanjing', cartouche: 'Spring 1862' });
+      G.route(c, v, ['Anqing', [30.75, 117.6], [31.3, 118.3], [31.7, 118.5], 'Nanjing'], 1, { w: 12, color: P.blue, arrow: false });
+      const u = ramp(t, f('f145') + 0.3, 2.4, easeIO); const p = [lerp(30.53, 32.0, u), lerp(117.05, 118.7, u)]; tok(c, v, p, P.blue, 1, null, 34);
+    });
+    G.medallion(c, t, 'zengQ', 400, 330, 110, w('f146', 'Zeng') - 0.2, S.end + 0.3, { role: 'Zeng Guofan\'s younger brother' });
+    G.calendar(c, t, f('f145'), S.end + 0.3, 11, 12, { x: 140, y: 930, crack: 1 });
+  } },
+{ id: 'S92', at: 'f147', trans: 'cut', desc: 'Nanjing (callback plate): the siege lines dig in outside the walls; Zeng Guoquan with a lantern in the foreground.',
+  sfx: [[f('f147'), 'march', 0.5, 3], [w('f147', 'dug'), 'thud', 0.6]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.55, W * 0.45, H * 0.6, () => {
+      PL.nanjing(c, t, { dusk: 0.75, siege: ramp(t, w('f147', 'dug') - 0.3, 1.4) }); wallFlags(c, t);
+      A.figure(c, 300, 1060, 420, CH.zengQ, { face: 1, prop: 'lantern', armF: 50, elbF: 30 });
+    });
+  } },
+
+// ================================================================ CH 10  Manna
+{ id: 'S93', at: 'f148', trans: 'black', dark: true, desc: 'Nanjing under siege at dusk (same plate as the cold open). TWO YEARS. Calendar 1863.',
+  sfx: [[f('f148'), 'wind', 0.6, 3], [w('f148', 'two'), 'drum', 0.6, 2]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.42, H * 0.5, () => { PL.nanjing(c, t, { dusk: 0.85, siege: 1 }); wallFlags(c, t); });
+    G.slam(c, t, [{ t: 'TWO YEARS' }], w('f148', 'two') - 0.05, S.end + 0.2, { y: H * 0.28, size: 150 });
+    G.calendar(c, t, f('f148'), S.end + 0.3, 12, 13, { x: 1060, y: 930, crack: 1, light: true });
+  } },
+{ id: 'S94', at: 'f149', trans: 'cut', dark: true, desc: 'The throne hall: Li kneels before Hong and begs him to break out; Hong raises a hand and refuses – "God, he said, would protect it".',
+  sfx: [[w('f149', 'begged'), 'thud', 0.5], [w('f150', 'refused'), 'impact', 0.7], [w('f150', 'God'), 'bell', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.55, W * 0.52, H * 0.55, () => {
+      PL.hallInterior(c, t, { mode: 'throne', dark: 0.35 });
+      A.figure(c, 960, 760, 330, CH.hong, { face: 1, seated: true, armF: lerp(20, 140, ramp(t, w('f150', 'refused') - 0.2, 0.4)), elbF: 0 });
+      A.figure(c, 1360, 1010, 380, CH.li, { face: -1, kneel: ramp(t, w('f149', 'begged') - 0.3, 0.6), armF: 70, elbF: 30 });
+    });
+    G.slam(c, t, [{ t: 'REFUSED', red: true }], w('f150', 'refused') - 0.05, w('f150', 'God') - 0.1, { y: H * 0.22, size: 140 });
+    G.slam(c, t, [{ t: 'God, he said, would protect it', small: true }], w('f150', 'God') - 0.1, S.end + 0.2, { y: H * 0.22, size: 120 });
+  } },
+{ id: 'S95', at: 'f151', trans: 'cut', dark: true, desc: 'Night in the starving city (callback of the cold open): Li\'s confession; weeds rise in the foreground; SWEET DEW – "wild plants, heaven\'s manna".',
+  sfx: [[f('f151'), 'night', 0.7, 8], [w('f151', 'confession'), 'paper', 0.6], [w('f152', 'sweet'), 'bell', 0.6]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.1, W / 2, H * 0.55, W * 0.55, H * 0.6, () => {
+      PL.nanjing(c, t, { night: 0.85, dusk: 0.2 });
+      A.crowd(c, { x0: -100, x1: 2020, y: 1000, n: 70, hMin: 90, hMax: 170, depth: 90, seed: 31, t, color: '#3A3632', far: '#2A2622', tools: false, agit: 0.2 });
+      weeds(c, ramp(t, w('f152', 'wild') - 0.4, 1.2));
+    });
+    G.medallion(c, t, 'li', 1600, 300, 100, w('f151', 'Li') - 0.3, f('f152') + 0.4, { role: 'from his confession' });
+    G.slam(c, t, [{ t: 'SWEET DEW', gold: true }, { t: 'wild plants · heaven\'s manna', small: true }], w('f152', 'sweet') - 0.05, S.end + 0.2, { y: H * 0.32, size: 150 });
+  } },
+{ id: 'S96', at: 'f153', trans: 'fade', dark: true, desc: 'The throne hall in shadow (callback of S02): Hong slumps; his medallion greys with a red slash on "died". Date-line 1 June 1864.',
+  sfx: [[w('f153', 'ill'), 'bell', 0.4], [w('f154', 'died'), 'thud', 0.9]],
+  draw(c, t, lt, S) {
+    const d = w('f154', 'died');
+    cam(c, lt, S, 1.05, 1.16, W / 2, H * 0.52, W / 2, H * 0.5, () => {
+      PL.hallInterior(c, t, { mode: 'throne', dark: lerp(0.45, 0.85, ramp(t, d - 0.3, 1.2)) });
+      A.figure(c, 960, 760, 330, CH.hong, { face: 1, seated: true, armF: 6, elbF: 4, lean: lerp(-4, -16, ramp(t, f('f153'), 3)) });
+    });
+    G.medallion(c, t, 'hong', 1560, 330, 120, f('f153') + 0.3, S.end + 0.3, { grey: ramp(t, d, 0.3), slash: ramp(t, d, 0.25), role: 'died 1 June 1864' });
+    G.dateLine(c, t, { at: f('f154') - 0.1, out: S.end, event: 'The Heavenly King dies', day: '1 June', year: 1864, from: 1860, mode: 'light', y: 150 });
+  } },
+{ id: 'S97', at: 'f155', trans: 'cut', desc: 'Two accounts: his son\'s medallion – "sickness"; Li\'s medallion – "poison".',
+  sfx: [[w('f155', 'sickness'), 'tick', 0.6], [w('f155', 'poison'), 'impact', 0.6]],
   draw(c, t, lt, S) {
     parchment(c, t);
-    modernCard(c, t, 1360, 560, true);
-    G.stamp(c, t, 'POLL TAX', -1, S.end + 0.3, { x: 1360, y: 330, size: 110, rot: -0.1 });
-    G.text(c, 'November 1990', 520, 420, '600 44px Oswald', P.ink2, 'center', life(t, w('f169', 'gone') - 0.6, S.end + 0.3, 0.3, 0.3));
-    G.text(c, 'the prime minister resigns', 520, 480, 'italic 400 44px BodoniItalic', P.ink, 'center', life(t, w('f169', 'gone') - 0.6, S.end + 0.3, 0.3, 0.3));
-    G.stamp(c, t, 'ABOLISHED', w('f170', 'tax') - 0.05, S.end + 0.3, { x: 1360, y: 640, size: 120, rot: 0.08 });
-    G.text(c, 'replaced by the Council Tax, 1993', 520, 680, 'italic 400 36px BodoniItalic', P.ink3, 'center', life(t, w('f170', 'tax') + 0.2, S.end + 0.3, 0.3, 0.3));
+    G.medallion(c, t, 'boyKing', 620, 420, 140, f('f155') - 0.1, S.end + 0.3, { name: 'His son' , role: '' });
+    G.medallion(c, t, 'li', 1300, 420, 140, w('f155', 'Li') - 0.2, S.end + 0.3, { role: '' });
+    G.slam(c, t, [{ t: 'SICKNESS' }], w('f155', 'sickness') - 0.05, S.end + 0.2, { x: 620, y: 820, size: 100, mode: 'ink' });
+    G.slam(c, t, [{ t: 'POISON', red: true }], w('f155', 'poison') - 0.05, S.end + 0.2, { x: 1300, y: 820, size: 100, mode: 'ink' });
   } },
-{ id: 'S79', at: 'f171', trans: 'fade', desc: 'Ensemble at dusk: every character of the story on the village field. Leaders to shadow, charters torn, the chain breaks. LOSERS? OR THE FIRST WINNERS? Fade to black; end card.',
-  sfx: [[f('f171'), 'village', 0.5, 6], [w('f172', 'leaders'), 'bell', 0.6], [w('f172', 'charters'), 'paper', 0.8], [w('f173', 'outlive') - 0.1, 'chain', 0.9], [w('f174', 'losers'), 'impact', 0.5], [w('f174', 'winners'), 'impact', 0.6], [e('f175') + 1.2, 'boom', 0.5]],
+{ id: 'S98', at: 'f156', trans: 'cut', dark: true, desc: 'The throne hall: a boy in a crown too big for him sits on the Heavenly throne (medallion).',
+  sfx: [[w('f156', 'teenage'), 'whoosh', 0.4], [w('f156', 'King'), 'gong', 0.5]],
   draw(c, t, lt, S) {
-    const ld = w('f172', 'leaders'), chs = w('f172', 'charters'), out = w('f173', 'outlive'), endT = e('f175') + 0.4;
-    const cam = push(lt, S.dur - 2, 1.12, 1.0, W / 2, H * 0.58, W / 2, H * 0.52);
-    withCam(c, cam, () => {
-      PL.village(c, t, { dusk: lerp(0.5, 1, clamp(lt / S.dur)) });
-      const rebels = [['ball', 300], ['tyler', 470], ['baker', 640], ['belling', 790], ['peasant', 930], ['woman', 1060], ['peasantR', 1190]];
-      rebels.forEach(([k, x], i) => { const sh = (k === 'tyler' || k === 'ball') ? ramp(t, ld - 0.1 + (k === 'ball' ? 0.3 : 0), 0.8) : 0; const sp = CH[k];
-        A.figure(c, x, 1000 + (i % 2) * 14, 300, sp, { face: 1, armF: 10 + i * 3, elbF: 15, prop: k === 'ball' ? 'staff' : k === 'peasant' ? 'spade' : k === 'woman' ? 'distaff' : null, t });
-        if (sh > 0) { c.save(); c.globalAlpha = sh; A.figure(c, x, 1000 + (i % 2) * 14, 300, PL.shade(sp, '#1E1812'), { face: 1, armF: 10 + i * 3, elbF: 15, prop: k === 'ball' ? 'staff' : null }); c.restore(); } });
-      [['richard', 1470, 280], ['walworth', 1620, 300], ['gaunt', 1770, 310]].forEach(([k, x, h]) => A.figure(c, x, 990, h, CH[k], { face: -1, armF: 12 }));
-      const chA = life(t, f('f173') - 0.2, S.end, 0.4, 0.6); if (chA > 0) { c.save(); c.globalAlpha = chA; drawChain(c, 960, 990, 1640, 650, 1, ramp(t, out - 0.05, 0.4)); c.restore(); }
+    cam(c, lt, S, 1.0, 1.12, W / 2, H * 0.55, W / 2, H * 0.5, () => { PL.hallInterior(c, t, { mode: 'throne', dark: 0.4 }); A.figure(c, 960, 760, 250, CH.boyKing, { face: 1, seated: true, armF: 10, elbF: 10 }); });
+    G.medallion(c, t, 'boyKing', 1560, 330, 110, w('f156', 'teenage') - 0.2, S.end + 0.3, { role: 'the new Heavenly King' });
+  } },
+{ id: 'S99', at: 'f157', trans: 'cut', dark: true, desc: 'Cut-away under the wall at night: a tunnel from the siege lines, a lantern moving; on "fired" a spark races along the fuse. Date-line 19 July 1864.',
+  sfx: [[f('f157'), 'night', 0.6, 7], [w('f157', 'nineteenth'), 'tick', 0.6], [w('f158', 'mine') - 0.6, 'scuffle', 0.4], [w('f158', 'fired'), 'match', 0.9], [w('f158', 'fired') + 0.2, 'fuse', 0.9, 2.6]],
+  draw(c, t, lt, S) {
+    const fi = w('f158', 'fired');
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.4, H * 0.52, () => {
+      PL.nanjing(c, t, { night: 0.9, siege: 1 }); wallFlags(c, t, 1, '#5A1A14');
+      c.fillStyle = 'rgba(24,18,12,0.92)'; c.fillRect(-100, 830, W + 200, 400); // ground cut-away
+      c.strokeStyle = '#4A3A2A'; c.lineWidth = 34; c.beginPath(); c.moveTo(1500, 900); c.quadraticCurveTo(1000, 1000, 560, 860); c.stroke();
+      const lu = ramp(t, f('f157'), 3.2, easeIO); const lx = lerp(1500, 600, lu), ly = 900 + Math.sin(lu * Math.PI) * 60; c.fillStyle = '#E8B860'; c.beginPath(); c.arc(lx, ly, 10, 0, TAU); c.fill(); c.globalAlpha = 0.35; c.beginPath(); c.arc(lx, ly, 40, 0, TAU); c.fill(); c.globalAlpha = 1;
+      c.fillStyle = '#3A2A1C'; for (let i = 0; i < 6; i++) c.fillRect(540 + i * 22, 840, 18, 26); // powder kegs
+      if (t > fi) { const u = clamp((t - fi) / 2.4); const x = lerp(1500, 600, u), y = 900 + Math.sin(u * Math.PI) * 60; const g = c.createRadialGradient(x, y, 0, x, y, 50); g.addColorStop(0, 'rgba(255,220,140,1)'); g.addColorStop(1, 'rgba(240,120,40,0)'); c.fillStyle = g; c.beginPath(); c.arc(x, y, 50, 0, TAU); c.fill(); }
     });
-    const tr = ramp(t, chs - 0.1, 1.2, easeIn), ta = life(t, chs - 0.4, chs + 1.6, 0.3, 0.4);
-    if (ta > 0) for (const side of [-1, 1]) { c.save(); c.globalAlpha = ta; c.beginPath(); c.rect(side < 0 ? 0 : W / 2, 0, W / 2, H); c.clip(); c.translate(W / 2 + side * tr * 300, 330 - tr * 80); c.rotate(side * tr * 0.5); c.translate(-W / 2, -330); G.documentSheet(c, t, W / 2, 330, 260, 330, { title: 'Carta', titleSize: 30, seal: true, seed: 3, lines: 5 }); c.restore(); }
-    G.slam(c, t, [{ t: 'defeated?', small: true }], f('f171') + 0.4, chs - 0.4, { y: 260, size: 200 });
-    G.slam(c, t, [{ t: 'LOSERS?' }], w('f174', 'losers') - 0.1, w('f174', 'first') - 0.2, { y: 280, size: 140 });
-    G.slam(c, t, [{ t: 'OR THE FIRST WINNERS', red: true }, { t: 'of a very long fight', small: true }], w('f174', 'first') - 0.15, endT, { y: 280, size: 110 });
-    G.text(c, 'still an open question', W / 2, 470, 'italic 400 52px BodoniItalic', '#F6EFE0', 'center', life(t, w('f175', 'open') - 0.3, endT + 0.3, 0.4, 0.5), 'rgba(0,0,0,0.6)');
-    const k = ramp(t, endT, 1.0); if (k > 0) { c.fillStyle = `rgba(11,9,8,${k})`; c.fillRect(0, 0, W, H); }
-    const ea = life(t, endT + 1.0, 1e9, 0.6, 0.5);
-    if (ea > 0) { G.text(c, 'THE MAJOR', W / 2, 480, '500 46px Oswald', '#D9CBA9', 'center', ea); G.text(c, 'REVOLUTION', W / 2, 600, '900 130px Bodoni', '#F2E8D2', 'center', ea); c.save(); c.globalAlpha = ea; c.fillStyle = P.red; c.fillRect(W / 2 - 520, 628, 1040, 7); c.restore(); }
+    G.dateLine(c, t, { at: f('f157') + 0.1, out: f('f158') + 0.5, event: 'Nanjing', day: '19 July', year: 1864, from: 1860, mode: 'light', y: 150 });
+  } },
+{ id: 'S100', at: 'f159', trans: 'flash', dark: true, desc: 'THE BLOW: white flash; sixty yards of wall drop into a fiery breach; dust; the last calendar tile shatters. Then silence.',
+  sfx: [[f('f159') - 0.12, 'boom', 1.0], [f('f159'), 'impact', 1.0], [w('f159', 'down'), 'smash', 0.8]],
+  draw(c, t, lt, S) {
+    const b = ramp(t, f('f159') - 0.1, 2.2, easeOut);
+    const sh = Math.max(0, 1 - (t - f('f159')) / 1.2) * 18;
+    c.save(); c.translate((Math.random() - 0.5) * sh, (Math.random() - 0.5) * sh);
+    cam(c, lt, S, 1.06, 1.0, W * 0.4, H * 0.55, W * 0.45, H * 0.55, () => { PL.nanjing(c, t, { night: 0.6, dusk: 0.3, fire: 0.4 + 0.4 * b, breach: b, siege: 1 }); wallFlags(c, t, 1, '#5A1A14'); });
+    c.restore();
+    G.calendar(c, t, f('f159') - 0.2, S.end + 0.3, 14, 14, { x: 1060, y: 930, crack: 1, shatter: ramp(t, w('f159', 'came'), 1.2), light: true, label: false });
+    G.text(c, 'about 60 yards', 560, 260, 'italic 400 54px BodoniItalic', '#F2E8D2', 'center', life(t, w('f159', 'sixty') - 0.1, S.end, 0.3, 0.4), 'rgba(0,0,0,0.6)');
+  } },
+{ id: 'S101', at: 'f160', trans: 'cut', dark: true, desc: 'The Hunan Army (blue) pours through the breach into the burning city; crimson tint; "for three days, by most accounts".',
+  sfx: [[f('f160'), 'roar', 0.9], [f('f160') + 0.3, 'march', 0.7, 4], [w('f161', 'slaughter'), 'fire', 0.8, 4]],
+  draw(c, t, lt, S) {
+    const u = (t - f('f160'));
+    cam(c, lt, S, 1.0, 1.08, W * 0.45, H * 0.55, W * 0.4, H * 0.55, () => {
+      PL.nanjing(c, t, { night: 0.5, fire: 0.9, breach: 1, siege: 1 });
+      A.crowd(c, { x0: 700 - u * 70, x1: 2100 - u * 70, y: 1000, n: 80, hMin: 110, hMax: 200, depth: 70, seed: 160, t, color: P.blue, far: '#2A3440', hat: 'cone', face: -1, raise: 0.6, agit: 1.4 });
+    });
+    tint(c, '#7A1C14', 0.35 * ramp(t, f('f161'), 1));
+    G.slam(c, t, [{ t: 'for three days', small: true }, { t: 'SLAUGHTER AND FIRE', red: true }, { t: 'by most accounts', small: true }], w('f161', 'three') - 0.05, S.end + 0.2, { y: H * 0.3, size: 110 });
+  } },
+{ id: 'S102', at: 'f162', trans: 'cut', desc: 'Zeng Guofan\'s report on parchment: 100,000 rolls up; then "may be exaggerated" in red pencil beside it.',
+  sfx: [[w('f162', 'reported'), 'quill', 0.6, 1.5], [w('f162', 'hundred'), 'impact', 0.6], [w('f163', 'exaggerated'), 'stamp', 0.6]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    G.documentSheet(c, t, 520, 560, 560, 720, { title: 'Report to the Throne', titleSize: 32, written: ramp(t, f('f162'), 2), seed: 41, seal: true, sealText: 'Z' });
+    G.medallion(c, t, 'zengF', 1450, 300, 100, f('f162') - 0.1, S.end + 0.3, {});
+    G.counter(c, t, 0, 100000, w('f162', 'hundred') - 0.3, 1.0, 1300, 650, { size: 130, color: P.ink, mode: 'ink', label: 'rebels dead · Zeng\'s report', labelColor: P.ink3 });
+    G.text(c, 'may be exaggerated', 1300, 820, 'italic 400 54px BodoniItalic', P.red, 'center', ramp(t, w('f163', 'may') - 0.1, 0.4));
+  } },
+{ id: 'S103', at: 'f164', trans: 'smoke', dark: true, desc: 'Nanjing after: the breach, smoke, the red flags gone. NO MORE.',
+  sfx: [[f('f164'), 'wind', 0.7, 4], [w('f164', 'more'), 'thud', 0.6]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W * 0.45, H * 0.5, () => { PL.nanjing(c, t, { dusk: 0.4, night: 0.3, breach: 1, siege: 1 }); A.smoke(c, 700, 600, t, 2.4, 164, 'rgba(40,34,30,0.4)'); });
+    G.slam(c, t, [{ t: 'the Heavenly Capital', small: true }, { t: 'WAS NO MORE' }], w('f164', 'Heavenly') - 0.1, S.end + 0.2, { y: H * 0.28, size: 130 });
+  } },
+
+// ================================================================ CH 11  The price
+{ id: 'S104', at: 'f165', trans: 'black', dark: true, desc: 'Night outside the walls: the boy king gallops away on Li\'s dark horse; Li, on foot, is surrounded by blue soldiers.',
+  sfx: [[f('f165'), 'hooves', 0.8, 3], [w('f165', 'captured'), 'scuffle', 0.7]],
+  draw(c, t, lt, S) {
+    const u = ramp(t, f('f165'), 3.4, easeIn), cap = ramp(t, w('f165', 'captured') - 0.4, 0.8);
+    cam(c, lt, S, 1.0, 1.06, W / 2, H * 0.6, W * 0.45, H * 0.6, () => {
+      PL.guangxi(c, t, { night: 0.8, kilns: false });
+      A.rider(c, lerp(800, -300, u), 1040, 220, CH.boyKing, { face: -1, color: '#2A241D', cloth: P.red, walk: t * 8, t });
+      A.figure(c, 1100, 1040, 320, CH.li, { face: -1, armF: 20, elbF: 20 });
+      fade(c, cap, () => { for (let i = 0; i < 4; i++) A.figure(c, lerp(1900, 1250 + i * 90, cap), 1040, 300, CH.hunanSoldier, { face: -1, prop: 'spear' }); });
+    });
+    G.medallion(c, t, 'li', 1600, 300, 100, f('f165') - 0.1, S.end + 0.3, { role: 'captured' });
+  } },
+{ id: 'S105', at: 'f166', trans: 'cut', desc: 'Li\'s confession writes itself across a long sheet; his medallion greys with a red slash on "executed".',
+  sfx: [[f('f166'), 'quill', 0.7, 2.5], [w('f166', 'executed'), 'slash', 0.8]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    G.documentSheet(c, t, 620, 560, 680, 840, { title: 'The confession of Li Xiucheng', titleSize: 30, written: ramp(t, f('f166'), 2.6), seed: 51 });
+    const ex = w('f166', 'executed');
+    G.medallion(c, t, 'li', 1400, 420, 140, f('f166') - 0.1, S.end + 0.3, { grey: ramp(t, ex, 0.3), slash: ramp(t, ex, 0.25), role: 'executed, August 1864' });
+  } },
+{ id: 'S106', at: 'f167', trans: 'cut', desc: 'The boy king\'s medallion greys with a red slash; date-line November 1864.',
+  sfx: [[w('f167', 'caught'), 'thud', 0.5], [w('f167', 'executed'), 'slash', 0.7]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    const ex = w('f167', 'executed');
+    G.medallion(c, t, 'boyKing', W / 2, 460, 170, f('f167') - 0.1, S.end + 0.3, { grey: ramp(t, ex, 0.3), slash: ramp(t, ex, 0.25), role: 'executed, November 1864' });
+    G.dateLine(c, t, { at: f('f167'), out: S.end, event: 'Nanchang', day: 'November', year: 1864, from: 1860, mode: 'ink', y: 160, x: 200 });
+  } },
+{ id: 'S107', at: 'f168', trans: 'cut', desc: 'Map of the south-west: the Dadu River; Shi Dakai\'s medallion greys – captured and put to death, June 1863.',
+  sfx: [[w('f168', 'captured'), 'thud', 0.6], [w('f168', 'death'), 'slash', 0.7]],
+  draw(c, t, lt, S) {
+    const v = { lon: 104.5, lat: 29.6, span: 9 };
+    cam(c, lt, S, 1.0, 1.06, W / 2, H / 2, W * 0.42, H * 0.52, () => {
+      PL.chinaMap(c, t, { view: v, labels: ['Chengdu', 'Dadu River'], hi: 'Dadu River', cartouche: 'Sichuan · 1863' });
+      tok(c, v, 'Dadu River', P.red, 1, null, 26);
+    });
+    const d = w('f168', 'death');
+    G.medallion(c, t, 'shi', 1500, 420, 140, f('f168') - 0.1, S.end + 0.3, { grey: ramp(t, d, 0.3), slash: ramp(t, d, 0.25), role: 'put to death, June 1863' });
+  } },
+{ id: 'S108', at: 'f169', trans: 'cut', desc: 'The map: the red Taiping territory shrinks to scattered points and fades; the Heavenly Calendar burns on "gone".',
+  sfx: [[f('f169'), 'drum', 0.4, 2.5], [w('f170', 'gone'), 'fire', 0.8, 2.5]],
+  draw(c, t, lt, S) {
+    const sh = ramp(t, f('f169'), 3.4, easeIO);
+    cam(c, lt, S, 1.0, 1.04, W / 2, H / 2, W / 2, H / 2, () => {
+      PL.chinaMap(c, t, { tp: 1 - sh, labels: ['Nanjing'] });
+      for (let i = 0; i < 9; i++) { const r = rng(169 + i); const [x, y] = G.proj(V.cn, 25 + r() * 7, 112 + r() * 8); G.token(c, x, y, 14, P.red, (1 - ramp(t, f('f170') + i * 0.1, 0.6)) * ramp(t, f('f169') + i * 0.15, 0.4)); }
+    });
+    G.calendar(c, t, f('f169') - 0.2, S.end + 0.3, 14, 14, { x: 140, y: 110, burn: ramp(t, w('f170', 'gone') - 0.2, 1.8), crack: 1, label: false });
+  } },
+{ id: 'S109', at: 'f171', trans: 'cut', desc: 'The people grid: rows of figures grey out; 20 – 30 MILLION; "battle · massacre · famine · disease".',
+  sfx: [[w('f172', 'twenty'), 'impact', 0.8], [w('f173', 'battle'), 'tick', 0.5], [w('f173', 'massacre'), 'tick', 0.5], [w('f173', 'famine'), 'tick', 0.5], [w('f173', 'disease'), 'tick', 0.5], [f('f171'), 'bell', 0.5]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    const g = ramp(t, f('f171') + 0.3, 6, easeIO);
+    PL.peopleGrid(c, t, { cols: 20, rows: 5, x: 220, y: 520, dx: 78, dy: 92, h: 66, state: k => hash(k) < g * 0.9 ? { color: '#B9AA88', a: 0.6 } : { color: P.ink2 } });
+    G.slam(c, t, [{ t: '20 – 30 MILLION', red: true }, { t: 'by most estimates', small: true }], w('f172', 'twenty') - 0.05, S.end + 0.2, { y: 220, size: 110, mode: 'ink' });
+    ['battle', 'massacre', 'famine', 'disease'].forEach((s, i) => G.text(c, s, 360 + i * 400, 1010, 'italic 400 54px BodoniItalic', P.ink, 'center', ramp(t, w('f173', s) - 0.1, 0.3)));
+  } },
+{ id: 'S110', at: 'f174', trans: 'cut', desc: 'Two bars: the Taiping Rebellion (20–30 million, est.) beside the First World War (about 15–22 million, est.). "Perhaps."',
+  sfx: [[f('f174'), 'whoosh', 0.5], [w('f174', 'First'), 'impact', 0.6]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    const u1 = ramp(t, f('f174'), 1.0, easeOut), u2 = ramp(t, w('f174', 'First') - 0.2, 1.0, easeOut), base = 900, k = 22;
+    const bar = (x, lo, hi, u, col, lab, sub) => { c.fillStyle = rgba(col, 0.35); c.fillRect(x - 110, base - hi * k * u, 220, (hi - lo) * k * u); c.fillStyle = col; c.fillRect(x - 110, base - lo * k * u, 220, lo * k * u); G.text(c, lab, x, base + 60, '600 36px Cinzel', P.ink, 'center', u); G.text(c, sub, x, base + 104, 'italic 400 34px BodoniItalic', P.ink3, 'center', u); };
+    bar(700, 20, 30, u1, P.red, 'Taiping Rebellion', '20–30 million · est.'); bar(1220, 15, 22, u2, P.blue, 'First World War', 'about 15–22 million · est.');
+    c.fillStyle = P.ink2; c.fillRect(480, base, 960, 4);
+    G.slam(c, t, [{ t: 'perhaps more', small: true }], f('f174') - 0.1, S.end + 0.2, { y: 180, size: 110, mode: 'ink' });
+  } },
+{ id: 'S111', at: 'f175', trans: 'cut', desc: 'The Qing survived: the Dragon Throne (callback), Zeng\'s medallion; then the map fills with blue regional-army banners.',
+  sfx: [[w('f175', 'survived'), 'gong', 0.6], [w('f176', 'regional'), 'march', 0.6, 3]],
+  draw(c, t, lt, S) {
+    const sw = f('f176');
+    if (t < sw - 0.1) {
+      cam(c, lt, S, 1.0, 1.06, W / 2, H * 0.5, W / 2, H * 0.48, () => { PL.hallInterior(c, t, { mode: 'qing' }); A.figure(c, 960, 760, 300, PL.shade(CH.emperor, '#2A1E12'), { face: 1, seated: true }); });
+      G.medallion(c, t, 'zengF', 1580, 330, 110, w('f175', 'Zeng') - 0.3, sw, {});
+      G.slam(c, t, [{ t: 'THE QING SURVIVED', gold: true }], w('f175', 'survived') - 0.05, sw, { y: H * 0.82, size: 100 });
+    } else {
+      cam(c, lt, S, 1.0, 1.05, W / 2, H / 2, W / 2, H / 2, () => {
+        PL.chinaMap(c, t, { labels: ['Beijing', 'Nanjing'] });
+        const pts = [[28.0, 112.5], [31.5, 117.0], [30.0, 120.0], [33.5, 113.5], [26.0, 116.0], [35.5, 116.5], [24.5, 110.0], [30.5, 108.0]];
+        pts.forEach((p, i) => { const [x, y] = G.proj(V.cn, p[0], p[1]); const a = ramp(t, sw + i * 0.35, 0.4); if (a <= 0) return; c.save(); c.globalAlpha = a; c.strokeStyle = P.ink2; c.lineWidth = 4; c.beginPath(); c.moveTo(x, y); c.lineTo(x, y - 70); c.stroke(); c.fillStyle = P.blue; c.beginPath(); c.moveTo(x, y - 70); c.lineTo(x + 50, y - 62); c.lineTo(x + 48, y - 38); c.lineTo(x, y - 42); c.fill(); c.restore(); });
+        const [bx, by] = G.proj(V.cn, ...G.PLACES.Beijing); c.strokeStyle = P.gold; c.lineWidth = 5; c.beginPath(); c.arc(bx, by, 36, 0, TAU); c.stroke();
+      });
+      G.slam(c, t, [{ t: 'regional armies', small: true }, { t: 'LOYAL TO THEIR GENERALS' }], w('f176', 'regional') - 0.1, S.end + 0.2, { y: H * 0.86, size: 80, mode: 'ink' });
+    }
+  } },
+{ id: 'S112', at: 'f177', trans: 'black', desc: 'PAYOFF: the Canton exam wall again (same plate), the same list and the red REMEMBER tag; the three-note motif.',
+  sfx: [[f('f177') - 0.1, 'motif', 1.0], [w('f177', 'remember'), 'tick', 0.5]],
+  draw(c, t, lt, S) {
+    const L = PL.EXAM_LIST;
+    cam(c, lt, S, 1.0, 1.3, W / 2, H / 2, L.x - 80, L.y + 20, () => PL.examHall(c, t, { list: { reveal: 1, gap: 1, tag: 1, caption: 'Pass list · Canton · 1837' } }));
+  } },
+{ id: 'S113', at: 'f178', trans: 'cut', desc: 'ABOLISHED 1905 stamps across the list; date-line 1905.',
+  sfx: [[w('f178', 'abolished') - 0.05, 'stamp', 1.0], [w('f178', 'abolished'), 'impact', 0.6]],
+  draw(c, t, lt, S) {
+    const L = PL.EXAM_LIST;
+    cam(c, lt, S, 1.3, 1.36, L.x - 80, L.y + 20, L.x - 90, L.y + 10, () => PL.examHall(c, t, { list: { reveal: 1, gap: 1, gapLabel: false, tag: 1, caption: 'Pass list · Canton · 1837' } }));
+    G.stamp(c, t, 'ABOLISHED 1905', w('f178', 'abolished') - 0.05, S.end + 0.2, { x: W / 2, y: H / 2, size: 130, rot: -0.14 });
+    G.dateLine(c, t, { at: f('f178') + 0.1, out: S.end, event: 'The imperial examinations end', year: 1905, from: 1864, mode: 'light', y: 150, rollDur: 2 });
+  } },
+{ id: 'S114', at: 'f179', trans: 'cut', dark: true, desc: 'The Qing throne room darkens; the gold banners fall; the throne stands empty. OVERTHROWN · 1911.',
+  sfx: [[w('f179', 'dynasty'), 'thunder', 0.6], [w('f179', 'overthrown'), 'impact', 0.9]],
+  draw(c, t, lt, S) {
+    const o = ramp(t, w('f179', 'overthrown') - 0.4, 1.2, easeIn);
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.5, W / 2, H * 0.48, () => {
+      PL.hallInterior(c, t, { mode: 'qing', dark: lerp(0.2, 0.75, o) });
+      fade(c, 1 - o, () => A.figure(c, 960, 760, 300, PL.shade(CH.emperor, '#2A1E12'), { face: 1, seated: true }));
+    });
+    G.slam(c, t, [{ t: 'OVERTHROWN', red: true }, { t: '1911', small: true }], w('f179', 'overthrown') - 0.05, S.end + 0.2, { y: H * 0.3, size: 150 });
+  } },
+{ id: 'S115', at: 'f180', trans: 'cut', desc: 'A year counter rolls 1864 → 1905: 41 YEARS; the student medallion beside the list.',
+  sfx: [[w('f180', 'outlived'), 'tick', 0.6], [w('f180', 'forty'), 'impact', 0.8]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    G.passList(c, t, 520, 560, 560, 520, { reveal: 1, gap: 1, gapLabel: false, tag: 1, caption: 'Pass list · Canton · 1837' });
+    G.medallion(c, t, 'hongStudent', 1350, 330, 110, f('f180') - 0.1, S.end + 0.3, {});
+    G.counter(c, t, 1864, 1905, w('f180', 'outlived') - 0.2, 1.4, 1350, 720, { size: 130, color: P.ink, mode: 'ink', plain: true });
+    G.slam(c, t, [{ t: '41 YEARS', red: true }], w('f180', 'forty') - 0.05, S.end + 0.2, { x: 1350, y: 900, size: 100, mode: 'ink' });
+  } },
+
+// ================================================================ CH 12  A kingdom carved in stone
+{ id: 'S116', at: 'f181', trans: 'black', desc: 'Tiananmen Square today: the Monument to the People\'s Heroes; script "Tiananmen Square"; date-line 1958.',
+  sfx: [[f('f181'), 'wind', 0.5, 8], [w('f181', 'Tiananmen'), 'whoosh', 0.5], [w('f182', 'Monument'), 'bell', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.12, W / 2, H / 2, W * 0.62, H * 0.45, () => PL.tiananmen(c, t));
+    G.scriptName(c, t, 'Tiananmen Square', w('f181', 'Tiananmen') - 0.3, f('f182') + 0.5, { y: H * 0.3, size: 150, mode: 'ink', role: 'Beijing' });
+    G.dateLine(c, t, { at: f('f182') + 0.5, out: S.end, event: 'The Monument to the People\'s Heroes', year: 1958, from: 1952, mode: 'ink', y: 160, x: 200 });
+  } },
+{ id: 'S117', at: 'f183', trans: 'fade', desc: 'The carved stone relief: the camera pans along the figures; on "Jintian" the carving warms to a faint red. "The Jintian Uprising · 1851".',
+  sfx: [[f('f183'), 'wind', 0.4, 8], [w('f184', 'Jintian'), 'gong', 0.6]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.3, 1.15, W * 0.35, H * 0.5, W * 0.62, H * 0.5, () => PL.reliefPanel(c, t, { red: ramp(t, w('f184', 'Jintian') - 0.3, 1.2) }));
+    G.text(c, 'one of eight scenes', W / 2, 120, 'italic 400 44px BodoniItalic', P.ink, 'center', life(t, w('f183', 'eight') - 0.2, f('f184'), 0.3, 0.3));
+    G.slam(c, t, [{ t: 'THE JINTIAN UPRISING' }, { t: '1851', small: true }], w('f184', 'Jintian') - 0.05, S.end + 0.2, { y: H * 0.86, size: 90 });
+  } },
+{ id: 'S118', at: 'f185', trans: 'cut', desc: 'Sun Yat-sen\'s medallion – "drew inspiration from them"; Mao Zedong\'s – "an early revolutionary".',
+  sfx: [[w('f185', 'Sun'), 'whoosh', 0.5], [w('f186', 'Mao'), 'whoosh', 0.5]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    G.medallion(c, t, 'sun', 620, 420, 150, w('f185', 'Sun') - 0.2, S.end + 0.3, {});
+    G.text(c, 'drew inspiration from them', 620, 760, 'italic 400 44px BodoniItalic', P.ink, 'center', ramp(t, w('f185', 'inspiration') - 0.3, 0.4));
+    G.medallion(c, t, 'mao', 1300, 420, 150, w('f186', 'Mao') - 0.2, S.end + 0.3, {});
+    G.text(c, '"an early revolutionary"', 1300, 760, 'italic 400 44px BodoniItalic', P.ink, 'center', ramp(t, w('f186', 'early') - 0.3, 0.4));
+  } },
+{ id: 'S119', at: 'f187', trans: 'cut', desc: 'Nanjing today (callback plate, no flags, daylight); "a museum of the Heavenly Kingdom".',
+  sfx: [[f('f187'), 'village', 0.4, 8], [w('f188', 'museum'), 'bell', 0.5]],
+  draw(c, t, lt, S) {
+    cam(c, lt, S, 1.0, 1.08, W / 2, H / 2, W * 0.42, H * 0.5, () => PL.nanjing(c, t, { dusk: 0.0 }));
+    G.slam(c, t, [{ t: 'rebels against an empire', small: true }], w('f187', 'rebels') - 0.1, f('f188'), { y: H * 0.26, size: 110 });
+    G.scriptName(c, t, 'Nanjing, today', f('f188') - 0.1, S.end + 0.3, { y: H * 0.26, size: 150, role: 'a museum of the Heavenly Kingdom' });
+  } },
+{ id: 'S120', at: 'f189', trans: 'fade', desc: 'The gold dream sky (callback) behind the Heavenly King; then it drains to grey as rows of grey figures fill the frame.',
+  sfx: [[f('f189'), 'chant', 0.4, 4], [w('f190', 'war'), 'thunder', 0.5]],
+  draw(c, t, lt, S) {
+    const g = ramp(t, f('f190') - 0.2, 1.6, easeIO);
+    cam(c, lt, S, 1.0, 1.08, W / 2, H * 0.55, W / 2, H * 0.5, () => { PL.dream(c, t, {}); A.figure(c, 960, 980, 380, CH.hong, { face: 1, armF: 20, elbF: 30 }); });
+    if (g > 0) { c.save(); c.globalAlpha = g * 0.85; c.fillStyle = '#8C887E'; c.fillRect(0, 0, W, H); c.restore(); PL.peopleGrid(c, t, { cols: 22, rows: 4, x: 140, y: 640, dx: 75, dy: 110, h: 72, state: k => ({ color: '#5E5A52', a: g * (hash(k) < 0.95 ? 1 : 0) }) }); }
+  } },
+{ id: 'S121', at: 'f191', trans: 'cut', desc: 'The final question: the Heavenly King\'s medallion between REVOLUTION and CATASTROPHE; "China is still deciding"; fade to black.',
+  sfx: [[w('f191', 'revolution'), 'impact', 0.6], [w('f191', 'catastrophe'), 'impact', 0.6], [w('f192', 'deciding'), 'bell', 0.6]],
+  draw(c, t, lt, S) {
+    parchment(c, t);
+    G.medallion(c, t, 'hong', W / 2, 430, 170, f('f191') - 0.2, S.end + 0.3, { role: 'the Heavenly King' });
+    G.slam(c, t, [{ t: 'REVOLUTION' }], w('f191', 'revolution') - 0.05, S.end + 0.2, { x: 400, y: 450, size: 90, mode: 'ink' });
+    G.slam(c, t, [{ t: 'CATASTROPHE', red: true }], w('f191', 'catastrophe') - 0.05, S.end + 0.2, { x: 1520, y: 450, size: 90, mode: 'ink' });
+    G.text(c, 'China is still deciding', W / 2, 860, 'italic 400 56px BodoniItalic', P.ink, 'center', ramp(t, w('f192', 'China') - 0.2, 0.6));
+    dim(c, ramp(t, e('f192') + 0.3, 1.2));
   } },
 ];
-
-function modernCard(c, t, x, y, hi) {
-  c.save(); c.translate(x, y); c.rotate(0.03);
-  c.shadowColor = 'rgba(0,0,0,0.35)'; c.shadowBlur = 24; c.shadowOffsetY = 8; c.fillStyle = '#F7F6F1'; c.fillRect(-330, -420, 660, 840); c.shadowBlur = 0; c.shadowOffsetY = 0;
-  c.fillStyle = '#2E4A6A'; c.fillRect(-330, -420, 660, 70);
-  G.text(c, 'COMMUNITY CHARGE', -300, -240, '700 52px Oswald', hi ? P.ink : '#4A4A4A', 'left');
-  G.text(c, 'Demand notice · 1990', -300, -190, '400 28px Oswald', '#6A6A6A', 'left');
-  c.fillStyle = '#C9C9C2'; for (let i = 0; i < 12; i++) c.fillRect(-300, -120 + i * 38, i % 4 === 3 ? 300 : 560, 14);
-  c.strokeStyle = '#6A6A6A'; c.lineWidth = 2; c.strokeRect(80, 300, 220, 80); G.text(c, 'per adult', 190, 352, '400 26px Oswald', '#4A4A4A', 'center');
-  c.restore();
-}

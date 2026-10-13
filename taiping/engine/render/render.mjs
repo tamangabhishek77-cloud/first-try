@@ -63,7 +63,7 @@ export function frameAt(t, frameNo = 0) {
   }
   // ---- global overlay: the fuse at each chapter start
   T.chapters.forEach((ch, n) => { if (n === 0) return; const at = ch.start - 0.1;
-    if (t > at - 0.1 && t < at + 4.6) fuse(ctx, t, at, (n - 1) / 11, n / 11, { dur: 4.4, label: `Chapter ${n} · ${ch.title.replace(/:.*/, '')}`, num: ch.title.includes(':') ? ch.title.split(':')[1].trim() : null, light: (cur.dark ?? false) }); });
+    if (t > at - 0.1 && t < at + 4.6) fuse(ctx, t, at, (n - 1) / (T.chapters.length - 1), n / (T.chapters.length - 1), { dur: 4.4, label: `Chapter ${n} · ${ch.title.replace(/:.*/, '')}`, num: ch.title.includes(':') ? ch.title.split(':')[1].trim() : null, light: (cur.dark ?? false) }); });
   filmLook(ctx, frameNo);
   return main;
 }
