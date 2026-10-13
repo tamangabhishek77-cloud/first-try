@@ -243,3 +243,14 @@ See taiping/plan_and_facts.md for the full fact sheet with sources. Additions ma
 - Chinese text on screen is illustrative brush marks (no CJK font in the engine), by design.
 - Names are pronounced through an IPA lexicon; they're approximations of Mandarin for an English narrator.
 - The Taiping territory on the maps is an approximate outline of the lower-Yangtze heartland (about 1853–60), not a surveyed border.
+
+## Final QA (measured on the 1080p master)
+- Duration 12:29.96; H.264 1920×1080 25 fps (CRF 19, the engine's default encode, stream-copied, not re-encoded); AAC 320k 48 kHz.
+- Loudness −14.0 LUFS integrated, true peak −1.5 dBTP (two-pass loudnorm, linear); music about 20 dB under the voice during speech.
+- Black frames: only the intended ones (the brand sting's first second at 0:37, the final fade at 12:28). No frozen frames ≥ 3 s.
+- Sync spot-check at 10 beats (Remember, Taiping, fell, now, whipped, killed, burned, died, down, abolished): every slam, medallion, stamp and breach lands on its word.
+
+## Delivery
+- deliver/review_720p: 4 parts (.ts) + JOIN.bat; deliver/master_1080p: 42 parts (.ts, each under 29 MB) + JOIN.bat.
+- Parts were cut with ffmpeg -c copy -f segment (MPEG-TS), so each plays on its own, and JOIN.bat rebuilds the file losslessly with Windows' copy /b; if ffmpeg is installed it then remuxes to .mp4 (checked: joined duration 749.98 s).
+- package/: SRT captions, YouTube chapters, description with titles, sources, accuracy notes and pinned comment, four thumbnails plus a phone-size check.
