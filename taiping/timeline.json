@@ -1,0 +1,8952 @@
+{
+ "fps": 25,
+ "duration": 749.941,
+ "chapters": [
+  {
+   "title": "Cold open",
+   "start": 0.6
+  },
+  {
+   "title": "The list",
+   "start": 41.092
+  },
+  {
+   "title": "God's younger son",
+   "start": 99.01
+  },
+  {
+   "title": "Thistle Mountain",
+   "start": 155.884
+  },
+  {
+   "title": "The Heavenly Kingdom",
+   "start": 205.63
+  },
+  {
+   "title": "The Heavenly Capital",
+   "start": 262.294
+  },
+  {
+   "title": "The scholar's army",
+   "start": 321.944
+  },
+  {
+   "title": "The voice of God",
+   "start": 372.247
+  },
+  {
+   "title": "A second chance",
+   "start": 449.555
+  },
+  {
+   "title": "The West chooses",
+   "start": 503.898
+  },
+  {
+   "title": "Manna",
+   "start": 566.428
+  },
+  {
+   "title": "The price",
+   "start": 629.906
+  },
+  {
+   "title": "A kingdom carved in stone",
+   "start": 694.968
+  }
+ ],
+ "frags": [
+  {
+   "id": "f001",
+   "chapter": "Cold open",
+   "text": "In June, eighteen sixty-four, in the besieged city of Nanjing,",
+   "spoken": "In June, eighteen sixty-four, in the besieged city of Nanjing,",
+   "start": 0.6,
+   "dur": 4.072,
+   "words": [
+    {
+     "w": "In",
+     "t": 0.6
+    },
+    {
+     "w": "June,",
+     "t": 0.794
+    },
+    {
+     "w": "eighteen",
+     "t": 1.182
+    },
+    {
+     "w": "sixty-four,",
+     "t": 1.763
+    },
+    {
+     "w": "in",
+     "t": 2.539
+    },
+    {
+     "w": "the",
+     "t": 2.733
+    },
+    {
+     "w": "besieged",
+     "t": 2.991
+    },
+    {
+     "w": "city",
+     "t": 3.573
+    },
+    {
+     "w": "of",
+     "t": 3.896
+    },
+    {
+     "w": "Nanjing,",
+     "t": 4.09
+    }
+   ]
+  },
+  {
+   "id": "f002",
+   "chapter": "Cold open",
+   "text": "a man who believed he was the younger brother of Jesus",
+   "spoken": "a man who believed he was the younger brother of Jesus",
+   "start": 4.892,
+   "dur": 3.676,
+   "words": [
+    {
+     "w": "a",
+     "t": 4.892
+    },
+    {
+     "w": "man",
+     "t": 5.025
+    },
+    {
+     "w": "who",
+     "t": 5.293
+    },
+    {
+     "w": "believed",
+     "t": 5.56
+    },
+    {
+     "w": "he",
+     "t": 6.161
+    },
+    {
+     "w": "was",
+     "t": 6.362
+    },
+    {
+     "w": "the",
+     "t": 6.629
+    },
+    {
+     "w": "younger",
+     "t": 6.897
+    },
+    {
+     "w": "brother",
+     "t": 7.431
+    },
+    {
+     "w": "of",
+     "t": 7.966
+    },
+    {
+     "w": "Jesus",
+     "t": 8.166
+    }
+   ]
+  },
+  {
+   "id": "f003",
+   "chapter": "Cold open",
+   "text": "lay dying in his palace.",
+   "spoken": "lay dying in his palace.",
+   "start": 8.787,
+   "dur": 1.772,
+   "words": [
+    {
+     "w": "lay",
+     "t": 8.787
+    },
+    {
+     "w": "dying",
+     "t": 9.071
+    },
+    {
+     "w": "in",
+     "t": 9.496
+    },
+    {
+     "w": "his",
+     "t": 9.709
+    },
+    {
+     "w": "palace.",
+     "t": 9.993
+    }
+   ]
+  },
+  {
+   "id": "f004",
+   "chapter": "Cold open",
+   "text": "His city was starving.",
+   "spoken": "His city was starving.",
+   "start": 11.04,
+   "dur": 1.564,
+   "words": [
+    {
+     "w": "His",
+     "t": 11.04
+    },
+    {
+     "w": "city",
+     "t": 11.312
+    },
+    {
+     "w": "was",
+     "t": 11.652
+    },
+    {
+     "w": "starving.",
+     "t": 11.924
+    }
+   ]
+  },
+  {
+   "id": "f005",
+   "chapter": "Cold open",
+   "text": "By one of his own generals' accounts,",
+   "spoken": "By one of his own generals' accounts,",
+   "start": 13.084,
+   "dur": 2.175,
+   "words": [
+    {
+     "w": "By",
+     "t": 13.084
+    },
+    {
+     "w": "one",
+     "t": 13.255
+    },
+    {
+     "w": "of",
+     "t": 13.484
+    },
+    {
+     "w": "his",
+     "t": 13.656
+    },
+    {
+     "w": "own",
+     "t": 13.885
+    },
+    {
+     "w": "generals'",
+     "t": 14.114
+    },
+    {
+     "w": "accounts,",
+     "t": 14.686
+    }
+   ]
+  },
+  {
+   "id": "f006",
+   "chapter": "Cold open",
+   "text": "he told his people to eat wild plants, and call it manna.",
+   "spoken": "he told his people to eat wild plants, and call it manna.",
+   "start": 15.479,
+   "dur": 3.498,
+   "words": [
+    {
+     "w": "he",
+     "t": 15.479
+    },
+    {
+     "w": "told",
+     "t": 15.66
+    },
+    {
+     "w": "his",
+     "t": 15.961
+    },
+    {
+     "w": "people",
+     "t": 16.202
+    },
+    {
+     "w": "to",
+     "t": 16.625
+    },
+    {
+     "w": "eat",
+     "t": 16.806
+    },
+    {
+     "w": "wild",
+     "t": 17.047
+    },
+    {
+     "w": "plants,",
+     "t": 17.348
+    },
+    {
+     "w": "and",
+     "t": 17.831
+    },
+    {
+     "w": "call",
+     "t": 18.072
+    },
+    {
+     "w": "it",
+     "t": 18.374
+    },
+    {
+     "w": "manna.",
+     "t": 18.555
+    }
+   ]
+  },
+  {
+   "id": "f007",
+   "chapter": "Cold open",
+   "text": "His war against China's Qing dynasty had torn the country apart,",
+   "spoken": "His war against China's Qing dynasty had torn the country apart,",
+   "start": 19.457,
+   "dur": 4.198,
+   "words": [
+    {
+     "w": "His",
+     "t": 19.457
+    },
+    {
+     "w": "war",
+     "t": 19.715
+    },
+    {
+     "w": "against",
+     "t": 19.973
+    },
+    {
+     "w": "China's",
+     "t": 20.49
+    },
+    {
+     "w": "Qing",
+     "t": 21.007
+    },
+    {
+     "w": "dynasty",
+     "t": 21.33
+    },
+    {
+     "w": "had",
+     "t": 21.847
+    },
+    {
+     "w": "torn",
+     "t": 22.105
+    },
+    {
+     "w": "the",
+     "t": 22.428
+    },
+    {
+     "w": "country",
+     "t": 22.686
+    },
+    {
+     "w": "apart,",
+     "t": 23.203
+    }
+   ]
+  },
+  {
+   "id": "f008",
+   "chapter": "Cold open",
+   "text": "and, by most estimates, killed twenty to thirty million people.",
+   "spoken": "and, by most estimates, killed twenty to thirty million people.",
+   "start": 23.875,
+   "dur": 3.656,
+   "words": [
+    {
+     "w": "and,",
+     "t": 23.875
+    },
+    {
+     "w": "by",
+     "t": 24.161
+    },
+    {
+     "w": "most",
+     "t": 24.332
+    },
+    {
+     "w": "estimates,",
+     "t": 24.618
+    },
+    {
+     "w": "killed",
+     "t": 25.246
+    },
+    {
+     "w": "twenty",
+     "t": 25.646
+    },
+    {
+     "w": "to",
+     "t": 26.046
+    },
+    {
+     "w": "thirty",
+     "t": 26.217
+    },
+    {
+     "w": "million",
+     "t": 26.617
+    },
+    {
+     "w": "people.",
+     "t": 27.074
+    }
+   ]
+  },
+  {
+   "id": "f009",
+   "chapter": "Cold open",
+   "text": "This is the story of the Taiping Rebellion:",
+   "spoken": "This is the story of the Taiping Rebellion:",
+   "start": 28.012,
+   "dur": 2.931,
+   "words": [
+    {
+     "w": "This",
+     "t": 28.012
+    },
+    {
+     "w": "is",
+     "t": 28.345
+    },
+    {
+     "w": "the",
+     "t": 28.544
+    },
+    {
+     "w": "story",
+     "t": 28.811
+    },
+    {
+     "w": "of",
+     "t": 29.211
+    },
+    {
+     "w": "the",
+     "t": 29.41
+    },
+    {
+     "w": "Taiping",
+     "t": 29.677
+    },
+    {
+     "w": "Rebellion:",
+     "t": 30.21
+    }
+   ]
+  },
+  {
+   "id": "f010",
+   "chapter": "Cold open",
+   "text": "how a failed exam student built a kingdom of heaven,",
+   "spoken": "how a failed exam student built a kingdom of heaven,",
+   "start": 31.423,
+   "dur": 3.483,
+   "words": [
+    {
+     "w": "how",
+     "t": 31.423
+    },
+    {
+     "w": "a",
+     "t": 31.686
+    },
+    {
+     "w": "failed",
+     "t": 31.817
+    },
+    {
+     "w": "exam",
+     "t": 32.277
+    },
+    {
+     "w": "student",
+     "t": 32.605
+    },
+    {
+     "w": "built",
+     "t": 33.131
+    },
+    {
+     "w": "a",
+     "t": 33.525
+    },
+    {
+     "w": "kingdom",
+     "t": 33.657
+    },
+    {
+     "w": "of",
+     "t": 34.183
+    },
+    {
+     "w": "heaven,",
+     "t": 34.38
+    }
+   ]
+  },
+  {
+   "id": "f011",
+   "chapter": "Cold open",
+   "text": "and why it ended in fire.",
+   "spoken": "and why it ended in fire.",
+   "start": 35.125,
+   "dur": 1.986,
+   "words": [
+    {
+     "w": "and",
+     "t": 35.125
+    },
+    {
+     "w": "why",
+     "t": 35.431
+    },
+    {
+     "w": "it",
+     "t": 35.737
+    },
+    {
+     "w": "ended",
+     "t": 35.966
+    },
+    {
+     "w": "in",
+     "t": 36.424
+    },
+    {
+     "w": "fire.",
+     "t": 36.653
+    }
+   ]
+  },
+  {
+   "id": "f012",
+   "chapter": "The list",
+   "text": "Canton, southern China, eighteen thirty-seven.",
+   "spoken": "Canton, southern China, eighteen thirty-seven.",
+   "start": 41.092,
+   "dur": 3.177,
+   "words": [
+    {
+     "w": "Canton,",
+     "t": 41.092
+    },
+    {
+     "w": "southern",
+     "t": 41.633
+    },
+    {
+     "w": "China,",
+     "t": 42.241
+    },
+    {
+     "w": "eighteen",
+     "t": 42.714
+    },
+    {
+     "w": "thirty-seven.",
+     "t": 43.323
+    }
+   ]
+  },
+  {
+   "id": "f013",
+   "chapter": "The list",
+   "text": "Thousands of young men crowded the city to sit the imperial exams.",
+   "spoken": "Thousands of young men crowded the city to sit the imperial exams.",
+   "start": 44.749,
+   "dur": 4.656,
+   "words": [
+    {
+     "w": "Thousands",
+     "t": 44.749
+    },
+    {
+     "w": "of",
+     "t": 45.444
+    },
+    {
+     "w": "young",
+     "t": 45.652
+    },
+    {
+     "w": "men",
+     "t": 46.069
+    },
+    {
+     "w": "crowded",
+     "t": 46.347
+    },
+    {
+     "w": "the",
+     "t": 46.903
+    },
+    {
+     "w": "city",
+     "t": 47.181
+    },
+    {
+     "w": "to",
+     "t": 47.529
+    },
+    {
+     "w": "sit",
+     "t": 47.737
+    },
+    {
+     "w": "the",
+     "t": 48.015
+    },
+    {
+     "w": "imperial",
+     "t": 48.293
+    },
+    {
+     "w": "exams.",
+     "t": 48.918
+    }
+   ]
+  },
+  {
+   "id": "f014",
+   "chapter": "The list",
+   "text": "Pass, and you could become an official: rich, respected, safe.",
+   "spoken": "Pass, and you could become an official: rich, respected, safe.",
+   "start": 49.885,
+   "dur": 3.778,
+   "words": [
+    {
+     "w": "Pass,",
+     "t": 49.885
+    },
+    {
+     "w": "and",
+     "t": 50.245
+    },
+    {
+     "w": "you",
+     "t": 50.485
+    },
+    {
+     "w": "could",
+     "t": 50.724
+    },
+    {
+     "w": "become",
+     "t": 51.084
+    },
+    {
+     "w": "an",
+     "t": 51.504
+    },
+    {
+     "w": "official:",
+     "t": 51.684
+    },
+    {
+     "w": "rich,",
+     "t": 52.283
+    },
+    {
+     "w": "respected,",
+     "t": 52.643
+    },
+    {
+     "w": "safe.",
+     "t": 53.303
+    }
+   ]
+  },
+  {
+   "id": "f015",
+   "chapter": "The list",
+   "text": "Fail, and you went home with nothing.",
+   "spoken": "Fail, and you went home with nothing.",
+   "start": 54.143,
+   "dur": 2.16,
+   "words": [
+    {
+     "w": "Fail,",
+     "t": 54.143
+    },
+    {
+     "w": "and",
+     "t": 54.484
+    },
+    {
+     "w": "you",
+     "t": 54.711
+    },
+    {
+     "w": "went",
+     "t": 54.938
+    },
+    {
+     "w": "home",
+     "t": 55.223
+    },
+    {
+     "w": "with",
+     "t": 55.507
+    },
+    {
+     "w": "nothing.",
+     "t": 55.791
+    }
+   ]
+  },
+  {
+   "id": "f016",
+   "chapter": "The list",
+   "text": "Hong Xiuquan was twenty-three, the son of Hakka farmers.",
+   "spoken": "Hong Xiuquan was twenty-three, the son of Hakka farmers.",
+   "start": 56.782,
+   "dur": 3.735,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 56.782
+    },
+    {
+     "w": "Xiuquan",
+     "t": 57.11
+    },
+    {
+     "w": "was",
+     "t": 57.634
+    },
+    {
+     "w": "twenty-three,",
+     "t": 57.896
+    },
+    {
+     "w": "the",
+     "t": 58.814
+    },
+    {
+     "w": "son",
+     "t": 59.076
+    },
+    {
+     "w": "of",
+     "t": 59.338
+    },
+    {
+     "w": "Hakka",
+     "t": 59.534
+    },
+    {
+     "w": "farmers.",
+     "t": 59.927
+    }
+   ]
+  },
+  {
+   "id": "f017",
+   "chapter": "The list",
+   "text": "He had already failed twice.",
+   "spoken": "He had already failed twice.",
+   "start": 60.997,
+   "dur": 1.744,
+   "words": [
+    {
+     "w": "He",
+     "t": 60.997
+    },
+    {
+     "w": "had",
+     "t": 61.178
+    },
+    {
+     "w": "already",
+     "t": 61.418
+    },
+    {
+     "w": "failed",
+     "t": 61.899
+    },
+    {
+     "w": "twice.",
+     "t": 62.32
+    }
+   ]
+  },
+  {
+   "id": "f018",
+   "chapter": "The list",
+   "text": "That spring, the results were posted again.",
+   "spoken": "That spring, the results were posted again.",
+   "start": 63.221,
+   "dur": 2.537,
+   "words": [
+    {
+     "w": "That",
+     "t": 63.221
+    },
+    {
+     "w": "spring,",
+     "t": 63.51
+    },
+    {
+     "w": "the",
+     "t": 63.971
+    },
+    {
+     "w": "results",
+     "t": 64.201
+    },
+    {
+     "w": "were",
+     "t": 64.663
+    },
+    {
+     "w": "posted",
+     "t": 64.951
+    },
+    {
+     "w": "again.",
+     "t": 65.354
+    }
+   ]
+  },
+  {
+   "id": "f019",
+   "chapter": "The list",
+   "text": "His name was not on the list.",
+   "spoken": "His name was not on the list.",
+   "start": 66.238,
+   "dur": 2.033,
+   "words": [
+    {
+     "w": "His",
+     "t": 66.238
+    },
+    {
+     "w": "name",
+     "t": 66.509
+    },
+    {
+     "w": "was",
+     "t": 66.848
+    },
+    {
+     "w": "not",
+     "t": 67.119
+    },
+    {
+     "w": "on",
+     "t": 67.39
+    },
+    {
+     "w": "the",
+     "t": 67.593
+    },
+    {
+     "w": "list.",
+     "t": 67.865
+    }
+   ]
+  },
+  {
+   "id": "f020",
+   "chapter": "The list",
+   "text": "Remember that list. It will matter later.",
+   "spoken": "Remember that list. It will matter later.",
+   "start": 68.751,
+   "dur": 2.513,
+   "words": [
+    {
+     "w": "Remember",
+     "t": 68.751
+    },
+    {
+     "w": "that",
+     "t": 69.29
+    },
+    {
+     "w": "list.",
+     "t": 69.589
+    },
+    {
+     "w": "It",
+     "t": 69.948
+    },
+    {
+     "w": "will",
+     "t": 70.128
+    },
+    {
+     "w": "matter",
+     "t": 70.427
+    },
+    {
+     "w": "later.",
+     "t": 70.846
+    }
+   ]
+  },
+  {
+   "id": "f021",
+   "chapter": "The list",
+   "text": "Hong collapsed. He was carried home, and for weeks, he raved.",
+   "spoken": "Hong collapsed. He was carried home, and for weeks, he raved.",
+   "start": 71.745,
+   "dur": 3.76,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 71.745
+    },
+    {
+     "w": "collapsed.",
+     "t": 72.048
+    },
+    {
+     "w": "He",
+     "t": 72.715
+    },
+    {
+     "w": "was",
+     "t": 72.897
+    },
+    {
+     "w": "carried",
+     "t": 73.14
+    },
+    {
+     "w": "home,",
+     "t": 73.625
+    },
+    {
+     "w": "and",
+     "t": 73.989
+    },
+    {
+     "w": "for",
+     "t": 74.231
+    },
+    {
+     "w": "weeks,",
+     "t": 74.474
+    },
+    {
+     "w": "he",
+     "t": 74.899
+    },
+    {
+     "w": "raved.",
+     "t": 75.08
+    }
+   ]
+  },
+  {
+   "id": "f022",
+   "chapter": "The list",
+   "text": "His family thought he was dying.",
+   "spoken": "His family thought he was dying.",
+   "start": 75.985,
+   "dur": 2.057,
+   "words": [
+    {
+     "w": "His",
+     "t": 75.985
+    },
+    {
+     "w": "family",
+     "t": 76.234
+    },
+    {
+     "w": "thought",
+     "t": 76.671
+    },
+    {
+     "w": "he",
+     "t": 77.169
+    },
+    {
+     "w": "was",
+     "t": 77.356
+    },
+    {
+     "w": "dying.",
+     "t": 77.606
+    }
+   ]
+  },
+  {
+   "id": "f023",
+   "chapter": "The list",
+   "text": "In his fever, he rose into a palace in the sky.",
+   "spoken": "In his fever, he rose into a palace in the sky.",
+   "start": 78.522,
+   "dur": 3.236,
+   "words": [
+    {
+     "w": "In",
+     "t": 78.522
+    },
+    {
+     "w": "his",
+     "t": 78.724
+    },
+    {
+     "w": "fever,",
+     "t": 78.994
+    },
+    {
+     "w": "he",
+     "t": 79.466
+    },
+    {
+     "w": "rose",
+     "t": 79.668
+    },
+    {
+     "w": "into",
+     "t": 80.005
+    },
+    {
+     "w": "a",
+     "t": 80.342
+    },
+    {
+     "w": "palace",
+     "t": 80.477
+    },
+    {
+     "w": "in",
+     "t": 80.949
+    },
+    {
+     "w": "the",
+     "t": 81.151
+    },
+    {
+     "w": "sky.",
+     "t": 81.421
+    }
+   ]
+  },
+  {
+   "id": "f024",
+   "chapter": "The list",
+   "text": "An old man with a golden beard handed him a sword,",
+   "spoken": "An old man with a golden beard handed him a sword,",
+   "start": 82.238,
+   "dur": 3.301,
+   "words": [
+    {
+     "w": "An",
+     "t": 82.238
+    },
+    {
+     "w": "old",
+     "t": 82.432
+    },
+    {
+     "w": "man",
+     "t": 82.691
+    },
+    {
+     "w": "with",
+     "t": 82.95
+    },
+    {
+     "w": "a",
+     "t": 83.274
+    },
+    {
+     "w": "golden",
+     "t": 83.403
+    },
+    {
+     "w": "beard",
+     "t": 83.856
+    },
+    {
+     "w": "handed",
+     "t": 84.245
+    },
+    {
+     "w": "him",
+     "t": 84.698
+    },
+    {
+     "w": "a",
+     "t": 84.957
+    },
+    {
+     "w": "sword,",
+     "t": 85.086
+    }
+   ]
+  },
+  {
+   "id": "f025",
+   "chapter": "The list",
+   "text": "and told him the world was overrun with demons.",
+   "spoken": "and told him the world was overrun with demons.",
+   "start": 85.759,
+   "dur": 3.141,
+   "words": [
+    {
+     "w": "and",
+     "t": 85.759
+    },
+    {
+     "w": "told",
+     "t": 86.021
+    },
+    {
+     "w": "him",
+     "t": 86.348
+    },
+    {
+     "w": "the",
+     "t": 86.61
+    },
+    {
+     "w": "world",
+     "t": 86.872
+    },
+    {
+     "w": "was",
+     "t": 87.265
+    },
+    {
+     "w": "overrun",
+     "t": 87.526
+    },
+    {
+     "w": "with",
+     "t": 88.05
+    },
+    {
+     "w": "demons.",
+     "t": 88.377
+    }
+   ]
+  },
+  {
+   "id": "f026",
+   "chapter": "The list",
+   "text": "A younger man, whom Hong called his elder brother,",
+   "spoken": "A younger man, whom Hong called his elder brother,",
+   "start": 89.381,
+   "dur": 2.906,
+   "words": [
+    {
+     "w": "A",
+     "t": 89.381
+    },
+    {
+     "w": "younger",
+     "t": 89.495
+    },
+    {
+     "w": "man,",
+     "t": 89.95
+    },
+    {
+     "w": "whom",
+     "t": 90.235
+    },
+    {
+     "w": "Hong",
+     "t": 90.52
+    },
+    {
+     "w": "called",
+     "t": 90.805
+    },
+    {
+     "w": "his",
+     "t": 91.204
+    },
+    {
+     "w": "elder",
+     "t": 91.432
+    },
+    {
+     "w": "brother,",
+     "t": 91.774
+    }
+   ]
+  },
+  {
+   "id": "f027",
+   "chapter": "The list",
+   "text": "helped him hunt them down.",
+   "spoken": "helped him hunt them down.",
+   "start": 92.507,
+   "dur": 1.585,
+   "words": [
+    {
+     "w": "helped",
+     "t": 92.507
+    },
+    {
+     "w": "him",
+     "t": 92.918
+    },
+    {
+     "w": "hunt",
+     "t": 93.153
+    },
+    {
+     "w": "them",
+     "t": 93.446
+    },
+    {
+     "w": "down.",
+     "t": 93.74
+    }
+   ]
+  },
+  {
+   "id": "f028",
+   "chapter": "The list",
+   "text": "For six years, the dream meant nothing at all.",
+   "spoken": "For six years, the dream meant nothing at all.",
+   "start": 94.572,
+   "dur": 2.857,
+   "words": [
+    {
+     "w": "For",
+     "t": 94.572
+    },
+    {
+     "w": "six",
+     "t": 94.815
+    },
+    {
+     "w": "years,",
+     "t": 95.058
+    },
+    {
+     "w": "the",
+     "t": 95.484
+    },
+    {
+     "w": "dream",
+     "t": 95.727
+    },
+    {
+     "w": "meant",
+     "t": 96.092
+    },
+    {
+     "w": "nothing",
+     "t": 96.457
+    },
+    {
+     "w": "at",
+     "t": 96.943
+    },
+    {
+     "w": "all.",
+     "t": 97.126
+    }
+   ]
+  },
+  {
+   "id": "f029",
+   "chapter": "God's younger son",
+   "text": "In eighteen forty-three, Hong failed for the fourth time.",
+   "spoken": "In eighteen forty-three, Hong failed for the fourth time.",
+   "start": 99.01,
+   "dur": 3.432,
+   "words": [
+    {
+     "w": "In",
+     "t": 99.01
+    },
+    {
+     "w": "eighteen",
+     "t": 99.187
+    },
+    {
+     "w": "forty-three,",
+     "t": 99.72
+    },
+    {
+     "w": "Hong",
+     "t": 100.489
+    },
+    {
+     "w": "failed",
+     "t": 100.785
+    },
+    {
+     "w": "for",
+     "t": 101.199
+    },
+    {
+     "w": "the",
+     "t": 101.436
+    },
+    {
+     "w": "fourth",
+     "t": 101.672
+    },
+    {
+     "w": "time.",
+     "t": 102.086
+    }
+   ]
+  },
+  {
+   "id": "f030",
+   "chapter": "God's younger son",
+   "text": "Then he opened a book he had been handed years before:",
+   "spoken": "Then he opened a book he had been handed years before:",
+   "start": 102.921,
+   "dur": 3.29,
+   "words": [
+    {
+     "w": "Then",
+     "t": 102.921
+    },
+    {
+     "w": "he",
+     "t": 103.221
+    },
+    {
+     "w": "opened",
+     "t": 103.4
+    },
+    {
+     "w": "a",
+     "t": 103.819
+    },
+    {
+     "w": "book",
+     "t": 103.938
+    },
+    {
+     "w": "he",
+     "t": 104.238
+    },
+    {
+     "w": "had",
+     "t": 104.417
+    },
+    {
+     "w": "been",
+     "t": 104.656
+    },
+    {
+     "w": "handed",
+     "t": 104.955
+    },
+    {
+     "w": "years",
+     "t": 105.374
+    },
+    {
+     "w": "before:",
+     "t": 105.733
+    }
+   ]
+  },
+  {
+   "id": "f031",
+   "chapter": "God's younger son",
+   "text": "Christian tracts by a Chinese convert named Liang Fa.",
+   "spoken": "Christian tracts by a Chinese convert named Liang Fa.",
+   "start": 106.692,
+   "dur": 3.526,
+   "words": [
+    {
+     "w": "Christian",
+     "t": 106.692
+    },
+    {
+     "w": "tracts",
+     "t": 107.345
+    },
+    {
+     "w": "by",
+     "t": 107.802
+    },
+    {
+     "w": "a",
+     "t": 107.997
+    },
+    {
+     "w": "Chinese",
+     "t": 108.128
+    },
+    {
+     "w": "convert",
+     "t": 108.65
+    },
+    {
+     "w": "named",
+     "t": 109.173
+    },
+    {
+     "w": "Liang",
+     "t": 109.565
+    },
+    {
+     "w": "Fa.",
+     "t": 109.956
+    }
+   ]
+  },
+  {
+   "id": "f032",
+   "chapter": "God's younger son",
+   "text": "Reading them, Hong understood his dream. Or believed he did.",
+   "spoken": "Reading them, Hong understood his dream. Or believed he did.",
+   "start": 110.698,
+   "dur": 3.621,
+   "words": [
+    {
+     "w": "Reading",
+     "t": 110.698
+    },
+    {
+     "w": "them,",
+     "t": 111.173
+    },
+    {
+     "w": "Hong",
+     "t": 111.529
+    },
+    {
+     "w": "understood",
+     "t": 111.826
+    },
+    {
+     "w": "his",
+     "t": 112.479
+    },
+    {
+     "w": "dream.",
+     "t": 112.716
+    },
+    {
+     "w": "Or",
+     "t": 113.132
+    },
+    {
+     "w": "believed",
+     "t": 113.31
+    },
+    {
+     "w": "he",
+     "t": 113.844
+    },
+    {
+     "w": "did.",
+     "t": 114.022
+    }
+   ]
+  },
+  {
+   "id": "f033",
+   "chapter": "God's younger son",
+   "text": "The old man with the golden beard was God the Father.",
+   "spoken": "The old man with the golden beard was God the Father.",
+   "start": 114.799,
+   "dur": 3.472,
+   "words": [
+    {
+     "w": "The",
+     "t": 114.799
+    },
+    {
+     "w": "old",
+     "t": 115.056
+    },
+    {
+     "w": "man",
+     "t": 115.313
+    },
+    {
+     "w": "with",
+     "t": 115.57
+    },
+    {
+     "w": "the",
+     "t": 115.892
+    },
+    {
+     "w": "golden",
+     "t": 116.149
+    },
+    {
+     "w": "beard",
+     "t": 116.599
+    },
+    {
+     "w": "was",
+     "t": 116.985
+    },
+    {
+     "w": "God",
+     "t": 117.242
+    },
+    {
+     "w": "the",
+     "t": 117.499
+    },
+    {
+     "w": "Father.",
+     "t": 117.757
+    }
+   ]
+  },
+  {
+   "id": "f034",
+   "chapter": "God's younger son",
+   "text": "The elder brother was Jesus Christ.",
+   "spoken": "The elder brother was Jesus Christ.",
+   "start": 118.751,
+   "dur": 2.424,
+   "words": [
+    {
+     "w": "The",
+     "t": 118.751
+    },
+    {
+     "w": "elder",
+     "t": 119.02
+    },
+    {
+     "w": "brother",
+     "t": 119.424
+    },
+    {
+     "w": "was",
+     "t": 119.963
+    },
+    {
+     "w": "Jesus",
+     "t": 120.232
+    },
+    {
+     "w": "Christ.",
+     "t": 120.636
+    }
+   ]
+  },
+  {
+   "id": "f035",
+   "chapter": "God's younger son",
+   "text": "Which made Hong the second son of God, sent to slay demons.",
+   "spoken": "Which made Hong the second son of God, sent to slay demons.",
+   "start": 121.655,
+   "dur": 3.842,
+   "words": [
+    {
+     "w": "Which",
+     "t": 121.655
+    },
+    {
+     "w": "made",
+     "t": 122.039
+    },
+    {
+     "w": "Hong",
+     "t": 122.359
+    },
+    {
+     "w": "the",
+     "t": 122.679
+    },
+    {
+     "w": "second",
+     "t": 122.935
+    },
+    {
+     "w": "son",
+     "t": 123.384
+    },
+    {
+     "w": "of",
+     "t": 123.64
+    },
+    {
+     "w": "God,",
+     "t": 123.832
+    },
+    {
+     "w": "sent",
+     "t": 124.152
+    },
+    {
+     "w": "to",
+     "t": 124.472
+    },
+    {
+     "w": "slay",
+     "t": 124.664
+    },
+    {
+     "w": "demons.",
+     "t": 124.984
+    }
+   ]
+  },
+  {
+   "id": "f036",
+   "chapter": "God's younger son",
+   "text": "And the chief demons, he came to believe, were the Manchus,",
+   "spoken": "And the chief demons, he came to believe, were the Manchus,",
+   "start": 125.977,
+   "dur": 3.351,
+   "words": [
+    {
+     "w": "And",
+     "t": 125.977
+    },
+    {
+     "w": "the",
+     "t": 126.2
+    },
+    {
+     "w": "chief",
+     "t": 126.423
+    },
+    {
+     "w": "demons,",
+     "t": 126.758
+    },
+    {
+     "w": "he",
+     "t": 127.205
+    },
+    {
+     "w": "came",
+     "t": 127.373
+    },
+    {
+     "w": "to",
+     "t": 127.652
+    },
+    {
+     "w": "believe,",
+     "t": 127.82
+    },
+    {
+     "w": "were",
+     "t": 128.322
+    },
+    {
+     "w": "the",
+     "t": 128.601
+    },
+    {
+     "w": "Manchus,",
+     "t": 128.825
+    }
+   ]
+  },
+  {
+   "id": "f037",
+   "chapter": "God's younger son",
+   "text": "the foreign dynasty that had ruled China for two centuries.",
+   "spoken": "the foreign dynasty that had ruled China for two centuries.",
+   "start": 129.547,
+   "dur": 3.68,
+   "words": [
+    {
+     "w": "the",
+     "t": 129.547
+    },
+    {
+     "w": "foreign",
+     "t": 129.793
+    },
+    {
+     "w": "dynasty",
+     "t": 130.283
+    },
+    {
+     "w": "that",
+     "t": 130.774
+    },
+    {
+     "w": "had",
+     "t": 131.081
+    },
+    {
+     "w": "ruled",
+     "t": 131.326
+    },
+    {
+     "w": "China",
+     "t": 131.694
+    },
+    {
+     "w": "for",
+     "t": 132.062
+    },
+    {
+     "w": "two",
+     "t": 132.307
+    },
+    {
+     "w": "centuries.",
+     "t": 132.552
+    }
+   ]
+  },
+  {
+   "id": "f038",
+   "chapter": "God's younger son",
+   "text": "By most accounts, he threw the Confucian tablets out of his school,",
+   "spoken": "By most accounts, he threw the Confucian tablets out of his school,",
+   "start": 133.707,
+   "dur": 3.892,
+   "words": [
+    {
+     "w": "By",
+     "t": 133.707
+    },
+    {
+     "w": "most",
+     "t": 133.879
+    },
+    {
+     "w": "accounts,",
+     "t": 134.165
+    },
+    {
+     "w": "he",
+     "t": 134.737
+    },
+    {
+     "w": "threw",
+     "t": 134.909
+    },
+    {
+     "w": "the",
+     "t": 135.252
+    },
+    {
+     "w": "Confucian",
+     "t": 135.481
+    },
+    {
+     "w": "tablets",
+     "t": 136.054
+    },
+    {
+     "w": "out",
+     "t": 136.512
+    },
+    {
+     "w": "of",
+     "t": 136.741
+    },
+    {
+     "w": "his",
+     "t": 136.912
+    },
+    {
+     "w": "school,",
+     "t": 137.141
+    }
+   ]
+  },
+  {
+   "id": "f039",
+   "chapter": "God's younger son",
+   "text": "and lost his teaching job.",
+   "spoken": "and lost his teaching job.",
+   "start": 137.819,
+   "dur": 1.674,
+   "words": [
+    {
+     "w": "and",
+     "t": 137.819
+    },
+    {
+     "w": "lost",
+     "t": 138.067
+    },
+    {
+     "w": "his",
+     "t": 138.377
+    },
+    {
+     "w": "teaching",
+     "t": 138.625
+    },
+    {
+     "w": "job.",
+     "t": 139.183
+    }
+   ]
+  },
+  {
+   "id": "f040",
+   "chapter": "God's younger son",
+   "text": "In eighteen forty-seven, he studied in Canton with an American missionary,",
+   "spoken": "In eighteen forty-seven, he studied in Canton with an American missionary,",
+   "start": 139.973,
+   "dur": 4.593,
+   "words": [
+    {
+     "w": "In",
+     "t": 139.973
+    },
+    {
+     "w": "eighteen",
+     "t": 140.157
+    },
+    {
+     "w": "forty-seven,",
+     "t": 140.708
+    },
+    {
+     "w": "he",
+     "t": 141.504
+    },
+    {
+     "w": "studied",
+     "t": 141.688
+    },
+    {
+     "w": "in",
+     "t": 142.178
+    },
+    {
+     "w": "Canton",
+     "t": 142.362
+    },
+    {
+     "w": "with",
+     "t": 142.79
+    },
+    {
+     "w": "an",
+     "t": 143.096
+    },
+    {
+     "w": "American",
+     "t": 143.28
+    },
+    {
+     "w": "missionary,",
+     "t": 143.831
+    }
+   ]
+  },
+  {
+   "id": "f041",
+   "chapter": "God's younger son",
+   "text": "the Baptist preacher Issachar Roberts.",
+   "spoken": "the Baptist preacher Issachar Roberts.",
+   "start": 144.786,
+   "dur": 2.468,
+   "words": [
+    {
+     "w": "the",
+     "t": 144.786
+    },
+    {
+     "w": "Baptist",
+     "t": 145.039
+    },
+    {
+     "w": "preacher",
+     "t": 145.546
+    },
+    {
+     "w": "Issachar",
+     "t": 146.115
+    },
+    {
+     "w": "Roberts.",
+     "t": 146.685
+    }
+   ]
+  },
+  {
+   "id": "f042",
+   "chapter": "God's younger son",
+   "text": "But the two men fell out, and Hong left unbaptised.",
+   "spoken": "But the two men fell out, and Hong left unbaptised.",
+   "start": 147.734,
+   "dur": 3.316,
+   "words": [
+    {
+     "w": "But",
+     "t": 147.734
+    },
+    {
+     "w": "the",
+     "t": 147.99
+    },
+    {
+     "w": "two",
+     "t": 148.245
+    },
+    {
+     "w": "men",
+     "t": 148.5
+    },
+    {
+     "w": "fell",
+     "t": 148.755
+    },
+    {
+     "w": "out,",
+     "t": 149.074
+    },
+    {
+     "w": "and",
+     "t": 149.392
+    },
+    {
+     "w": "Hong",
+     "t": 149.647
+    },
+    {
+     "w": "left",
+     "t": 149.966
+    },
+    {
+     "w": "unbaptised.",
+     "t": 150.285
+    }
+   ]
+  },
+  {
+   "id": "f043",
+   "chapter": "God's younger son",
+   "text": "He did not need a church. He already had a mission.",
+   "spoken": "He did not need a church. He already had a mission.",
+   "start": 151.53,
+   "dur": 2.774,
+   "words": [
+    {
+     "w": "He",
+     "t": 151.53
+    },
+    {
+     "w": "did",
+     "t": 151.69
+    },
+    {
+     "w": "not",
+     "t": 151.904
+    },
+    {
+     "w": "need",
+     "t": 152.117
+    },
+    {
+     "w": "a",
+     "t": 152.384
+    },
+    {
+     "w": "church.",
+     "t": 152.491
+    },
+    {
+     "w": "He",
+     "t": 152.917
+    },
+    {
+     "w": "already",
+     "t": 153.077
+    },
+    {
+     "w": "had",
+     "t": 153.504
+    },
+    {
+     "w": "a",
+     "t": 153.718
+    },
+    {
+     "w": "mission.",
+     "t": 153.824
+    }
+   ]
+  },
+  {
+   "id": "f044",
+   "chapter": "Thistle Mountain",
+   "text": "That mission found its home in the hills of Guangxi province.",
+   "spoken": "That mission found its home in the hills of Guangxi province.",
+   "start": 155.884,
+   "dur": 3.808,
+   "words": [
+    {
+     "w": "That",
+     "t": 155.884
+    },
+    {
+     "w": "mission",
+     "t": 156.192
+    },
+    {
+     "w": "found",
+     "t": 156.683
+    },
+    {
+     "w": "its",
+     "t": 157.051
+    },
+    {
+     "w": "home",
+     "t": 157.297
+    },
+    {
+     "w": "in",
+     "t": 157.604
+    },
+    {
+     "w": "the",
+     "t": 157.788
+    },
+    {
+     "w": "hills",
+     "t": 158.034
+    },
+    {
+     "w": "of",
+     "t": 158.403
+    },
+    {
+     "w": "Guangxi",
+     "t": 158.587
+    },
+    {
+     "w": "province.",
+     "t": 159.078
+    }
+   ]
+  },
+  {
+   "id": "f045",
+   "chapter": "Thistle Mountain",
+   "text": "One of Hong's first converts, Feng Yunshan, had gone ahead.",
+   "spoken": "One of Hong's first converts, Feng Yunshan, had gone ahead.",
+   "start": 160.172,
+   "dur": 3.706,
+   "words": [
+    {
+     "w": "One",
+     "t": 160.172
+    },
+    {
+     "w": "of",
+     "t": 160.42
+    },
+    {
+     "w": "Hong's",
+     "t": 160.605
+    },
+    {
+     "w": "first",
+     "t": 161.037
+    },
+    {
+     "w": "converts,",
+     "t": 161.408
+    },
+    {
+     "w": "Feng",
+     "t": 162.026
+    },
+    {
+     "w": "Yunshan,",
+     "t": 162.334
+    },
+    {
+     "w": "had",
+     "t": 162.89
+    },
+    {
+     "w": "gone",
+     "t": 163.137
+    },
+    {
+     "w": "ahead.",
+     "t": 163.446
+    }
+   ]
+  },
+  {
+   "id": "f046",
+   "chapter": "Thistle Mountain",
+   "text": "Near Thistle Mountain, he built a congregation: the God Worshipping Society.",
+   "spoken": "Near Thistle Mountain, he built a congregation: the God Worshipping Society.",
+   "start": 164.359,
+   "dur": 4.987,
+   "words": [
+    {
+     "w": "Near",
+     "t": 164.359
+    },
+    {
+     "w": "Thistle",
+     "t": 164.683
+    },
+    {
+     "w": "Mountain,",
+     "t": 165.201
+    },
+    {
+     "w": "he",
+     "t": 165.848
+    },
+    {
+     "w": "built",
+     "t": 166.043
+    },
+    {
+     "w": "a",
+     "t": 166.431
+    },
+    {
+     "w": "congregation:",
+     "t": 166.561
+    },
+    {
+     "w": "the",
+     "t": 167.468
+    },
+    {
+     "w": "God",
+     "t": 167.727
+    },
+    {
+     "w": "Worshipping",
+     "t": 167.986
+    },
+    {
+     "w": "Society.",
+     "t": 168.763
+    }
+   ]
+  },
+  {
+   "id": "f047",
+   "chapter": "Thistle Mountain",
+   "text": "Its people were poor, many of them Hakka, outsiders in their province.",
+   "spoken": "Its people were poor, many of them Hakka, outsiders in their province.",
+   "start": 169.826,
+   "dur": 4.294,
+   "words": [
+    {
+     "w": "Its",
+     "t": 169.826
+    },
+    {
+     "w": "people",
+     "t": 170.068
+    },
+    {
+     "w": "were",
+     "t": 170.491
+    },
+    {
+     "w": "poor,",
+     "t": 170.794
+    },
+    {
+     "w": "many",
+     "t": 171.157
+    },
+    {
+     "w": "of",
+     "t": 171.459
+    },
+    {
+     "w": "them",
+     "t": 171.64
+    },
+    {
+     "w": "Hakka,",
+     "t": 171.943
+    },
+    {
+     "w": "outsiders",
+     "t": 172.366
+    },
+    {
+     "w": "in",
+     "t": 172.971
+    },
+    {
+     "w": "their",
+     "t": 173.153
+    },
+    {
+     "w": "province.",
+     "t": 173.515
+    }
+   ]
+  },
+  {
+   "id": "f048",
+   "chapter": "Thistle Mountain",
+   "text": "And southern China was coming apart.",
+   "spoken": "And southern China was coming apart.",
+   "start": 174.6,
+   "dur": 2.464,
+   "words": [
+    {
+     "w": "And",
+     "t": 174.6
+    },
+    {
+     "w": "southern",
+     "t": 174.867
+    },
+    {
+     "w": "China",
+     "t": 175.466
+    },
+    {
+     "w": "was",
+     "t": 175.866
+    },
+    {
+     "w": "coming",
+     "t": 176.132
+    },
+    {
+     "w": "apart.",
+     "t": 176.598
+    }
+   ]
+  },
+  {
+   "id": "f049",
+   "chapter": "Thistle Mountain",
+   "text": "In eighteen forty-two, Britain had won the First Opium War.",
+   "spoken": "In eighteen forty-two, Britain had won the First Opium War.",
+   "start": 177.544,
+   "dur": 3.918,
+   "words": [
+    {
+     "w": "In",
+     "t": 177.544
+    },
+    {
+     "w": "eighteen",
+     "t": 177.74
+    },
+    {
+     "w": "forty-two,",
+     "t": 178.328
+    },
+    {
+     "w": "Britain",
+     "t": 179.046
+    },
+    {
+     "w": "had",
+     "t": 179.569
+    },
+    {
+     "w": "won",
+     "t": 179.83
+    },
+    {
+     "w": "the",
+     "t": 180.091
+    },
+    {
+     "w": "First",
+     "t": 180.352
+    },
+    {
+     "w": "Opium",
+     "t": 180.744
+    },
+    {
+     "w": "War.",
+     "t": 181.136
+    }
+   ]
+  },
+  {
+   "id": "f050",
+   "chapter": "Thistle Mountain",
+   "text": "Opium flowed in. Silver flowed out.",
+   "spoken": "Opium flowed in. Silver flowed out.",
+   "start": 181.942,
+   "dur": 2.512,
+   "words": [
+    {
+     "w": "Opium",
+     "t": 181.942
+    },
+    {
+     "w": "flowed",
+     "t": 182.361
+    },
+    {
+     "w": "in.",
+     "t": 182.849
+    },
+    {
+     "w": "Silver",
+     "t": 183.128
+    },
+    {
+     "w": "flowed",
+     "t": 183.617
+    },
+    {
+     "w": "out.",
+     "t": 184.105
+    }
+   ]
+  },
+  {
+   "id": "f051",
+   "chapter": "Thistle Mountain",
+   "text": "Bandits, pirates and hunger filled the gap the government left.",
+   "spoken": "Bandits, pirates and hunger filled the gap the government left.",
+   "start": 184.934,
+   "dur": 3.644,
+   "words": [
+    {
+     "w": "Bandits,",
+     "t": 184.934
+    },
+    {
+     "w": "pirates",
+     "t": 185.447
+    },
+    {
+     "w": "and",
+     "t": 185.902
+    },
+    {
+     "w": "hunger",
+     "t": 186.13
+    },
+    {
+     "w": "filled",
+     "t": 186.529
+    },
+    {
+     "w": "the",
+     "t": 186.927
+    },
+    {
+     "w": "gap",
+     "t": 187.155
+    },
+    {
+     "w": "the",
+     "t": 187.383
+    },
+    {
+     "w": "government",
+     "t": 187.611
+    },
+    {
+     "w": "left.",
+     "t": 188.237
+    }
+   ]
+  },
+  {
+   "id": "f052",
+   "chapter": "Thistle Mountain",
+   "text": "So the God Worshippers armed themselves,",
+   "spoken": "So the God Worshippers armed themselves,",
+   "start": 189.059,
+   "dur": 2.504,
+   "words": [
+    {
+     "w": "So",
+     "t": 189.059
+    },
+    {
+     "w": "the",
+     "t": 189.242
+    },
+    {
+     "w": "God",
+     "t": 189.486
+    },
+    {
+     "w": "Worshippers",
+     "t": 189.73
+    },
+    {
+     "w": "armed",
+     "t": 190.463
+    },
+    {
+     "w": "themselves,",
+     "t": 190.83
+    }
+   ]
+  },
+  {
+   "id": "f053",
+   "chapter": "Thistle Mountain",
+   "text": "and pooled their money in a common treasury.",
+   "spoken": "and pooled their money in a common treasury.",
+   "start": 191.783,
+   "dur": 2.662,
+   "words": [
+    {
+     "w": "and",
+     "t": 191.783
+    },
+    {
+     "w": "pooled",
+     "t": 192.019
+    },
+    {
+     "w": "their",
+     "t": 192.434
+    },
+    {
+     "w": "money",
+     "t": 192.789
+    },
+    {
+     "w": "in",
+     "t": 193.144
+    },
+    {
+     "w": "a",
+     "t": 193.321
+    },
+    {
+     "w": "common",
+     "t": 193.439
+    },
+    {
+     "w": "treasury.",
+     "t": 193.854
+    }
+   ]
+  },
+  {
+   "id": "f054",
+   "chapter": "Thistle Mountain",
+   "text": "By late 1850, thousands had gathered at the village of Jintian.",
+   "spoken": "By late eighteen fifty, thousands had gathered at the village of Jintian.",
+   "start": 194.925,
+   "dur": 4.54,
+   "words": [
+    {
+     "w": "By",
+     "t": 194.925
+    },
+    {
+     "w": "late",
+     "t": 195.138
+    },
+    {
+     "w": "1850,",
+     "t": 195.493
+    },
+    {
+     "w": "thousands",
+     "t": 195.918
+    },
+    {
+     "w": "had",
+     "t": 196.628
+    },
+    {
+     "w": "gathered",
+     "t": 196.911
+    },
+    {
+     "w": "at",
+     "t": 197.55
+    },
+    {
+     "w": "the",
+     "t": 197.763
+    },
+    {
+     "w": "village",
+     "t": 198.046
+    },
+    {
+     "w": "of",
+     "t": 198.614
+    },
+    {
+     "w": "Jintian.",
+     "t": 198.827
+    }
+   ]
+  },
+  {
+   "id": "f055",
+   "chapter": "Thistle Mountain",
+   "text": "The Qing sent soldiers to break them. The soldiers were beaten.",
+   "spoken": "The Qing sent soldiers to break them. The soldiers were beaten.",
+   "start": 199.945,
+   "dur": 4.105,
+   "words": [
+    {
+     "w": "The",
+     "t": 199.945
+    },
+    {
+     "w": "Qing",
+     "t": 200.202
+    },
+    {
+     "w": "sent",
+     "t": 200.522
+    },
+    {
+     "w": "soldiers",
+     "t": 200.843
+    },
+    {
+     "w": "to",
+     "t": 201.42
+    },
+    {
+     "w": "break",
+     "t": 201.613
+    },
+    {
+     "w": "them.",
+     "t": 201.998
+    },
+    {
+     "w": "The",
+     "t": 202.383
+    },
+    {
+     "w": "soldiers",
+     "t": 202.639
+    },
+    {
+     "w": "were",
+     "t": 203.217
+    },
+    {
+     "w": "beaten.",
+     "t": 203.537
+    }
+   ]
+  },
+  {
+   "id": "f056",
+   "chapter": "The Heavenly Kingdom",
+   "text": "On the eleventh of January, eighteen fifty-one, Hong's birthday,",
+   "spoken": "On the eleventh of January, eighteen fifty-one, Hong's birthday,",
+   "start": 205.63,
+   "dur": 4.037,
+   "words": [
+    {
+     "w": "On",
+     "t": 205.63
+    },
+    {
+     "w": "the",
+     "t": 205.817
+    },
+    {
+     "w": "eleventh",
+     "t": 206.065
+    },
+    {
+     "w": "of",
+     "t": 206.624
+    },
+    {
+     "w": "January,",
+     "t": 206.81
+    },
+    {
+     "w": "eighteen",
+     "t": 207.369
+    },
+    {
+     "w": "fifty-one,",
+     "t": 207.928
+    },
+    {
+     "w": "Hong's",
+     "t": 208.611
+    },
+    {
+     "w": "birthday,",
+     "t": 209.046
+    }
+   ]
+  },
+  {
+   "id": "f057",
+   "chapter": "The Heavenly Kingdom",
+   "text": "the God Worshippers declared a new state:",
+   "spoken": "the God Worshippers declared a new state:",
+   "start": 209.887,
+   "dur": 2.665,
+   "words": [
+    {
+     "w": "the",
+     "t": 209.887
+    },
+    {
+     "w": "God",
+     "t": 210.141
+    },
+    {
+     "w": "Worshippers",
+     "t": 210.395
+    },
+    {
+     "w": "declared",
+     "t": 211.156
+    },
+    {
+     "w": "a",
+     "t": 211.727
+    },
+    {
+     "w": "new",
+     "t": 211.854
+    },
+    {
+     "w": "state:",
+     "t": 212.108
+    }
+   ]
+  },
+  {
+   "id": "f058",
+   "chapter": "The Heavenly Kingdom",
+   "text": "the Taiping Tianguo, the Heavenly Kingdom of Great Peace.",
+   "spoken": "the Taiping Tianguo, the Heavenly Kingdom of Great Peace.",
+   "start": 213.032,
+   "dur": 3.803,
+   "words": [
+    {
+     "w": "the",
+     "t": 213.032
+    },
+    {
+     "w": "Taiping",
+     "t": 213.295
+    },
+    {
+     "w": "Tianguo,",
+     "t": 213.819
+    },
+    {
+     "w": "the",
+     "t": 214.409
+    },
+    {
+     "w": "Heavenly",
+     "t": 214.672
+    },
+    {
+     "w": "Kingdom",
+     "t": 215.262
+    },
+    {
+     "w": "of",
+     "t": 215.786
+    },
+    {
+     "w": "Great",
+     "t": 215.983
+    },
+    {
+     "w": "Peace.",
+     "t": 216.377
+    }
+   ]
+  },
+  {
+   "id": "f059",
+   "chapter": "The Heavenly Kingdom",
+   "text": "Hong was its Heavenly King.",
+   "spoken": "Hong was its Heavenly King.",
+   "start": 217.316,
+   "dur": 1.812,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 217.316
+    },
+    {
+     "w": "was",
+     "t": 217.639
+    },
+    {
+     "w": "its",
+     "t": 217.898
+    },
+    {
+     "w": "Heavenly",
+     "t": 218.157
+    },
+    {
+     "w": "King.",
+     "t": 218.739
+    }
+   ]
+  },
+  {
+   "id": "f060",
+   "chapter": "The Heavenly Kingdom",
+   "text": "The men cut off the Manchu braid, and grew their hair.",
+   "spoken": "The men cut off the Manchu braid, and grew their hair.",
+   "start": 219.608,
+   "dur": 3.2,
+   "words": [
+    {
+     "w": "The",
+     "t": 219.608
+    },
+    {
+     "w": "men",
+     "t": 219.84
+    },
+    {
+     "w": "cut",
+     "t": 220.073
+    },
+    {
+     "w": "off",
+     "t": 220.306
+    },
+    {
+     "w": "the",
+     "t": 220.539
+    },
+    {
+     "w": "Manchu",
+     "t": 220.771
+    },
+    {
+     "w": "braid,",
+     "t": 221.179
+    },
+    {
+     "w": "and",
+     "t": 221.586
+    },
+    {
+     "w": "grew",
+     "t": 221.818
+    },
+    {
+     "w": "their",
+     "t": 222.109
+    },
+    {
+     "w": "hair.",
+     "t": 222.458
+    }
+   ]
+  },
+  {
+   "id": "f061",
+   "chapter": "The Heavenly Kingdom",
+   "text": "The Qing called them the long-haired rebels.",
+   "spoken": "The Qing called them the long-haired rebels.",
+   "start": 223.287,
+   "dur": 2.778,
+   "words": [
+    {
+     "w": "The",
+     "t": 223.287
+    },
+    {
+     "w": "Qing",
+     "t": 223.534
+    },
+    {
+     "w": "called",
+     "t": 223.843
+    },
+    {
+     "w": "them",
+     "t": 224.275
+    },
+    {
+     "w": "the",
+     "t": 224.584
+    },
+    {
+     "w": "long-haired",
+     "t": 224.831
+    },
+    {
+     "w": "rebels.",
+     "t": 225.572
+    }
+   ]
+  },
+  {
+   "id": "f062",
+   "chapter": "The Heavenly Kingdom",
+   "text": "Beneath Hong, five kings were crowned: East, West, South and North,",
+   "spoken": "Beneath Hong, five kings were crowned: East, West, South and North,",
+   "start": 226.545,
+   "dur": 4.246,
+   "words": [
+    {
+     "w": "Beneath",
+     "t": 226.545
+    },
+    {
+     "w": "Hong,",
+     "t": 227.045
+    },
+    {
+     "w": "five",
+     "t": 227.42
+    },
+    {
+     "w": "kings",
+     "t": 227.732
+    },
+    {
+     "w": "were",
+     "t": 228.107
+    },
+    {
+     "w": "crowned:",
+     "t": 228.419
+    },
+    {
+     "w": "East,",
+     "t": 228.981
+    },
+    {
+     "w": "West,",
+     "t": 229.355
+    },
+    {
+     "w": "South",
+     "t": 229.73
+    },
+    {
+     "w": "and",
+     "t": 230.105
+    },
+    {
+     "w": "North,",
+     "t": 230.354
+    }
+   ]
+  },
+  {
+   "id": "f063",
+   "chapter": "The Heavenly Kingdom",
+   "text": "and one more, the Wing King.",
+   "spoken": "and one more, the Wing King.",
+   "start": 231.012,
+   "dur": 1.912,
+   "words": [
+    {
+     "w": "and",
+     "t": 231.012
+    },
+    {
+     "w": "one",
+     "t": 231.275
+    },
+    {
+     "w": "more,",
+     "t": 231.539
+    },
+    {
+     "w": "the",
+     "t": 231.935
+    },
+    {
+     "w": "Wing",
+     "t": 232.198
+    },
+    {
+     "w": "King.",
+     "t": 232.528
+    }
+   ]
+  },
+  {
+   "id": "f064",
+   "chapter": "The Heavenly Kingdom",
+   "text": "The strongest was the East King, Yang Xiuqing, a former charcoal burner.",
+   "spoken": "The strongest was the East King, Yang Xiuqing, a former charcoal burner.",
+   "start": 233.404,
+   "dur": 4.619,
+   "words": [
+    {
+     "w": "The",
+     "t": 233.404
+    },
+    {
+     "w": "strongest",
+     "t": 233.657
+    },
+    {
+     "w": "was",
+     "t": 234.289
+    },
+    {
+     "w": "the",
+     "t": 234.542
+    },
+    {
+     "w": "East",
+     "t": 234.795
+    },
+    {
+     "w": "King,",
+     "t": 235.112
+    },
+    {
+     "w": "Yang",
+     "t": 235.491
+    },
+    {
+     "w": "Xiuqing,",
+     "t": 235.808
+    },
+    {
+     "w": "a",
+     "t": 236.377
+    },
+    {
+     "w": "former",
+     "t": 236.504
+    },
+    {
+     "w": "charcoal",
+     "t": 236.947
+    },
+    {
+     "w": "burner.",
+     "t": 237.516
+    }
+   ]
+  },
+  {
+   "id": "f065",
+   "chapter": "The Heavenly Kingdom",
+   "text": "Soon the kingdom even had its own calendar.",
+   "spoken": "Soon the kingdom even had its own calendar.",
+   "start": 238.502,
+   "dur": 2.86,
+   "words": [
+    {
+     "w": "Soon",
+     "t": 238.502
+    },
+    {
+     "w": "the",
+     "t": 238.827
+    },
+    {
+     "w": "kingdom",
+     "t": 239.087
+    },
+    {
+     "w": "even",
+     "t": 239.607
+    },
+    {
+     "w": "had",
+     "t": 239.932
+    },
+    {
+     "w": "its",
+     "t": 240.192
+    },
+    {
+     "w": "own",
+     "t": 240.453
+    },
+    {
+     "w": "calendar.",
+     "t": 240.713
+    }
+   ]
+  },
+  {
+   "id": "f066",
+   "chapter": "The Heavenly Kingdom",
+   "text": "Then they marched north.",
+   "spoken": "Then they marched north.",
+   "start": 241.843,
+   "dur": 1.457,
+   "words": [
+    {
+     "w": "Then",
+     "t": 241.843
+    },
+    {
+     "w": "they",
+     "t": 242.134
+    },
+    {
+     "w": "marched",
+     "t": 242.425
+    },
+    {
+     "w": "north.",
+     "t": 242.892
+    }
+   ]
+  },
+  {
+   "id": "f067",
+   "chapter": "The Heavenly Kingdom",
+   "text": "In eighteen fifty-two, two of the five kings fell in battle.",
+   "spoken": "In eighteen fifty-two, two of the five kings fell in battle.",
+   "start": 243.78,
+   "dur": 3.661,
+   "words": [
+    {
+     "w": "In",
+     "t": 243.78
+    },
+    {
+     "w": "eighteen",
+     "t": 243.96
+    },
+    {
+     "w": "fifty-two,",
+     "t": 244.5
+    },
+    {
+     "w": "two",
+     "t": 245.16
+    },
+    {
+     "w": "of",
+     "t": 245.4
+    },
+    {
+     "w": "the",
+     "t": 245.58
+    },
+    {
+     "w": "five",
+     "t": 245.82
+    },
+    {
+     "w": "kings",
+     "t": 246.121
+    },
+    {
+     "w": "fell",
+     "t": 246.481
+    },
+    {
+     "w": "in",
+     "t": 246.781
+    },
+    {
+     "w": "battle.",
+     "t": 246.961
+    }
+   ]
+  },
+  {
+   "id": "f068",
+   "chapter": "The Heavenly Kingdom",
+   "text": "But the army only grew, swelling with every town it took.",
+   "spoken": "But the army only grew, swelling with every town it took.",
+   "start": 247.921,
+   "dur": 3.491,
+   "words": [
+    {
+     "w": "But",
+     "t": 247.921
+    },
+    {
+     "w": "the",
+     "t": 248.162
+    },
+    {
+     "w": "army",
+     "t": 248.403
+    },
+    {
+     "w": "only",
+     "t": 248.704
+    },
+    {
+     "w": "grew,",
+     "t": 249.005
+    },
+    {
+     "w": "swelling",
+     "t": 249.366
+    },
+    {
+     "w": "with",
+     "t": 249.908
+    },
+    {
+     "w": "every",
+     "t": 250.209
+    },
+    {
+     "w": "town",
+     "t": 250.57
+    },
+    {
+     "w": "it",
+     "t": 250.871
+    },
+    {
+     "w": "took.",
+     "t": 251.051
+    }
+   ]
+  },
+  {
+   "id": "f069",
+   "chapter": "The Heavenly Kingdom",
+   "text": "In January 1853, they took the Yangtze city of Wuchang.",
+   "spoken": "In January eighteen fifty-three, they took the Yangtze city of Wuchang.",
+   "start": 251.893,
+   "dur": 4.711,
+   "words": [
+    {
+     "w": "In",
+     "t": 251.893
+    },
+    {
+     "w": "January",
+     "t": 252.145
+    },
+    {
+     "w": "1853,",
+     "t": 252.818
+    },
+    {
+     "w": "they",
+     "t": 253.323
+    },
+    {
+     "w": "took",
+     "t": 253.743
+    },
+    {
+     "w": "the",
+     "t": 254.164
+    },
+    {
+     "w": "Yangtze",
+     "t": 254.5
+    },
+    {
+     "w": "city",
+     "t": 255.173
+    },
+    {
+     "w": "of",
+     "t": 255.594
+    },
+    {
+     "w": "Wuchang.",
+     "t": 255.846
+    }
+   ]
+  },
+  {
+   "id": "f070",
+   "chapter": "The Heavenly Kingdom",
+   "text": "By some estimates, half a million people were now on the move.",
+   "spoken": "By some estimates, half a million people were now on the move.",
+   "start": 257.083,
+   "dur": 3.631,
+   "words": [
+    {
+     "w": "By",
+     "t": 257.083
+    },
+    {
+     "w": "some",
+     "t": 257.256
+    },
+    {
+     "w": "estimates,",
+     "t": 257.544
+    },
+    {
+     "w": "half",
+     "t": 258.178
+    },
+    {
+     "w": "a",
+     "t": 258.467
+    },
+    {
+     "w": "million",
+     "t": 258.582
+    },
+    {
+     "w": "people",
+     "t": 259.043
+    },
+    {
+     "w": "were",
+     "t": 259.446
+    },
+    {
+     "w": "now",
+     "t": 259.734
+    },
+    {
+     "w": "on",
+     "t": 259.965
+    },
+    {
+     "w": "the",
+     "t": 260.138
+    },
+    {
+     "w": "move.",
+     "t": 260.368
+    }
+   ]
+  },
+  {
+   "id": "f071",
+   "chapter": "The Heavenly Capital",
+   "text": "On the nineteenth of March, eighteen fifty-three, they took Nanjing.",
+   "spoken": "On the nineteenth of March, eighteen fifty-three, they took Nanjing.",
+   "start": 262.294,
+   "dur": 3.958,
+   "words": [
+    {
+     "w": "On",
+     "t": 262.294
+    },
+    {
+     "w": "the",
+     "t": 262.466
+    },
+    {
+     "w": "nineteenth",
+     "t": 262.696
+    },
+    {
+     "w": "of",
+     "t": 263.327
+    },
+    {
+     "w": "March,",
+     "t": 263.499
+    },
+    {
+     "w": "eighteen",
+     "t": 263.9
+    },
+    {
+     "w": "fifty-three,",
+     "t": 264.417
+    },
+    {
+     "w": "they",
+     "t": 265.162
+    },
+    {
+     "w": "took",
+     "t": 265.449
+    },
+    {
+     "w": "Nanjing.",
+     "t": 265.736
+    }
+   ]
+  },
+  {
+   "id": "f072",
+   "chapter": "The Heavenly Capital",
+   "text": "By most accounts, the Manchu garrison and its families were massacred.",
+   "spoken": "By most accounts, the Manchu garrison and its families were massacred.",
+   "start": 266.732,
+   "dur": 4.076,
+   "words": [
+    {
+     "w": "By",
+     "t": 266.732
+    },
+    {
+     "w": "most",
+     "t": 266.904
+    },
+    {
+     "w": "accounts,",
+     "t": 267.191
+    },
+    {
+     "w": "the",
+     "t": 267.765
+    },
+    {
+     "w": "Manchu",
+     "t": 267.995
+    },
+    {
+     "w": "garrison",
+     "t": 268.397
+    },
+    {
+     "w": "and",
+     "t": 268.914
+    },
+    {
+     "w": "its",
+     "t": 269.143
+    },
+    {
+     "w": "families",
+     "t": 269.373
+    },
+    {
+     "w": "were",
+     "t": 269.89
+    },
+    {
+     "w": "massacred.",
+     "t": 270.177
+    }
+   ]
+  },
+  {
+   "id": "f073",
+   "chapter": "The Heavenly Capital",
+   "text": "Hong renamed the city Tianjing: the Heavenly Capital.",
+   "spoken": "Hong renamed the city Tianjing: the Heavenly Capital.",
+   "start": 271.288,
+   "dur": 3.581,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 271.288
+    },
+    {
+     "w": "renamed",
+     "t": 271.62
+    },
+    {
+     "w": "the",
+     "t": 272.15
+    },
+    {
+     "w": "city",
+     "t": 272.416
+    },
+    {
+     "w": "Tianjing:",
+     "t": 272.747
+    },
+    {
+     "w": "the",
+     "t": 273.41
+    },
+    {
+     "w": "Heavenly",
+     "t": 273.676
+    },
+    {
+     "w": "Capital.",
+     "t": 274.273
+    }
+   ]
+  },
+  {
+   "id": "f074",
+   "chapter": "The Heavenly Capital",
+   "text": "He moved into a palace, and rarely left it again.",
+   "spoken": "He moved into a palace, and rarely left it again.",
+   "start": 275.349,
+   "dur": 3.019,
+   "words": [
+    {
+     "w": "He",
+     "t": 275.349
+    },
+    {
+     "w": "moved",
+     "t": 275.53
+    },
+    {
+     "w": "into",
+     "t": 275.893
+    },
+    {
+     "w": "a",
+     "t": 276.195
+    },
+    {
+     "w": "palace,",
+     "t": 276.315
+    },
+    {
+     "w": "and",
+     "t": 276.798
+    },
+    {
+     "w": "rarely",
+     "t": 277.04
+    },
+    {
+     "w": "left",
+     "t": 277.462
+    },
+    {
+     "w": "it",
+     "t": 277.764
+    },
+    {
+     "w": "again.",
+     "t": 277.945
+    }
+   ]
+  },
+  {
+   "id": "f075",
+   "chapter": "The Heavenly Capital",
+   "text": "Outside, the new kingdom made laws no Chinese state had made before.",
+   "spoken": "Outside, the new kingdom made laws no Chinese state had made before.",
+   "start": 278.848,
+   "dur": 4.356,
+   "words": [
+    {
+     "w": "Outside,",
+     "t": 278.848
+    },
+    {
+     "w": "the",
+     "t": 279.416
+    },
+    {
+     "w": "new",
+     "t": 279.669
+    },
+    {
+     "w": "kingdom",
+     "t": 279.921
+    },
+    {
+     "w": "made",
+     "t": 280.426
+    },
+    {
+     "w": "laws",
+     "t": 280.742
+    },
+    {
+     "w": "no",
+     "t": 281.058
+    },
+    {
+     "w": "Chinese",
+     "t": 281.247
+    },
+    {
+     "w": "state",
+     "t": 281.752
+    },
+    {
+     "w": "had",
+     "t": 282.131
+    },
+    {
+     "w": "made",
+     "t": 282.383
+    },
+    {
+     "w": "before.",
+     "t": 282.699
+    }
+   ]
+  },
+  {
+   "id": "f076",
+   "chapter": "The Heavenly Capital",
+   "text": "Opium was banned. So were foot-binding, prostitution and buying brides.",
+   "spoken": "Opium was banned. So were foot-binding, prostitution and buying brides.",
+   "start": 283.684,
+   "dur": 4.572,
+   "words": [
+    {
+     "w": "Opium",
+     "t": 283.684
+    },
+    {
+     "w": "was",
+     "t": 284.065
+    },
+    {
+     "w": "banned.",
+     "t": 284.319
+    },
+    {
+     "w": "So",
+     "t": 284.827
+    },
+    {
+     "w": "were",
+     "t": 285.017
+    },
+    {
+     "w": "foot-binding,",
+     "t": 285.335
+    },
+    {
+     "w": "prostitution",
+     "t": 286.224
+    },
+    {
+     "w": "and",
+     "t": 287.049
+    },
+    {
+     "w": "buying",
+     "t": 287.303
+    },
+    {
+     "w": "brides.",
+     "t": 287.747
+    }
+   ]
+  },
+  {
+   "id": "f077",
+   "chapter": "The Heavenly Capital",
+   "text": "On paper, land would be shared equally, between men and women.",
+   "spoken": "On paper, land would be shared equally, between men and women.",
+   "start": 288.735,
+   "dur": 4.016,
+   "words": [
+    {
+     "w": "On",
+     "t": 288.735
+    },
+    {
+     "w": "paper,",
+     "t": 288.927
+    },
+    {
+     "w": "land",
+     "t": 289.373
+    },
+    {
+     "w": "would",
+     "t": 289.691
+    },
+    {
+     "w": "be",
+     "t": 290.074
+    },
+    {
+     "w": "shared",
+     "t": 290.265
+    },
+    {
+     "w": "equally,",
+     "t": 290.711
+    },
+    {
+     "w": "between",
+     "t": 291.285
+    },
+    {
+     "w": "men",
+     "t": 291.795
+    },
+    {
+     "w": "and",
+     "t": 292.05
+    },
+    {
+     "w": "women.",
+     "t": 292.305
+    }
+   ]
+  },
+  {
+   "id": "f078",
+   "chapter": "The Heavenly Capital",
+   "text": "Women could serve as soldiers, and as officials.",
+   "spoken": "Women could serve as soldiers, and as officials.",
+   "start": 293.231,
+   "dur": 2.967,
+   "words": [
+    {
+     "w": "Women",
+     "t": 293.231
+    },
+    {
+     "w": "could",
+     "t": 293.594
+    },
+    {
+     "w": "serve",
+     "t": 293.958
+    },
+    {
+     "w": "as",
+     "t": 294.321
+    },
+    {
+     "w": "soldiers,",
+     "t": 294.502
+    },
+    {
+     "w": "and",
+     "t": 295.108
+    },
+    {
+     "w": "as",
+     "t": 295.35
+    },
+    {
+     "w": "officials.",
+     "t": 295.532
+    }
+   ]
+  },
+  {
+   "id": "f079",
+   "chapter": "The Heavenly Capital",
+   "text": "The kingdom even held its own examinations, set on Hong's Bible,",
+   "spoken": "The kingdom even held its own examinations, set on Hong's Bible,",
+   "start": 296.678,
+   "dur": 4.453,
+   "words": [
+    {
+     "w": "The",
+     "t": 296.678
+    },
+    {
+     "w": "kingdom",
+     "t": 296.952
+    },
+    {
+     "w": "even",
+     "t": 297.5
+    },
+    {
+     "w": "held",
+     "t": 297.843
+    },
+    {
+     "w": "its",
+     "t": 298.185
+    },
+    {
+     "w": "own",
+     "t": 298.459
+    },
+    {
+     "w": "examinations,",
+     "t": 298.733
+    },
+    {
+     "w": "set",
+     "t": 299.692
+    },
+    {
+     "w": "on",
+     "t": 299.966
+    },
+    {
+     "w": "Hong's",
+     "t": 300.172
+    },
+    {
+     "w": "Bible,",
+     "t": 300.651
+    }
+   ]
+  },
+  {
+   "id": "f080",
+   "chapter": "The Heavenly Capital",
+   "text": "by some accounts, with exams for women too.",
+   "spoken": "by some accounts, with exams for women too.",
+   "start": 301.351,
+   "dur": 2.811,
+   "words": [
+    {
+     "w": "by",
+     "t": 301.351
+    },
+    {
+     "w": "some",
+     "t": 301.543
+    },
+    {
+     "w": "accounts,",
+     "t": 301.862
+    },
+    {
+     "w": "with",
+     "t": 302.501
+    },
+    {
+     "w": "exams",
+     "t": 302.82
+    },
+    {
+     "w": "for",
+     "t": 303.204
+    },
+    {
+     "w": "women",
+     "t": 303.459
+    },
+    {
+     "w": "too.",
+     "t": 303.843
+    }
+   ]
+  },
+  {
+   "id": "f081",
+   "chapter": "The Heavenly Capital",
+   "text": "The man who had failed the exams now wrote them.",
+   "spoken": "The man who had failed the exams now wrote them.",
+   "start": 304.642,
+   "dur": 3.071,
+   "words": [
+    {
+     "w": "The",
+     "t": 304.642
+    },
+    {
+     "w": "man",
+     "t": 304.893
+    },
+    {
+     "w": "who",
+     "t": 305.144
+    },
+    {
+     "w": "had",
+     "t": 305.394
+    },
+    {
+     "w": "failed",
+     "t": 305.645
+    },
+    {
+     "w": "the",
+     "t": 306.084
+    },
+    {
+     "w": "exams",
+     "t": 306.334
+    },
+    {
+     "w": "now",
+     "t": 306.711
+    },
+    {
+     "w": "wrote",
+     "t": 306.961
+    },
+    {
+     "w": "them.",
+     "t": 307.337
+    }
+   ]
+  },
+  {
+   "id": "f082",
+   "chapter": "The Heavenly Capital",
+   "text": "But much of it never left the page.",
+   "spoken": "But much of it never left the page.",
+   "start": 308.193,
+   "dur": 2.234,
+   "words": [
+    {
+     "w": "But",
+     "t": 308.193
+    },
+    {
+     "w": "much",
+     "t": 308.442
+    },
+    {
+     "w": "of",
+     "t": 308.752
+    },
+    {
+     "w": "it",
+     "t": 308.938
+    },
+    {
+     "w": "never",
+     "t": 309.124
+    },
+    {
+     "w": "left",
+     "t": 309.497
+    },
+    {
+     "w": "the",
+     "t": 309.807
+    },
+    {
+     "w": "page.",
+     "t": 310.055
+    }
+   ]
+  },
+  {
+   "id": "f083",
+   "chapter": "The Heavenly Capital",
+   "text": "Men and women lived apart, even husbands and wives.",
+   "spoken": "Men and women lived apart, even husbands and wives.",
+   "start": 310.907,
+   "dur": 3.579,
+   "words": [
+    {
+     "w": "Men",
+     "t": 310.907
+    },
+    {
+     "w": "and",
+     "t": 311.183
+    },
+    {
+     "w": "women",
+     "t": 311.458
+    },
+    {
+     "w": "lived",
+     "t": 311.871
+    },
+    {
+     "w": "apart,",
+     "t": 312.284
+    },
+    {
+     "w": "even",
+     "t": 312.766
+    },
+    {
+     "w": "husbands",
+     "t": 313.11
+    },
+    {
+     "w": "and",
+     "t": 313.73
+    },
+    {
+     "w": "wives.",
+     "t": 314.005
+    }
+   ]
+  },
+  {
+   "id": "f084",
+   "chapter": "The Heavenly Capital",
+   "text": "And while followers were told to own nothing,",
+   "spoken": "And while followers were told to own nothing,",
+   "start": 314.967,
+   "dur": 2.637,
+   "words": [
+    {
+     "w": "And",
+     "t": 314.967
+    },
+    {
+     "w": "while",
+     "t": 315.196
+    },
+    {
+     "w": "followers",
+     "t": 315.54
+    },
+    {
+     "w": "were",
+     "t": 316.113
+    },
+    {
+     "w": "told",
+     "t": 316.4
+    },
+    {
+     "w": "to",
+     "t": 316.686
+    },
+    {
+     "w": "own",
+     "t": 316.858
+    },
+    {
+     "w": "nothing,",
+     "t": 317.088
+    }
+   ]
+  },
+  {
+   "id": "f085",
+   "chapter": "The Heavenly Capital",
+   "text": "the kings kept palaces and harems.",
+   "spoken": "the kings kept palaces and harems.",
+   "start": 317.823,
+   "dur": 2.54,
+   "words": [
+    {
+     "w": "the",
+     "t": 317.823
+    },
+    {
+     "w": "kings",
+     "t": 318.114
+    },
+    {
+     "w": "kept",
+     "t": 318.549
+    },
+    {
+     "w": "palaces",
+     "t": 318.912
+    },
+    {
+     "w": "and",
+     "t": 319.493
+    },
+    {
+     "w": "harems.",
+     "t": 319.783
+    }
+   ]
+  },
+  {
+   "id": "f086",
+   "chapter": "The scholar's army",
+   "text": "The Qing's own armies were failing.",
+   "spoken": "The Qing's own armies were failing.",
+   "start": 321.944,
+   "dur": 2.506,
+   "words": [
+    {
+     "w": "The",
+     "t": 321.944
+    },
+    {
+     "w": "Qing's",
+     "t": 322.222
+    },
+    {
+     "w": "own",
+     "t": 322.709
+    },
+    {
+     "w": "armies",
+     "t": 322.988
+    },
+    {
+     "w": "were",
+     "t": 323.475
+    },
+    {
+     "w": "failing.",
+     "t": 323.823
+    }
+   ]
+  },
+  {
+   "id": "f087",
+   "chapter": "The scholar's army",
+   "text": "So the dynasty turned to a scholar from Hunan named Zeng Guofan.",
+   "spoken": "So the dynasty turned to a scholar from Hunan named Zeng Guofan.",
+   "start": 324.93,
+   "dur": 4.209,
+   "words": [
+    {
+     "w": "So",
+     "t": 324.93
+    },
+    {
+     "w": "the",
+     "t": 325.124
+    },
+    {
+     "w": "dynasty",
+     "t": 325.383
+    },
+    {
+     "w": "turned",
+     "t": 325.901
+    },
+    {
+     "w": "to",
+     "t": 326.354
+    },
+    {
+     "w": "a",
+     "t": 326.549
+    },
+    {
+     "w": "scholar",
+     "t": 326.678
+    },
+    {
+     "w": "from",
+     "t": 327.196
+    },
+    {
+     "w": "Hunan",
+     "t": 327.52
+    },
+    {
+     "w": "named",
+     "t": 327.909
+    },
+    {
+     "w": "Zeng",
+     "t": 328.297
+    },
+    {
+     "w": "Guofan.",
+     "t": 328.621
+    }
+   ]
+  },
+  {
+   "id": "f088",
+   "chapter": "The scholar's army",
+   "text": "Zeng was everything Hong was not:",
+   "spoken": "Zeng was everything Hong was not:",
+   "start": 329.619,
+   "dur": 2.331,
+   "words": [
+    {
+     "w": "Zeng",
+     "t": 329.619
+    },
+    {
+     "w": "was",
+     "t": 329.962
+    },
+    {
+     "w": "everything",
+     "t": 330.236
+    },
+    {
+     "w": "Hong",
+     "t": 330.99
+    },
+    {
+     "w": "was",
+     "t": 331.333
+    },
+    {
+     "w": "not:",
+     "t": 331.608
+    }
+   ]
+  },
+  {
+   "id": "f089",
+   "chapter": "The scholar's army",
+   "text": "a Confucian official who had passed every examination.",
+   "spoken": "a Confucian official who had passed every examination.",
+   "start": 332.43,
+   "dur": 3.736,
+   "words": [
+    {
+     "w": "a",
+     "t": 332.43
+    },
+    {
+     "w": "Confucian",
+     "t": 332.566
+    },
+    {
+     "w": "official",
+     "t": 333.246
+    },
+    {
+     "w": "who",
+     "t": 333.857
+    },
+    {
+     "w": "had",
+     "t": 334.129
+    },
+    {
+     "w": "passed",
+     "t": 334.4
+    },
+    {
+     "w": "every",
+     "t": 334.876
+    },
+    {
+     "w": "examination.",
+     "t": 335.283
+    }
+   ]
+  },
+  {
+   "id": "f090",
+   "chapter": "The scholar's army",
+   "text": "He raised a new army in his home province,",
+   "spoken": "He raised a new army in his home province,",
+   "start": 336.646,
+   "dur": 2.688,
+   "words": [
+    {
+     "w": "He",
+     "t": 336.646
+    },
+    {
+     "w": "raised",
+     "t": 336.834
+    },
+    {
+     "w": "a",
+     "t": 337.271
+    },
+    {
+     "w": "new",
+     "t": 337.396
+    },
+    {
+     "w": "army",
+     "t": 337.646
+    },
+    {
+     "w": "in",
+     "t": 337.959
+    },
+    {
+     "w": "his",
+     "t": 338.147
+    },
+    {
+     "w": "home",
+     "t": 338.397
+    },
+    {
+     "w": "province,",
+     "t": 338.709
+    }
+   ]
+  },
+  {
+   "id": "f091",
+   "chapter": "The scholar's army",
+   "text": "the Hunan Army, recruited village by village, loyal to its own officers.",
+   "spoken": "the Hunan Army, recruited village by village, loyal to its own officers.",
+   "start": 339.554,
+   "dur": 4.905,
+   "words": [
+    {
+     "w": "the",
+     "t": 339.554
+    },
+    {
+     "w": "Hunan",
+     "t": 339.823
+    },
+    {
+     "w": "Army,",
+     "t": 340.226
+    },
+    {
+     "w": "recruited",
+     "t": 340.629
+    },
+    {
+     "w": "village",
+     "t": 341.301
+    },
+    {
+     "w": "by",
+     "t": 341.839
+    },
+    {
+     "w": "village,",
+     "t": 342.04
+    },
+    {
+     "w": "loyal",
+     "t": 342.645
+    },
+    {
+     "w": "to",
+     "t": 343.048
+    },
+    {
+     "w": "its",
+     "t": 343.249
+    },
+    {
+     "w": "own",
+     "t": 343.518
+    },
+    {
+     "w": "officers.",
+     "t": 343.787
+    }
+   ]
+  },
+  {
+   "id": "f092",
+   "chapter": "The scholar's army",
+   "text": "After one early defeat, by most accounts, he tried to drown himself.",
+   "spoken": "After one early defeat, by most accounts, he tried to drown himself.",
+   "start": 344.939,
+   "dur": 4.539,
+   "words": [
+    {
+     "w": "After",
+     "t": 344.939
+    },
+    {
+     "w": "one",
+     "t": 345.334
+    },
+    {
+     "w": "early",
+     "t": 345.597
+    },
+    {
+     "w": "defeat,",
+     "t": 345.991
+    },
+    {
+     "w": "by",
+     "t": 346.518
+    },
+    {
+     "w": "most",
+     "t": 346.715
+    },
+    {
+     "w": "accounts,",
+     "t": 347.044
+    },
+    {
+     "w": "he",
+     "t": 347.702
+    },
+    {
+     "w": "tried",
+     "t": 347.899
+    },
+    {
+     "w": "to",
+     "t": 348.294
+    },
+    {
+     "w": "drown",
+     "t": 348.491
+    },
+    {
+     "w": "himself.",
+     "t": 348.886
+    }
+   ]
+  },
+  {
+   "id": "f093",
+   "chapter": "The scholar's army",
+   "text": "Meanwhile, the Taiping sent an army north, to take Beijing.",
+   "spoken": "Meanwhile, the Taiping sent an army north, to take Beijing.",
+   "start": 349.958,
+   "dur": 3.733,
+   "words": [
+    {
+     "w": "Meanwhile,",
+     "t": 349.958
+    },
+    {
+     "w": "the",
+     "t": 350.642
+    },
+    {
+     "w": "Taiping",
+     "t": 350.891
+    },
+    {
+     "w": "sent",
+     "t": 351.389
+    },
+    {
+     "w": "an",
+     "t": 351.7
+    },
+    {
+     "w": "army",
+     "t": 351.887
+    },
+    {
+     "w": "north,",
+     "t": 352.198
+    },
+    {
+     "w": "to",
+     "t": 352.633
+    },
+    {
+     "w": "take",
+     "t": 352.82
+    },
+    {
+     "w": "Beijing.",
+     "t": 353.131
+    }
+   ]
+  },
+  {
+   "id": "f094",
+   "chapter": "The scholar's army",
+   "text": "It came within striking distance,",
+   "spoken": "It came within striking distance,",
+   "start": 354.171,
+   "dur": 1.941,
+   "words": [
+    {
+     "w": "It",
+     "t": 354.171
+    },
+    {
+     "w": "came",
+     "t": 354.342
+    },
+    {
+     "w": "within",
+     "t": 354.627
+    },
+    {
+     "w": "striking",
+     "t": 355.027
+    },
+    {
+     "w": "distance,",
+     "t": 355.541
+    }
+   ]
+  },
+  {
+   "id": "f095",
+   "chapter": "The scholar's army",
+   "text": "then froze, starved, and was wiped out by eighteen fifty-five.",
+   "spoken": "then froze, starved, and was wiped out by eighteen fifty-five.",
+   "start": 356.332,
+   "dur": 4.081,
+   "words": [
+    {
+     "w": "then",
+     "t": 356.332
+    },
+    {
+     "w": "froze,",
+     "t": 356.656
+    },
+    {
+     "w": "starved,",
+     "t": 357.109
+    },
+    {
+     "w": "and",
+     "t": 357.692
+    },
+    {
+     "w": "was",
+     "t": 357.951
+    },
+    {
+     "w": "wiped",
+     "t": 358.21
+    },
+    {
+     "w": "out",
+     "t": 358.599
+    },
+    {
+     "w": "by",
+     "t": 358.858
+    },
+    {
+     "w": "eighteen",
+     "t": 359.052
+    },
+    {
+     "w": "fifty-five.",
+     "t": 359.635
+    }
+   ]
+  },
+  {
+   "id": "f096",
+   "chapter": "The scholar's army",
+   "text": "Along the Yangtze, the war settled into a grinding stalemate.",
+   "spoken": "Along the Yangtze, the war settled into a grinding stalemate.",
+   "start": 360.893,
+   "dur": 3.686,
+   "words": [
+    {
+     "w": "Along",
+     "t": 360.893
+    },
+    {
+     "w": "the",
+     "t": 361.249
+    },
+    {
+     "w": "Yangtze,",
+     "t": 361.487
+    },
+    {
+     "w": "the",
+     "t": 362.022
+    },
+    {
+     "w": "war",
+     "t": 362.26
+    },
+    {
+     "w": "settled",
+     "t": 362.498
+    },
+    {
+     "w": "into",
+     "t": 362.973
+    },
+    {
+     "w": "a",
+     "t": 363.27
+    },
+    {
+     "w": "grinding",
+     "t": 363.389
+    },
+    {
+     "w": "stalemate.",
+     "t": 363.924
+    }
+   ]
+  },
+  {
+   "id": "f097",
+   "chapter": "The scholar's army",
+   "text": "Cities changed hands again and again,",
+   "spoken": "Cities changed hands again and again,",
+   "start": 365.058,
+   "dur": 2.377,
+   "words": [
+    {
+     "w": "Cities",
+     "t": 365.058
+    },
+    {
+     "w": "changed",
+     "t": 365.496
+    },
+    {
+     "w": "hands",
+     "t": 365.997
+    },
+    {
+     "w": "again",
+     "t": 366.372
+    },
+    {
+     "w": "and",
+     "t": 366.748
+    },
+    {
+     "w": "again,",
+     "t": 366.998
+    }
+   ]
+  },
+  {
+   "id": "f098",
+   "chapter": "The scholar's army",
+   "text": "and each time, the people inside paid the price.",
+   "spoken": "and each time, the people inside paid the price.",
+   "start": 367.656,
+   "dur": 3.011,
+   "words": [
+    {
+     "w": "and",
+     "t": 367.656
+    },
+    {
+     "w": "each",
+     "t": 367.902
+    },
+    {
+     "w": "time,",
+     "t": 368.209
+    },
+    {
+     "w": "the",
+     "t": 368.578
+    },
+    {
+     "w": "people",
+     "t": 368.823
+    },
+    {
+     "w": "inside",
+     "t": 369.254
+    },
+    {
+     "w": "paid",
+     "t": 369.684
+    },
+    {
+     "w": "the",
+     "t": 369.991
+    },
+    {
+     "w": "price.",
+     "t": 370.237
+    }
+   ]
+  },
+  {
+   "id": "f099",
+   "chapter": "The voice of God",
+   "text": "Inside the Heavenly Capital, a different danger was growing.",
+   "spoken": "Inside the Heavenly Capital, a different danger was growing.",
+   "start": 372.247,
+   "dur": 3.71,
+   "words": [
+    {
+     "w": "Inside",
+     "t": 372.247
+    },
+    {
+     "w": "the",
+     "t": 372.673
+    },
+    {
+     "w": "Heavenly",
+     "t": 372.916
+    },
+    {
+     "w": "Capital,",
+     "t": 373.463
+    },
+    {
+     "w": "a",
+     "t": 374.011
+    },
+    {
+     "w": "different",
+     "t": 374.133
+    },
+    {
+     "w": "danger",
+     "t": 374.741
+    },
+    {
+     "w": "was",
+     "t": 375.167
+    },
+    {
+     "w": "growing.",
+     "t": 375.41
+    }
+   ]
+  },
+  {
+   "id": "f100",
+   "chapter": "The voice of God",
+   "text": "Yang, the East King, had a gift.",
+   "spoken": "Yang, the East King, had a gift.",
+   "start": 376.437,
+   "dur": 2.186,
+   "words": [
+    {
+     "w": "Yang,",
+     "t": 376.437
+    },
+    {
+     "w": "the",
+     "t": 376.835
+    },
+    {
+     "w": "East",
+     "t": 377.1
+    },
+    {
+     "w": "King,",
+     "t": 377.431
+    },
+    {
+     "w": "had",
+     "t": 377.829
+    },
+    {
+     "w": "a",
+     "t": 378.094
+    },
+    {
+     "w": "gift.",
+     "t": 378.226
+    }
+   ]
+  },
+  {
+   "id": "f101",
+   "chapter": "The voice of God",
+   "text": "He fell into trances, and spoke as God the Father.",
+   "spoken": "He fell into trances, and spoke as God the Father.",
+   "start": 379.104,
+   "dur": 3.174,
+   "words": [
+    {
+     "w": "He",
+     "t": 379.104
+    },
+    {
+     "w": "fell",
+     "t": 379.29
+    },
+    {
+     "w": "into",
+     "t": 379.601
+    },
+    {
+     "w": "trances,",
+     "t": 379.913
+    },
+    {
+     "w": "and",
+     "t": 380.473
+    },
+    {
+     "w": "spoke",
+     "t": 380.722
+    },
+    {
+     "w": "as",
+     "t": 381.095
+    },
+    {
+     "w": "God",
+     "t": 381.282
+    },
+    {
+     "w": "the",
+     "t": 381.531
+    },
+    {
+     "w": "Father.",
+     "t": 381.78
+    }
+   ]
+  },
+  {
+   "id": "f102",
+   "chapter": "The voice of God",
+   "text": "And God, through Yang, could give orders even to the Heavenly King.",
+   "spoken": "And God, through Yang, could give orders even to the Heavenly King.",
+   "start": 382.757,
+   "dur": 4.036,
+   "words": [
+    {
+     "w": "And",
+     "t": 382.757
+    },
+    {
+     "w": "God,",
+     "t": 382.995
+    },
+    {
+     "w": "through",
+     "t": 383.292
+    },
+    {
+     "w": "Yang,",
+     "t": 383.766
+    },
+    {
+     "w": "could",
+     "t": 384.123
+    },
+    {
+     "w": "give",
+     "t": 384.479
+    },
+    {
+     "w": "orders",
+     "t": 384.775
+    },
+    {
+     "w": "even",
+     "t": 385.191
+    },
+    {
+     "w": "to",
+     "t": 385.488
+    },
+    {
+     "w": "the",
+     "t": 385.666
+    },
+    {
+     "w": "Heavenly",
+     "t": 385.903
+    },
+    {
+     "w": "King.",
+     "t": 386.437
+    }
+   ]
+  },
+  {
+   "id": "f103",
+   "chapter": "The voice of God",
+   "text": "Once, speaking as God, Yang demanded that Hong himself be whipped.",
+   "spoken": "Once, speaking as God, Yang demanded that Hong himself be whipped.",
+   "start": 387.273,
+   "dur": 4.006,
+   "words": [
+    {
+     "w": "Once,",
+     "t": 387.273
+    },
+    {
+     "w": "speaking",
+     "t": 387.632
+    },
+    {
+     "w": "as",
+     "t": 388.17
+    },
+    {
+     "w": "God,",
+     "t": 388.35
+    },
+    {
+     "w": "Yang",
+     "t": 388.649
+    },
+    {
+     "w": "demanded",
+     "t": 388.948
+    },
+    {
+     "w": "that",
+     "t": 389.486
+    },
+    {
+     "w": "Hong",
+     "t": 389.785
+    },
+    {
+     "w": "himself",
+     "t": 390.084
+    },
+    {
+     "w": "be",
+     "t": 390.562
+    },
+    {
+     "w": "whipped.",
+     "t": 390.742
+    }
+   ]
+  },
+  {
+   "id": "f104",
+   "chapter": "The voice of God",
+   "text": "In eighteen fifty-six, Yang wanted more.",
+   "spoken": "In eighteen fifty-six, Yang wanted more.",
+   "start": 391.76,
+   "dur": 2.757,
+   "words": [
+    {
+     "w": "In",
+     "t": 391.76
+    },
+    {
+     "w": "eighteen",
+     "t": 391.961
+    },
+    {
+     "w": "fifty-six,",
+     "t": 392.567
+    },
+    {
+     "w": "Yang",
+     "t": 393.306
+    },
+    {
+     "w": "wanted",
+     "t": 393.643
+    },
+    {
+     "w": "more.",
+     "t": 394.113
+    }
+   ]
+  },
+  {
+   "id": "f105",
+   "chapter": "The voice of God",
+   "text": "Hong was hailed as Lord of Ten Thousand Years.",
+   "spoken": "Hong was hailed as Lord of Ten Thousand Years.",
+   "start": 394.997,
+   "dur": 3.313,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 394.997
+    },
+    {
+     "w": "was",
+     "t": 395.349
+    },
+    {
+     "w": "hailed",
+     "t": 395.631
+    },
+    {
+     "w": "as",
+     "t": 396.125
+    },
+    {
+     "w": "Lord",
+     "t": 396.336
+    },
+    {
+     "w": "of",
+     "t": 396.689
+    },
+    {
+     "w": "Ten",
+     "t": 396.9
+    },
+    {
+     "w": "Thousand",
+     "t": 397.182
+    },
+    {
+     "w": "Years.",
+     "t": 397.817
+    }
+   ]
+  },
+  {
+   "id": "f106",
+   "chapter": "The voice of God",
+   "text": "Yang was only Nine Thousand. Now he demanded the same.",
+   "spoken": "Yang was only Nine Thousand. Now he demanded the same.",
+   "start": 398.79,
+   "dur": 3.852,
+   "words": [
+    {
+     "w": "Yang",
+     "t": 398.79
+    },
+    {
+     "w": "was",
+     "t": 399.14
+    },
+    {
+     "w": "only",
+     "t": 399.42
+    },
+    {
+     "w": "Nine",
+     "t": 399.771
+    },
+    {
+     "w": "Thousand.",
+     "t": 400.121
+    },
+    {
+     "w": "Now",
+     "t": 400.821
+    },
+    {
+     "w": "he",
+     "t": 401.101
+    },
+    {
+     "w": "demanded",
+     "t": 401.311
+    },
+    {
+     "w": "the",
+     "t": 401.942
+    },
+    {
+     "w": "same.",
+     "t": 402.222
+    }
+   ]
+  },
+  {
+   "id": "f107",
+   "chapter": "The voice of God",
+   "text": "Hong appeared to agree.",
+   "spoken": "Hong appeared to agree.",
+   "start": 403.122,
+   "dur": 1.51,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 403.122
+    },
+    {
+     "w": "appeared",
+     "t": 403.437
+    },
+    {
+     "w": "to",
+     "t": 404.003
+    },
+    {
+     "w": "agree.",
+     "t": 404.192
+    }
+   ]
+  },
+  {
+   "id": "f108",
+   "chapter": "The voice of God",
+   "text": "Then, by most accounts, he secretly summoned the North King, Wei Changhui.",
+   "spoken": "Then, by most accounts, he secretly summoned the North King, Wei Changhui.",
+   "start": 406.712,
+   "dur": 4.535,
+   "words": [
+    {
+     "w": "Then,",
+     "t": 406.712
+    },
+    {
+     "w": "by",
+     "t": 407.075
+    },
+    {
+     "w": "most",
+     "t": 407.256
+    },
+    {
+     "w": "accounts,",
+     "t": 407.558
+    },
+    {
+     "w": "he",
+     "t": 408.163
+    },
+    {
+     "w": "secretly",
+     "t": 408.344
+    },
+    {
+     "w": "summoned",
+     "t": 408.889
+    },
+    {
+     "w": "the",
+     "t": 409.433
+    },
+    {
+     "w": "North",
+     "t": 409.675
+    },
+    {
+     "w": "King,",
+     "t": 410.037
+    },
+    {
+     "w": "Wei",
+     "t": 410.4
+    },
+    {
+     "w": "Changhui.",
+     "t": 410.642
+    }
+   ]
+  },
+  {
+   "id": "f109",
+   "chapter": "The voice of God",
+   "text": "In the early hours of the second of September,",
+   "spoken": "In the early hours of the second of September,",
+   "start": 411.727,
+   "dur": 2.729,
+   "words": [
+    {
+     "w": "In",
+     "t": 411.727
+    },
+    {
+     "w": "the",
+     "t": 411.901
+    },
+    {
+     "w": "early",
+     "t": 412.133
+    },
+    {
+     "w": "hours",
+     "t": 412.481
+    },
+    {
+     "w": "of",
+     "t": 412.83
+    },
+    {
+     "w": "the",
+     "t": 413.004
+    },
+    {
+     "w": "second",
+     "t": 413.236
+    },
+    {
+     "w": "of",
+     "t": 413.642
+    },
+    {
+     "w": "September,",
+     "t": 413.817
+    }
+   ]
+  },
+  {
+   "id": "f110",
+   "chapter": "The voice of God",
+   "text": "Wei's men stormed the East King's palace, and killed him.",
+   "spoken": "Wei's men stormed the East King's palace, and killed him.",
+   "start": 414.675,
+   "dur": 3.387,
+   "words": [
+    {
+     "w": "Wei's",
+     "t": 414.675
+    },
+    {
+     "w": "men",
+     "t": 415.026
+    },
+    {
+     "w": "stormed",
+     "t": 415.259
+    },
+    {
+     "w": "the",
+     "t": 415.726
+    },
+    {
+     "w": "East",
+     "t": 415.96
+    },
+    {
+     "w": "King's",
+     "t": 416.252
+    },
+    {
+     "w": "palace,",
+     "t": 416.66
+    },
+    {
+     "w": "and",
+     "t": 417.128
+    },
+    {
+     "w": "killed",
+     "t": 417.361
+    },
+    {
+     "w": "him.",
+     "t": 417.77
+    }
+   ]
+  },
+  {
+   "id": "f111",
+   "chapter": "The voice of God",
+   "text": "Then they kept killing: Yang's family, his officials, his followers.",
+   "spoken": "Then they kept killing: Yang's family, his officials, his followers.",
+   "start": 418.542,
+   "dur": 4.161,
+   "words": [
+    {
+     "w": "Then",
+     "t": 418.542
+    },
+    {
+     "w": "they",
+     "t": 418.843
+    },
+    {
+     "w": "kept",
+     "t": 419.145
+    },
+    {
+     "w": "killing:",
+     "t": 419.446
+    },
+    {
+     "w": "Yang's",
+     "t": 419.989
+    },
+    {
+     "w": "family,",
+     "t": 420.411
+    },
+    {
+     "w": "his",
+     "t": 420.894
+    },
+    {
+     "w": "officials,",
+     "t": 421.135
+    },
+    {
+     "w": "his",
+     "t": 421.798
+    },
+    {
+     "w": "followers.",
+     "t": 422.039
+    }
+   ]
+  },
+  {
+   "id": "f112",
+   "chapter": "The voice of God",
+   "text": "By some accounts, more than twenty thousand people died.",
+   "spoken": "By some accounts, more than twenty thousand people died.",
+   "start": 423.183,
+   "dur": 3.286,
+   "words": [
+    {
+     "w": "By",
+     "t": 423.183
+    },
+    {
+     "w": "some",
+     "t": 423.355
+    },
+    {
+     "w": "accounts,",
+     "t": 423.644
+    },
+    {
+     "w": "more",
+     "t": 424.22
+    },
+    {
+     "w": "than",
+     "t": 424.508
+    },
+    {
+     "w": "twenty",
+     "t": 424.797
+    },
+    {
+     "w": "thousand",
+     "t": 425.2
+    },
+    {
+     "w": "people",
+     "t": 425.719
+    },
+    {
+     "w": "died.",
+     "t": 426.123
+    }
+   ]
+  },
+  {
+   "id": "f113",
+   "chapter": "The voice of God",
+   "text": "The Wing King, Shi Dakai, protested, and fled. His family was killed.",
+   "spoken": "The Wing King, Shi Dakai, protested, and fled. His family was killed.",
+   "start": 426.949,
+   "dur": 4.624,
+   "words": [
+    {
+     "w": "The",
+     "t": 426.949
+    },
+    {
+     "w": "Wing",
+     "t": 427.213
+    },
+    {
+     "w": "King,",
+     "t": 427.543
+    },
+    {
+     "w": "Shi",
+     "t": 427.939
+    },
+    {
+     "w": "Dakai,",
+     "t": 428.204
+    },
+    {
+     "w": "protested,",
+     "t": 428.666
+    },
+    {
+     "w": "and",
+     "t": 429.393
+    },
+    {
+     "w": "fled.",
+     "t": 429.657
+    },
+    {
+     "w": "His",
+     "t": 430.053
+    },
+    {
+     "w": "family",
+     "t": 430.317
+    },
+    {
+     "w": "was",
+     "t": 430.78
+    },
+    {
+     "w": "killed.",
+     "t": 431.044
+    }
+   ]
+  },
+  {
+   "id": "f114",
+   "chapter": "The voice of God",
+   "text": "In November, Hong had Wei executed too.",
+   "spoken": "In November, Hong had Wei executed too.",
+   "start": 432.053,
+   "dur": 2.993,
+   "words": [
+    {
+     "w": "In",
+     "t": 432.053
+    },
+    {
+     "w": "November,",
+     "t": 432.277
+    },
+    {
+     "w": "Hong",
+     "t": 433.025
+    },
+    {
+     "w": "had",
+     "t": 433.399
+    },
+    {
+     "w": "Wei",
+     "t": 433.699
+    },
+    {
+     "w": "executed",
+     "t": 433.998
+    },
+    {
+     "w": "too.",
+     "t": 434.671
+    }
+   ]
+  },
+  {
+   "id": "f115",
+   "chapter": "The voice of God",
+   "text": "And in eighteen fifty-seven, Shi left, with about a hundred thousand followers.",
+   "spoken": "And in eighteen fifty-seven, Shi left, with about a hundred thousand followers.",
+   "start": 435.526,
+   "dur": 4.804,
+   "words": [
+    {
+     "w": "And",
+     "t": 435.526
+    },
+    {
+     "w": "in",
+     "t": 435.766
+    },
+    {
+     "w": "eighteen",
+     "t": 435.946
+    },
+    {
+     "w": "fifty-seven,",
+     "t": 436.486
+    },
+    {
+     "w": "Shi",
+     "t": 437.267
+    },
+    {
+     "w": "left,",
+     "t": 437.507
+    },
+    {
+     "w": "with",
+     "t": 437.867
+    },
+    {
+     "w": "about",
+     "t": 438.168
+    },
+    {
+     "w": "a",
+     "t": 438.528
+    },
+    {
+     "w": "hundred",
+     "t": 438.648
+    },
+    {
+     "w": "thousand",
+     "t": 439.128
+    },
+    {
+     "w": "followers.",
+     "t": 439.669
+    }
+   ]
+  },
+  {
+   "id": "f116",
+   "chapter": "The voice of God",
+   "text": "Of Hong's five kings, not one remained at his side.",
+   "spoken": "Of Hong's five kings, not one remained at his side.",
+   "start": 440.809,
+   "dur": 3.291,
+   "words": [
+    {
+     "w": "Of",
+     "t": 440.809
+    },
+    {
+     "w": "Hong's",
+     "t": 440.999
+    },
+    {
+     "w": "five",
+     "t": 441.442
+    },
+    {
+     "w": "kings,",
+     "t": 441.759
+    },
+    {
+     "w": "not",
+     "t": 442.202
+    },
+    {
+     "w": "one",
+     "t": 442.455
+    },
+    {
+     "w": "remained",
+     "t": 442.708
+    },
+    {
+     "w": "at",
+     "t": 443.278
+    },
+    {
+     "w": "his",
+     "t": 443.467
+    },
+    {
+     "w": "side.",
+     "t": 443.721
+    }
+   ]
+  },
+  {
+   "id": "f117",
+   "chapter": "The voice of God",
+   "text": "The kingdom had done to itself what the Qing could not.",
+   "spoken": "The kingdom had done to itself what the Qing could not.",
+   "start": 444.58,
+   "dur": 3.395,
+   "words": [
+    {
+     "w": "The",
+     "t": 444.58
+    },
+    {
+     "w": "kingdom",
+     "t": 444.823
+    },
+    {
+     "w": "had",
+     "t": 445.308
+    },
+    {
+     "w": "done",
+     "t": 445.55
+    },
+    {
+     "w": "to",
+     "t": 445.853
+    },
+    {
+     "w": "itself",
+     "t": 446.035
+    },
+    {
+     "w": "what",
+     "t": 446.46
+    },
+    {
+     "w": "the",
+     "t": 446.763
+    },
+    {
+     "w": "Qing",
+     "t": 447.005
+    },
+    {
+     "w": "could",
+     "t": 447.308
+    },
+    {
+     "w": "not.",
+     "t": 447.672
+    }
+   ]
+  },
+  {
+   "id": "f118",
+   "chapter": "A second chance",
+   "text": "And yet, the kingdom did not fall. Not yet.",
+   "spoken": "And yet, the kingdom did not fall. Not yet.",
+   "start": 449.555,
+   "dur": 2.834,
+   "words": [
+    {
+     "w": "And",
+     "t": 449.555
+    },
+    {
+     "w": "yet,",
+     "t": 449.813
+    },
+    {
+     "w": "the",
+     "t": 450.135
+    },
+    {
+     "w": "kingdom",
+     "t": 450.393
+    },
+    {
+     "w": "did",
+     "t": 450.908
+    },
+    {
+     "w": "not",
+     "t": 451.165
+    },
+    {
+     "w": "fall.",
+     "t": 451.423
+    },
+    {
+     "w": "Not",
+     "t": 451.81
+    },
+    {
+     "w": "yet.",
+     "t": 452.067
+    }
+   ]
+  },
+  {
+   "id": "f119",
+   "chapter": "A second chance",
+   "text": "In 1859, Hong's cousin, Hong Rengan, reached Nanjing.",
+   "spoken": "In eighteen fifty-nine, Hong's cousin, Hong Rengan, reached Nanjing.",
+   "start": 452.869,
+   "dur": 4.461,
+   "words": [
+    {
+     "w": "In",
+     "t": 452.869
+    },
+    {
+     "w": "1859,",
+     "t": 453.117
+    },
+    {
+     "w": "Hong's",
+     "t": 453.613
+    },
+    {
+     "w": "cousin,",
+     "t": 454.191
+    },
+    {
+     "w": "Hong",
+     "t": 454.852
+    },
+    {
+     "w": "Rengan,",
+     "t": 455.265
+    },
+    {
+     "w": "reached",
+     "t": 455.926
+    },
+    {
+     "w": "Nanjing.",
+     "t": 456.587
+    }
+   ]
+  },
+  {
+   "id": "f120",
+   "chapter": "A second chance",
+   "text": "He had spent years among missionaries in Hong Kong,",
+   "spoken": "He had spent years among missionaries in Hong Kong,",
+   "start": 457.811,
+   "dur": 3.18,
+   "words": [
+    {
+     "w": "He",
+     "t": 457.811
+    },
+    {
+     "w": "had",
+     "t": 457.994
+    },
+    {
+     "w": "spent",
+     "t": 458.239
+    },
+    {
+     "w": "years",
+     "t": 458.606
+    },
+    {
+     "w": "among",
+     "t": 458.973
+    },
+    {
+     "w": "missionaries",
+     "t": 459.34
+    },
+    {
+     "w": "in",
+     "t": 460.135
+    },
+    {
+     "w": "Hong",
+     "t": 460.318
+    },
+    {
+     "w": "Kong,",
+     "t": 460.624
+    }
+   ]
+  },
+  {
+   "id": "f121",
+   "chapter": "A second chance",
+   "text": "and welcomed foreign visitors, hoping the West would take his side.",
+   "spoken": "and welcomed foreign visitors, hoping the West would take his side.",
+   "start": 461.211,
+   "dur": 3.979,
+   "words": [
+    {
+     "w": "and",
+     "t": 461.211
+    },
+    {
+     "w": "welcomed",
+     "t": 461.445
+    },
+    {
+     "w": "foreign",
+     "t": 461.972
+    },
+    {
+     "w": "visitors,",
+     "t": 462.44
+    },
+    {
+     "w": "hoping",
+     "t": 463.025
+    },
+    {
+     "w": "the",
+     "t": 463.435
+    },
+    {
+     "w": "West",
+     "t": 463.669
+    },
+    {
+     "w": "would",
+     "t": 463.962
+    },
+    {
+     "w": "take",
+     "t": 464.313
+    },
+    {
+     "w": "his",
+     "t": 464.605
+    },
+    {
+     "w": "side.",
+     "t": 464.839
+    }
+   ]
+  },
+  {
+   "id": "f122",
+   "chapter": "A second chance",
+   "text": "Hong made him chief minister,",
+   "spoken": "Hong made him chief minister,",
+   "start": 465.67,
+   "dur": 1.75,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 465.67
+    },
+    {
+     "w": "made",
+     "t": 465.962
+    },
+    {
+     "w": "him",
+     "t": 466.254
+    },
+    {
+     "w": "chief",
+     "t": 466.487
+    },
+    {
+     "w": "minister,",
+     "t": 466.837
+    }
+   ]
+  },
+  {
+   "id": "f123",
+   "chapter": "A second chance",
+   "text": "and he drew up a plan to modernise China:",
+   "spoken": "and he drew up a plan to modernise China:",
+   "start": 467.641,
+   "dur": 2.659,
+   "words": [
+    {
+     "w": "and",
+     "t": 467.641
+    },
+    {
+     "w": "he",
+     "t": 467.894
+    },
+    {
+     "w": "drew",
+     "t": 468.084
+    },
+    {
+     "w": "up",
+     "t": 468.4
+    },
+    {
+     "w": "a",
+     "t": 468.59
+    },
+    {
+     "w": "plan",
+     "t": 468.717
+    },
+    {
+     "w": "to",
+     "t": 469.034
+    },
+    {
+     "w": "modernise",
+     "t": 469.224
+    },
+    {
+     "w": "China:",
+     "t": 469.857
+    }
+   ]
+  },
+  {
+   "id": "f124",
+   "chapter": "A second chance",
+   "text": "railways, steamships, banks and newspapers.",
+   "spoken": "railways, steamships, banks and newspapers.",
+   "start": 470.78,
+   "dur": 3.0,
+   "words": [
+    {
+     "w": "railways,",
+     "t": 470.78
+    },
+    {
+     "w": "steamships,",
+     "t": 471.462
+    },
+    {
+     "w": "banks",
+     "t": 472.28
+    },
+    {
+     "w": "and",
+     "t": 472.689
+    },
+    {
+     "w": "newspapers.",
+     "t": 472.962
+    }
+   ]
+  },
+  {
+   "id": "f125",
+   "chapter": "A second chance",
+   "text": "And a gifted general, Li Xiucheng, the Loyal King, took the field.",
+   "spoken": "And a gifted general, Li Xiucheng, the Loyal King, took the field.",
+   "start": 474.26,
+   "dur": 4.284,
+   "words": [
+    {
+     "w": "And",
+     "t": 474.26
+    },
+    {
+     "w": "a",
+     "t": 474.516
+    },
+    {
+     "w": "gifted",
+     "t": 474.644
+    },
+    {
+     "w": "general,",
+     "t": 475.091
+    },
+    {
+     "w": "Li",
+     "t": 475.667
+    },
+    {
+     "w": "Xiucheng,",
+     "t": 475.858
+    },
+    {
+     "w": "the",
+     "t": 476.498
+    },
+    {
+     "w": "Loyal",
+     "t": 476.754
+    },
+    {
+     "w": "King,",
+     "t": 477.137
+    },
+    {
+     "w": "took",
+     "t": 477.521
+    },
+    {
+     "w": "the",
+     "t": 477.841
+    },
+    {
+     "w": "field.",
+     "t": 478.096
+    }
+   ]
+  },
+  {
+   "id": "f126",
+   "chapter": "A second chance",
+   "text": "In eighteen sixty, he smashed the Qing army camped outside Nanjing,",
+   "spoken": "In eighteen sixty, he smashed the Qing army camped outside Nanjing,",
+   "start": 479.024,
+   "dur": 4.344,
+   "words": [
+    {
+     "w": "In",
+     "t": 479.024
+    },
+    {
+     "w": "eighteen",
+     "t": 479.216
+    },
+    {
+     "w": "sixty,",
+     "t": 479.791
+    },
+    {
+     "w": "he",
+     "t": 480.238
+    },
+    {
+     "w": "smashed",
+     "t": 480.429
+    },
+    {
+     "w": "the",
+     "t": 480.94
+    },
+    {
+     "w": "Qing",
+     "t": 481.196
+    },
+    {
+     "w": "army",
+     "t": 481.515
+    },
+    {
+     "w": "camped",
+     "t": 481.835
+    },
+    {
+     "w": "outside",
+     "t": 482.282
+    },
+    {
+     "w": "Nanjing,",
+     "t": 482.793
+    }
+   ]
+  },
+  {
+   "id": "f127",
+   "chapter": "A second chance",
+   "text": "and swept east into the richest land in China. Suzhou fell.",
+   "spoken": "and swept east into the richest land in China. Suzhou fell.",
+   "start": 483.588,
+   "dur": 4.212,
+   "words": [
+    {
+     "w": "and",
+     "t": 483.588
+    },
+    {
+     "w": "swept",
+     "t": 483.869
+    },
+    {
+     "w": "east",
+     "t": 484.29
+    },
+    {
+     "w": "into",
+     "t": 484.641
+    },
+    {
+     "w": "the",
+     "t": 484.992
+    },
+    {
+     "w": "richest",
+     "t": 485.273
+    },
+    {
+     "w": "land",
+     "t": 485.834
+    },
+    {
+     "w": "in",
+     "t": 486.185
+    },
+    {
+     "w": "China.",
+     "t": 486.396
+    },
+    {
+     "w": "Suzhou",
+     "t": 486.887
+    },
+    {
+     "w": "fell.",
+     "t": 487.379
+    }
+   ]
+  },
+  {
+   "id": "f128",
+   "chapter": "A second chance",
+   "text": "Next stood Shanghai, and its foreign merchants.",
+   "spoken": "Next stood Shanghai, and its foreign merchants.",
+   "start": 488.28,
+   "dur": 2.791,
+   "words": [
+    {
+     "w": "Next",
+     "t": 488.28
+    },
+    {
+     "w": "stood",
+     "t": 488.571
+    },
+    {
+     "w": "Shanghai,",
+     "t": 488.92
+    },
+    {
+     "w": "and",
+     "t": 489.501
+    },
+    {
+     "w": "its",
+     "t": 489.734
+    },
+    {
+     "w": "foreign",
+     "t": 489.966
+    },
+    {
+     "w": "merchants.",
+     "t": 490.432
+    }
+   ]
+  },
+  {
+   "id": "f129",
+   "chapter": "A second chance",
+   "text": "The Taiping expected a welcome. They were Christians too, after all.",
+   "spoken": "The Taiping expected a welcome. They were Christians too, after all.",
+   "start": 491.551,
+   "dur": 4.2,
+   "words": [
+    {
+     "w": "The",
+     "t": 491.551
+    },
+    {
+     "w": "Taiping",
+     "t": 491.795
+    },
+    {
+     "w": "expected",
+     "t": 492.282
+    },
+    {
+     "w": "a",
+     "t": 492.829
+    },
+    {
+     "w": "welcome.",
+     "t": 492.951
+    },
+    {
+     "w": "They",
+     "t": 493.499
+    },
+    {
+     "w": "were",
+     "t": 493.803
+    },
+    {
+     "w": "Christians",
+     "t": 494.108
+    },
+    {
+     "w": "too,",
+     "t": 494.777
+    },
+    {
+     "w": "after",
+     "t": 495.082
+    },
+    {
+     "w": "all.",
+     "t": 495.447
+    }
+   ]
+  },
+  {
+   "id": "f130",
+   "chapter": "A second chance",
+   "text": "Instead, in August eighteen sixty,",
+   "spoken": "Instead, in August eighteen sixty,",
+   "start": 496.231,
+   "dur": 2.407,
+   "words": [
+    {
+     "w": "Instead,",
+     "t": 496.231
+    },
+    {
+     "w": "in",
+     "t": 496.85
+    },
+    {
+     "w": "August",
+     "t": 497.056
+    },
+    {
+     "w": "eighteen",
+     "t": 497.538
+    },
+    {
+     "w": "sixty,",
+     "t": 498.157
+    }
+   ]
+  },
+  {
+   "id": "f131",
+   "chapter": "A second chance",
+   "text": "British and French troops fired on them from the city walls.",
+   "spoken": "British and French troops fired on them from the city walls.",
+   "start": 498.858,
+   "dur": 3.46,
+   "words": [
+    {
+     "w": "British",
+     "t": 498.858
+    },
+    {
+     "w": "and",
+     "t": 499.312
+    },
+    {
+     "w": "French",
+     "t": 499.539
+    },
+    {
+     "w": "troops",
+     "t": 499.936
+    },
+    {
+     "w": "fired",
+     "t": 500.333
+    },
+    {
+     "w": "on",
+     "t": 500.673
+    },
+    {
+     "w": "them",
+     "t": 500.843
+    },
+    {
+     "w": "from",
+     "t": 501.127
+    },
+    {
+     "w": "the",
+     "t": 501.411
+    },
+    {
+     "w": "city",
+     "t": 501.638
+    },
+    {
+     "w": "walls.",
+     "t": 501.921
+    }
+   ]
+  },
+  {
+   "id": "f132",
+   "chapter": "The West chooses",
+   "text": "That same year, Britain and France were at war with the Qing.",
+   "spoken": "That same year, Britain and France were at war with the Qing.",
+   "start": 503.898,
+   "dur": 3.411,
+   "words": [
+    {
+     "w": "That",
+     "t": 503.898
+    },
+    {
+     "w": "same",
+     "t": 504.173
+    },
+    {
+     "w": "year,",
+     "t": 504.448
+    },
+    {
+     "w": "Britain",
+     "t": 504.779
+    },
+    {
+     "w": "and",
+     "t": 505.219
+    },
+    {
+     "w": "France",
+     "t": 505.439
+    },
+    {
+     "w": "were",
+     "t": 505.824
+    },
+    {
+     "w": "at",
+     "t": 506.099
+    },
+    {
+     "w": "war",
+     "t": 506.264
+    },
+    {
+     "w": "with",
+     "t": 506.484
+    },
+    {
+     "w": "the",
+     "t": 506.759
+    },
+    {
+     "w": "Qing.",
+     "t": 506.979
+    }
+   ]
+  },
+  {
+   "id": "f133",
+   "chapter": "The West chooses",
+   "text": "In October, their troops looted and burned the Emperor's Summer Palace.",
+   "spoken": "In October, their troops looted and burned the Emperor's Summer Palace.",
+   "start": 507.789,
+   "dur": 4.188,
+   "words": [
+    {
+     "w": "In",
+     "t": 507.789
+    },
+    {
+     "w": "October,",
+     "t": 507.964
+    },
+    {
+     "w": "their",
+     "t": 508.487
+    },
+    {
+     "w": "troops",
+     "t": 508.836
+    },
+    {
+     "w": "looted",
+     "t": 509.244
+    },
+    {
+     "w": "and",
+     "t": 509.651
+    },
+    {
+     "w": "burned",
+     "t": 509.883
+    },
+    {
+     "w": "the",
+     "t": 510.291
+    },
+    {
+     "w": "Emperor's",
+     "t": 510.523
+    },
+    {
+     "w": "Summer",
+     "t": 511.105
+    },
+    {
+     "w": "Palace.",
+     "t": 511.512
+    }
+   ]
+  },
+  {
+   "id": "f134",
+   "chapter": "The West chooses",
+   "text": "Then they made peace, on their own terms.",
+   "spoken": "Then they made peace, on their own terms.",
+   "start": 512.458,
+   "dur": 2.424,
+   "words": [
+    {
+     "w": "Then",
+     "t": 512.458
+    },
+    {
+     "w": "they",
+     "t": 512.746
+    },
+    {
+     "w": "made",
+     "t": 513.035
+    },
+    {
+     "w": "peace,",
+     "t": 513.323
+    },
+    {
+     "w": "on",
+     "t": 513.727
+    },
+    {
+     "w": "their",
+     "t": 513.901
+    },
+    {
+     "w": "own",
+     "t": 514.247
+    },
+    {
+     "w": "terms.",
+     "t": 514.478
+    }
+   ]
+  },
+  {
+   "id": "f135",
+   "chapter": "The West chooses",
+   "text": "Now the foreign powers had a reason to keep the Qing alive:",
+   "spoken": "Now the foreign powers had a reason to keep the Qing alive:",
+   "start": 515.362,
+   "dur": 3.728,
+   "words": [
+    {
+     "w": "Now",
+     "t": 515.362
+    },
+    {
+     "w": "the",
+     "t": 515.61
+    },
+    {
+     "w": "foreign",
+     "t": 515.859
+    },
+    {
+     "w": "powers",
+     "t": 516.356
+    },
+    {
+     "w": "had",
+     "t": 516.791
+    },
+    {
+     "w": "a",
+     "t": 517.039
+    },
+    {
+     "w": "reason",
+     "t": 517.164
+    },
+    {
+     "w": "to",
+     "t": 517.599
+    },
+    {
+     "w": "keep",
+     "t": 517.785
+    },
+    {
+     "w": "the",
+     "t": 518.096
+    },
+    {
+     "w": "Qing",
+     "t": 518.344
+    },
+    {
+     "w": "alive:",
+     "t": 518.655
+    }
+   ]
+  },
+  {
+   "id": "f136",
+   "chapter": "The West chooses",
+   "text": "a dynasty that paid its debts, and honoured its treaties.",
+   "spoken": "a dynasty that paid its debts, and honoured its treaties.",
+   "start": 519.57,
+   "dur": 3.206,
+   "words": [
+    {
+     "w": "a",
+     "t": 519.57
+    },
+    {
+     "w": "dynasty",
+     "t": 519.68
+    },
+    {
+     "w": "that",
+     "t": 520.123
+    },
+    {
+     "w": "paid",
+     "t": 520.399
+    },
+    {
+     "w": "its",
+     "t": 520.676
+    },
+    {
+     "w": "debts,",
+     "t": 520.897
+    },
+    {
+     "w": "and",
+     "t": 521.284
+    },
+    {
+     "w": "honoured",
+     "t": 521.505
+    },
+    {
+     "w": "its",
+     "t": 522.002
+    },
+    {
+     "w": "treaties.",
+     "t": 522.223
+    }
+   ]
+  },
+  {
+   "id": "f137",
+   "chapter": "The West chooses",
+   "text": "Foreign officers began drilling Chinese troops with modern rifles.",
+   "spoken": "Foreign officers began drilling Chinese troops with modern rifles.",
+   "start": 523.256,
+   "dur": 4.52,
+   "words": [
+    {
+     "w": "Foreign",
+     "t": 523.256
+    },
+    {
+     "w": "officers",
+     "t": 523.796
+    },
+    {
+     "w": "began",
+     "t": 524.403
+    },
+    {
+     "w": "drilling",
+     "t": 524.808
+    },
+    {
+     "w": "Chinese",
+     "t": 525.415
+    },
+    {
+     "w": "troops",
+     "t": 525.955
+    },
+    {
+     "w": "with",
+     "t": 526.427
+    },
+    {
+     "w": "modern",
+     "t": 526.765
+    },
+    {
+     "w": "rifles.",
+     "t": 527.237
+    }
+   ]
+  },
+  {
+   "id": "f138",
+   "chapter": "The West chooses",
+   "text": "An American adventurer, Frederick Townsend Ward, led the Ever Victorious Army,",
+   "spoken": "An American adventurer, Frederick Townsend Ward, led the Ever Victorious Army,",
+   "start": 528.257,
+   "dur": 5.19,
+   "words": [
+    {
+     "w": "An",
+     "t": 528.257
+    },
+    {
+     "w": "American",
+     "t": 528.454
+    },
+    {
+     "w": "adventurer,",
+     "t": 529.045
+    },
+    {
+     "w": "Frederick",
+     "t": 529.833
+    },
+    {
+     "w": "Townsend",
+     "t": 530.49
+    },
+    {
+     "w": "Ward,",
+     "t": 531.082
+    },
+    {
+     "w": "led",
+     "t": 531.476
+    },
+    {
+     "w": "the",
+     "t": 531.738
+    },
+    {
+     "w": "Ever",
+     "t": 532.001
+    },
+    {
+     "w": "Victorious",
+     "t": 532.33
+    },
+    {
+     "w": "Army,",
+     "t": 533.052
+    }
+   ]
+  },
+  {
+   "id": "f139",
+   "chapter": "The West chooses",
+   "text": "until he was killed in eighteen sixty-two.",
+   "spoken": "until he was killed in eighteen sixty-two.",
+   "start": 533.667,
+   "dur": 2.711,
+   "words": [
+    {
+     "w": "until",
+     "t": 533.667
+    },
+    {
+     "w": "he",
+     "t": 534.045
+    },
+    {
+     "w": "was",
+     "t": 534.234
+    },
+    {
+     "w": "killed",
+     "t": 534.486
+    },
+    {
+     "w": "in",
+     "t": 534.928
+    },
+    {
+     "w": "eighteen",
+     "t": 535.117
+    },
+    {
+     "w": "sixty-two.",
+     "t": 535.684
+    }
+   ]
+  },
+  {
+   "id": "f140",
+   "chapter": "The West chooses",
+   "text": "A British officer, Charles Gordon, took over.",
+   "spoken": "A British officer, Charles Gordon, took over.",
+   "start": 536.858,
+   "dur": 2.962,
+   "words": [
+    {
+     "w": "A",
+     "t": 536.858
+    },
+    {
+     "w": "British",
+     "t": 536.987
+    },
+    {
+     "w": "officer,",
+     "t": 537.502
+    },
+    {
+     "w": "Charles",
+     "t": 538.081
+    },
+    {
+     "w": "Gordon,",
+     "t": 538.597
+    },
+    {
+     "w": "took",
+     "t": 539.112
+    },
+    {
+     "w": "over.",
+     "t": 539.434
+    }
+   ]
+  },
+  {
+   "id": "f141",
+   "chapter": "The West chooses",
+   "text": "But the real blow came up the Yangtze.",
+   "spoken": "But the real blow came up the Yangtze.",
+   "start": 540.3,
+   "dur": 2.336,
+   "words": [
+    {
+     "w": "But",
+     "t": 540.3
+    },
+    {
+     "w": "the",
+     "t": 540.54
+    },
+    {
+     "w": "real",
+     "t": 540.78
+    },
+    {
+     "w": "blow",
+     "t": 541.079
+    },
+    {
+     "w": "came",
+     "t": 541.379
+    },
+    {
+     "w": "up",
+     "t": 541.678
+    },
+    {
+     "w": "the",
+     "t": 541.858
+    },
+    {
+     "w": "Yangtze.",
+     "t": 542.098
+    }
+   ]
+  },
+  {
+   "id": "f142",
+   "chapter": "The West chooses",
+   "text": "In September 1861, Zeng's Hunan Army took Anqing,",
+   "spoken": "In September eighteen sixty-one, Zeng's Hunan Army took Anqing,",
+   "start": 543.117,
+   "dur": 4.378,
+   "words": [
+    {
+     "w": "In",
+     "t": 543.117
+    },
+    {
+     "w": "September",
+     "t": 543.379
+    },
+    {
+     "w": "1861,",
+     "t": 544.255
+    },
+    {
+     "w": "Zeng's",
+     "t": 544.78
+    },
+    {
+     "w": "Hunan",
+     "t": 545.393
+    },
+    {
+     "w": "Army",
+     "t": 545.919
+    },
+    {
+     "w": "took",
+     "t": 546.356
+    },
+    {
+     "w": "Anqing,",
+     "t": 546.794
+    }
+   ]
+  },
+  {
+   "id": "f143",
+   "chapter": "The West chooses",
+   "text": "the fortress that guarded the river road to Nanjing.",
+   "spoken": "the fortress that guarded the river road to Nanjing.",
+   "start": 547.715,
+   "dur": 3.199,
+   "words": [
+    {
+     "w": "the",
+     "t": 547.715
+    },
+    {
+     "w": "fortress",
+     "t": 547.956
+    },
+    {
+     "w": "that",
+     "t": 548.499
+    },
+    {
+     "w": "guarded",
+     "t": 548.801
+    },
+    {
+     "w": "the",
+     "t": 549.284
+    },
+    {
+     "w": "river",
+     "t": 549.525
+    },
+    {
+     "w": "road",
+     "t": 549.887
+    },
+    {
+     "w": "to",
+     "t": 550.189
+    },
+    {
+     "w": "Nanjing.",
+     "t": 550.37
+    }
+   ]
+  },
+  {
+   "id": "f144",
+   "chapter": "The West chooses",
+   "text": "By most accounts, after a long siege, its defenders were massacred.",
+   "spoken": "By most accounts, after a long siege, its defenders were massacred.",
+   "start": 551.393,
+   "dur": 4.256,
+   "words": [
+    {
+     "w": "By",
+     "t": 551.393
+    },
+    {
+     "w": "most",
+     "t": 551.581
+    },
+    {
+     "w": "accounts,",
+     "t": 551.894
+    },
+    {
+     "w": "after",
+     "t": 552.52
+    },
+    {
+     "w": "a",
+     "t": 552.896
+    },
+    {
+     "w": "long",
+     "t": 553.021
+    },
+    {
+     "w": "siege,",
+     "t": 553.334
+    },
+    {
+     "w": "its",
+     "t": 553.772
+    },
+    {
+     "w": "defenders",
+     "t": 554.022
+    },
+    {
+     "w": "were",
+     "t": 554.648
+    },
+    {
+     "w": "massacred.",
+     "t": 554.961
+    }
+   ]
+  },
+  {
+   "id": "f145",
+   "chapter": "The West chooses",
+   "text": "In the spring of eighteen sixty-two,",
+   "spoken": "In the spring of eighteen sixty-two,",
+   "start": 556.13,
+   "dur": 2.281,
+   "words": [
+    {
+     "w": "In",
+     "t": 556.13
+    },
+    {
+     "w": "the",
+     "t": 556.315
+    },
+    {
+     "w": "spring",
+     "t": 556.562
+    },
+    {
+     "w": "of",
+     "t": 556.993
+    },
+    {
+     "w": "eighteen",
+     "t": 557.178
+    },
+    {
+     "w": "sixty-two,",
+     "t": 557.733
+    }
+   ]
+  },
+  {
+   "id": "f146",
+   "chapter": "The West chooses",
+   "text": "Zeng's younger brother, Zeng Guoquan,",
+   "spoken": "Zeng's younger brother, Zeng Guoquan,",
+   "start": 558.631,
+   "dur": 2.637,
+   "words": [
+    {
+     "w": "Zeng's",
+     "t": 558.631
+    },
+    {
+     "w": "younger",
+     "t": 559.117
+    },
+    {
+     "w": "brother,",
+     "t": 559.672
+    },
+    {
+     "w": "Zeng",
+     "t": 560.297
+    },
+    {
+     "w": "Guoquan,",
+     "t": 560.644
+    }
+   ]
+  },
+  {
+   "id": "f147",
+   "chapter": "The West chooses",
+   "text": "dug in outside the walls of the Heavenly Capital.",
+   "spoken": "dug in outside the walls of the Heavenly Capital.",
+   "start": 561.488,
+   "dur": 3.36,
+   "words": [
+    {
+     "w": "dug",
+     "t": 561.488
+    },
+    {
+     "w": "in",
+     "t": 561.757
+    },
+    {
+     "w": "outside",
+     "t": 561.959
+    },
+    {
+     "w": "the",
+     "t": 562.496
+    },
+    {
+     "w": "walls",
+     "t": 562.765
+    },
+    {
+     "w": "of",
+     "t": 563.168
+    },
+    {
+     "w": "the",
+     "t": 563.37
+    },
+    {
+     "w": "Heavenly",
+     "t": 563.639
+    },
+    {
+     "w": "Capital.",
+     "t": 564.244
+    }
+   ]
+  },
+  {
+   "id": "f148",
+   "chapter": "Manna",
+   "text": "The siege lasted two years.",
+   "spoken": "The siege lasted two years.",
+   "start": 566.428,
+   "dur": 2.168,
+   "words": [
+    {
+     "w": "The",
+     "t": 566.428
+    },
+    {
+     "w": "siege",
+     "t": 566.738
+    },
+    {
+     "w": "lasted",
+     "t": 567.203
+    },
+    {
+     "w": "two",
+     "t": 567.745
+    },
+    {
+     "w": "years.",
+     "t": 568.054
+    }
+   ]
+  },
+  {
+   "id": "f149",
+   "chapter": "Manna",
+   "text": "Li Xiucheng begged Hong to abandon the city and break out.",
+   "spoken": "Li Xiucheng begged Hong to abandon the city and break out.",
+   "start": 569.076,
+   "dur": 4.084,
+   "words": [
+    {
+     "w": "Li",
+     "t": 569.076
+    },
+    {
+     "w": "Xiucheng",
+     "t": 569.284
+    },
+    {
+     "w": "begged",
+     "t": 569.907
+    },
+    {
+     "w": "Hong",
+     "t": 570.392
+    },
+    {
+     "w": "to",
+     "t": 570.738
+    },
+    {
+     "w": "abandon",
+     "t": 570.945
+    },
+    {
+     "w": "the",
+     "t": 571.499
+    },
+    {
+     "w": "city",
+     "t": 571.776
+    },
+    {
+     "w": "and",
+     "t": 572.122
+    },
+    {
+     "w": "break",
+     "t": 572.399
+    },
+    {
+     "w": "out.",
+     "t": 572.814
+    }
+   ]
+  },
+  {
+   "id": "f150",
+   "chapter": "Manna",
+   "text": "Hong refused. God, he said, would protect it.",
+   "spoken": "Hong refused. God, he said, would protect it.",
+   "start": 573.64,
+   "dur": 2.907,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 573.64
+    },
+    {
+     "w": "refused.",
+     "t": 573.956
+    },
+    {
+     "w": "God,",
+     "t": 574.525
+    },
+    {
+     "w": "he",
+     "t": 574.841
+    },
+    {
+     "w": "said,",
+     "t": 575.031
+    },
+    {
+     "w": "would",
+     "t": 575.41
+    },
+    {
+     "w": "protect",
+     "t": 575.789
+    },
+    {
+     "w": "it.",
+     "t": 576.294
+    }
+   ]
+  },
+  {
+   "id": "f151",
+   "chapter": "Manna",
+   "text": "As the food ran out, according to Li's own confession,",
+   "spoken": "As the food ran out, according to Li's own confession,",
+   "start": 577.027,
+   "dur": 3.518,
+   "words": [
+    {
+     "w": "As",
+     "t": 577.027
+    },
+    {
+     "w": "the",
+     "t": 577.219
+    },
+    {
+     "w": "food",
+     "t": 577.475
+    },
+    {
+     "w": "ran",
+     "t": 577.795
+    },
+    {
+     "w": "out,",
+     "t": 578.05
+    },
+    {
+     "w": "according",
+     "t": 578.37
+    },
+    {
+     "w": "to",
+     "t": 579.01
+    },
+    {
+     "w": "Li's",
+     "t": 579.202
+    },
+    {
+     "w": "own",
+     "t": 579.521
+    },
+    {
+     "w": "confession,",
+     "t": 579.777
+    }
+   ]
+  },
+  {
+   "id": "f152",
+   "chapter": "Manna",
+   "text": "Hong told his people to eat sweet dew: wild plants, heaven's manna.",
+   "spoken": "Hong told his people to eat sweet dew: wild plants, heaven's manna.",
+   "start": 580.765,
+   "dur": 4.344,
+   "words": [
+    {
+     "w": "Hong",
+     "t": 580.765
+    },
+    {
+     "w": "told",
+     "t": 581.084
+    },
+    {
+     "w": "his",
+     "t": 581.404
+    },
+    {
+     "w": "people",
+     "t": 581.659
+    },
+    {
+     "w": "to",
+     "t": 582.106
+    },
+    {
+     "w": "eat",
+     "t": 582.298
+    },
+    {
+     "w": "sweet",
+     "t": 582.553
+    },
+    {
+     "w": "dew:",
+     "t": 582.937
+    },
+    {
+     "w": "wild",
+     "t": 583.256
+    },
+    {
+     "w": "plants,",
+     "t": 583.576
+    },
+    {
+     "w": "heaven's",
+     "t": 584.087
+    },
+    {
+     "w": "manna.",
+     "t": 584.662
+    }
+   ]
+  },
+  {
+   "id": "f153",
+   "chapter": "Manna",
+   "text": "In the spring of eighteen sixty-four, Hong fell ill.",
+   "spoken": "In the spring of eighteen sixty-four, Hong fell ill.",
+   "start": 585.589,
+   "dur": 3.163,
+   "words": [
+    {
+     "w": "In",
+     "t": 585.589
+    },
+    {
+     "w": "the",
+     "t": 585.768
+    },
+    {
+     "w": "spring",
+     "t": 586.007
+    },
+    {
+     "w": "of",
+     "t": 586.424
+    },
+    {
+     "w": "eighteen",
+     "t": 586.603
+    },
+    {
+     "w": "sixty-four,",
+     "t": 587.141
+    },
+    {
+     "w": "Hong",
+     "t": 587.857
+    },
+    {
+     "w": "fell",
+     "t": 588.155
+    },
+    {
+     "w": "ill.",
+     "t": 588.454
+    }
+   ]
+  },
+  {
+   "id": "f154",
+   "chapter": "Manna",
+   "text": "On the first of June, the Heavenly King died.",
+   "spoken": "On the first of June, the Heavenly King died.",
+   "start": 589.232,
+   "dur": 2.862,
+   "words": [
+    {
+     "w": "On",
+     "t": 589.232
+    },
+    {
+     "w": "the",
+     "t": 589.419
+    },
+    {
+     "w": "first",
+     "t": 589.668
+    },
+    {
+     "w": "of",
+     "t": 590.041
+    },
+    {
+     "w": "June,",
+     "t": 590.228
+    },
+    {
+     "w": "the",
+     "t": 590.601
+    },
+    {
+     "w": "Heavenly",
+     "t": 590.85
+    },
+    {
+     "w": "King",
+     "t": 591.41
+    },
+    {
+     "w": "died.",
+     "t": 591.721
+    }
+   ]
+  },
+  {
+   "id": "f155",
+   "chapter": "Manna",
+   "text": "His son said it was sickness. Li claimed poison.",
+   "spoken": "His son said it was sickness. Li claimed poison.",
+   "start": 592.574,
+   "dur": 3.092,
+   "words": [
+    {
+     "w": "His",
+     "t": 592.574
+    },
+    {
+     "w": "son",
+     "t": 592.826
+    },
+    {
+     "w": "said",
+     "t": 593.079
+    },
+    {
+     "w": "it",
+     "t": 593.394
+    },
+    {
+     "w": "was",
+     "t": 593.583
+    },
+    {
+     "w": "sickness.",
+     "t": 593.836
+    },
+    {
+     "w": "Li",
+     "t": 594.467
+    },
+    {
+     "w": "claimed",
+     "t": 594.656
+    },
+    {
+     "w": "poison.",
+     "t": 595.161
+    }
+   ]
+  },
+  {
+   "id": "f156",
+   "chapter": "Manna",
+   "text": "Hong's teenage son became the new Heavenly King.",
+   "spoken": "Hong's teenage son became the new Heavenly King.",
+   "start": 596.146,
+   "dur": 3.253,
+   "words": [
+    {
+     "w": "Hong's",
+     "t": 596.146
+    },
+    {
+     "w": "teenage",
+     "t": 596.61
+    },
+    {
+     "w": "son",
+     "t": 597.141
+    },
+    {
+     "w": "became",
+     "t": 597.407
+    },
+    {
+     "w": "the",
+     "t": 597.872
+    },
+    {
+     "w": "new",
+     "t": 598.137
+    },
+    {
+     "w": "Heavenly",
+     "t": 598.403
+    },
+    {
+     "w": "King.",
+     "t": 599.0
+    }
+   ]
+  },
+  {
+   "id": "f157",
+   "chapter": "Manna",
+   "text": "Seven weeks later, on the nineteenth of July,",
+   "spoken": "Seven weeks later, on the nineteenth of July,",
+   "start": 599.879,
+   "dur": 2.924,
+   "words": [
+    {
+     "w": "Seven",
+     "t": 599.879
+    },
+    {
+     "w": "weeks",
+     "t": 600.26
+    },
+    {
+     "w": "later,",
+     "t": 600.641
+    },
+    {
+     "w": "on",
+     "t": 601.086
+    },
+    {
+     "w": "the",
+     "t": 601.277
+    },
+    {
+     "w": "nineteenth",
+     "t": 601.531
+    },
+    {
+     "w": "of",
+     "t": 602.23
+    },
+    {
+     "w": "July,",
+     "t": 602.421
+    }
+   ]
+  },
+  {
+   "id": "f158",
+   "chapter": "Manna",
+   "text": "Zeng Guoquan's men fired a mine dug beneath the walls.",
+   "spoken": "Zeng Guoquan's men fired a mine dug beneath the walls.",
+   "start": 603.023,
+   "dur": 3.888,
+   "words": [
+    {
+     "w": "Zeng",
+     "t": 603.023
+    },
+    {
+     "w": "Guoquan's",
+     "t": 603.376
+    },
+    {
+     "w": "men",
+     "t": 604.083
+    },
+    {
+     "w": "fired",
+     "t": 604.366
+    },
+    {
+     "w": "a",
+     "t": 604.79
+    },
+    {
+     "w": "mine",
+     "t": 604.931
+    },
+    {
+     "w": "dug",
+     "t": 605.285
+    },
+    {
+     "w": "beneath",
+     "t": 605.568
+    },
+    {
+     "w": "the",
+     "t": 606.133
+    },
+    {
+     "w": "walls.",
+     "t": 606.416
+    }
+   ]
+  },
+  {
+   "id": "f159",
+   "chapter": "Manna",
+   "text": "About sixty yards of wall came down.",
+   "spoken": "About sixty yards of wall came down.",
+   "start": 607.391,
+   "dur": 2.303,
+   "words": [
+    {
+     "w": "About",
+     "t": 607.391
+    },
+    {
+     "w": "sixty",
+     "t": 607.764
+    },
+    {
+     "w": "yards",
+     "t": 608.138
+    },
+    {
+     "w": "of",
+     "t": 608.511
+    },
+    {
+     "w": "wall",
+     "t": 608.698
+    },
+    {
+     "w": "came",
+     "t": 609.009
+    },
+    {
+     "w": "down.",
+     "t": 609.32
+    }
+   ]
+  },
+  {
+   "id": "f160",
+   "chapter": "Manna",
+   "text": "The Hunan Army poured into the Heavenly Capital.",
+   "spoken": "The Hunan Army poured into the Heavenly Capital.",
+   "start": 611.174,
+   "dur": 3.096,
+   "words": [
+    {
+     "w": "The",
+     "t": 611.174
+    },
+    {
+     "w": "Hunan",
+     "t": 611.426
+    },
+    {
+     "w": "Army",
+     "t": 611.806
+    },
+    {
+     "w": "poured",
+     "t": 612.121
+    },
+    {
+     "w": "into",
+     "t": 612.564
+    },
+    {
+     "w": "the",
+     "t": 612.88
+    },
+    {
+     "w": "Heavenly",
+     "t": 613.132
+    },
+    {
+     "w": "Capital.",
+     "t": 613.701
+    }
+   ]
+  },
+  {
+   "id": "f161",
+   "chapter": "Manna",
+   "text": "For three days, by most accounts, there was slaughter and fire.",
+   "spoken": "For three days, by most accounts, there was slaughter and fire.",
+   "start": 614.75,
+   "dur": 3.583,
+   "words": [
+    {
+     "w": "For",
+     "t": 614.75
+    },
+    {
+     "w": "three",
+     "t": 614.973
+    },
+    {
+     "w": "days,",
+     "t": 615.309
+    },
+    {
+     "w": "by",
+     "t": 615.645
+    },
+    {
+     "w": "most",
+     "t": 615.813
+    },
+    {
+     "w": "accounts,",
+     "t": 616.093
+    },
+    {
+     "w": "there",
+     "t": 616.653
+    },
+    {
+     "w": "was",
+     "t": 616.989
+    },
+    {
+     "w": "slaughter",
+     "t": 617.213
+    },
+    {
+     "w": "and",
+     "t": 617.773
+    },
+    {
+     "w": "fire.",
+     "t": 617.997
+    }
+   ]
+  },
+  {
+   "id": "f162",
+   "chapter": "Manna",
+   "text": "Zeng Guofan reported a hundred thousand rebels dead.",
+   "spoken": "Zeng Guofan reported a hundred thousand rebels dead.",
+   "start": 618.812,
+   "dur": 3.918,
+   "words": [
+    {
+     "w": "Zeng",
+     "t": 618.812
+    },
+    {
+     "w": "Guofan",
+     "t": 619.182
+    },
+    {
+     "w": "reported",
+     "t": 619.699
+    },
+    {
+     "w": "a",
+     "t": 620.365
+    },
+    {
+     "w": "hundred",
+     "t": 620.513
+    },
+    {
+     "w": "thousand",
+     "t": 621.104
+    },
+    {
+     "w": "rebels",
+     "t": 621.769
+    },
+    {
+     "w": "dead.",
+     "t": 622.287
+    }
+   ]
+  },
+  {
+   "id": "f163",
+   "chapter": "Manna",
+   "text": "That number may be exaggerated.",
+   "spoken": "That number may be exaggerated.",
+   "start": 623.21,
+   "dur": 2.209,
+   "words": [
+    {
+     "w": "That",
+     "t": 623.21
+    },
+    {
+     "w": "number",
+     "t": 623.555
+    },
+    {
+     "w": "may",
+     "t": 624.039
+    },
+    {
+     "w": "be",
+     "t": 624.315
+    },
+    {
+     "w": "exaggerated.",
+     "t": 624.522
+    }
+   ]
+  },
+  {
+   "id": "f164",
+   "chapter": "Manna",
+   "text": "But the Heavenly Capital was no more.",
+   "spoken": "But the Heavenly Capital was no more.",
+   "start": 625.899,
+   "dur": 2.427,
+   "words": [
+    {
+     "w": "But",
+     "t": 625.899
+    },
+    {
+     "w": "the",
+     "t": 626.155
+    },
+    {
+     "w": "Heavenly",
+     "t": 626.41
+    },
+    {
+     "w": "Capital",
+     "t": 626.985
+    },
+    {
+     "w": "was",
+     "t": 627.496
+    },
+    {
+     "w": "no",
+     "t": 627.751
+    },
+    {
+     "w": "more.",
+     "t": 627.943
+    }
+   ]
+  },
+  {
+   "id": "f165",
+   "chapter": "The price",
+   "text": "Li gave the boy king his best horse, and was captured.",
+   "spoken": "Li gave the boy king his best horse, and was captured.",
+   "start": 629.906,
+   "dur": 3.361,
+   "words": [
+    {
+     "w": "Li",
+     "t": 629.906
+    },
+    {
+     "w": "gave",
+     "t": 630.09
+    },
+    {
+     "w": "the",
+     "t": 630.395
+    },
+    {
+     "w": "boy",
+     "t": 630.64
+    },
+    {
+     "w": "king",
+     "t": 630.884
+    },
+    {
+     "w": "his",
+     "t": 631.19
+    },
+    {
+     "w": "best",
+     "t": 631.434
+    },
+    {
+     "w": "horse,",
+     "t": 631.74
+    },
+    {
+     "w": "and",
+     "t": 632.167
+    },
+    {
+     "w": "was",
+     "t": 632.412
+    },
+    {
+     "w": "captured.",
+     "t": 632.656
+    }
+   ]
+  },
+  {
+   "id": "f166",
+   "chapter": "The price",
+   "text": "In his cell he wrote a long confession. Then he was executed.",
+   "spoken": "In his cell he wrote a long confession. Then he was executed.",
+   "start": 633.748,
+   "dur": 4.015,
+   "words": [
+    {
+     "w": "In",
+     "t": 633.748
+    },
+    {
+     "w": "his",
+     "t": 633.942
+    },
+    {
+     "w": "cell",
+     "t": 634.201
+    },
+    {
+     "w": "he",
+     "t": 634.525
+    },
+    {
+     "w": "wrote",
+     "t": 634.719
+    },
+    {
+     "w": "a",
+     "t": 635.107
+    },
+    {
+     "w": "long",
+     "t": 635.237
+    },
+    {
+     "w": "confession.",
+     "t": 635.561
+    },
+    {
+     "w": "Then",
+     "t": 636.338
+    },
+    {
+     "w": "he",
+     "t": 636.661
+    },
+    {
+     "w": "was",
+     "t": 636.856
+    },
+    {
+     "w": "executed.",
+     "t": 637.115
+    }
+   ]
+  },
+  {
+   "id": "f167",
+   "chapter": "The price",
+   "text": "The boy king was caught that autumn, and executed too.",
+   "spoken": "The boy king was caught that autumn, and executed too.",
+   "start": 638.242,
+   "dur": 3.528,
+   "words": [
+    {
+     "w": "The",
+     "t": 638.242
+    },
+    {
+     "w": "boy",
+     "t": 638.499
+    },
+    {
+     "w": "king",
+     "t": 638.755
+    },
+    {
+     "w": "was",
+     "t": 639.076
+    },
+    {
+     "w": "caught",
+     "t": 639.333
+    },
+    {
+     "w": "that",
+     "t": 639.782
+    },
+    {
+     "w": "autumn,",
+     "t": 640.102
+    },
+    {
+     "w": "and",
+     "t": 640.615
+    },
+    {
+     "w": "executed",
+     "t": 640.872
+    },
+    {
+     "w": "too.",
+     "t": 641.449
+    }
+   ]
+  },
+  {
+   "id": "f168",
+   "chapter": "The price",
+   "text": "Shi Dakai had been captured and put to death the year before.",
+   "spoken": "Shi Dakai had been captured and put to death the year before.",
+   "start": 642.25,
+   "dur": 3.983,
+   "words": [
+    {
+     "w": "Shi",
+     "t": 642.25
+    },
+    {
+     "w": "Dakai",
+     "t": 642.507
+    },
+    {
+     "w": "had",
+     "t": 642.892
+    },
+    {
+     "w": "been",
+     "t": 643.149
+    },
+    {
+     "w": "captured",
+     "t": 643.47
+    },
+    {
+     "w": "and",
+     "t": 644.049
+    },
+    {
+     "w": "put",
+     "t": 644.305
+    },
+    {
+     "w": "to",
+     "t": 644.562
+    },
+    {
+     "w": "death",
+     "t": 644.755
+    },
+    {
+     "w": "the",
+     "t": 645.141
+    },
+    {
+     "w": "year",
+     "t": 645.397
+    },
+    {
+     "w": "before.",
+     "t": 645.719
+    }
+   ]
+  },
+  {
+   "id": "f169",
+   "chapter": "The price",
+   "text": "Taiping armies fought on for a few more years.",
+   "spoken": "Taiping armies fought on for a few more years.",
+   "start": 646.713,
+   "dur": 2.734,
+   "words": [
+    {
+     "w": "Taiping",
+     "t": 646.713
+    },
+    {
+     "w": "armies",
+     "t": 647.178
+    },
+    {
+     "w": "fought",
+     "t": 647.585
+    },
+    {
+     "w": "on",
+     "t": 647.992
+    },
+    {
+     "w": "for",
+     "t": 648.167
+    },
+    {
+     "w": "a",
+     "t": 648.4
+    },
+    {
+     "w": "few",
+     "t": 648.516
+    },
+    {
+     "w": "more",
+     "t": 648.749
+    },
+    {
+     "w": "years.",
+     "t": 649.04
+    }
+   ]
+  },
+  {
+   "id": "f170",
+   "chapter": "The price",
+   "text": "But the Heavenly Kingdom was gone.",
+   "spoken": "But the Heavenly Kingdom was gone.",
+   "start": 649.927,
+   "dur": 2.258,
+   "words": [
+    {
+     "w": "But",
+     "t": 649.927
+    },
+    {
+     "w": "the",
+     "t": 650.185
+    },
+    {
+     "w": "Heavenly",
+     "t": 650.443
+    },
+    {
+     "w": "Kingdom",
+     "t": 651.023
+    },
+    {
+     "w": "was",
+     "t": 651.539
+    },
+    {
+     "w": "gone.",
+     "t": 651.797
+    }
+   ]
+  },
+  {
+   "id": "f171",
+   "chapter": "The price",
+   "text": "The cost was almost beyond counting.",
+   "spoken": "The cost was almost beyond counting.",
+   "start": 652.664,
+   "dur": 2.497,
+   "words": [
+    {
+     "w": "The",
+     "t": 652.664
+    },
+    {
+     "w": "cost",
+     "t": 652.934
+    },
+    {
+     "w": "was",
+     "t": 653.272
+    },
+    {
+     "w": "almost",
+     "t": 653.542
+    },
+    {
+     "w": "beyond",
+     "t": 654.014
+    },
+    {
+     "w": "counting.",
+     "t": 654.486
+    }
+   ]
+  },
+  {
+   "id": "f172",
+   "chapter": "The price",
+   "text": "By most estimates, twenty to thirty million people died,",
+   "spoken": "By most estimates, twenty to thirty million people died,",
+   "start": 655.641,
+   "dur": 3.431,
+   "words": [
+    {
+     "w": "By",
+     "t": 655.641
+    },
+    {
+     "w": "most",
+     "t": 655.822
+    },
+    {
+     "w": "estimates,",
+     "t": 656.123
+    },
+    {
+     "w": "twenty",
+     "t": 656.785
+    },
+    {
+     "w": "to",
+     "t": 657.206
+    },
+    {
+     "w": "thirty",
+     "t": 657.387
+    },
+    {
+     "w": "million",
+     "t": 657.808
+    },
+    {
+     "w": "people",
+     "t": 658.29
+    },
+    {
+     "w": "died,",
+     "t": 658.711
+    }
+   ]
+  },
+  {
+   "id": "f173",
+   "chapter": "The price",
+   "text": "from battle, massacre, famine and disease.",
+   "spoken": "from battle, massacre, famine and disease.",
+   "start": 659.292,
+   "dur": 3.005,
+   "words": [
+    {
+     "w": "from",
+     "t": 659.292
+    },
+    {
+     "w": "battle,",
+     "t": 659.642
+    },
+    {
+     "w": "massacre,",
+     "t": 660.201
+    },
+    {
+     "w": "famine",
+     "t": 660.9
+    },
+    {
+     "w": "and",
+     "t": 661.389
+    },
+    {
+     "w": "disease.",
+     "t": 661.668
+    }
+   ]
+  },
+  {
+   "id": "f174",
+   "chapter": "The price",
+   "text": "Perhaps more than in the whole First World War.",
+   "spoken": "Perhaps more than in the whole First World War.",
+   "start": 662.777,
+   "dur": 2.931,
+   "words": [
+    {
+     "w": "Perhaps",
+     "t": 662.777
+    },
+    {
+     "w": "more",
+     "t": 663.266
+    },
+    {
+     "w": "than",
+     "t": 663.571
+    },
+    {
+     "w": "in",
+     "t": 663.876
+    },
+    {
+     "w": "the",
+     "t": 664.06
+    },
+    {
+     "w": "whole",
+     "t": 664.304
+    },
+    {
+     "w": "First",
+     "t": 664.67
+    },
+    {
+     "w": "World",
+     "t": 665.037
+    },
+    {
+     "w": "War.",
+     "t": 665.403
+    }
+   ]
+  },
+  {
+   "id": "f175",
+   "chapter": "The price",
+   "text": "The Qing survived, but only by handing power to men like Zeng,",
+   "spoken": "The Qing survived, but only by handing power to men like Zeng,",
+   "start": 666.188,
+   "dur": 4.052,
+   "words": [
+    {
+     "w": "The",
+     "t": 666.188
+    },
+    {
+     "w": "Qing",
+     "t": 666.445
+    },
+    {
+     "w": "survived,",
+     "t": 666.767
+    },
+    {
+     "w": "but",
+     "t": 667.41
+    },
+    {
+     "w": "only",
+     "t": 667.668
+    },
+    {
+     "w": "by",
+     "t": 667.989
+    },
+    {
+     "w": "handing",
+     "t": 668.182
+    },
+    {
+     "w": "power",
+     "t": 668.697
+    },
+    {
+     "w": "to",
+     "t": 669.083
+    },
+    {
+     "w": "men",
+     "t": 669.276
+    },
+    {
+     "w": "like",
+     "t": 669.533
+    },
+    {
+     "w": "Zeng,",
+     "t": 669.854
+    }
+   ]
+  },
+  {
+   "id": "f176",
+   "chapter": "The price",
+   "text": "and to regional armies loyal to their generals, more than to Beijing.",
+   "spoken": "and to regional armies loyal to their generals, more than to Beijing.",
+   "start": 670.46,
+   "dur": 4.234,
+   "words": [
+    {
+     "w": "and",
+     "t": 670.46
+    },
+    {
+     "w": "to",
+     "t": 670.702
+    },
+    {
+     "w": "regional",
+     "t": 670.884
+    },
+    {
+     "w": "armies",
+     "t": 671.428
+    },
+    {
+     "w": "loyal",
+     "t": 671.852
+    },
+    {
+     "w": "to",
+     "t": 672.215
+    },
+    {
+     "w": "their",
+     "t": 672.396
+    },
+    {
+     "w": "generals,",
+     "t": 672.759
+    },
+    {
+     "w": "more",
+     "t": 673.364
+    },
+    {
+     "w": "than",
+     "t": 673.666
+    },
+    {
+     "w": "to",
+     "t": 673.969
+    },
+    {
+     "w": "Beijing.",
+     "t": 674.15
+    }
+   ]
+  },
+  {
+   "id": "f177",
+   "chapter": "The price",
+   "text": "And remember the list Hong's name never appeared on?",
+   "spoken": "And remember the list Hong's name never appeared on?",
+   "start": 675.175,
+   "dur": 3.391,
+   "words": [
+    {
+     "w": "And",
+     "t": 675.175
+    },
+    {
+     "w": "remember",
+     "t": 675.431
+    },
+    {
+     "w": "the",
+     "t": 676.007
+    },
+    {
+     "w": "list",
+     "t": 676.263
+    },
+    {
+     "w": "Hong's",
+     "t": 676.583
+    },
+    {
+     "w": "name",
+     "t": 677.031
+    },
+    {
+     "w": "never",
+     "t": 677.35
+    },
+    {
+     "w": "appeared",
+     "t": 677.734
+    },
+    {
+     "w": "on?",
+     "t": 678.31
+    }
+   ]
+  },
+  {
+   "id": "f178",
+   "chapter": "The price",
+   "text": "In 1905, the Qing abolished the imperial examinations altogether.",
+   "spoken": "In nineteen oh five, the Qing abolished the imperial examinations altogether.",
+   "start": 679.046,
+   "dur": 5.18,
+   "words": [
+    {
+     "w": "In",
+     "t": 679.046
+    },
+    {
+     "w": "1905,",
+     "t": 679.282
+    },
+    {
+     "w": "the",
+     "t": 679.753
+    },
+    {
+     "w": "Qing",
+     "t": 680.067
+    },
+    {
+     "w": "abolished",
+     "t": 680.459
+    },
+    {
+     "w": "the",
+     "t": 681.244
+    },
+    {
+     "w": "imperial",
+     "t": 681.558
+    },
+    {
+     "w": "examinations",
+     "t": 682.264
+    },
+    {
+     "w": "altogether.",
+     "t": 683.285
+    }
+   ]
+  },
+  {
+   "id": "f179",
+   "chapter": "The price",
+   "text": "Six years later, the dynasty itself was overthrown.",
+   "spoken": "Six years later, the dynasty itself was overthrown.",
+   "start": 684.707,
+   "dur": 3.607,
+   "words": [
+    {
+     "w": "Six",
+     "t": 684.707
+    },
+    {
+     "w": "years",
+     "t": 684.984
+    },
+    {
+     "w": "later,",
+     "t": 685.4
+    },
+    {
+     "w": "the",
+     "t": 685.886
+    },
+    {
+     "w": "dynasty",
+     "t": 686.163
+    },
+    {
+     "w": "itself",
+     "t": 686.718
+    },
+    {
+     "w": "was",
+     "t": 687.204
+    },
+    {
+     "w": "overthrown.",
+     "t": 687.481
+    }
+   ]
+  },
+  {
+   "id": "f180",
+   "chapter": "The price",
+   "text": "The system that rejected Hong outlived him by just forty-one years.",
+   "spoken": "The system that rejected Hong outlived him by just forty-one years.",
+   "start": 688.794,
+   "dur": 4.594,
+   "words": [
+    {
+     "w": "The",
+     "t": 688.794
+    },
+    {
+     "w": "system",
+     "t": 689.064
+    },
+    {
+     "w": "that",
+     "t": 689.537
+    },
+    {
+     "w": "rejected",
+     "t": 689.875
+    },
+    {
+     "w": "Hong",
+     "t": 690.483
+    },
+    {
+     "w": "outlived",
+     "t": 690.821
+    },
+    {
+     "w": "him",
+     "t": 691.429
+    },
+    {
+     "w": "by",
+     "t": 691.699
+    },
+    {
+     "w": "just",
+     "t": 691.902
+    },
+    {
+     "w": "forty-one",
+     "t": 692.24
+    },
+    {
+     "w": "years.",
+     "t": 692.915
+    }
+   ]
+  },
+  {
+   "id": "f181",
+   "chapter": "A kingdom carved in stone",
+   "text": "In Tiananmen Square, in the heart of Beijing,",
+   "spoken": "In Tiananmen Square, in the heart of Beijing,",
+   "start": 694.968,
+   "dur": 2.861,
+   "words": [
+    {
+     "w": "In",
+     "t": 694.968
+    },
+    {
+     "w": "Tiananmen",
+     "t": 695.155
+    },
+    {
+     "w": "Square,",
+     "t": 695.777
+    },
+    {
+     "w": "in",
+     "t": 696.274
+    },
+    {
+     "w": "the",
+     "t": 696.461
+    },
+    {
+     "w": "heart",
+     "t": 696.71
+    },
+    {
+     "w": "of",
+     "t": 697.083
+    },
+    {
+     "w": "Beijing,",
+     "t": 697.269
+    }
+   ]
+  },
+  {
+   "id": "f182",
+   "chapter": "A kingdom carved in stone",
+   "text": "stands the Monument to the People's Heroes, finished in 1958.",
+   "spoken": "stands the Monument to the People's Heroes, finished in nineteen fifty-eight.",
+   "start": 698.049,
+   "dur": 4.637,
+   "words": [
+    {
+     "w": "stands",
+     "t": 698.049
+    },
+    {
+     "w": "the",
+     "t": 698.573
+    },
+    {
+     "w": "Monument",
+     "t": 698.872
+    },
+    {
+     "w": "to",
+     "t": 699.545
+    },
+    {
+     "w": "the",
+     "t": 699.769
+    },
+    {
+     "w": "People's",
+     "t": 700.069
+    },
+    {
+     "w": "Heroes,",
+     "t": 700.742
+    },
+    {
+     "w": "finished",
+     "t": 701.34
+    },
+    {
+     "w": "in",
+     "t": 702.013
+    },
+    {
+     "w": "1958.",
+     "t": 702.238
+    }
+   ]
+  },
+  {
+   "id": "f183",
+   "chapter": "A kingdom carved in stone",
+   "text": "Around its base run eight carved scenes from China's revolutions.",
+   "spoken": "Around its base run eight carved scenes from China's revolutions.",
+   "start": 703.166,
+   "dur": 4.234,
+   "words": [
+    {
+     "w": "Around",
+     "t": 703.166
+    },
+    {
+     "w": "its",
+     "t": 703.615
+    },
+    {
+     "w": "base",
+     "t": 703.872
+    },
+    {
+     "w": "run",
+     "t": 704.193
+    },
+    {
+     "w": "eight",
+     "t": 704.449
+    },
+    {
+     "w": "carved",
+     "t": 704.834
+    },
+    {
+     "w": "scenes",
+     "t": 705.283
+    },
+    {
+     "w": "from",
+     "t": 705.732
+    },
+    {
+     "w": "China's",
+     "t": 706.053
+    },
+    {
+     "w": "revolutions.",
+     "t": 706.566
+    }
+   ]
+  },
+  {
+   "id": "f184",
+   "chapter": "A kingdom carved in stone",
+   "text": "One of them is the uprising at Jintian, in 1851.",
+   "spoken": "One of them is the uprising at Jintian, in eighteen fifty-one.",
+   "start": 707.88,
+   "dur": 4.035,
+   "words": [
+    {
+     "w": "One",
+     "t": 707.88
+    },
+    {
+     "w": "of",
+     "t": 708.21
+    },
+    {
+     "w": "them",
+     "t": 708.457
+    },
+    {
+     "w": "is",
+     "t": 708.869
+    },
+    {
+     "w": "the",
+     "t": 709.116
+    },
+    {
+     "w": "uprising",
+     "t": 709.445
+    },
+    {
+     "w": "at",
+     "t": 710.186
+    },
+    {
+     "w": "Jintian,",
+     "t": 710.433
+    },
+    {
+     "w": "in",
+     "t": 711.174
+    },
+    {
+     "w": "1851.",
+     "t": 711.421
+    }
+   ]
+  },
+  {
+   "id": "f185",
+   "chapter": "A kingdom carved in stone",
+   "text": "Sun Yat-sen, father of the 1911 revolution, drew inspiration from them.",
+   "spoken": "Sun Yat-sen, father of the nineteen eleven revolution, drew inspiration from them.",
+   "start": 712.395,
+   "dur": 5.433,
+   "words": [
+    {
+     "w": "Sun",
+     "t": 712.395
+    },
+    {
+     "w": "Yat-sen,",
+     "t": 712.697
+    },
+    {
+     "w": "father",
+     "t": 713.376
+    },
+    {
+     "w": "of",
+     "t": 713.905
+    },
+    {
+     "w": "the",
+     "t": 714.131
+    },
+    {
+     "w": "1911",
+     "t": 714.433
+    },
+    {
+     "w": "revolution,",
+     "t": 714.81
+    },
+    {
+     "w": "drew",
+     "t": 715.716
+    },
+    {
+     "w": "inspiration",
+     "t": 716.093
+    },
+    {
+     "w": "from",
+     "t": 716.998
+    },
+    {
+     "w": "them.",
+     "t": 717.376
+    }
+   ]
+  },
+  {
+   "id": "f186",
+   "chapter": "A kingdom carved in stone",
+   "text": "Mao Zedong praised Hong as an early revolutionary.",
+   "spoken": "Mao Zedong praised Hong as an early revolutionary.",
+   "start": 718.308,
+   "dur": 3.443,
+   "words": [
+    {
+     "w": "Mao",
+     "t": 718.308
+    },
+    {
+     "w": "Zedong",
+     "t": 718.579
+    },
+    {
+     "w": "praised",
+     "t": 719.051
+    },
+    {
+     "w": "Hong",
+     "t": 719.591
+    },
+    {
+     "w": "as",
+     "t": 719.929
+    },
+    {
+     "w": "an",
+     "t": 720.131
+    },
+    {
+     "w": "early",
+     "t": 720.334
+    },
+    {
+     "w": "revolutionary.",
+     "t": 720.739
+    }
+   ]
+  },
+  {
+   "id": "f187",
+   "chapter": "A kingdom carved in stone",
+   "text": "Official Chinese histories still honour them as rebels against an empire.",
+   "spoken": "Official Chinese histories still honour them as rebels against an empire.",
+   "start": 722.232,
+   "dur": 4.811,
+   "words": [
+    {
+     "w": "Official",
+     "t": 722.232
+    },
+    {
+     "w": "Chinese",
+     "t": 722.817
+    },
+    {
+     "w": "histories",
+     "t": 723.337
+    },
+    {
+     "w": "still",
+     "t": 723.987
+    },
+    {
+     "w": "honour",
+     "t": 724.377
+    },
+    {
+     "w": "them",
+     "t": 724.832
+    },
+    {
+     "w": "as",
+     "t": 725.157
+    },
+    {
+     "w": "rebels",
+     "t": 725.352
+    },
+    {
+     "w": "against",
+     "t": 725.807
+    },
+    {
+     "w": "an",
+     "t": 726.327
+    },
+    {
+     "w": "empire.",
+     "t": 726.522
+    }
+   ]
+  },
+  {
+   "id": "f188",
+   "chapter": "A kingdom carved in stone",
+   "text": "And in Nanjing today, there is a museum of the Heavenly Kingdom.",
+   "spoken": "And in Nanjing today, there is a museum of the Heavenly Kingdom.",
+   "start": 727.523,
+   "dur": 4.009,
+   "words": [
+    {
+     "w": "And",
+     "t": 727.523
+    },
+    {
+     "w": "in",
+     "t": 727.769
+    },
+    {
+     "w": "Nanjing",
+     "t": 727.954
+    },
+    {
+     "w": "today,",
+     "t": 728.448
+    },
+    {
+     "w": "there",
+     "t": 728.879
+    },
+    {
+     "w": "is",
+     "t": 729.249
+    },
+    {
+     "w": "a",
+     "t": 729.435
+    },
+    {
+     "w": "museum",
+     "t": 729.558
+    },
+    {
+     "w": "of",
+     "t": 729.99
+    },
+    {
+     "w": "the",
+     "t": 730.175
+    },
+    {
+     "w": "Heavenly",
+     "t": 730.421
+    },
+    {
+     "w": "Kingdom.",
+     "t": 730.976
+    }
+   ]
+  },
+  {
+   "id": "f189",
+   "chapter": "A kingdom carved in stone",
+   "text": "But they followed a man who believed he was God's son,",
+   "spoken": "But they followed a man who believed he was God's son,",
+   "start": 732.012,
+   "dur": 3.186,
+   "words": [
+    {
+     "w": "But",
+     "t": 732.012
+    },
+    {
+     "w": "they",
+     "t": 732.243
+    },
+    {
+     "w": "followed",
+     "t": 732.533
+    },
+    {
+     "w": "a",
+     "t": 733.054
+    },
+    {
+     "w": "man",
+     "t": 733.17
+    },
+    {
+     "w": "who",
+     "t": 733.402
+    },
+    {
+     "w": "believed",
+     "t": 733.634
+    },
+    {
+     "w": "he",
+     "t": 734.155
+    },
+    {
+     "w": "was",
+     "t": 734.329
+    },
+    {
+     "w": "God's",
+     "t": 734.56
+    },
+    {
+     "w": "son,",
+     "t": 734.908
+    }
+   ]
+  },
+  {
+   "id": "f190",
+   "chapter": "A kingdom carved in stone",
+   "text": "into a war that killed more people than almost any other.",
+   "spoken": "into a war that killed more people than almost any other.",
+   "start": 735.418,
+   "dur": 3.293,
+   "words": [
+    {
+     "w": "into",
+     "t": 735.418
+    },
+    {
+     "w": "a",
+     "t": 735.702
+    },
+    {
+     "w": "war",
+     "t": 735.815
+    },
+    {
+     "w": "that",
+     "t": 736.042
+    },
+    {
+     "w": "killed",
+     "t": 736.326
+    },
+    {
+     "w": "more",
+     "t": 736.724
+    },
+    {
+     "w": "people",
+     "t": 737.007
+    },
+    {
+     "w": "than",
+     "t": 737.405
+    },
+    {
+     "w": "almost",
+     "t": 737.689
+    },
+    {
+     "w": "any",
+     "t": 738.086
+    },
+    {
+     "w": "other.",
+     "t": 738.313
+    }
+   ]
+  },
+  {
+   "id": "f191",
+   "chapter": "A kingdom carved in stone",
+   "text": "A revolution, or a catastrophe with a prophet at its head?",
+   "spoken": "A revolution, or a catastrophe with a prophet at its head?",
+   "start": 739.191,
+   "dur": 3.712,
+   "words": [
+    {
+     "w": "A",
+     "t": 739.191
+    },
+    {
+     "w": "revolution,",
+     "t": 739.316
+    },
+    {
+     "w": "or",
+     "t": 740.071
+    },
+    {
+     "w": "a",
+     "t": 740.26
+    },
+    {
+     "w": "catastrophe",
+     "t": 740.386
+    },
+    {
+     "w": "with",
+     "t": 741.141
+    },
+    {
+     "w": "a",
+     "t": 741.456
+    },
+    {
+     "w": "prophet",
+     "t": 741.581
+    },
+    {
+     "w": "at",
+     "t": 742.085
+    },
+    {
+     "w": "its",
+     "t": 742.273
+    },
+    {
+     "w": "head?",
+     "t": 742.525
+    }
+   ]
+  },
+  {
+   "id": "f192",
+   "chapter": "A kingdom carved in stone",
+   "text": "A century and a half later, China is still deciding.",
+   "spoken": "A century and a half later, China is still deciding.",
+   "start": 743.383,
+   "dur": 3.578,
+   "words": [
+    {
+     "w": "A",
+     "t": 743.383
+    },
+    {
+     "w": "century",
+     "t": 743.518
+    },
+    {
+     "w": "and",
+     "t": 744.058
+    },
+    {
+     "w": "a",
+     "t": 744.328
+    },
+    {
+     "w": "half",
+     "t": 744.463
+    },
+    {
+     "w": "later,",
+     "t": 744.8
+    },
+    {
+     "w": "China",
+     "t": 745.273
+    },
+    {
+     "w": "is",
+     "t": 745.678
+    },
+    {
+     "w": "still",
+     "t": 745.88
+    },
+    {
+     "w": "deciding.",
+     "t": 746.286
+    }
+   ]
+  }
+ ]
+}
