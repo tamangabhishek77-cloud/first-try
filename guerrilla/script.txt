@@ -1,0 +1,234 @@
+# The Army That Ran Away and Won: China's Guerrilla War (1927–1949)
+# Narration script. One line = one narration fragment. "## " starts a chapter. "{pause N}" = N s of silence.
+# "spoken text || display text" when the voice needs a respelling.
+
+## Cold open
+Shanghai, May, nineteen forty-nine. || Shanghai, May 1949.
+China's richest city woke up to a strange sight:
+Mao Zedong's soldiers, asleep on its pavements.
+They had just taken the city.
+By most accounts, they had orders not to enter a single home.
+Twenty-two years earlier, this army was under a thousand beaten men,
+hiding in the mountains.
+Fifteen years earlier, it ran for its life,
+and most of those who started that run never finished it.
+Now it held China.
+So how did an army that kept running away
+win the most populous country on earth?
+This is the story of China's guerrilla war.
+{pause 2.4}
+
+## The barrel of a gun
+Shanghai, April, nineteen twenty-seven. || Shanghai, April 1927.
+China's Nationalist leader, Chiang Kai-shek, turned on his communist allies.
+His soldiers and gangsters hunted them through the streets.
+By most accounts, hundreds were shot in the first days,
+and thousands more across China in the months that followed.
+The communists had tried to win China in the cities.
+In the cities, they had just been destroyed.
+That August, a farmer's son from Hunan spoke at a secret meeting.
+His name was Mao Zedong.
+Political power, he said, grows out of the barrel of a gun.
+In September, he led a peasant uprising in Hunan.
+It was crushed within days.
+Mao gathered what was left, by most accounts under a thousand men,
+and led them towards the Jinggang Mountains.
+On the way, he gave them three rules.
+One: obey orders.
+Two: do not take a single sweet potato from the peasants.
+Three: hand over everything taken from the rich.
+Remember that sweet potato. It will matter later.
+
+## The mountain
+The Jinggang Mountains were bandit country.
+Two bandit chiefs ruled them.
+Mao recruited them instead of fighting them.
+In April, nineteen twenty-eight, another survivor arrived. || In April 1928, another survivor arrived.
+Zhu De, a former warlord officer, brought his own battered column.
+Together, they formed the Fourth Red Army.
+Zhu commanded the troops. Mao was its political chief.
+They were outnumbered, outgunned, and short of everything.
+So they learned to fight a different way.
+By May, Mao later wrote, it fitted into sixteen Chinese characters.
+Four lines of four.
+The enemy advances, we retreat.
+The enemy halts, we harass.
+The enemy tires, we attack.
+The enemy retreats, we pursue.
+Watch these sixteen characters. The whole war is written in them.
+The rules grew too.
+The sweet potato became a needle and a thread:
+do not take even those.
+Pay for what you buy. Return what you borrow.
+
+## Lure them in
+By nineteen thirty, the Red Army had moved into southern Jiangxi. || By 1930, the Red Army had moved into southern Jiangxi.
+Chiang sent an army to destroy it.
+Mao did not stand and fight.
+He pulled his men back, deep into villages that would hide them.
+The enemy marched in after them, strung out and lost.
+Then the Red Army struck, one column at a time.
+Chiang tried three times, in nineteen thirty and thirty-one. || Chiang tried three times, in 1930 and 1931.
+Three times, he failed.
+The enemy advances, we retreat. The first line had worked.
+In November, nineteen thirty-one, the communists declared a state of their own: || In November 1931, the communists declared a state of their own:
+the Chinese Soviet Republic, with its capital at Ruijin.
+It had its own laws, its own money, and its own army.
+But inside it, something darker was happening.
+Mao's men hunted for traitors in their own ranks.
+Under torture, prisoners named others, who were tortured in turn.
+By most estimates, thousands of soldiers and party members were shot.
+The revolution was already eating its own.
+
+## The blockhouses
+For his fifth attempt, in nineteen thirty-three, Chiang changed the game. || For his fifth attempt, in 1933, Chiang changed the game.
+Advised by German officers, he ringed the communists with stone blockhouses.
+Thousands of them, joined by new roads.
+Every month, the ring crept a few miles closer.
+The ring tightened slowly, like a noose.
+The Red Army now had new leaders. Mao had been pushed aside.
+Moscow's man was a German communist called Otto Braun.
+He ordered them to hold every hill and fight in the open.
+They fought like a regular army,
+and they lost like one.
+Their losses were enormous.
+By the autumn of nineteen thirty-four, the Soviet was dying. || By the autumn of 1934, the Soviet was dying.
+The leaders decided to break out.
+They did not yet know where they were going.
+
+## The long retreat
+In October, over eighty thousand people slipped through the ring at night. || In October, over 80,000 people slipped through the ring at night.
+They hauled printing presses and heavy equipment on their backs.
+By some accounts, Mao, sick with malaria, was carried on a stretcher.
+At the Xiang River, the Nationalists caught them crossing.
+By some estimates, the army shrank by half within weeks.
+In January, nineteen thirty-five, the leaders met in the town of Zunyi. || In January 1935, the leaders met in the town of Zunyi.
+Braun's tactics took the blame, and Mao was brought back into command.
+Party history calls it the turning point. Historians are more cautious.
+But the guerrilla rules came back.
+The army stopped marching in a straight line.
+It doubled back, feinted,
+and crossed the Chishui River four times to shake off its hunters.
+
+## The bridge
+In May, the army reached the Dadu River, in the far west.
+The crossing was the Luding Bridge: thirteen iron chains over a torrent.
+Party history says the planks had been torn up,
+and that a few dozen volunteers crawled across the chains under fire.
+Some historians doubt there was much of a battle at all.
+Either way, the army got across.
+Then came the Snow Mountains, climbed in thin cotton uniforms.
+Then the grasslands, swamps where men sank and never came up.
+In October, nineteen thirty-five, Mao's column reached northern Shaanxi. || In October 1935, Mao's column reached northern Shaanxi.
+By most accounts, fewer than ten thousand of them were left.
+Mao called it twenty-five thousand li: about twelve thousand kilometres. || Mao called it 25,000 li: about 12,500 kilometres.
+Two British walkers who retraced it measured about six thousand. || Two British walkers who retraced it measured about 6,000.
+Either way, it was a very long way to run.
+They had survived. But they were cornered, and starving.
+And Chiang was coming to finish them.
+{pause 1.6}
+
+## The kidnapping
+In the summer of nineteen thirty-six, an American reporter reached their camp. || In the summer of 1936, an American reporter reached their camp.
+His name was Edgar Snow.
+His book, Red Star Over China, made Mao famous worldwide.
+In December, he flew to Xi'an to order one last offensive.
+But his generals there wanted to fight a different enemy: Japan.
+Japan had seized Manchuria, the homeland of one of them, Zhang Xueliang.
+On the twelfth of December, Zhang's troops stormed Chiang's quarters before dawn.
+By most accounts, China's leader fled up a hillside in his nightclothes.
+He was found hiding among the rocks.
+The man who had hunted the communists for nine years
+was now a prisoner.
+Two weeks later, he was released.
+The communist envoy, Zhou Enlai, helped broker the deal.
+Chiang agreed, in effect, to stop the civil war and fight Japan.
+Zhang Xueliang flew back with him, and spent decades under arrest.
+The hunt was over. For now.
+
+## Fish in the sea
+In July, nineteen thirty-seven, Japan invaded China in full. || In July 1937, Japan invaded China in full.
+Chiang's armies fought the great battles, and lost most of them.
+Shanghai fell. Then Nanjing, where Japanese troops massacred civilians for weeks.
+The communists' main force, renamed the Eighth Route Army, went somewhere else:
+behind Japanese lines.
+In September, at Pingxing Pass, it ambushed a Japanese column.
+It was a small battle, but a famous one.
+After that, the guerrillas mostly avoided big fights.
+In a book that year, Mao compared the people to water,
+and guerrillas to the fish that swim in it.
+Japan held the cities and the railways.
+The communists held the villages in between, and recruited.
+The enemy halts, we harass. The second line had worked.
+
+## Kill all, burn all
+In August, nineteen forty, the communists tried something bigger. || In August 1940, the communists tried something bigger.
+Over a hundred regiments struck Japanese railways, bridges and mines.
+It was called the Hundred Regiments Offensive.
+Japan's answer became known in China as the Three Alls:
+kill all, burn all, loot all.
+Villages suspected of helping guerrillas were wiped off the map.
+By some estimates, the population of communist areas fell by almost half.
+Mao drew a lesson: never show your full strength too early.
+In January, nineteen forty-one, Nationalist troops ambushed the communist New Fourth Army. || In January 1941, Nationalist troops ambushed the communist New Fourth Army.
+From then on, the alliance against Japan existed in name only.
+In Yan'an, Mao purged his own party again, and rewrote its history.
+When Japan surrendered, in August, nineteen forty-five, || When Japan surrendered, in August 1945,
+the communists were ready.
+In nineteen thirty-seven, the party had about forty thousand members. || In 1937, the party had about 40,000 members.
+Now it had over a million.
+
+## The cities fall
+In nineteen forty-six, the civil war began again, in full. || In 1946, the civil war began again, in full.
+On paper, it was no contest.
+Chiang had over four million men, many with American weapons.
+The communists had perhaps a million, counting militias.
+In March, nineteen forty-seven, Chiang's army captured Mao's capital, Yan'an. || In March 1947, Chiang's army captured Mao's capital, Yan'an.
+Mao simply walked away.
+The enemy advances, we retreat. The oldest rule still worked.
+Where they ruled, the communists seized land and handed it out.
+Peasants' sons joined them in their hundreds of thousands.
+Chiang's China was rotting: inflation, corruption, men conscripted at gunpoint.
+In Manchuria, the communists besieged the city of Changchun for five months.
+They let almost no one leave.
+By most estimates, at least a hundred and fifty thousand civilians starved. || By most estimates, at least 150,000 civilians starved.
+{pause 1.4}
+In China, that siege is still rarely mentioned.
+Then, from late nineteen forty-eight, came three giant campaigns. || Then, from late 1948, came three giant campaigns.
+In the biggest, Huaihai, over half a million Nationalist troops were lost.
+The enemy tires, we attack. The third line had worked.
+
+## Not one needle
+In April, nineteen forty-nine, a million communist troops crossed the Yangtze. || In April 1949, a million communist troops crossed the Yangtze.
+Nanjing, Chiang's capital, fell within days.
+The enemy retreats, we pursue. All sixteen characters, complete.
+Then, in late May, Shanghai.
+Remember the sweet potato?
+Twenty-two years on, the rule faced its hardest test: China's richest city.
+By many accounts, the troops slept on pavements, not in homes.
+Shanghai had expected looting. It woke up to this.
+It was the best advertisement the communists ever had.
+On the first of October, nineteen forty-nine, at Tiananmen Gate in Beijing, || On 1 October 1949, at Tiananmen Gate in Beijing,
+Mao proclaimed the People's Republic of China.
+In December, Chiang fled to Taiwan.
+The army that had run away for twenty-two years had won.
+
+## The fish and the water
+But the promise had limits.
+In the land reform that followed, landlords were tried before crowds.
+Estimates of the dead run from hundreds of thousands to millions.
+Mao would rule China for twenty-seven years, at a terrible human cost.
+Yet his guerrilla rules escaped China.
+In Vietnam, they shaped the war against France, and then America.
+In Peru, the Shining Path called itself Maoist.
+In Nepal, from nineteen ninety-six, Maoists fought a ten-year "people's war". || In Nepal, from 1996, Maoists fought a ten-year "people's war".
+By most counts, more than thirteen thousand people died. || By most counts, more than 13,000 people died.
+In two thousand eight, Nepal's monarchy was abolished, || In 2008, Nepal's monarchy was abolished,
+and the guerrilla leader Prachanda became prime minister.
+Sixteen characters, from a mountain hideout,
+are still studied in military academies around the world.
+A guerrilla army needs the people, the way a fish needs water.
+It wins by protecting them.
+But once it has won,
+who protects the people from it?
+{pause 2.0}
