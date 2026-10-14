@@ -57,6 +57,20 @@ The spine is Mao's formula 敌进我退 · 敌驻我扰 · 敌疲我打 · 敌�
   - Nanjing 1937 is a text card only.
 - The archival photos show soldiers and leaders only, never victims.
 
+## QA (final render)
+- **Loudness:** −14.0 LUFS integrated, true peak −1.3 dBTP, LRA 1.4 LU (two-pass loudnorm, AAC 320k).
+- **Video:** H.264 CRF 18, 1920x1080 @ 25 fps, 12:42.9.
+- **Black frames:** only where intended: the brand sting at 0:41, the Nanjing 1937 text card at 7:52, and the end dip.
+- **Frozen frames:** none.
+- **Sync:** spot-checked at 10 words, all on cue: "held", "crushed", "Remember", "failed", "lost", "fewer", "prisoner", "burn", "complete", "who".
+
+## Deliverables (GitHub, branch claude/new-session-3wpwe6, folder guerrilla/)
+- `review_720p/China_Guerrilla_War_720p_review.mp4` (63 MB, one file)
+- `video_1080p/`: the 1080p master in 7 parts, with `JOIN.bat` and `HOW_TO_JOIN.txt` (copy /b)
+- `video_2K/`: a 2560x1440 version for upload, in parts, with `JOIN.bat` and `HOW_TO_JOIN.txt`
+- `package/`: captions (.srt), chapters, description with sources, credits, titles, tags and pinned comment, plus `thumbnails/` (4)
+- `contact_sheet_characters_locations.jpg`, `plan_and_facts.md`, `script.txt`, and `engine/` (all code needed to rebuild)
+
 ## Shot list
 | id | start | dur | trans | description |
 |---|---|---|---|---|
