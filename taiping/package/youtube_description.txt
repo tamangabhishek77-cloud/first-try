@@ -44,7 +44,9 @@ SOURCES
 - Monument to the People's Heroes: war-memorial.net; Taikang Art Museum
 
 CREDITS
-Original illustrations, animation and music made for this channel. Narration voice: Kokoro TTS (bm_george). Maps: Natural Earth (public domain). Fonts: Google Fonts (OFL).
+Original illustrations, animation and music made for this channel. Narration voice: Kokoro TTS (bm_george). Maps: Natural Earth (public domain).
+Historical portraits (public domain, via Wikimedia Commons, tinted sepia): Hong Xiuquan (engraving, 1853, an alleged likeness, not drawn from life); Zeng Guofan (photograph, 1871); Zeng Guoquan (Qing court portrait, Tongzhi era); the Xianfeng Emperor (court portrait); Liang Fa (portrait, c. 1865); Frederick Townsend Ward (photograph); Charles Gordon (photograph by Géruzet Frères, 1878–85); Sun Yat-sen (photograph, 1911); Mao Zedong (photograph, Yan'an, 1930s). People with no surviving authentic likeness are shown as drawings.
+ Fonts: Google Fonts (OFL).
 
 #TaipingRebellion #ChineseHistory #HongXiuquan #History #Documentary #Revolution #QingDynasty #TheMajorRevolution
 
