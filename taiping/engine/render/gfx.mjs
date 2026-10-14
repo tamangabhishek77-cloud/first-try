@@ -2,6 +2,10 @@
 import fs from 'fs';
 import { P, W, H, clamp, lerp, easeOut, easeIO, backOut, ramp, life, rng, mixColor, rgba, T } from './core.mjs';
 import { bust, CH, flames } from './art.mjs';
+import { loadImage } from '@napi-rs/canvas';
+// real period portraits (public domain, Wikimedia Commons), sepia, face-cropped: used in medallions where one exists
+export const PORTRAIT = {};
+for (const k of ['hong', 'zengF', 'zengQ', 'gordon', 'ward', 'liangFa', 'emperor', 'sun', 'mao']) { const f = `/home/claude/project/portraits/proc/${k}.png`; if (fs.existsSync(f)) PORTRAIT[k] = await loadImage(fs.readFileSync(f)); }
 
 const TAU = Math.PI * 2;
 
@@ -127,7 +131,9 @@ export function medallion(ctx, t, key, x, y, r, at, out, o = {}) {
   ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.scale(sc, sc);
   ctx.shadowColor = 'rgba(0,0,0,0.45)'; ctx.shadowBlur = 20;
   ctx.fillStyle = o.bg ?? '#D9CBA9'; ctx.beginPath(); ctx.arc(0, 0, r, 0, TAU); ctx.fill(); ctx.shadowBlur = 0;
-  if (!o.blank) bust(ctx, 0, 0, r * 0.94, CH[key]);
+  const ph = !o.drawn && PORTRAIT[key];
+  if (ph) { ctx.save(); ctx.beginPath(); ctx.arc(0, 0, r * 0.94, 0, TAU); ctx.clip(); ctx.drawImage(ph, -r * 0.94, -r * 0.94, r * 1.88, r * 1.88); ctx.restore(); }
+  else if (!o.blank) bust(ctx, 0, 0, r * 0.94, CH[key]);
   else { ctx.fillStyle = P.ink2; ctx.beginPath(); ctx.arc(0, r * 0.1, r * 0.55, 0, TAU); ctx.fill(); text(ctx, '?', 0, r * 0.36, `900 ${r * 0.9}px Bodoni`, '#D9CBA9'); }
   ctx.strokeStyle = o.ring ?? P.gold; ctx.lineWidth = r * 0.09; ctx.beginPath(); ctx.arc(0, 0, r * 0.97, 0, TAU); ctx.stroke();
   ctx.strokeStyle = '#7A5E24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, r * 0.9, 0, TAU); ctx.stroke();
